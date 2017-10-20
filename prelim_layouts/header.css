@@ -8,8 +8,18 @@ header, .nav-main, .nav-bar, .nav-bar-links, .profile, .nav-logo, .nav-bar-links
   box-sizing: border-box;
 }
 
+.ad-banner {
+  width: 730px;
+  margin: auto;
+  padding: 20px;
+}
+
 header {
-  /*border-bottom: #dbdbdb solid 1px;*/
+  /*border: 1px solid red;*/
+  /*border-top: #9297a3 solid 1px;*/
+  /*margin-top: 50px;*/
+  /*box-shadow: -10px 5px #9297a3;*/
+  box-shadow: 0 -1px 5px #9297a3;
 }
 
 .nav-main {
@@ -33,6 +43,7 @@ h1.nav-logo {
   font-weight: 600;
   color: #2f98d9;
   padding-bottom: 8px;
+  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -44,6 +55,7 @@ h1.nav-logo {
   color: #9297a3;
   width: 300px;
   text-align: center;
+  font-size: 16px;
 }
 
 .nav-bar-links li:hover {
@@ -53,7 +65,7 @@ h1.nav-logo {
 
 .profile {
   width: 34px;
-  border: #dbdbdb 1px solid;
+  cursor: pointer;
 }
 
 
@@ -93,9 +105,15 @@ h1.nav-logo {
   color: #9297a3;
   padding: 10px 0;
   border-left: #dbdbdb solid 1px;
+  border-bottom: #9297a3 solid 1px;
 }
 
 .shortcut-bar-links li:last-of-type {
   border-right: #dbdbdb solid 1px;
+}
 
+.shortcut-bar-links li:hover {
+  border-bottom: black solid 2px;
+  color: black;
+  cursor: pointer;
 }
