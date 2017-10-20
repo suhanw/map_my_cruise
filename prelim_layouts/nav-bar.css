@@ -16,14 +16,31 @@ header {
   margin: auto;
 }
 
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 90%;
+  justify-content: space-between;
+}
+
 .nav-logo {
-  font: 24px "Open Sans", sans-serif;
+  font: 30px "Open Sans", sans-serif;
   font-weight: 600;
   color: #2f98d9;
 }
 
-.nav-bar {
-  flex-wrap: wrap;
+.nav-bar-links {
+  display: flex;
+  justify-content: space-around;
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: #9297a3;
+  width: 80%;
+}
+
+.nav-bar-links li:hover {
+  color: black;
+  cursor: pointer;
 }
 
 .profile img {
