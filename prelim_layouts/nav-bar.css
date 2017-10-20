@@ -1,0 +1,31 @@
+header, .nav-bar, .nav-bar-links, .profile, .nav-logo {
+  border: 1px solid red;
+}
+
+header, .nav-bar, .nav-bar-links {
+  display: flex;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+header {
+  justify-content: space-between;
+  flex-direction: row;
+  min-width: 400px;
+  max-width: 960px;
+  margin: auto;
+}
+
+.nav-logo {
+  font: 24px "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #2f98d9;
+}
+
+.nav-bar {
+  flex-wrap: wrap;
+}
+
+.profile img {
+  width: 34px;
+}
