@@ -1,0 +1,28 @@
+/*To delete*/
+.products-bar, .links-bar, .iphone-image, .social-links, .about-us-links, .fitness-community-links, .legal-bar, .mobile-app-bar {
+  border: 1px solid red;
+}
+/*To delete*/
+
+footer {
+  box-sizing: border-box;
+}
+
+.mobile-app-bar, .mobile-app-bar ul, .products-bar, .products-bar ul, .links-bar, .legal-bar, .legal-bar ul {
+  display: flex;
+}
+
+.mobile-app-bar, .products-bar, .links-bar, .legal-bar {
+  min-width: 400px;
+  max-width: 960px;
+  margin: auto;
+}
+
+.products-bar-background {
+  background: #e8e8e8;
+}
+
+.links-bar-background {
+  background: #1e1e1e;
+  color: white;
+}

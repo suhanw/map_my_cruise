@@ -11,7 +11,7 @@ header, .nav-main, .nav-bar, .nav-bar-links, .profile, .nav-logo, .nav-bar-links
 .ad-banner {
   width: 730px;
   margin: auto;
-  padding: 20px;
+  padding: 10px;
 }
 
 header {
@@ -28,6 +28,7 @@ header {
   min-width: 400px;
   max-width: 960px;
   margin: auto;
+  padding: 20px 0;
 }
 
 .nav-bar {
@@ -67,13 +68,6 @@ h1.nav-logo {
   width: 34px;
   cursor: pointer;
 }
-
-
-/*To delete*/
-.shortcut-main, .shortcut-bar, .shortcut-bar-links li {
-  /*border: 1px solid red;*/
-}
-/*To delete*/
 
 
 .shortcut-main {
