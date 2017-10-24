@@ -10,7 +10,20 @@ import * as Action from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
-  const store = configureStore();
+  // bootstrapping
+  let store;
+  if (window.currentUser) {
+    const preloadedState = {
+      session: {
+        currentUser: window.currentUser,
+      }
+    };
+    store = configureStore(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = configureStore();
+  }
+
   const main = document.getElementById('main');
 
   // for testing
