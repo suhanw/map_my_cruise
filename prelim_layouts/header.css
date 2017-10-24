@@ -7,6 +7,7 @@ $dark-gray: #1e1e1e;
 $blue: #0076C0;
 */
 
+/* To delete */
 #main {
   min-width: 400px;
   max-width: 960px;
@@ -14,6 +15,7 @@ $blue: #0076C0;
   margin: auto;
   padding: 5px;
 }
+/* To delete */
 
 .nav-main, .nav-bar, .nav-bar-links, .shortcut-main {
   display: flex;

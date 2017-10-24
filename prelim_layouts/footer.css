@@ -15,7 +15,7 @@ footer {
 
 .mobile-app-bar {
   justify-content: flex-end;
-  margin-right: 10px;
+  padding-right: 10px;
 }
 
 .mobile-app-bar li:first-of-type {
@@ -48,13 +48,13 @@ footer {
 .products-bar ul {
   font-family: Armour-Condensed, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
+  font-weight: 500;
   width: 100%;
   margin-left: 140px;
 }
 
 .products-bar ul li {
   text-align: center;
-  font-weight: 500;
   padding: 5px 20px;
   margin: 5px 0;
 }
