@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class SessionForm extends React.Component {
 
@@ -22,54 +23,81 @@ class SessionForm extends React.Component {
 
   render() {
 
-    let signupFields;
-    if (this.props.formType === 'signup') {
-      signupFields = (
-        <section>
-          <input type="text" placeholder="First name"
-            onChange={this.handleChange('fname')} />
-          <input type="text" placeholder="Last name"
-            onChange={this.handleChange('lname')} />
-        </section>
-      );
-    }
-
+    // to render any errors
     let errors;
     if(this.props.errors.length > 0) {
       errors = this.renderErrors(this.props.errors);
     }
 
+    // to render the login or signup link above form
+    let shortcutLink = 'SIGN UP';
+    let shortcutLinkUrl = '/signup';
+
+    // to render fields specific to new user form
+    let signupFields;
+    if (this.props.formType === 'signup') {
+      shortcutLink = 'LOG IN';
+      shortcutLinkUrl = '/login';
+      signupFields = (
+        <section>
+          <input type="text" placeholder="First name"
+            onChange={this.handleChange('fname')}
+            value={this.state.fname} />
+          <input type="text" placeholder="Last name"
+            onChange={this.handleChange('lname')}
+            value={this.state.lname} />
+        </section>
+      );
+    }
+
+
+
     return (
-      <form>
+      <section className="session-form-background">
+        <form className="session-form">
 
-        {errors}
+          <Link to={shortcutLinkUrl} className="session-form-shortcut">
+            {shortcutLink}
+          </Link>
 
-        {signupFields}
+          <button className="session-demo-button">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            LOG IN WITH DEMO
+          </button>
 
-        <input type="text" placeholder="Email"
-          onChange={this.handleChange('email')}
-          value={this.state.email} />
+          <p>OR</p>
 
-        <input type="password" placeholder="Password"
-          onChange={this.handleChange('password')}
-          value={this.state.password} />
+          {errors}
 
-        <button onClick={this.handleClick}>
-          {this.props.formType === 'login' ? 'LOG IN' : 'SIGN UP'}
-        </button>
+          {signupFields}
 
-      </form>
+          <input type="text" placeholder="Email"
+            onChange={this.handleChange('email')}
+            value={this.state.email} />
+
+          <input type="password" placeholder="Password"
+            onChange={this.handleChange('password')}
+            value={this.state.password} />
+
+          <button className="session-submit-button"
+            onClick={this.handleClick}>
+            {this.props.formType === 'login' ? 'LOG IN' : 'SIGN UP'}
+          </button>
+
+        </form>
+
+      </section>
     );
   }
 
   renderErrors(errors) {
-    const errorItems = this.props.errors.map((error)=>{
+    const errorItems = this.props.errors.map((error, i)=>{
       return (
-        <li>{error}</li>
+        <li key={i}>{error}</li>
       );
     });
     return (
-      <ul>
+      <ul className="errors">
         {errorItems}
       </ul>
     );

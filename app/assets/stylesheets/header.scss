@@ -1,0 +1,142 @@
+.nav-main, .nav-bar, .nav-bar-links, .shortcut-main {
+  display: flex;
+  box-sizing: border-box;
+}
+
+.ad-banner {
+  width: 730px;
+  height: 60px;
+  margin: auto;
+  padding: 10px;
+  background: image-url('ad-banner.png');
+  background-size: cover;
+}
+
+header {
+  box-shadow: 0 -1px 5px #9297a3;
+}
+
+.nav-main {
+  justify-content: space-between;
+  flex-direction: row;
+  min-width: 400px;
+  max-width: 960px;
+  margin: auto;
+  padding: 20px 0;
+}
+
+.nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 80%;
+}
+
+h1.nav-logo {
+  /*font-family: 'Open Sans', sans-serif;*/
+  font-family: Armour-Condensed, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: #0076C0;
+  padding-bottom: 6px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+h1.nav-logo i {
+  margin-right: 5px;
+}
+
+
+.nav-bar-links {
+  display: flex;
+  justify-content: space-evenly;
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: #9297a3;
+  width: 300px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.nav-bar-links li:hover {
+  color: black;
+  cursor: pointer;
+}
+
+.profile {
+  width: 34px;
+  cursor: pointer;
+  background: image-url('profile-icon.jpg');
+  background-size: 34px;
+  background-repeat: no-repeat;
+  padding-top: 35px;
+}
+
+.nav-main section {
+  display: flex;
+  align-items: center;
+}
+
+.profile-login, .profile-signup {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3px;
+  height: 35px;
+  width: 80px;
+  border-radius: 3px;
+}
+
+.profile-login {
+  color: #9297a3;
+}
+
+.profile-signup {
+  background-color: #97bf11;
+  color: white;
+}
+
+.shortcut-main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background: #f2f2f2;
+  border-top: #dbdbdb solid 1px;
+  border-bottom: #dbdbdb solid 1px;
+}
+
+.shortcut-bar {
+  min-width: 400px;
+  max-width: 960px;
+  width: 960px;
+}
+
+.shortcut-bar-links {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.shortcut-bar-links li {
+  flex-grow: 1;
+  text-align: center;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  color: #9297a3;
+  height: 40px;
+  padding: 10px 0;
+  border-left: #dbdbdb solid 1px;
+  border-bottom: #9297a3 solid 1px;
+}
+
+.shortcut-bar-links li:last-of-type {
+  border-right: #dbdbdb solid 1px;
+}
+
+.shortcut-bar-links li:hover {
+  border-bottom: black solid 2px;
+  color: black;
+  cursor: pointer;
+}
