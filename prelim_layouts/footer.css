@@ -1,10 +1,3 @@
-// colors.scss
-
-/*To delete*/
-.products-bar, .links-bar, .iphone-image, .social-links, .about-us-links, .fitness-community-links, .legal-bar, .mobile-app-bar {
-}
-/*To delete*/
-
 footer {
   box-sizing: border-box;
 }
@@ -47,9 +40,9 @@ footer {
 }
 
 .iphone {
+  position: absolute;
   left: 0px;
   top: -70px;
-  position: absolute;
 }
 
 .products-bar ul {
@@ -60,8 +53,6 @@ footer {
 }
 
 .products-bar ul li {
-  /*flex-grow: 1;*/
-  /*width: 100px;*/
   text-align: center;
   font-weight: 500;
   padding: 5px 20px;
@@ -72,8 +63,7 @@ footer {
   font-size: 18px;
   color: #0076C0;
   border-right: #dbdbdb solid 1px;
-  min-width: 200px;
-  /*border: 1px solid red;*/
+  min-width: 160px;
 }
 
 .fitness-link {
@@ -130,10 +120,10 @@ footer {
 .fitness-community-icon {
   font-size: 30px;
   font-weight: bold;
+  text-align: center;
   color: white;
   border-radius: 5px;
   width: 40px;
-  text-align: center;
   margin: 5px;
 }
 
@@ -168,9 +158,11 @@ footer {
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 14px;
   color: #9297a3;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  padding-top: 50px;
+  padding-bottom: 10px;
 }
 
 .legal-bar strong {

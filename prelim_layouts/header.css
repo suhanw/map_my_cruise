@@ -7,13 +7,16 @@ $dark-gray: #1e1e1e;
 $blue: #0076C0;
 */
 
-header, .nav-main, .nav-bar, .nav-bar-links, .profile, .nav-logo, .nav-bar-links li {
-  /*border: 1px solid red;*/
+#main {
+  min-width: 400px;
+  max-width: 960px;
+  height: 300px;
+  margin: auto;
+  padding: 5px;
 }
 
 .nav-main, .nav-bar, .nav-bar-links, .shortcut-main {
   display: flex;
-  /*padding: 10px;*/
   box-sizing: border-box;
 }
 
@@ -103,6 +106,7 @@ h1.nav-logo {
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 14px;
   color: #9297a3;
+  height: 40px;
   padding: 10px 0;
   border-left: #dbdbdb solid 1px;
   border-bottom: #9297a3 solid 1px;
