@@ -9,8 +9,7 @@ footer {
   box-sizing: border-box;
 }
 
-.mobile-app-bar, .mobile-app-bar ul, .products-bar, .products-bar ul,
-.links-bar, .legal-bar, .legal-bar ul, .fitness-community-links {
+.mobile-app-bar, .mobile-app-bar ul, .products-bar, .products-bar ul, .links-bar, .legal-bar, .legal-bar ul {
   display: flex;
 }
 
@@ -21,13 +20,12 @@ footer {
 }
 
 .mobile-app-bar {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 15px;
   justify-content: flex-end;
-  margin-right: 10px;
 }
 
 .mobile-app-bar li:first-of-type {
-  font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 15px;
   width: 300px;
   text-align: right;
   margin-right: 5px;
@@ -35,45 +33,28 @@ footer {
 
 .mobile-app-icon {
   width: 140px;
-  margin-bottom: 5px;
 }
 
 .mobile-app-icon:last-of-type {
   margin-right: 5px;
 }
 
-.products-bar {
-  position: relative;
-}
-
-.iphone {
-  left: 0px;
-  top: -70px;
-  position: absolute;
-}
-
 .products-bar ul {
   font-family: Armour-Condensed, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   width: 100%;
-  margin-left: 140px;
 }
 
 .products-bar ul li {
-  /*flex-grow: 1;*/
-  /*width: 100px;*/
+  flex-grow: 1;
   text-align: center;
   font-weight: 500;
-  padding: 5px 20px;
-  margin: 5px 0;
+  padding: 10px;
 }
 
 .mapmyrun-link {
   font-size: 18px;
   color: #0076C0;
-  border-right: #dbdbdb solid 1px;
-  min-width: 200px;
-  /*border: 1px solid red;*/
 }
 
 .fitness-link {
@@ -96,13 +77,8 @@ footer {
   font-family: 'PT Sans Narrow', sans-serif;
 }
 
-.social-links {
-  margin-left: 140px;
-}
-
 .links-bar ul {
-  padding: 20px 15px;
-  min-width: 140px;
+  padding: 10px;
 }
 
 .links-bar ul li {
@@ -118,42 +94,8 @@ footer {
 
 .fitness-community-links {
   flex-grow: 2;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-}
-
-.fitness-community-links li:first-of-type {
-  width: 100%;
   text-align: right;
 }
-
-.fitness-community-icon {
-  font-size: 30px;
-  font-weight: bold;
-  color: white;
-  border-radius: 5px;
-  width: 40px;
-  text-align: center;
-  margin: 5px;
-}
-
-
-.paper {
-  background: #c90202;
-}
-
-.scissors {
-  background:#008222;
-}
-
-.rock {
-  background: #7500b5;
-}
-
-.spock {
-  background: #0158a3;
-}
-
 
 .products-bar-background {
   background: #e8e8e8;
