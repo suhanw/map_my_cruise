@@ -22,7 +22,7 @@ const Footer = () => (
         </figure>
         <ul>
           <li className="mapmyrun-link">
-            <i class="fa fa-road" aria-hidden="true"></i>
+            <i className="fa fa-superpowers" aria-hidden="true"></i>
             mapmycruise
           </li>
           <li className="fitness-link">fitness</li>

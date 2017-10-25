@@ -26,9 +26,11 @@ class Header extends React.Component {
       </ul>
     );
 
+
     return (
       <section className="avatar">
         {`Welcome, ${this.props.currentUser.fname} ${this.props.currentUser.lname}`}
+        <img src={this.props.currentUser.avatar_url} />
         {avatarDropdown}
       </section>
     );
@@ -51,7 +53,7 @@ class Header extends React.Component {
       <section className="nav-main">
         <nav className='nav-bar'>
           <h1 className='nav-logo'>
-            <i class="fa fa-road" aria-hidden="true"></i>
+            <i className="fa fa-superpowers" aria-hidden="true"></i>
             mapmycruise
           </h1>
           <ul className='nav-bar-links'>

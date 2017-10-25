@@ -68,13 +68,17 @@ h1.nav-logo i {
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 14px;
   color: #9297a3;
-  background: image-url('profile-icon.jpg');
-  background-size: 34px;
   background-repeat: no-repeat;
   background-position: right;
   height: 35px;
-  padding-right: 40px;
   position: relative;
+}
+
+.avatar img {
+  width: 34px;
+  height: 34px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .avatar-dropdown {

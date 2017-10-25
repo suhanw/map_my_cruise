@@ -37,6 +37,9 @@ gem 'pg'
 
 gem 'font-awesome-rails'
 
+# for avatar upload
+gem 'aws-sdk', '< 3.0'
+gem 'figaro'
 gem 'paperclip'
 
 group :development, :test do
