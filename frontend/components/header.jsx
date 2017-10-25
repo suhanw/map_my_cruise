@@ -51,7 +51,7 @@ class Header extends React.Component {
       <section className="nav-main">
         <nav className='nav-bar'>
           <h1 className='nav-logo'>
-            <i className="fa fa-wheelchair-alt" aria-hidden="true"></i>
+            <i class="fa fa-road" aria-hidden="true"></i>
             mapmycruise
           </h1>
           <ul className='nav-bar-links'>
