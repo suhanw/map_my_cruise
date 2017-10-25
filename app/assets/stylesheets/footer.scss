@@ -1,0 +1,201 @@
+footer {
+  box-sizing: border-box;
+}
+
+.mobile-app-bar, .mobile-app-bar ul, .products-bar, .products-bar ul,
+.links-bar, .legal-bar, .legal-bar ul, .fitness-community-links {
+  display: flex;
+}
+
+.mobile-app-bar, .products-bar, .links-bar, .legal-bar {
+  min-width: 400px;
+  max-width: 960px;
+  margin: auto;
+}
+
+.mobile-app-bar {
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+
+.mobile-app-bar li:first-of-type {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 15px;
+  width: 300px;
+  text-align: right;
+  margin-right: 5px;
+}
+
+.mobile-apple-icon, .mobile-google-icon {
+  width: 140px;
+  height: 40px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.mobile-apple-icon {
+  background: image-url('download-on-the-app-store.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.mobile-google-icon {
+  margin-right: 5px;
+  background: image-url('get-on-google-play.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.products-bar {
+  position: relative;
+}
+
+.iphone {
+  background: image-url('iphone.png');
+  width: 140px;
+  height: 290px;
+  position: absolute;
+  left: 0px;
+  top: -70px;
+}
+
+.products-bar ul {
+  font-family: Armour-Condensed, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  width: 100%;
+  margin-left: 140px;
+}
+
+.products-bar ul li {
+  text-align: center;
+  padding: 5px 20px;
+  margin: 5px 0;
+}
+
+.mapmyrun-link {
+  font-size: 18px;
+  color: #0076C0;
+  border-right: #dbdbdb solid 1px;
+  min-width: 160px;
+}
+
+.fitness-link {
+  color: #0158a3;
+}
+
+.walk-link {
+  color: #7500b5;
+}
+
+.ride-link {
+  color:#c90202;
+}
+
+.hike-link {
+  color:#008222;
+}
+
+.links-bar {
+  font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.social-links {
+  margin-left: 140px;
+}
+
+.links-bar ul {
+  padding: 20px 15px;
+  min-width: 140px;
+}
+
+.links-bar ul li {
+  font-weight: 100;
+  font-size: 14px;
+  color: #9297a3;
+}
+
+.links-bar ul li:first-of-type {
+  color: white;
+  margin: 5px 0;
+}
+
+.fitness-community-links {
+  flex-grow: 2;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.fitness-community-links li:first-of-type {
+  width: 100%;
+  text-align: right;
+}
+
+.fitness-community-icon {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  width: 40px;
+  margin: 5px;
+}
+
+
+.paper {
+  background: #c90202;
+}
+
+.scissors {
+  background:#008222;
+}
+
+.rock {
+  background: #7500b5;
+}
+
+.spock {
+  background: #0158a3;
+}
+
+
+.products-bar-background {
+  background: #e8e8e8;
+}
+
+.links-bar-background {
+  background: #1e1e1e;
+  color: white;
+}
+
+.legal-bar {
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  color: #9297a3;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 10px;
+}
+
+.legal-bar strong {
+  font-family: 'Syncopate', sans-serif;
+  font-size: 20px;
+  color: black;
+  padding-top: 15px;
+  padding-bottom: 5px;
+}
+
+.legal-bar ul li {
+  border-right: #9297a3 solid 1px;
+  padding: 0 10px;
+}
+
+.legal-bar ul li:last-of-type {
+  border-right: none;
+}
+
+.mapmyrun-link i, .legal-bar i {
+  margin-right: 5px;
+}

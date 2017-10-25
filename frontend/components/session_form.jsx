@@ -61,7 +61,7 @@ class SessionForm extends React.Component {
           </Link>
 
           <button className="session-demo-button">
-            <i class="fa fa-user-circle" aria-hidden="true"></i>
+            <i className="fa fa-user-circle" aria-hidden="true"></i>
             LOG IN WITH DEMO
           </button>
 
