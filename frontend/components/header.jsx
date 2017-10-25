@@ -21,7 +21,7 @@ class Header extends React.Component {
 
     let avatarDropdown = (
       <ul className="avatar-dropdown">
-        <li><button>Settings</button></li>
+        <li><Link to="/edit_profile">Settings</Link></li>
         <li><button onClick={this.props.logout}>Logout</button></li>
       </ul>
     );
@@ -52,10 +52,12 @@ class Header extends React.Component {
     return (
       <section className="nav-main">
         <nav className='nav-bar'>
-          <h1 className='nav-logo'>
-            <i className="fa fa-superpowers" aria-hidden="true"></i>
-            mapmycruise
-          </h1>
+          <Link to="/">
+            <h1 className='nav-logo'>
+              <i className="fa fa-superpowers" aria-hidden="true"></i>
+              mapmycruise
+            </h1>
+          </Link>
           <ul className='nav-bar-links'>
             <li>ROUTES</li>
             <li>WORKOUTS</li>

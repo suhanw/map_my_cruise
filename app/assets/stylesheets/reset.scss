@@ -14,7 +14,6 @@ span, article, footer, time, small, figure, strong {
   vertical-align: inherit;
   box-sizing: inherit;
   background: transparent;
-
 }
 
 ul {
@@ -40,4 +39,8 @@ button {
 button,
 input[type="submit"] {
   cursor: pointer;
+}
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
