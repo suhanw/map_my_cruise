@@ -1,4 +1,4 @@
-import {RECEIVE_USER, RECEIVE_SESSION_ERRORS} from '../actions/session_actions';
+import {RECEIVE_USER, RECEIVE_SESSION_ERRORS, CLEAR_ERRORS} from '../actions/session_actions';
 
 const defaultState = [];
 
@@ -10,6 +10,9 @@ const SessionErrorsReducer = (state=defaultState, action) => {
       return action.errors;
 
     case RECEIVE_USER:
+      return [];
+
+    case CLEAR_ERRORS:
       return [];
 
     default:
