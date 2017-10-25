@@ -3,7 +3,7 @@ import React from 'react';
 class ProfileForm extends React.Component {
 
   constructor(props){
-    super(props);
+    super(props); 
 
     this.state = this.props.currentUser;
     this.state = Object.assign(
