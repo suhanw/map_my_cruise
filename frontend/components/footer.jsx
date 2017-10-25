@@ -23,7 +23,7 @@ const Footer = () => (
         <ul>
           <li className="mapmyrun-link">
             <i className="fa fa-wheelchair-alt" aria-hidden="true"></i>
-            mapmyrun
+            mapmycruise
           </li>
           <li className="fitness-link">fitness</li>
           <li className="walk-link">walk</li>

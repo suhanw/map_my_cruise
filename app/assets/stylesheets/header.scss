@@ -63,13 +63,46 @@ h1.nav-logo i {
   cursor: pointer;
 }
 
-.profile {
-  width: 34px;
+.avatar {
   cursor: pointer;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  color: #9297a3;
   background: image-url('profile-icon.jpg');
   background-size: 34px;
   background-repeat: no-repeat;
-  padding-top: 35px;
+  background-position: right;
+  height: 35px;
+  padding-right: 40px;
+  position: relative;
+}
+
+.avatar-dropdown {
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0 1px 2px .5px #e8e8e8;
+  position: absolute;
+  top: 35px;
+  right: 0px;
+  visibility: hidden;
+}
+
+
+.avatar-dropdown li {
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: inherit;
+  background-color: #ffffff;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #dbdbdb;
+  border-top: 1px solid #dbdbdb;
+  padding: 10px 25px;
+}
+
+.avatar-dropdown li:last-of-type {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.avatar:hover > .avatar-dropdown{
+  visibility: visible;
 }
 
 .nav-main section {

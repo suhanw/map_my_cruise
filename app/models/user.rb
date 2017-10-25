@@ -16,7 +16,8 @@
 #
 
 class User < ApplicationRecord
-  validates :fname, :lname, :email, :password_digest, :session_token, presence: true
+  validates :email, :password_digest, :session_token, presence: true
+  validate :validate_name, :validate_email
   validates :email, :session_token, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
   attr_reader :password
@@ -46,5 +47,23 @@ class User < ApplicationRecord
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
+
+  private
+  def validate_name
+    if fname == ""
+      errors.add(:base, "First name can't be blank")
+    end
+
+    if lname == ""
+      errors.add(:base, "Last name can't be blank")
+    end
+  end
+
+  def validate_email
+    unless email =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      errors.add(:base, "Please enter a valid email")
+    end
+  end
+
 
 end

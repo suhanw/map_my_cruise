@@ -17,34 +17,42 @@ class Header extends React.Component {
     );
   }
 
+  renderAvatar() {
+
+    let avatarDropdown = (
+      <ul className="avatar-dropdown">
+        <li><button>Settings</button></li>
+        <li><button onClick={this.props.logout}>Logout</button></li>
+      </ul>
+    );
+
+    return (
+      <section className="avatar">
+        {`Welcome, ${this.props.currentUser.fname} ${this.props.currentUser.lname}`}
+        {avatarDropdown}
+      </section>
+    );
+  }
 
 
   renderNavBar() {
 
-    let profileSection = (
-      <section>
-        <Link to="/login" className='profile-login'>LOG IN</Link>
-        <Link to="/signup" className='profile-signup'>SIGN UP</Link>
-      </section>
-    );
+    let loggedIn = Boolean(this.props.currentUser);
 
-    let currentUser = this.props.currentUser;
-    if (currentUser) {
-      profileSection = (
-        <section className="profile">
-          <button onClick={this.props.logout}>
-            Logout
-          </button>
+    let profileSection = loggedIn ?
+      this.renderAvatar() : (
+        <section>
+          <Link to="/login" className='profile-login'>LOG IN</Link>
+          <Link to="/signup" className='profile-signup'>SIGN UP</Link>
         </section>
       );
-    }
 
     return (
       <section className="nav-main">
         <nav className='nav-bar'>
           <h1 className='nav-logo'>
             <i className="fa fa-wheelchair-alt" aria-hidden="true"></i>
-            mapmyrun
+            mapmycruise
           </h1>
           <ul className='nav-bar-links'>
             <li>ROUTES</li>
