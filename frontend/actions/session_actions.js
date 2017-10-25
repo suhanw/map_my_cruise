@@ -52,3 +52,12 @@ export const logout = ()=>{
     );
   };
 };
+
+export const editProfile = (formData) => {
+  return (dispatch) => {
+    return SessionApiUtil.editProfile(formData).then(
+      (currUser) => dispatch(receiveUser(currUser)),
+      (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
+    );
+  };
+};

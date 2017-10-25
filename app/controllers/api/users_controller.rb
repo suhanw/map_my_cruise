@@ -34,7 +34,8 @@ class Api::UsersController < ApplicationController
         :country,
         :dob,
         :gender,
-        :password
+        :password,
+        :image
       )
   end
 end

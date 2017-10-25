@@ -117,10 +117,17 @@ class ProfileForm extends React.Component {
   }
 
   handleClick(e){
-    const file = this.state.imageFile;
     const formData = new FormData();
+    formData.append("id", this.state.id);
     formData.append("user[fname]", this.state.fname);
-    // debugger
+    formData.append("user[lname]", this.state.lname);
+    formData.append("user[email]", this.state.email);
+
+    const file = this.state.imageFile;
+    if (file) formData.append("user[image]", file);
+    debugger
+
+    this.props.editProfile(formData);
   }
 }
 

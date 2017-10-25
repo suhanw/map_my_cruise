@@ -20,3 +20,14 @@ export const logout = ()=> {
     method: 'DELETE'
   });
 };
+
+export const editProfile = (formData)=> {
+  return $.ajax({
+    url: `api/users/${formData.get('id')}`,
+    method: 'PATCH',
+    processData: false,
+    contentType: false,
+    dataType: 'json',
+    data: formData,
+  });
+};

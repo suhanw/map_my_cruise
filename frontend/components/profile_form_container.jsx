@@ -1,5 +1,6 @@
 import {connect} from 'react-redux';
 import ProfileForm from './profile_form';
+import {editProfile} from '../actions/session_actions';
 
 
 const mapStateToProps = (state) => {
@@ -10,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    to_update: ()=>{},
+    editProfile: (formData)=> dispatch(editProfile(formData)),
   };
 };
 
