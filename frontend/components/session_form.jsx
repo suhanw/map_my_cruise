@@ -14,7 +14,7 @@ class SessionForm extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -54,7 +54,7 @@ class SessionForm extends React.Component {
 
     return (
       <section className="session-form-background">
-        <form className="session-form">
+        <form className="session-form" onSubmit={this.handleSubmit}>
 
           <Link to={shortcutLinkUrl} className="session-form-shortcut">
             {shortcutLink}
@@ -79,8 +79,8 @@ class SessionForm extends React.Component {
             onChange={this.handleChange('password')}
             value={this.state.password} />
 
-          <button className="session-submit-button"
-            onClick={this.handleClick}>
+          <button type="submit" className="session-submit-button"
+            >
             {this.props.formType === 'login' ? 'LOG IN' : 'SIGN UP'}
           </button>
 
@@ -110,7 +110,7 @@ class SessionForm extends React.Component {
     };
   }
 
-  handleClick(event) {
+  handleSubmit(event) {
     this.props.submitForm(this.state);
   }
 }
