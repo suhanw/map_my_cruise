@@ -3,7 +3,7 @@ import React from 'react';
 class ProfileForm extends React.Component {
 
   constructor(props){
-    super(props); 
+    super(props);
 
     this.state = this.props.currentUser;
     this.state = Object.assign(
@@ -66,17 +66,17 @@ class ProfileForm extends React.Component {
           </label>
           <label className="account-form-input">
             Old Password
-            <input type="password" name="old-password"
+            <input type="password" name="old-password" placeholder="not implemented yet"
               onChange={this.handleChange('oldPassword')} />
           </label>
           <label className="account-form-input">
             New Password
-            <input type="password" name="new-password"
+            <input type="password" name="new-password" placeholder="not implemented yet"
               onChange={this.handleChange('newPassword')} />
           </label>
           <label className="account-form-input">
             Confirm New Password
-            <input type="password" name="confirm-new-password"
+            <input type="password" name="confirm-new-password" placeholder="not implemented yet"
               onChange={this.handleChange('confirmNewPassword')} />
           </label>
 
@@ -125,7 +125,6 @@ class ProfileForm extends React.Component {
 
     const file = this.state.imageFile;
     if (file) formData.append("user[image]", file);
-    debugger
 
     this.props.editProfile(formData);
   }
