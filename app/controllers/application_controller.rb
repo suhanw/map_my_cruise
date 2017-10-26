@@ -20,4 +20,10 @@ class ApplicationController < ActionController::Base
     @current_user = nil
     session[:session_token] = nil
   end
+
+  def require_login
+    unless logged_in?
+      render json: ["You must be logged in to access this resource"], status: 401
+    end
+  end
 end

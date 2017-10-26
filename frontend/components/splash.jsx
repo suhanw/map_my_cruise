@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom';
 const Splash = () => (
   <main>
     <section className="splash-image">
-      <h1>MAKE EVERY MILE COUNT, JOIN FREE TODAY</h1>
+      <h1>YOUR MISSION, SHOULD YOU CHOOSE TO ACCEPT IT.</h1>
       <p>
-        You pound the pavement, we provide the motivation. Plan each stride and
-        learn from every route with MapMyRun.
+        36 hours ago, there was a breach in our military's communication
+        network. Now, an emerging terror organization known as The Syndicate
+        has control of our entire drone fleet. Plan to run from explosions, sandstorms,
+        and terrorists with MapMyCruise.
       </p>
       <span className="splash-signup-buttons">
         <Link to="/signup"

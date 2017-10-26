@@ -32,6 +32,8 @@ class User < ApplicationRecord
   has_attached_file :image, default_url: "profile-icon.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
+  has_many :routes
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     user && user.is_password?(password) ? user : nil
@@ -54,6 +56,10 @@ class User < ApplicationRecord
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def owns_route?(route)
+    self.routes.include?(route);
   end
 
   private
