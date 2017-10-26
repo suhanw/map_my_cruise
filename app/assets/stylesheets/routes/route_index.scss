@@ -13,17 +13,14 @@
 }
 
 
-.route-index-table {
-  font-size: 14px;
-  // width: 100%;
-  // table-layout: fixed;
-}
 
 .route-index-container h2 {
-  min-width: 400px;
-  width: 730px;
-  margin: auto;
   font-size: 20px;
+  font-weight: 600;
+}
+
+.route-index-table {
+  font-size: 14px;
 }
 
 .route-index-tbody {
@@ -46,6 +43,9 @@
 .search-and-sort {
   display: flex;
   margin: 30px 0;
+  padding: 20px 0;
+  border-top: $light-gray 1px solid;
+  border-bottom: $light-gray 1px solid;
 }
 
 .search-and-sort select {
