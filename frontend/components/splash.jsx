@@ -22,7 +22,7 @@ const Splash = () => (
     <section className="splash-icons">
       <ul>
         <li>
-          <i class="fa fa-map-marker" aria-hidden="true"></i>
+          <i className="fa fa-map-marker" aria-hidden="true"></i>
           <h2>
             MAP YOUR ROUTE
           </h2>
@@ -31,11 +31,11 @@ const Splash = () => (
           </p>
           <Link to="/routes">
             Check it out
-            <i class="fa fa-caret-right" aria-hidden="true"></i>
+            <i className="fa fa-caret-right" aria-hidden="true"></i>
           </Link>
         </li>
         <li>
-          <i class="fa fa-podcast" aria-hidden="true"></i>
+          <i className="fa fa-podcast" aria-hidden="true"></i>
           <h2>
             TRACK YOUR ACTIVITY
           </h2>
@@ -44,11 +44,11 @@ const Splash = () => (
           </p>
           <Link to="/workouts">
             Check it out
-            <i class="fa fa-caret-right" aria-hidden="true"></i>
+            <i className="fa fa-caret-right" aria-hidden="true"></i>
           </Link>
         </li>
         <li>
-          <i class="fa fa-users" aria-hidden="true"></i>
+          <i className="fa fa-users" aria-hidden="true"></i>
           <h2>
             SHARE WITH FRIENDS
           </h2>
@@ -57,11 +57,11 @@ const Splash = () => (
           </p>
           <Link to="/friends">
             Check it out
-            <i class="fa fa-caret-right" aria-hidden="true"></i>
+            <i className="fa fa-caret-right" aria-hidden="true"></i>
           </Link>
         </li>
         <li>
-          <i class="fa fa-imdb" aria-hidden="true"></i>
+          <i className="fa fa-imdb" aria-hidden="true"></i>
           <h2>
             WATCH TC MOVIES
           </h2>
@@ -70,7 +70,7 @@ const Splash = () => (
           </p>
           <a target="_blank" href="http://www.imdb.com/name/nm0000129/?ref_=tt_ov_st_sm">
             Check it out
-            <i class="fa fa-caret-right" aria-hidden="true"></i>
+            <i className="fa fa-caret-right" aria-hidden="true"></i>
           </a>
         </li>
       </ul>

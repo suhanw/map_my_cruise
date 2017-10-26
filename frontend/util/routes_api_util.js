@@ -1,20 +1,3 @@
-export const RECEIVE_ROUTES = 'RECEIVE_ROUTES';
-export const RECEIVE_ROUTE = 'RECEIVE_ROUTE';
-
-export const receiveRoutes = (routes) => {
-  return {
-    type: RECEIVE_ROUTES,
-    routes
-  };
-};
-
-export const receiveRoute = (route) => {
-  return {
-    type: RECEIVE_ROUTE,
-    route
-  };
-};
-
 export const fetchRoutes = () => {
   return $.ajax({
     url:'api/routes/',
@@ -30,7 +13,6 @@ export const fetchRoute = (routeId) => {
 };
 
 export const createRoute = (route) => {
-  debugger
   return $.ajax({
     url:`api/routes/`,
     method: 'post',

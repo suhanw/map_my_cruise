@@ -2,7 +2,7 @@ import * as SessionApiUtil from '../util/session_api_util';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+// export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const receiveUser = (user) => {
   return {
@@ -18,13 +18,13 @@ export const receiveSessionErrors = (errors) => {
   };
 };
 
-export const clearErrors = () => {
-  return (dispatch) => {
-    return dispatch({
-      type: CLEAR_ERRORS,
-    });
-  };
-};
+// export const clearErrors = () => {
+//   return (dispatch) => {
+//     return dispatch({
+//       type: CLEAR_ERRORS,
+//     });
+//   };
+// };
 
 export const signup = (user)=>{
   return (dispatch) => {

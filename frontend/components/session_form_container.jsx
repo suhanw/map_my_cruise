@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import SessionForm from './session_form';
-import {signup, login, clearErrors} from '../actions/session_actions';
+import {signup, login} from '../actions/session_actions';
+import {clearErrors} from '../actions/clear_errors_action';
 
 const mapStateToProps = (state, ownProps) => {
   let formType = (ownProps.match.path === '/login') ? 'login' : 'signup';
@@ -17,7 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     submitForm: (user) => dispatch(action(user)),
     clearErrors: () => dispatch(clearErrors()),
-    //just for demo login
+    // for demo login
     login: (user) => dispatch(login(user)),
   };
 };
