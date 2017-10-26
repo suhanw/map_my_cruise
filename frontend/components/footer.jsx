@@ -82,7 +82,7 @@ const Footer = () => (
 
     <section className="legal-bar">
       <strong>
-        <i className="fa fa-wheelchair-alt" aria-hidden="true"></i>
+        <i className="fa fa-superpowers" aria-hidden="true"></i>
         UNDER THE SEA
       </strong>
       <ul>
