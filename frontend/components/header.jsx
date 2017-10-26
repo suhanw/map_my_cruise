@@ -59,7 +59,11 @@ class Header extends React.Component {
             </h1>
           </Link>
           <ul className='nav-bar-links'>
-            <li>ROUTES</li>
+            <li>
+              <Link to="/routes">
+                ROUTES
+              </Link>
+            </li>
             <li>WORKOUTS</li>
             <li>FRIENDS</li>
           </ul>

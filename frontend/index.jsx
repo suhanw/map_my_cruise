@@ -3,14 +3,15 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 
-// testing
+// TESTING
 // import * as RouteApiUtil from './util/routes_api_util';
 import * as RouteActions from './actions/routes_actions';
 import {clearErrors} from './actions/clear_errors_action';
+// TESTING
 
 document.addEventListener('DOMContentLoaded', ()=>{
 
-  // bootstrapping
+  // bootstrapping current user
   let store;
   if (window.currentUser) {
     const preloadedState = {
@@ -23,9 +24,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   } else {
     store = configureStore();
   }
-  // bootstrapping
+  // bootstrapping current user
 
-  // testing
+  // TESTING
   window.fetchRoutes = RouteActions.fetchRoutes;
   window.fetchRoute = RouteActions.fetchRoute;
   window.createRoute = RouteActions.createRoute;
@@ -34,7 +35,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
   window.clearErrors = clearErrors;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  // testing
+  // TESTING
 
   const main = document.getElementById('main');
 

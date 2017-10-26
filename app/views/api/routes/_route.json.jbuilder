@@ -7,3 +7,5 @@ json.extract! route,
   :distance,
   :elevation,
   :privacy
+
+json.created_at route.created_at.strftime("%m/%d/%Y");

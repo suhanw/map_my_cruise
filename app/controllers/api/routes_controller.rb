@@ -7,8 +7,10 @@ class Api::RoutesController < ApplicationController
   end
 
   def show
-    @route = Route.find(params[:id])
-    unless current_user.owns_route?(@route)
+    @route = Route.find_by(id: params[:id])
+    if !@route
+      render json: ["This route does not exist"], status: 404
+    elsif !current_user.owns_route?(@route)
       render json: ["This is not your route"], status: 401
     else
       render :show
@@ -26,8 +28,10 @@ class Api::RoutesController < ApplicationController
   end
 
   def update
-    @route = Route.find(params[:id])
-    unless current_user.owns_route?(@route)
+    @route = Route.find_by(id: params[:id])
+    if !@route
+      render json: ["This route does not exist"], status: 404
+    elsif !current_user.owns_route?(@route)
       render json: ["This is not your route"], status: 401
     else
       if @route.update(route_params)
@@ -39,8 +43,10 @@ class Api::RoutesController < ApplicationController
   end
 
   def destroy
-    @route = Route.find(params[:id])
-    unless current_user.owns_route?(@route)
+    @route = Route.find_by(id: params[:id])
+    if !@route
+      render json: ["This route does not exist"], status: 404
+    elsif !current_user.owns_route?(@route)
       render json: ["This is not your route"], status: 401
     else
       @route.destroy

@@ -1,0 +1,76 @@
+// .route-index-container,
+// .route-index-table
+// {
+//   border: 1px solid red;
+// }
+// to delete above
+
+.route-index-container {
+  min-width: 400px;
+  width: 730px;
+  margin: 50px auto;
+  box-sizing: border-box;
+}
+
+
+.route-index-table {
+  font-size: 14px;
+  // width: 100%;
+  // table-layout: fixed;
+}
+
+.route-index-container h2 {
+  min-width: 400px;
+  width: 730px;
+  margin: auto;
+  font-size: 20px;
+}
+
+.route-index-tbody {
+}
+
+.route-index-tbody tr {
+}
+
+.route-index-table th,
+.route-index-table td {
+  border: $light-gray solid 1px;
+  padding: 10px;
+  overflow: visible;
+}
+
+.route-index-table th {
+  background-color: $lightest-gray;
+}
+
+.search-and-sort {
+  display: flex;
+  margin: 30px 0;
+}
+
+.search-and-sort select {
+  margin-left: auto;
+}
+
+.paginator {
+  margin: 30px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.active-page-link, .inactive-page-link {
+  padding: 5px 10px;
+  margin: 0 5px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 12px;
+}
+
+.active-page-link {
+  color: $blue;
+  border: $blue solid 1px;
+}
+
+.inactive-page-link {
+  color: $light-gray;
+  border: $light-gray solid 1px;
+}
