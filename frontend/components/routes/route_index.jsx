@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
 
 class RouteIndex extends React.Component {
@@ -15,15 +16,18 @@ class RouteIndex extends React.Component {
   render(){
     return (
       <section className="route-index-container">
-        <h2>
-          MY ROUTES
-        </h2>
+        <div>
+          <h2>
+            MY ROUTES
+          </h2>
+          <Link to="routes/create" className="create-route-button">CREATE A ROUTE</Link>
+        </div>
 
         <section className="search-and-sort">
-          <input type="search" placeholder="Enter a keyword" />
-          <button>SEARCH</button>
-          <button>Reset</button>
-          <select>
+          <input className="route-search-input" type="search" placeholder="Enter a keyword" />
+          <button className="route-search-button">SEARCH</button>
+          <button className="route-search-reset">Reset</button>
+          <select className="route-sort-options">
             <option>Most Recent</option>
             <option>Oldest</option>
             <option>Longest</option>
@@ -61,7 +65,7 @@ class RouteIndex extends React.Component {
 
   renderItems(){
     const items = this.props.routes.map((route, i)=>(
-      <RouteIndexItem key={i} route={route} />
+      <RouteIndexItem key={i} route={route} currentUser={this.props.currentUser} />
     ));
 
     return items;

@@ -19,4 +19,12 @@
  */
 
 /* everything in this folder and in subfolders */
- @import './**/*'; 
+ @import './**/*';
+
+ section[class$="-container"] {
+   min-width: 400px;
+   width: 730px;
+   margin: 50px auto;
+   padding: 0 10px;
+   box-sizing: border-box;
+ }

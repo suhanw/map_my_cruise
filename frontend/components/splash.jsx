@@ -9,7 +9,7 @@ const Splash = () => (
         36 hours ago, there was a breach in our military's communication
         network. Now, an emerging terror organization known as The Syndicate
         has control of our entire drone fleet. Plan to run from explosions, sandstorms,
-        and terrorists with MapMyCruise.
+        alien tripods, pre-crime cop, the mummy, and terrorists with MapMyCruise.
       </p>
       <span className="splash-signup-buttons">
         <Link to="/signup"
