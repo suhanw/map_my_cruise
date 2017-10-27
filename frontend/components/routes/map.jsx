@@ -157,7 +157,6 @@ class Map extends React.Component {
       const newPolyline = directionsRoute.overview_polyline;
       this.props.setPolyline(newPolyline);
     });
-
   }
 }
 
