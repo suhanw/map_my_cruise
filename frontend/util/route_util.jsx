@@ -12,15 +12,17 @@ const Auth = ({component: Component, path, loggedIn}) => (
     )} />
 );
 
-const Protect = ({component: Component, path, loggedIn}) => (
-  <Route path={path} render={(props) => (
-      loggedIn ? (
-        <Component {...props} />
-      ) : (
-        <Redirect to="/login" />
-      )
-    )} />
-);
+const Protect = ({component: Component, path, exact, loggedIn}) => {
+  return (
+    <Route path={path} exact={exact} render={(props) => (
+        loggedIn ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/login" />
+        )
+      )} />
+    );
+};
 
 const mapStateToProps = state => {
   return {

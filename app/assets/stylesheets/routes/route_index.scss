@@ -5,25 +5,50 @@
 // }
 // to delete above
 
-.route-index-container {
+// .route-index-container {
+//   min-width: 400px;
+//   width: 730px;
+//   margin: 50px auto;
+//   padding: 0 10px;
+//   box-sizing: border-box;
+// }
+section[class$="-container"] {
   min-width: 400px;
   width: 730px;
   margin: 50px auto;
+  padding: 0 10px;
   box-sizing: border-box;
 }
 
-
-.route-index-table {
-  font-size: 14px;
-  // width: 100%;
-  // table-layout: fixed;
+.route-index-container div {
+  display: flex;
+  justify-content: space-between;
 }
 
 .route-index-container h2 {
-  min-width: 400px;
-  width: 730px;
-  margin: auto;
   font-size: 20px;
+  font-weight: 600;
+}
+
+.create-route-button {
+  background: -webkit-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: -o-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: -moz-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  border-radius: 3px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.route-index-table {
+  font-size: 14px;
+  width: 100%;
+  // table-layout: fixed;
 }
 
 .route-index-tbody {
@@ -37,6 +62,8 @@
   border: $light-gray solid 1px;
   padding: 10px;
   overflow: visible;
+  vertical-align: middle;
+  text-align: center;
 }
 
 .route-index-table th {
@@ -45,11 +72,19 @@
 
 .search-and-sort {
   display: flex;
-  margin: 30px 0;
+  margin: 20px 0;
+  padding: 20px 0;
+  border-top: $light-gray 1px solid;
+  border-bottom: $light-gray 1px solid;
 }
 
 .search-and-sort select {
   margin-left: auto;
+}
+
+.search-and-sort input,
+.search-and-sort button {
+  border: 1px solid black;
 }
 
 .paginator {
@@ -59,10 +94,15 @@
 }
 
 .active-page-link, .inactive-page-link {
-  padding: 5px 10px;
+  padding: 0 10px;
+  padding-top: 8px;
+  padding-bottom: 5px;
   margin: 0 5px;
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .active-page-link {

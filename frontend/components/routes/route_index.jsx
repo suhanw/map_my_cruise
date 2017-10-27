@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
 
 class RouteIndex extends React.Component {
@@ -15,9 +16,12 @@ class RouteIndex extends React.Component {
   render(){
     return (
       <section className="route-index-container">
-        <h2>
-          MY ROUTES
-        </h2>
+        <div>
+          <h2>
+            MY ROUTES
+          </h2>
+          <Link to="routes/create" className="create-route-button">CREATE A ROUTE</Link>
+        </div>
 
         <section className="search-and-sort">
           <input type="search" placeholder="Enter a keyword" />
