@@ -8,7 +8,7 @@ import Footer from './footer';
 import ProfileFormContainer from './profile_form_container';
 import RouteIndexContainer from './routes/route_index_container';
 import ShowRouteContainer from './routes/show_route_container';
-import RouteForm from './routes/route_form';
+import RouteFormContainer from './routes/route_form_container';
 
 const App = () => {
   return (
@@ -18,7 +18,7 @@ const App = () => {
       <Route exact path="/" component={Splash} />
       <ProtectRoute exact path="/routes" component={RouteIndexContainer} />
       <Switch>
-        <ProtectRoute exact path="/routes/create" component={RouteForm} />
+        <ProtectRoute exact path="/routes/create" component={RouteFormContainer} />
         <ProtectRoute exact path="/routes/:routeId" component={ShowRouteContainer} />
       </Switch>
 

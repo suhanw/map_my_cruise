@@ -98,6 +98,8 @@ h1.nav-logo i {
   position: absolute;
   top: 35px;
   visibility: hidden;
+  // to bring in front of map
+  z-index: 100;
 }
 
 .avatar-dropdown {
