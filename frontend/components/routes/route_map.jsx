@@ -4,6 +4,8 @@ class RouteMap extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.renderPath = this.renderPath.bind(this);
   }
 
   componentWillMount(){
@@ -19,6 +21,29 @@ class RouteMap extends React.Component {
   }
 
   componentDidMount() {
+    this.renderPath();
+  }
+
+  componentWillReceiveProps(newProps) {
+    const newRouteId = newProps.route.id;
+    if (newRouteId !== this.props.route.id) {
+      this.renderPath();
+    }
+  }
+
+  render() {
+    // debugger
+    // const mapClass = this.props.thumbnail ? 'route-thumbnail' : 'route-map';
+    const mapId = this.props.thumbnail ? `route-thumbnail-${this.props.route.id}` : 'route-map';
+
+    // <div className={mapClass} id="route-map">
+    return (
+      <div id={mapId}>
+      </div>
+    );
+  }
+
+  renderPath(){
     // Credit to find center of polyline:
     // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
     const routePathCoords = this.routePolyline.getPath().getArray();
@@ -39,13 +64,13 @@ class RouteMap extends React.Component {
       let imgSrc = "https://maps.googleapis.com/maps/api/staticmap?";
       // imgSrc += `center=${thumbCtrLat},${thumbCtrLng}`;
       // imgSrc += "&zoom=13";
-      imgSrc += "&visible"
+      imgSrc += "&visible";
       imgSrc += "&size=80x80";
       imgSrc += `&path=color:0xff0000ff|weight:1|${thumbPath}`;
       imgSrc += "&key=AIzaSyBikueOt0xpkbFjWOncTXfVj5HEg_pu8f8";
       // debugger
 
-      const thumbnailDom = document.getElementById(`route-${this.props.route.id}`);
+      const thumbnailDom = document.getElementById(`route-thumbnail-${this.props.route.id}`);
       thumbnailDom.style
         .background = `url(${imgSrc}) no-repeat left top`;
       thumbnailDom.style.height='80px';
@@ -65,22 +90,9 @@ class RouteMap extends React.Component {
       // render the Polyline
       this.routePolyline.setMap(this.map);
 
-
       // to center the map around the route
       this.map.fitBounds(bounds);
     }
-  }
-
-  render() {
-    // debugger
-    // const mapClass = this.props.thumbnail ? 'route-thumbnail' : 'route-map';
-    const mapId = this.props.thumbnail ? `route-${this.props.route.id}` : 'route-map';
-
-    // <div className={mapClass} id="route-map">
-    return (
-      <div id={mapId}>
-      </div>
-    );
   }
 }
 

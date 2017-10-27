@@ -22,7 +22,7 @@ header {
   min-width: 400px;
   max-width: 960px;
   margin: auto;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .nav-bar {
@@ -58,16 +58,24 @@ h1.nav-logo i {
   font-size: 14px;
 }
 
-.nav-bar-links li:hover {
+.nav-bar-links li {
+  flex-grow: 1;
+  padding: 10px 0;
+  position: relative;
+}
+
+.nav-bar-links li:hover,
+.avatar-dropdown li:hover {
   color: black;
   cursor: pointer;
 }
+
 
 .avatar {
   cursor: pointer;
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 14px;
-  color: #9297a3;
+  color: $gray;
   background-repeat: no-repeat;
   background-position: right;
   height: 35px;
@@ -81,19 +89,34 @@ h1.nav-logo i {
   margin-right: 10px;
 }
 
-.avatar-dropdown {
+.avatar-dropdown,
+.routes-dropdown,
+.workouts-dropdown,
+.friends-dropdown {
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 0 1px 2px .5px #e8e8e8;
   position: absolute;
   top: 35px;
-  right: 0px;
   visibility: hidden;
 }
 
+.avatar-dropdown {
+  right: 0px;
+}
 
-.avatar-dropdown li {
+.routes-dropdown,
+.workouts-dropdown,
+.friends-dropdown {
+  left: 0px;
+  width: 120px;
+}
+
+.avatar-dropdown li,
+.routes-dropdown li,
+.workouts-dropdown li,
+.friends-dropdown li {
   font-family: 'PT Sans Narrow', sans-serif;
-  color: inherit;
+  color: $gray;
   background-color: #ffffff;
   border-left: 1px solid #dbdbdb;
   border-right: 1px solid #dbdbdb;
@@ -101,11 +124,21 @@ h1.nav-logo i {
   padding: 10px 25px;
 }
 
-.avatar-dropdown li:last-of-type {
+
+
+.avatar-dropdown li:last-of-type,
+.routes-dropdown li:last-of-type,
+.workouts-dropdown li:last-of-type,
+.friends-dropdown li:last-of-type {
   border-bottom: 1px solid #dbdbdb;
 }
 
-.avatar:hover > .avatar-dropdown{
+
+
+.avatar:hover > .avatar-dropdown,
+.nav-bar-routes:hover > .routes-dropdown,
+.nav-bar-workouts:hover > .workouts-dropdown,
+.nav-bar-friends:hover > .friends-dropdown {
   visibility: visible;
 }
 

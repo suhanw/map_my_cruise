@@ -36,7 +36,6 @@ class Header extends React.Component {
     );
   }
 
-
   renderNavBar() {
 
     let loggedIn = Boolean(this.props.currentUser);
@@ -49,6 +48,27 @@ class Header extends React.Component {
         </section>
       );
 
+      let routesDropdown = (
+        <ul className="routes-dropdown">
+          <li><Link to="/routes/create">Create Route</Link></li>
+          <li><Link to="/routes">My Routes</Link></li>
+        </ul>
+      );
+
+      let workoutsDropdown = (
+        <ul className="workouts-dropdown">
+          <li><Link to="/workouts/create">Log Workout</Link></li>
+          <li><Link to="/workouts">Dashboard</Link></li>
+        </ul>
+      );
+
+      let friendsDropdown = (
+        <ul className="friends-dropdown">
+          <li><Link to="/friends/find">Find Friends</Link></li>
+          <li><Link to="/friends">My Friends</Link></li>
+        </ul>
+      );
+
     return (
       <section className="nav-main">
         <nav className='nav-bar'>
@@ -59,13 +79,18 @@ class Header extends React.Component {
             </h1>
           </Link>
           <ul className='nav-bar-links'>
-            <li>
-              <Link to="/routes">
-                ROUTES
-              </Link>
+            <li className='nav-bar-routes'>
+              ROUTES
+              {routesDropdown}
             </li>
-            <li>WORKOUTS</li>
-            <li>FRIENDS</li>
+            <li className="nav-bar-workouts">
+              WORKOUTS
+              {workoutsDropdown}
+            </li>
+            <li className="nav-bar-friends">
+              FRIENDS
+              {friendsDropdown}
+            </li>
           </ul>
         </nav>
         {profileSection}
