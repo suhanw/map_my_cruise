@@ -136,7 +136,9 @@ class Map extends React.Component {
           this.endPos = undefined;
 
         } else {
-          alert(`Error: ${status}`);
+          // alert(`Error: ${status}`);
+          this.props.receiveRouteErrors(['Dude, that route is impossible, mission-wise.']);
+          this.props.openModal('errors');
         }
       }
     );
@@ -163,8 +165,8 @@ class Map extends React.Component {
               city: newCity,
             });
           } else {
-            alert(res.error_message);
-            this.props.openModal({errors: [res.error_message]})
+            this.props.receiveRouteErrors([res.error_message]);
+            this.props.openModal('errors');
           }
         }
       );

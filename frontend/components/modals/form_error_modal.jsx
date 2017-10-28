@@ -3,9 +3,9 @@ import React from 'react';
 class FormErrorModal extends React.Component {
 
   render() {
-    const errorsDom = this.props.modal.errors.map((error) => {
+    const errorsDom = this.props.errors.map((error, i) => {
       return (
-        <li>{error}</li>
+        <li key={i}>{error}</li>
       );
     });
 

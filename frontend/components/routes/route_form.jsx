@@ -42,6 +42,7 @@ class RouteForm extends React.Component {
       <section id="route-form-container">
 
         <Modal modal={this.props.modal}
+          errors = {this.props.errors}
           component={FormErrorModal}
           closeModal={this.props.closeModal} />
 
@@ -54,7 +55,8 @@ class RouteForm extends React.Component {
           width="100%"
           height="100vh"
           setRouteState={this.setRouteState}
-          openModal={this.props.openModal}/>
+          openModal={this.props.openModal}
+          receiveRouteErrors={this.props.receiveRouteErrors}/>
       </section>
     );
   }
@@ -98,8 +100,8 @@ class RouteForm extends React.Component {
       ({route})=> {
         this.props.history.push(`/routes/${route.id}`);
       },
-      ({errors}) => {
-        this.props.openModal({errors});
+      () => {
+        this.props.openModal('errors');
       }
     );
   }

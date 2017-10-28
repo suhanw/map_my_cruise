@@ -1,11 +1,14 @@
 import React from 'react';
 
-const Modal = ({ modal, component: Component, closeModal, dispatchAction }) => {
+const Modal = ({ modal, errors, component: Component, closeModal, dispatchAction }) => {
   let content;
   if (modal) {
     content = (
       <div className="modal-backdrop" onClick={closeModal}>
-        <Component modal={modal} closeModal={closeModal} dispatchAction={dispatchAction}/>
+        <Component modal={modal}
+          errors={errors}
+          closeModal={closeModal}
+          dispatchAction={dispatchAction}/>
       </div>
     );
   } else {
