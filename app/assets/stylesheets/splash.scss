@@ -1,14 +1,78 @@
 .splash-image {
-  background: url('http://static.celebuzz.com/uploads/2015/07/tom-cruise-mission-impossible-run-072815.gif');
-  background-repeat: no-repeat;
-  background-position: top;
-  background-size: 100%;
+  // background: url('http://static.celebuzz.com/uploads/2015/07/tom-cruise-mission-impossible-run-072815.gif');
   height: 400px;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   color: white;
+}
+
+.splash-image-1 {
+  background: image-url('splash/ghost_protocol.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-2 {
+  background: image-url('splash/eot.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-3 {
+  background: image-url('splash/mi3-2.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-4 {
+  background: image-url('splash/mi3-3.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-5 {
+  background: image-url('splash/mi3.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-5 {
+  background: image-url('splash/mi5.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-6 {
+  background: image-url('splash/mr.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-7 {
+  background: image-url('splash/vs.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-8 {
+  background: image-url('splash/wotw.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-9 {
+  background: image-url('splash/jb.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
+}
+.splash-image-10 {
+  background: image-url('splash/fg.gif');
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: 100%;
 }
 
 .splash-image h1, .splash-image p, .splash-signup-buttons {

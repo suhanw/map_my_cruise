@@ -15,8 +15,16 @@
 #
 
 class Route < ApplicationRecord
-  validates :user, :name, :polyline, presence: true
-  validates :name, uniqueness: true
+  validates :user, :name, presence: true
+  validate :validate_polyline
+  validates :name, uniqueness: { scope: :user }
 
   belongs_to :user
+
+  private
+  def validate_polyline
+    if polyline == ""
+      errors.add(:base, "Please create a route before saving")
+    end
+  end
 end

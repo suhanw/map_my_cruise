@@ -12,8 +12,21 @@ class RouteForm extends React.Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
     this.setPolyline = this.setPolyline.bind(this);
+  }
+
+  componentDidMount() {
+    document.getElementById("directions").addEventListener('DOMSubtreeModified', ()=>{
+      const warnbox = document.querySelector(".warnbox-content");
+
+      if (!warnbox.innerHTML.includes('Tom Cruise') && Boolean(warnbox.innerHTML.length)) {
+        document.querySelector(".warnbox-content").innerHTML += ' <b>Unless of course you are Tom Cruise running to save the world.</b>';
+      }
+
+      return;
+    });
   }
 
   render(){
@@ -27,7 +40,7 @@ class RouteForm extends React.Component {
         </form>
         <Map className="map"
           width="100%"
-          height="80vh"
+          height="100vh"
           setPolyline={this.setPolyline}/>
       </section>
     );
@@ -38,7 +51,7 @@ class RouteForm extends React.Component {
       <section className="route-form-map-search">
         <h3>Choose map location</h3>
         <input type="search" placeholder="Enter location" />
-        <button>
+        <button onClick={this.handleSearch}>
           SEARCH
         </button>
       </section>
@@ -60,6 +73,10 @@ class RouteForm extends React.Component {
 
   handleChange(e) {
     this.setState({name: e.target.value});
+  }
+
+  handleSearch(e) {
+    e.preventDefault();
   }
 
   saveRoute(e) {
