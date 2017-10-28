@@ -1,4 +1,5 @@
 import React from 'react';
+import {fetchCity} from '../../util/routes_api_util';
 
 class Map extends React.Component {
   constructor(props) {
@@ -41,9 +42,6 @@ class Map extends React.Component {
     }
   }
 
-  componentDidMount() {
-
-  }
 
   render() {
 
@@ -137,25 +135,40 @@ class Map extends React.Component {
           this.startPos = undefined;
           this.endPos = undefined;
 
-          // to get the polyline string
-          const polyline = result.routes[0].overview_polyline;
-          // send state back to RouteForm
-          this.props.setPolyline(polyline);
-
         } else {
           alert(`Error: ${status}`);
         }
-        // document.querySelector('.warnbox-content').innerHTML += ' Unless you are Tom Cruise.',
       }
     );
 
-    // to update polyline as user drags the route
+    // to update polyline as user creates a new route, or drags the route
     this.directionsRenderer.addListener('directions_changed', ()=>{
       // 'this' is the DirectionsRenderer object
       const directionsResult = this.directionsRenderer.getDirections();
       const directionsRoute = directionsResult.routes[0];
       const newPolyline = directionsRoute.overview_polyline;
-      this.props.setPolyline(newPolyline);
+      const newDistance = directionsRoute.legs[0].distance.text;
+      const originLat = directionsResult.request.origin.location.lat();
+      const originLng = directionsResult.request.origin.location.lng();
+      const latLng = `${originLat},${originLng}`;
+
+      fetchCity(latLng).then(
+        (res) => {
+          if (res.status === 'OK') {
+            let newCity = res.results[0].formatted_address;
+            // send state back to RouteForm
+            this.props.setRouteState({
+              polyline: newPolyline,
+              distance: newDistance,
+              city: newCity,
+            });
+          } else {
+            alert(res.error_message);
+            this.props.openModal({errors: [res.error_message]})
+          }
+        }
+      );
+
     });
   }
 }

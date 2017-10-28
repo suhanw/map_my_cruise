@@ -20,8 +20,7 @@ class RouteIndexItem extends React.Component  {
             </Link>
           </td>
           <td>{this.props.route.created_at}</td>
-          <td>{this.props.route.distance}</td>
-          <td>{this.props.route.elevation}</td>
+          <td>{this.props.route.distance}mi</td>
           <td>{this.props.route.name}</td>
           <td>{this.props.route.city}</td>
           <td>{this.props.route.privacy}</td>

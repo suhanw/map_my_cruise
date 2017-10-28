@@ -11,12 +11,14 @@ class RouteForm extends React.Component {
     this.state = {
       name: '',
       polyline: '',
+      distance: '',
+      city: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
-    this.setPolyline = this.setPolyline.bind(this);
+    this.setRouteState = this.setRouteState.bind(this);
   }
 
   componentDidMount() {
@@ -51,7 +53,8 @@ class RouteForm extends React.Component {
         <Map className="map"
           width="100%"
           height="100vh"
-          setPolyline={this.setPolyline}/>
+          setRouteState={this.setRouteState}
+          openModal={this.props.openModal}/>
       </section>
     );
   }
@@ -101,8 +104,12 @@ class RouteForm extends React.Component {
     );
   }
 
-  setPolyline(polyline) {
-    this.setState({polyline});
+  setRouteState(newState) {
+    this.setState({
+      polyline: newState.polyline,
+      distance: newState.distance,
+      city: newState.city,
+    });
   }
 }
 
