@@ -1,5 +1,7 @@
 import React from 'react';
 import Map from './map';
+import Modal from '../modals/modal';
+import FormErrorModal from '../modals/form_error_modal';
 
 class RouteForm extends React.Component {
   constructor(props) {
@@ -22,7 +24,10 @@ class RouteForm extends React.Component {
       const warnbox = document.querySelector(".warnbox-content");
 
       if (!warnbox.innerHTML.includes('Tom Cruise') && Boolean(warnbox.innerHTML.length)) {
-        document.querySelector(".warnbox-content").innerHTML += ' <b>Unless of course you are Tom Cruise running to save the world.</b>';
+        warnbox.innerHTML += ' <b>Unless of course you are Tom Cruise running to save the world.</b>';
+        const tcGif = document.createElement('img');
+        tcGif.setAttribute('src', 'https://media.giphy.com/media/5nPodXMLXXd1m/giphy.gif');
+        warnbox.appendChild(tcGif);
       }
 
       return;
@@ -33,6 +38,11 @@ class RouteForm extends React.Component {
 
     return (
       <section id="route-form-container">
+
+        <Modal modal={this.props.modal}
+          component={FormErrorModal}
+          closeModal={this.props.closeModal} />
+
         <form className="route-form-details">
           {this.renderSearchBar()}
           {this.renderFormInput()}
@@ -84,6 +94,9 @@ class RouteForm extends React.Component {
     this.props.createRoute(this.state).then(
       ({route})=> {
         this.props.history.push(`/routes/${route.id}`);
+      },
+      ({errors}) => {
+        this.props.openModal({errors});
       }
     );
   }

@@ -16,15 +16,17 @@ const App = () => {
       <HeaderContainer />
 
       <Route exact path="/" component={Splash} />
+
+      <AuthRoute path="/login" component={SessionFormContainer} />
+      <AuthRoute path="/signup" component={SessionFormContainer} />
+      <ProtectRoute path="/edit_profile" component={ProfileFormContainer} />
+
       <ProtectRoute exact path="/routes" component={RouteIndexContainer} />
       <Switch>
         <ProtectRoute exact path="/routes/create" component={RouteFormContainer} />
         <ProtectRoute exact path="/routes/:routeId" component={ShowRouteContainer} />
       </Switch>
 
-      <AuthRoute path="/login" component={SessionFormContainer} />
-      <AuthRoute path="/signup" component={SessionFormContainer} />
-      <ProtectRoute path="/edit_profile" component={ProfileFormContainer} />
 
       <Footer />
     </div>

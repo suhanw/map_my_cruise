@@ -1,8 +1,9 @@
 import * as SessionApiUtil from '../util/session_api_util';
+import {clearEntities} from './clear_actions';
 
 export const RECEIVE_USER = 'RECEIVE_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
-// export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
 
 export const receiveUser = (user) => {
   return {
@@ -17,14 +18,6 @@ export const receiveSessionErrors = (errors) => {
     errors
   };
 };
-
-// export const clearErrors = () => {
-//   return (dispatch) => {
-//     return dispatch({
-//       type: CLEAR_ERRORS,
-//     });
-//   };
-// };
 
 export const signup = (user)=>{
   return (dispatch) => {
@@ -47,7 +40,10 @@ export const login = (user)=>{
 export const logout = ()=>{
   return (dispatch) => {
     return SessionApiUtil.logout().then(
-      (currUser) => dispatch(receiveUser(null)),
+      (currUser) => {
+        dispatch(receiveUser(null));
+        dispatch(clearEntities());
+      },
       (errors) => dispatch(receiveSessionErrors(errors.responseJSON))
     );
   };

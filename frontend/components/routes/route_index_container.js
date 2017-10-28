@@ -1,17 +1,22 @@
 import {connect} from 'react-redux';
 import RouteIndex from './route_index';
-import {fetchRoutes} from '../../actions/routes_actions';
+import {fetchRoutes, deleteRoute} from '../../actions/routes_actions';
+import {closeModal, openModal} from '../../actions/modal_actions';
 
-const mapStateToProps = ({entities, session}) => {
+const mapStateToProps = ({entities, session, ui:{modal}}) => {
   return {
     routes: Object.values(entities.routes),
     currentUser: session.currentUser,
+    modal
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchRoutes: () => dispatch(fetchRoutes()),
+    deleteRoute: (routeId) => dispatch(deleteRoute(routeId)),
+    openModal: (modal) => dispatch(openModal(modal)),
+    closeModal: () => dispatch(closeModal()),
   };
 };
 

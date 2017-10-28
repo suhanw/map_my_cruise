@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
+import Modal from '../modals/modal';
+import ConfirmDeleteModal from '../modals/confirm_delete_modal';
 
 class RouteIndex extends React.Component {
   constructor(props) {
@@ -16,6 +18,10 @@ class RouteIndex extends React.Component {
   render(){
     return (
       <section className="route-index-container">
+        <Modal modal={this.props.modal}
+          component={ConfirmDeleteModal}
+          closeModal={this.props.closeModal}
+          dispatchAction={this.props.deleteRoute} />
         <div>
           <h2>
             MY ROUTES
@@ -65,7 +71,11 @@ class RouteIndex extends React.Component {
 
   renderItems(){
     const items = this.props.routes.map((route, i)=>(
-      <RouteIndexItem key={i} route={route} currentUser={this.props.currentUser} />
+      <RouteIndexItem key={i}
+        route={route}
+        currentUser={this.props.currentUser}
+        deleteRoute={this.props.deleteRoute}
+        openModal={this.props.openModal} />
     ));
 
     return items;

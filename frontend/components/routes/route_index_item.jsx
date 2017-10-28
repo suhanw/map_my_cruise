@@ -8,19 +8,7 @@ class RouteIndexItem extends React.Component  {
     super(props);
 
     this.renderOptions = this.renderOptions.bind(this);
-  }
-
-  renderOptions() {
-    if (this.props.route.user_id === this.props.currentUser.id) {
-      return (
-        <div className="route-index-item-options">
-          <Link to={`routes/${this.props.route.id}/edit`}>Edit</Link>
-          <button>Delete</button>
-        </div>
-      );
-    } else { //to implement for viewing other users' routes
-
-    }
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   render() {
@@ -40,6 +28,26 @@ class RouteIndexItem extends React.Component  {
           <td>{this.renderOptions()}</td>
         </tr>
     );
+  }
+
+  renderOptions() {
+    if (this.props.route.user_id === this.props.currentUser.id) {
+      return (
+        <div className="route-index-item-options">
+          <Link to={`routes/${this.props.route.id}/edit`}>Edit</Link>
+          <button onClick={()=>{
+              this.props.openModal({confirmDeleteRoute: this.props.route.id});
+            }}>Delete</button>
+        </div>
+      );
+    } else { //to implement viewing other users' routes
+
+    }
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+    this.props.deleteRoute(this.props.route.id);
   }
 }
 

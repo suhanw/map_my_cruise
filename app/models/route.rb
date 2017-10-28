@@ -22,9 +22,10 @@ class Route < ApplicationRecord
   belongs_to :user
 
   private
+  
   def validate_polyline
     if polyline == ""
-      errors.add(:base, "Please create a route before saving")
+      errors.add(:base, "You must have at least 2 points on the map to save a route.")
     end
   end
 end

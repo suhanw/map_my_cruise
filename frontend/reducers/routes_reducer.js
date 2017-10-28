@@ -4,6 +4,7 @@ import {
   REMOVE_ROUTE,
   RECEIVE_ROUTE_ERRORS,
 } from '../actions/routes_actions';
+import {CLEAR_ENTITIES} from '../actions/clear_actions';
 
 const defaultState = {};
 
@@ -21,6 +22,9 @@ const RoutesReducer = (state=defaultState, action) => {
       newState = Object.assign({}, state);
       delete newState[action.route.id];
       return newState;
+
+    case CLEAR_ENTITIES:
+      return {};
 
     default:
       return state;

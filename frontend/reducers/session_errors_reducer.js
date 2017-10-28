@@ -1,5 +1,5 @@
 import {RECEIVE_USER, RECEIVE_SESSION_ERRORS} from '../actions/session_actions';
-import {CLEAR_ERRORS} from '../actions/clear_errors_action';
+import {CLEAR_ERRORS} from '../actions/clear_actions';
 
 const defaultState = [];
 

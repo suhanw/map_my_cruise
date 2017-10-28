@@ -1,0 +1,71 @@
+.modal-backdrop {
+   position: fixed;
+   top: 0px;
+   bottom: 0px;
+   right: 0px;
+   left: 0px;
+   z-index: 10;
+   background: rgba(0,0,0,0.7);
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+ }
+
+.modal {
+  width:200px;
+  margin: auto;
+  background: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  text-align: center;
+}
+
+.modal h1 {
+  background: $light-gray;
+  color: $dark-gray;
+  flex-basis: 100%;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.modal img {
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+}
+
+
+.ok-button,
+.cancel-button,
+.close-button {
+  flex-grow: 1;
+  background: -webkit-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: -o-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: -moz-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  border-radius: 3px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: 20px 10px 20px 10px;
+}
+
+.cancel-button,
+.close-button {
+  background: $light-gray;
+  color: $gray;
+}
+
+.modal li {
+  font-size: 12px;
+  flex-basis: 100%;
+  padding: 0 10px;
+  padding-top: 10px;
+  text-align: left;
+}

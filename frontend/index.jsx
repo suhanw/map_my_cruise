@@ -6,7 +6,7 @@ import configureStore from './store/store';
 // TESTING
 // import * as RouteApiUtil from './util/routes_api_util';
 import * as RouteActions from './actions/routes_actions';
-import {clearErrors} from './actions/clear_errors_action';
+import {clearErrors} from './actions/clear_actions';
 // TESTING
 
 document.addEventListener('DOMContentLoaded', ()=>{
