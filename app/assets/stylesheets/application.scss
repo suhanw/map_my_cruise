@@ -27,4 +27,9 @@
    margin: 50px auto;
    padding: 0 10px;
    box-sizing: border-box;
+   text-align: center;
  }
+
+  section[class$="-container"] a {
+    color: $blue;
+  }

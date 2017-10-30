@@ -3,11 +3,11 @@ import {Link} from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
 import Modal from '../modals/modal';
 import ConfirmDeleteModal from '../modals/confirm_delete_modal';
+import Spinner from '../spinner';
 
 class RouteIndex extends React.Component {
   constructor(props) {
     super(props);
-
     this.renderItems = this.renderItems.bind(this);
   }
 
@@ -16,6 +16,23 @@ class RouteIndex extends React.Component {
   }
 
   render(){
+    if (this.props.loading) {
+      return (
+        <div className="spinner-box">
+          <Spinner />;
+        </div>
+      );
+    }
+
+    if (!Boolean(this.props.routes.ordered_ids.length)) {
+      return (
+        <section className="route-index-container">
+          You have no routes.
+          Click <Link to="/routes/create">here</Link> to create a new route.
+        </section>
+      )
+    }
+
     return (
       <section className="route-index-container">
         <Modal modal={this.props.modal}
@@ -45,7 +62,7 @@ class RouteIndex extends React.Component {
           <tbody className="route-index-tbody">
             <tr>
               <th>Route</th>
-              <th>Created</th>
+              <th>Created / Updated</th>
               <th>Distance</th>
               <th>Name</th>
               <th>City</th>
@@ -69,15 +86,18 @@ class RouteIndex extends React.Component {
   }
 
   renderItems(){
-    const items = this.props.routes.map((route, i)=>(
-      <RouteIndexItem key={route.id}
-        route={route}
-        currentUser={this.props.currentUser}
-        deleteRoute={this.props.deleteRoute}
-        openModal={this.props.openModal} />
-    ));
-
-    return items;
+    let items = [];
+    this.props.routes.ordered_ids.forEach((id)=> {
+      let route = this.props.routes.routes_by_id[id];
+      items.push((
+          <RouteIndexItem key={id}
+            route={route}
+            currentUser={this.props.currentUser}
+            deleteRoute={this.props.deleteRoute}
+            openModal={this.props.openModal} />
+        ));
+    });
+  return items;
   }
 }
 

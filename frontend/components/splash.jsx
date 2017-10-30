@@ -37,7 +37,7 @@ class Splash extends React.Component {
               <p>
                 Know where you're going, see where you've been. We have over 70 million routes to chose from - or be bold and create your own.
               </p>
-              <Link to="/routes">
+              <Link to="/routes/create">
                 Check it out
                 <i className="fa fa-caret-right" aria-hidden="true"></i>
               </Link>

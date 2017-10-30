@@ -34,9 +34,9 @@ class ShowRoute extends React.Component {
 
     if (loading) {
       return (
-        <section className='route-show-container'>
-          <Spinner />
-        </section>
+        <div class="spinner-box">
+          <Spinner />;
+        </div>
       );
     }
 

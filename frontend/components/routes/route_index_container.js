@@ -4,8 +4,10 @@ import {fetchRoutes, deleteRoute} from '../../actions/routes_actions';
 import {closeModal, openModal} from '../../actions/modal_actions';
 
 const mapStateToProps = ({entities, session, ui:{modal}}) => {
+  const loading = entities.routes.ordered_ids ? false : true;
   return {
-    routes: Object.values(entities.routes),
+    loading,
+    routes: entities.routes,
     currentUser: session.currentUser,
     modal
   };

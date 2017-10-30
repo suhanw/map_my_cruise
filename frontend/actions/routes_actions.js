@@ -5,10 +5,10 @@ export const RECEIVE_ROUTE = 'RECEIVE_ROUTE';
 export const REMOVE_ROUTE = 'REMOVE_ROUTE';
 export const RECEIVE_ROUTE_ERRORS = 'RECEIVE_ROUTE_ERRORS';
 
-export const receiveRoutes = (routes) => {
+export const receiveRoutes = (payload) => {
   return {
     type: RECEIVE_ROUTES,
-    routes
+    payload
   };
 };
 
@@ -19,10 +19,10 @@ export const receiveRoute = (payload) => {
   };
 };
 
-export const removeRoute = (route) => {
+export const removeRoute = (payload) => {
   return {
     type: REMOVE_ROUTE,
-    route
+    payload
   };
 };
 
@@ -36,7 +36,7 @@ export const receiveRouteErrors = (errors) => {
 export const fetchRoutes = () => {
   return (dispatch) => {
     return RouteApiUtil.fetchRoutes().then(
-      (routes) => dispatch(receiveRoutes(routes)),
+      (payload) => dispatch(receiveRoutes(payload)),
       (errors) => dispatch(receiveRouteErrors(errors.responseJSON))
     );
   };

@@ -53,7 +53,9 @@ class Map extends React.Component {
   render() {
     if (this.state.loading) {
       return(
-        <Spinner />
+        <div class="spinner-box">
+          <Spinner />;
+        </div>
       );
     }
 
