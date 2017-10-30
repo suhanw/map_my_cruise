@@ -8,7 +8,9 @@ import Footer from './footer';
 import ProfileFormContainer from './profile_form_container';
 import RouteIndexContainer from './routes/route_index_container';
 import ShowRouteContainer from './routes/show_route_container';
-import RouteFormContainer from './routes/route_form_container';
+import NewRouteFormContainer from './routes/new_route_form_container';
+import EditRouteFormContainer from './routes/edit_route_form_container';
+import ScrollToTop from './scroll_to_top';
 
 const App = () => {
   return (
@@ -21,11 +23,12 @@ const App = () => {
       <AuthRoute path="/signup" component={SessionFormContainer} />
       <ProtectRoute path="/edit_profile" component={ProfileFormContainer} />
 
-      <ProtectRoute exact path="/routes" component={RouteIndexContainer} />
-      <Switch>
-        <ProtectRoute exact path="/routes/create" component={RouteFormContainer} />
+      <ScrollToTop>
+        <ProtectRoute exact path="/routes" component={RouteIndexContainer} />
+        <ProtectRoute exact path="/routes/create" component={NewRouteFormContainer} />
+        <ProtectRoute exact path="/routes/:routeId/edit" component={EditRouteFormContainer} />
         <ProtectRoute exact path="/routes/:routeId" component={ShowRouteContainer} />
-      </Switch>
+      </ScrollToTop>
 
 
       <Footer />

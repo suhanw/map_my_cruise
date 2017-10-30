@@ -59,8 +59,8 @@ class RouteIndex extends React.Component {
         </table>
 
         <ul className="paginator">
-          <li className="active-page-link">PREV</li>
-          <li className="active-page-link">1</li>
+          <li className="inactive-page-link">PREV</li>
+          <li className="inactive-page-link">1</li>
           <li className="inactive-page-link">NEXT</li>
         </ul>
 
@@ -70,7 +70,7 @@ class RouteIndex extends React.Component {
 
   renderItems(){
     const items = this.props.routes.map((route, i)=>(
-      <RouteIndexItem key={i}
+      <RouteIndexItem key={route.id}
         route={route}
         currentUser={this.props.currentUser}
         deleteRoute={this.props.deleteRoute}

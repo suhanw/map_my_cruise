@@ -6,22 +6,23 @@ import FormErrorModal from '../modals/form_error_modal';
 class RouteForm extends React.Component {
   constructor(props) {
     super(props);
-    // debugger
 
-    this.state = {
-      name: '',
-      polyline: '',
-      distance: '',
-      city: '',
-    };
-
+    this.state = this.props.route;
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
     this.setRouteState = this.setRouteState.bind(this);
   }
 
+  componentWillReceiveProps(newProps){
+    this.setState(newProps.route);
+  }
+
   componentDidMount() {
+    if (this.props.formType === 'edit') {
+      this.props.fetchRoute(this.props.match.params.routeId);
+    }
+
     document.getElementById("directions").addEventListener('DOMSubtreeModified', ()=>{
       const warnbox = document.querySelector(".warnbox-content");
 
@@ -56,7 +57,9 @@ class RouteForm extends React.Component {
           height="100vh"
           setRouteState={this.setRouteState}
           openModal={this.props.openModal}
-          receiveRouteErrors={this.props.receiveRouteErrors}/>
+          receiveRouteErrors={this.props.receiveRouteErrors}
+          formType={this.props.formType}
+          route={this.props.route} />
       </section>
     );
   }
@@ -78,7 +81,8 @@ class RouteForm extends React.Component {
       <section className="route-form-input">
         <h3>Route Details</h3>
         <input type="text" placeholder="Name this map"
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+          value={this.state.name} />
         <button onClick={this.saveRoute}>
           SAVE ROUTE
         </button>
@@ -96,7 +100,7 @@ class RouteForm extends React.Component {
 
   saveRoute(e) {
     e.preventDefault();
-    this.props.createRoute(this.state).then(
+    this.props.action(this.state).then(
       ({route})=> {
         this.props.history.push(`/routes/${route.id}`);
       },

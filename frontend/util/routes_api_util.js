@@ -38,9 +38,8 @@ export const deleteRoute = (routeId) => {
 export const fetchCity = (latLng) => {
   let url = "https://maps.googleapis.com/maps/api/geocode/json?";
   url += `latlng=${latLng}`;
-  url += "&result_type=administrative_area_level_2";
+  url += "&result_type=locality";
   url += "&key=AIzaSyBikueOt0xpkbFjWOncTXfVj5HEg_pu8f8";
-
   return $.ajax({
     url: url,
     method: 'get',

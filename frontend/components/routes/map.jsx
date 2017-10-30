@@ -4,19 +4,19 @@ import {fetchCity} from '../../util/routes_api_util';
 class Map extends React.Component {
   constructor(props) {
     super(props);
-
     this.renderInitMap = this.renderInitMap.bind(this);
 
     this.state = {
       loading: true,
     };
 
-    this.startPos = undefined;
-    this.endPos = undefined;
+    this.startPos = null;
+    this.endPos = null;
 
     this.handleMapClick = this.handleMapClick.bind(this);
     this.placeMarker = this.placeMarker.bind(this);
     this.generatePath = this.generatePath.bind(this);
+    this.renderPath = this.renderPath.bind(this);
   }
 
   componentWillMount() {
@@ -42,9 +42,14 @@ class Map extends React.Component {
     }
   }
 
+  componentDidMount(){
+  }
+
+  componentWillReceiveProps(newProps){
+    this.routePath = google.maps.geometry.encoding.decodePath(newProps.route.polyline);
+  }
 
   render() {
-
     if (this.state.loading) {
       return(
         <div>
@@ -60,7 +65,7 @@ class Map extends React.Component {
   }
 
   renderInitMap(center){
-
+    console.log('rendering init map');
     const mapOptions = { center: center, zoom: 15 };
     const mapDom = document.getElementById('map');
     this.map = new google.maps.Map(
@@ -68,7 +73,7 @@ class Map extends React.Component {
       mapOptions
     );
 
-    // create and hook DirectionsRenderer to map...
+    // create and hook DirectionsRenderer to map
     this.directionsRenderer = new google.maps.DirectionsRenderer({
       draggable: true,
       map: this.map,
@@ -79,19 +84,39 @@ class Map extends React.Component {
     mapDom.style.width = this.props.width;
     mapDom.style.height = this.props.height;
 
+    // to render existing route for edit form
+    if (this.props.formType === 'edit') {
+      // pass in the intermediate points between origin and destination
+      // as waypoints. Google only allows 23 free waypoints, inc. origin and dest.
+      const lastIdx = this.routePath.length < 23 ? this.routePath.length-1 : 22;
+      const waypoints = this.routePath.slice(1, lastIdx).map((point)=>{
+        return {
+          location: point,
+          stopover: false,
+        };
+      });
+      let request = {
+        origin: this.routePath[0],
+        destination: this.routePath[this.routePath.length-1],
+        waypoints: waypoints,
+        travelMode: 'WALKING',
+      };
+
+      this.generatePath(request);
+
+      // Credit to find center of polyline:
+      // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
+      const bounds = new google.maps.LatLngBounds();
+      this.routePath.forEach((coord)=>{
+        bounds.extend(coord);
+      });
+      this.map.fitBounds(bounds);
+    }
+
     this.map.addListener('click', this.handleMapClick);
   }
 
-  renderLoading(){
-    return (
-      <h2>
-        Loading...
-      </h2>
-    );
-  }
-
   handleMapClick(event) {
-    // alert(event.latLng);
     this.placeMarker(event.latLng);
   }
 
@@ -103,49 +128,34 @@ class Map extends React.Component {
 
     if (!this.startPos) { // record start position
       this.startPos = marker;
-    } else if (!this.endPos) { // record end position
+    } else if (!this.endPos) { // record end position and generate path
       this.endPos = marker;
-      this.generatePath();
-    } else { // scenario where user wants intermediate points
-
+      let request = {
+        origin: this.startPos.getPosition(),
+        destination: this.endPos.getPosition(),
+        travelMode: 'WALKING',
+      };
+      this.generatePath(request);
+      // reset the markers
+      this.startPos.setMap(null);
+      this.endPos.setMap(null);
+      this.startPos = null;
+      this.endPos = null;
     }
     // this.map.panTo(latLng);
   }
 
-  generatePath() {
+  generatePath(request) {
     let directionsService = new google.maps.DirectionsService();
 
     // initiate async request for directions betw 2 points
-    let request = {
-      origin: this.startPos.getPosition(),
-      destination: this.endPos.getPosition(),
-      travelMode: 'WALKING',
-    };
     directionsService.route(
       request,
-      (result, status) => {
-        if (status === 'OK') {
-          // directionsRenderer already hooked to map,
-          // make it render the result.
-          this.directionsRenderer.setDirections(result);
-
-          // reset the markers
-          this.startPos.setMap(null);
-          this.endPos.setMap(null);
-          this.startPos = undefined;
-          this.endPos = undefined;
-
-        } else {
-          // alert(`Error: ${status}`);
-          this.props.receiveRouteErrors(['Dude, that route is impossible, mission-wise.']);
-          this.props.openModal('errors');
-        }
-      }
+      this.renderPath //if successful, render path
     );
 
     // to update polyline as user creates a new route, or drags the route
     this.directionsRenderer.addListener('directions_changed', ()=>{
-      // 'this' is the DirectionsRenderer object
       const directionsResult = this.directionsRenderer.getDirections();
       const directionsRoute = directionsResult.routes[0];
       const newPolyline = directionsRoute.overview_polyline;
@@ -170,8 +180,24 @@ class Map extends React.Component {
           }
         }
       );
-
     });
+  }
+
+  renderPath(result, status) {
+    if (status === 'OK') {
+      this.directionsRenderer.setDirections(result);
+    } else {
+      this.props.receiveRouteErrors(['Dude, that route is impossible, mission-wise.']);
+      this.props.openModal('errors');
+    }
+  }
+
+  renderLoading(){
+    return (
+      <h2>
+        Loading...
+      </h2>
+    );
   }
 }
 
