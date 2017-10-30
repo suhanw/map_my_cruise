@@ -6,7 +6,6 @@ import {
   RECEIVE_WORKOUT_ERRORS,
 } from '../actions/workouts_actions';
 import {CLEAR_ENTITIES} from '../actions/clear_actions';
-import {workoutNormalizer, workoutsNormalizer} from '../util/normalizer';
 
 const defaultState = {
   workouts_by_id: {},
@@ -19,15 +18,15 @@ const WorkoutsReducer = (state=defaultState, action) => {
   switch (action.type) {
 
     case RECEIVE_WORKOUTS:
-      const normalizedWorkouts = workoutsNormalizer(action.payload.workouts_by_id);
-      newState = merge({}, state, {workouts_by_id: normalizedWorkouts.workouts_by_id});
-      newState = merge(newState, {ordered_ids: action.payload.ordered_ids}); //to add the id array sorted by most recent
+      newState = merge({}, state, {
+        workouts_by_id: action.payload.workouts_by_id,
+        ordered_ids: action.payload.ordered_ids,
+      })
       return newState;
 
     case RECEIVE_WORKOUT:
-      const normalizedWorkout = workoutNormalizer(action.payload.workout);
       return merge({}, state, {
-        workouts_by_id: normalizedWorkout.workouts_by_id,
+        workouts_by_id: action.payload.workouts_by_id,
       });
 
     case REMOVE_WORKOUT:

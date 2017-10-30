@@ -1,4 +1,6 @@
+import merge from 'lodash/merge';
 import * as WorkoutApiUtil from '../util/workouts_api_util';
+import {workoutNormalizer, workoutsNormalizer} from '../util/normalizer';
 
 export const RECEIVE_WORKOUTS = 'RECEIVE_WORKOUTS';
 export const RECEIVE_WORKOUT = 'RECEIVE_WORKOUT';
@@ -6,16 +8,22 @@ export const REMOVE_WORKOUT = 'REMOVE_WORKOUT';
 export const RECEIVE_WORKOUT_ERRORS = 'RECEIVE_WORKOUT_ERRORS';
 
 export const receiveWorkouts = (payload) => {
+  let normalizedPayload = workoutsNormalizer(payload.workouts_by_id);
+  normalizedPayload = merge(
+    normalizedPayload,
+    {ordered_ids: payload.ordered_ids}
+  );
   return {
     type: RECEIVE_WORKOUTS,
-    payload
+    payload: normalizedPayload
   };
 };
 
 export const receiveWorkout = (payload) => {
+  const normalizedPayload = workoutNormalizer(payload.workout);
   return {
     type: RECEIVE_WORKOUT,
-    payload
+    payload: normalizedPayload,
   };
 };
 

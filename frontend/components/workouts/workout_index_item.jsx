@@ -8,7 +8,7 @@ class WorkoutIndexItem extends React.Component  {
       <li className="workout-item">
         <div className="workout-item-details">
           <span>{workout.name}</span>
-          <span>distance</span>
+          <span>{}</span>
         </div>
       </li>
     );

@@ -7,7 +7,6 @@ import {
 } from '../actions/routes_actions';
 import {RECEIVE_WORKOUTS, RECEIVE_WORKOUT} from '../actions/workouts_actions';
 import {CLEAR_ENTITIES} from '../actions/clear_actions';
-import {workoutNormalizer, workoutsNormalizer} from '../util/normalizer';
 
 const defaultState = {
   routes_by_id: {},
@@ -35,14 +34,11 @@ const RoutesReducer = (state=defaultState, action) => {
       return newState;
 
     case RECEIVE_WORKOUTS:
-      const normalizedWorkouts = workoutsNormalizer(action.payload.workouts_by_id);
-      newState = merge({}, state, {routes_by_id: normalizedWorkouts.routes_by_id});
+      newState = merge({}, state, {routes_by_id: action.payload.routes_by_id});
       return newState;
 
     case RECEIVE_WORKOUT:
-      const normalizedWorkout = workoutNormalizer(action.payload.workout);
-      newState = merge({}, state, {routes_by_id: normalizedWorkout.routes_by_id});
-      debugger
+      newState = merge({}, state, {routes_by_id: action.payload.routes_by_id});
       return newState;
 
     case CLEAR_ENTITIES:
