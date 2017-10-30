@@ -47,7 +47,7 @@ class RouteIndex extends React.Component {
         </div>
 
         <section className="search-and-sort">
-          <input className="route-search-input" type="search" placeholder="Enter a keyword" />
+          <input className="route-search-input" type="search" placeholder="coming soon" />
           <button className="route-search-button">SEARCH</button>
           <button className="route-search-reset">Reset</button>
           <select className="route-sort-options">

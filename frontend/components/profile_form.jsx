@@ -66,17 +66,17 @@ class ProfileForm extends React.Component {
           </label>
           <label className="account-form-input">
             Old Password
-            <input type="password" name="old-password" placeholder="not implemented yet"
+            <input type="password" name="old-password" placeholder="coming soon"
               onChange={this.handleChange('oldPassword')} />
           </label>
           <label className="account-form-input">
             New Password
-            <input type="password" name="new-password" placeholder="not implemented yet"
+            <input type="password" name="new-password" placeholder="coming soon"
               onChange={this.handleChange('newPassword')} />
           </label>
           <label className="account-form-input">
             Confirm New Password
-            <input type="password" name="confirm-new-password" placeholder="not implemented yet"
+            <input type="password" name="confirm-new-password" placeholder="coming soon"
               onChange={this.handleChange('confirmNewPassword')} />
           </label>
 

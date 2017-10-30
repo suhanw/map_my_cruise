@@ -33,6 +33,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :routes
+  has_many :workouts
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -60,6 +61,10 @@ class User < ApplicationRecord
 
   def owns_route?(route)
     self.routes.include?(route);
+  end
+
+  def owns_workout?(workout)
+    self.workouts.include?(workout);
   end
 
   private
