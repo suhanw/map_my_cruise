@@ -28,14 +28,16 @@
 }
 
 .workout-index {
-  border: 1px solid red;
   flex-grow: 1;
   border-top: 1px solid $light-gray;
+  box-sizing: border-box;
+  margin-right: 20px;
 }
 
 .workout-index ul {
-  flex-direction: row;
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .workout-item {
@@ -44,6 +46,8 @@
   position: relative;
   border: 1px solid $gray;
   margin: 10px;
+  display: flex;
+  align-items: flex-end;
 }
 
 // to add a fake element with background and lower opacity
@@ -56,7 +60,8 @@
   content: "";
   z-index: -1;
   background: image-url('workout-icon.png');
-  background-size: cover;
+  background-size: 80%;
+  background-position: center;
   background-repeat: no-repeat;
   opacity: 0.4;
 }
@@ -65,17 +70,60 @@
   background: white;
   opacity: 0.8;
   color: $gray;
-  font-size: 14px;
+  font-size: 12px;
   display: flex;
   flex-direction: column;
   width: 85%;
   padding: 5px;
   margin: 5px;
-  border: 1px solid red;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 1px 1px 1px .5px $gray;
+}
+
+.workout-item:hover .workout-item-details {
+  color: $blue;
 }
 
 .workout-index-sidebar {
   width: 25%;
-  // margin: 10px;
-  border: 1px solid red;
+  padding: 10px;
+}
+
+div[class*="ad-gif"] {
+  display: flex;
+  border: 1px solid $gray;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 12px;
+  color: $light-gray;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 180px;
+  position: relative;
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+div[class*="ad-gif"]::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  background: black;
+  z-index: -1;
+}
+
+.ad-gif-1 {
+  background: url('https://media.giphy.com/media/YEFHbkv4qI85G/giphy.gif');
+}
+
+.ad-gif-2 {
+  background: url('https://media.giphy.com/media/fIEKlEAiXccA8/giphy.gif');
+}
+.ad-gif-3 {
+  background: url('https://media.giphy.com/media/RRnfHheR98rkc/giphy.gif');
 }

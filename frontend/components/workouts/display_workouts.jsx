@@ -1,10 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import WorkoutIndexContainer from './workout_index_container';
+import {randomizer} from '../../util/randomizer';
 
 class DisplayWorkouts extends React.Component {
-  render() {
 
+  render() {
+    const adGifClass = `ad-gif-${randomizer(3, 1)}`;
     return (
       <section className="display-workouts-container">
 
@@ -12,7 +14,7 @@ class DisplayWorkouts extends React.Component {
           <h2>
             MY WORKOUTS
           </h2>
-          <Link to="workouts/create" className="create-workout-button">
+          <Link to="/workouts/create" className="create-workout-button">
             LOG A WORKOUT
           </Link>
         </div>
@@ -20,8 +22,9 @@ class DisplayWorkouts extends React.Component {
         <WorkoutIndexContainer />
 
         <aside className="workout-index-sidebar">
-          <div className="ad-gif">
-            Ad goes here
+          <div className={adGifClass}>
+            <small>Ad</small>
+            <small>Rent this movie somewhere near you.</small>
           </div>
         </aside>
 

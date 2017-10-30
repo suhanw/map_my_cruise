@@ -2,10 +2,11 @@ import {connect} from 'react-redux';
 import WorkoutIndex from './workout_index';
 import {fetchWorkouts} from '../../actions/workouts_actions';
 
-const mapStateToProps = ({entities: {workouts}, session: {currentUser}}) => {
+const mapStateToProps = ({entities: {workouts, routes}, session: {currentUser}}) => {
 
   return {
     workouts,
+    routes,
   };
 };
 
