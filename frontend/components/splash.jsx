@@ -6,7 +6,7 @@ class Splash extends React.Component {
 
 
   render() {
-    const randSplashImg = Math.floor(Math.random() * (11-1) + 1);
+    const randSplashImg = Math.floor(Math.random() * (13-1) + 1);
     const randSplashClass = `splash-image splash-image-${randSplashImg}`;
 
     return (

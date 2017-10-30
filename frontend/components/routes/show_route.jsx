@@ -41,15 +41,39 @@ class ShowRoute extends React.Component {
 
     return (
       <section className='route-show-container'>
-        <span>
-          <Link to="/routes">Back to My Routes</Link>
-        </span>
-        <h2>
+        <h2 className="route-name">
           {route.name}
-          {route.polyline}
         </h2>
+        <section className="route-details">
+          <div className="route-distance">
+            <small>DISTANCE</small>
+            <strong>{route.distance}</strong>
+            <small>miles</small>
+          </div>
+          <table className="route-body">
+            <tbody>
+              <tr>
+                <th>BEGINS IN: </th>
+                <td>{route.city}</td>
+              </tr>
+              <tr>
+                <th>CREATED BY: </th>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <section className="route-map-box">
+            <RouteMap route={route} />
+          </section>
+        </section>
 
-        <RouteMap route={route} />
+        <aside className="route-sidebar">
+          <section className="route-shortcut-buttons">
+            <Link to="/routes/create" className="create-route-button">CREATE A ROUTE</Link>
+            <Link to="/workouts/create" className="log-workout-button">LOG THIS WORKOUT</Link>
+            <Link to="/routes">Back to My Routes</Link>
+          </section>
+        </aside>
       </section>
     );
   }

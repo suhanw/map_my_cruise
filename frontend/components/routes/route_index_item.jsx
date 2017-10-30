@@ -12,6 +12,7 @@ class RouteIndexItem extends React.Component  {
   }
 
   render() {
+    const city = this.props.route.city.split(',')[0];
     return (
         <tr>
           <td>
@@ -22,7 +23,7 @@ class RouteIndexItem extends React.Component  {
           <td>{this.props.route.created_at}</td>
           <td>{this.props.route.distance}mi</td>
           <td>{this.props.route.name}</td>
-          <td>{this.props.route.city}</td>
+          <td>{city}</td>
           <td>{this.props.route.privacy}</td>
           <td>{this.renderOptions()}</td>
         </tr>
@@ -39,7 +40,7 @@ class RouteIndexItem extends React.Component  {
             }}>Delete</button>
         </div>
       );
-    } else { //to implement viewing other users' routes
+    } else { //to implement options for other users' routes
 
     }
   }

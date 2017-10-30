@@ -57,13 +57,13 @@
   background-size: 100%;
 }
 .splash-image-8 {
-  background: image-url('splash/wotw.gif');
+  background: url('https://media.giphy.com/media/cmPlBWlZRn7vG/giphy.gif');
   background-repeat: no-repeat;
   background-position: top;
   background-size: 100%;
 }
 .splash-image-9 {
-  background: image-url('splash/jb.gif');
+  background: url('https://media.giphy.com/media/rdoSts3m3NMQ/giphy.gif');
   background-repeat: no-repeat;
   background-position: top;
   background-size: 100%;
@@ -73,6 +73,18 @@
   background-repeat: no-repeat;
   background-position: top;
   background-size: 100%;
+}
+.splash-image-11 {
+  background: url('https://media.giphy.com/media/sJeRFAiWbNams/giphy.gif');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+.splash-image-12 {
+  background: url('https://media.giphy.com/media/1YkP9j56IPnHi/giphy.gif');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: top;
 }
 
 .splash-image h1, .splash-image p, .splash-signup-buttons {

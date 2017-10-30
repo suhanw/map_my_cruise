@@ -32,11 +32,8 @@ class RouteMap extends React.Component {
   }
 
   render() {
-    // debugger
-    // const mapClass = this.props.thumbnail ? 'route-thumbnail' : 'route-map';
     const mapId = this.props.thumbnail ? `route-thumbnail-${this.props.route.id}` : 'route-map';
 
-    // <div className={mapClass} id="route-map">
     return (
       <div id={mapId}>
       </div>
@@ -62,13 +59,10 @@ class RouteMap extends React.Component {
       }).join('|');
 
       let imgSrc = "https://maps.googleapis.com/maps/api/staticmap?";
-      // imgSrc += `center=${thumbCtrLat},${thumbCtrLng}`;
-      // imgSrc += "&zoom=13";
       imgSrc += "&visible";
       imgSrc += "&size=80x80";
       imgSrc += `&path=color:0xff0000ff|weight:1|${thumbPath}`;
       imgSrc += "&key=AIzaSyBikueOt0xpkbFjWOncTXfVj5HEg_pu8f8";
-      // debugger
 
       const thumbnailDom = document.getElementById(`route-thumbnail-${this.props.route.id}`);
       thumbnailDom.style
