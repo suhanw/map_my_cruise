@@ -4,8 +4,8 @@ import {fetchRoute, deleteRoute} from '../../actions/routes_actions';
 
 const mapStateToProps = ({entities, errors}, ownProps) => {
   const routeId = ownProps.match.params.routeId;
-  let loading;
-  let route = entities.routes[routeId];
+  let loading = true;
+  let route = entities.routes.routes_by_id[routeId];
   let user;
 
   if (route) {
@@ -13,8 +13,6 @@ const mapStateToProps = ({entities, errors}, ownProps) => {
     if (user) {
       loading = false;
     }
-  } else {
-    loading = true;
   }
 
   return {

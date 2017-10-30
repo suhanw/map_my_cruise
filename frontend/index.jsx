@@ -5,7 +5,8 @@ import configureStore from './store/store';
 
 // TESTING
 // import * as RouteApiUtil from './util/routes_api_util';
-import * as RouteActions from './actions/routes_actions';
+// import * as RouteActions from './actions/routes_actions';
+import * as WorkoutActions from './actions/workouts_actions';
 import {clearErrors} from './actions/clear_actions';
 // TESTING
 
@@ -27,11 +28,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // bootstrapping current user
 
   // TESTING
-  window.fetchRoutes = RouteActions.fetchRoutes;
-  window.fetchRoute = RouteActions.fetchRoute;
-  window.createRoute = RouteActions.createRoute;
-  window.updateRoute = RouteActions.updateRoute;
-  window.deleteRoute = RouteActions.deleteRoute;
+  window.fetchWorkouts = WorkoutActions.fetchWorkouts;
+  window.fetchWorkout = WorkoutActions.fetchWorkout;
+  window.createWorkout = WorkoutActions.createWorkout;
+  window.updateWorkout = WorkoutActions.updateWorkout;
+  window.deleteWorkout = WorkoutActions.deleteWorkout;
   window.clearErrors = clearErrors;
   window.getState = store.getState;
   window.dispatch = store.dispatch;

@@ -4,7 +4,7 @@ import {updateRoute, fetchRoute, receiveRouteErrors} from '../../actions/routes_
 import {openModal, closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  let route = state.entities.routes[ownProps.match.params.routeId];
+  let route = state.entities.routes.routes_by_id[ownProps.match.params.routeId];
   if (!route) {
     route = {
       name: '',

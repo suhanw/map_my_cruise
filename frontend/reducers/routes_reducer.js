@@ -5,22 +5,28 @@ import {
   RECEIVE_ROUTE_ERRORS,
 } from '../actions/routes_actions';
 import {CLEAR_ENTITIES} from '../actions/clear_actions';
+import merge from 'lodash/merge';
 
-const defaultState = {};
+const defaultState = {
+  routes_by_id: {},
+  ordered_ids: [],
+};
 
 const RoutesReducer = (state=defaultState, action) => {
   let newState;
   switch (action.type) {
 
     case RECEIVE_ROUTES:
-      newState = Object.assign({}, state, action.payload);
+      newState = merge({}, state, action.payload);
       return newState;
 
     case RECEIVE_ROUTE:
-      return Object.assign({}, state, {[action.payload.route.id]: action.payload.route});
+      return merge({}, state, {
+        routes_by_id: {[action.payload.route.id]: action.payload.route},
+      });
 
     case REMOVE_ROUTE:
-      newState = Object.assign({}, state);
+      newState = merge({}, state);
       const rmId = newState.ordered_ids.indexOf(action.payload.route.id);
       delete newState.routes_by_id[action.payload.route.id];
       newState.ordered_ids.splice(rmId, 1);
