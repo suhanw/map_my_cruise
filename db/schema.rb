@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026160244) do
+ActiveRecord::Schema.define(version: 20171030152319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20171026160244) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.index ["session_token"], name: "index_users_on_session_token"
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "route_id", null: false
+    t.string "name", null: false
+    t.string "duration", null: false
+    t.string "privacy"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
