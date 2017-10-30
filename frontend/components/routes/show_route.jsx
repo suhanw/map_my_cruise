@@ -22,7 +22,7 @@ class ShowRoute extends React.Component {
   }
 
   render() {
-    const { route, loading } = this.props;
+    const { route, user, loading } = this.props;
 
     if (this.props.errors.length > 0) {
       return (
@@ -59,7 +59,7 @@ class ShowRoute extends React.Component {
               </tr>
               <tr>
                 <th>CREATED BY: </th>
-                <td></td>
+                <td>{`${user.fname} ${user.lname} (${user.email})`}</td>
               </tr>
             </tbody>
           </table>

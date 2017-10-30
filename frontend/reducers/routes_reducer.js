@@ -16,7 +16,7 @@ const RoutesReducer = (state=defaultState, action) => {
       return Object.assign({}, state, action.routes);
 
     case RECEIVE_ROUTE:
-      return Object.assign({}, state, {[action.route.id]: action.route});
+      return Object.assign({}, state, {[action.payload.route.id]: action.payload.route});
 
     case REMOVE_ROUTE:
       newState = Object.assign({}, state);

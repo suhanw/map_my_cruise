@@ -24,10 +24,12 @@ const App = () => {
       <ProtectRoute path="/edit_profile" component={ProfileFormContainer} />
 
       <ScrollToTop>
-        <ProtectRoute exact path="/routes" component={RouteIndexContainer} />
-        <ProtectRoute exact path="/routes/create" component={NewRouteFormContainer} />
-        <ProtectRoute exact path="/routes/:routeId/edit" component={EditRouteFormContainer} />
-        <ProtectRoute exact path="/routes/:routeId" component={ShowRouteContainer} />
+        <Switch>
+          <ProtectRoute path="/routes/:routeId/edit" component={EditRouteFormContainer} />
+          <ProtectRoute path="/routes/create" component={NewRouteFormContainer} />
+          <ProtectRoute path="/routes/:routeId" component={ShowRouteContainer} />
+          <ProtectRoute path="/routes" component={RouteIndexContainer} />
+        </Switch>
       </ScrollToTop>
 
 

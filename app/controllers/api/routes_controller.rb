@@ -2,7 +2,7 @@ class Api::RoutesController < ApplicationController
   before_action :require_login
 
   def index
-    @routes = current_user.routes
+    @routes = current_user.routes.order(updated_at: :desc)
     render :index
   end
 

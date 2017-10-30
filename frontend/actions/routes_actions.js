@@ -12,10 +12,10 @@ export const receiveRoutes = (routes) => {
   };
 };
 
-export const receiveRoute = (route) => {
+export const receiveRoute = (payload) => {
   return {
     type: RECEIVE_ROUTE,
-    route
+    payload
   };
 };
 
@@ -45,7 +45,7 @@ export const fetchRoutes = () => {
 export const fetchRoute = (routeId) => {
   return (dispatch) => {
     return RouteApiUtil.fetchRoute(routeId).then(
-      (route) => dispatch(receiveRoute(route)),
+      (payload) => dispatch(receiveRoute(payload)),
       (errors) => dispatch(receiveRouteErrors(errors.responseJSON))
     );
   };

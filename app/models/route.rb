@@ -15,14 +15,14 @@
 #
 
 class Route < ApplicationRecord
-  validates :user, :name, presence: true
+  validates :user, :name, :city, :distance, presence: true
   validate :validate_polyline
   validates :name, uniqueness: { scope: :user }
 
   belongs_to :user
 
   private
-  
+
   def validate_polyline
     if polyline == ""
       errors.add(:base, "You must have at least 2 points on the map to save a route.")
