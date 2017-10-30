@@ -83,7 +83,8 @@
 }
 
 .route-shortcut-buttons .create-route-button,
-.route-shortcut-buttons .log-workout-button {
+.route-shortcut-buttons .log-workout-button,
+.route-shortcut-buttons .edit-route-button {
   border-radius: 3px;
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 14px;
@@ -97,7 +98,8 @@
   box-shadow: 1px 1px 1px 1px #9297a3;
 }
 
-.route-shortcut-buttons .create-route-button {
+.route-shortcut-buttons .create-route-button,
+.route-shortcut-buttons .edit-route-button {
   background: -webkit-linear-gradient(to bottom, $light-gray 5%, $gray 100%);
   background: -o-linear-gradient(to bottom, $light-gray 5%, $gray 100%);
   background: -moz-linear-gradient(to bottom, $light-gray 5%, $gray 100%);
@@ -119,7 +121,8 @@
 }
 
 .route-shortcut-buttons .create-route-button:active,
-.route-shortcut-buttons .log-workout-button:active {
+.route-shortcut-buttons .log-workout-button:active,
+.route-shortcut-buttons .edit-route-button:active {
   position: relative;
   top: 1px;
   left: 2px;

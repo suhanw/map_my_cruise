@@ -2,6 +2,7 @@ import React from 'react';
 import {Link, Route} from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
 import RouteMap from './route_map';
+import Spinner from '../spinner';
 
 class ShowRoute extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class ShowRoute extends React.Component {
     if (loading) {
       return (
         <section className='route-show-container'>
-          {this.renderLoading()}
+          <Spinner />
         </section>
       );
     }
@@ -70,6 +71,7 @@ class ShowRoute extends React.Component {
         <aside className="route-sidebar">
           <section className="route-shortcut-buttons">
             <Link to="/routes/create" className="create-route-button">CREATE A ROUTE</Link>
+            <Link to={`/routes/${route.id}/edit`} className="edit-route-button">EDIT ROUTE</Link>
             <Link to="/workouts/create" className="log-workout-button">LOG THIS WORKOUT</Link>
             <Link to="/routes">Back to My Routes</Link>
           </section>
@@ -78,13 +80,6 @@ class ShowRoute extends React.Component {
     );
   }
 
-  renderLoading() {
-    return (
-      <h2>
-        Loading
-      </h2>
-    );
-  }
 
 }
 

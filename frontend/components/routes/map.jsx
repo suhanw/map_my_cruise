@@ -1,5 +1,6 @@
 import React from 'react';
 import {fetchCity} from '../../util/routes_api_util';
+import Spinner from '../spinner';
 
 class Map extends React.Component {
   constructor(props) {
@@ -20,6 +21,9 @@ class Map extends React.Component {
   }
 
   componentWillMount() {
+  }
+
+  componentDidMount(){
     this.center = {
       lat: 34.030059,
       lng: -118.429283,
@@ -42,9 +46,6 @@ class Map extends React.Component {
     }
   }
 
-  componentDidMount(){
-  }
-
   componentWillReceiveProps(newProps){
     this.routePath = google.maps.geometry.encoding.decodePath(newProps.route.polyline);
   }
@@ -52,9 +53,7 @@ class Map extends React.Component {
   render() {
     if (this.state.loading) {
       return(
-        <div>
-          {this.renderLoading()}
-        </div>
+        <Spinner />
       );
     }
 
@@ -104,8 +103,8 @@ class Map extends React.Component {
 
       this.generatePath(request);
 
-      // Credit to find center of polyline:
-      // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
+      // // Credit to find center of polyline:
+      // // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
       const bounds = new google.maps.LatLngBounds();
       this.routePath.forEach((coord)=>{
         bounds.extend(coord);
@@ -185,6 +184,10 @@ class Map extends React.Component {
 
   renderPath(result, status) {
     if (status === 'OK') {
+      // this.directionsRenderer.setOptions(
+      //   {preserveViewport: false}
+      // );
+      // debugger
       this.directionsRenderer.setDirections(result);
     } else {
       this.props.receiveRouteErrors(['Dude, that route is impossible, mission-wise.']);

@@ -1,0 +1,15 @@
+.spinner {
+  margin: auto;
+  background: $lighter-gray;
+  width: 400px;
+  text-align: center;
+  padding: 20px;
+  border: $light-gray solid 1px;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.spinner img {
+  width: 90%;
+  margin: auto;
+}
