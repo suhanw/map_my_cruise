@@ -10,6 +10,7 @@ import RouteIndexContainer from './routes/route_index_container';
 import ShowRouteContainer from './routes/show_route_container';
 import NewRouteFormContainer from './routes/new_route_form_container';
 import EditRouteFormContainer from './routes/edit_route_form_container';
+import DisplayWorkouts from './workouts/display_workouts';
 import ScrollToTop from './scroll_to_top';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
           <ProtectRoute path="/routes/create" component={NewRouteFormContainer} />
           <ProtectRoute path="/routes/:routeId" component={ShowRouteContainer} />
           <ProtectRoute path="/routes" component={RouteIndexContainer} />
+          <ProtectRoute path="/workouts" component={DisplayWorkouts} />
         </Switch>
       </ScrollToTop>
 

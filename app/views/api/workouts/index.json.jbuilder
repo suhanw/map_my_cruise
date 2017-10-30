@@ -1,3 +1,5 @@
+routes = {};
+
 json.workouts_by_id do
   @workouts.each do |workout|
     json.set! workout.id do

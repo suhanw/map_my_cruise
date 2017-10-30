@@ -1,15 +1,7 @@
 .route-index-container div {
   display: flex;
   justify-content: space-between;
-}
-
-
-.route-index-container h2,
-.route-show-container h2 {
-  font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  text-transform: uppercase;
+  align-items: center;
 }
 
 .create-route-button {

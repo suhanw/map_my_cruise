@@ -2,7 +2,7 @@ class Api::WorkoutsController < ApplicationController
   before_action :require_login
 
   def index
-    @workouts = current_user.workouts.order(created_at: :desc)
+    @workouts = current_user.workouts.order(created_at: :desc).includes(:route)
     render :index
   end
 

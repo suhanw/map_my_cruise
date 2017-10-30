@@ -58,7 +58,7 @@ class Header extends React.Component {
       let workoutsDropdown = (
         <ul className="workouts-dropdown">
           <li><Link to="/workouts/create">Log Workout</Link></li>
-          <li><Link to="/workouts">Dashboard</Link></li>
+          <li><Link to="/workouts">My Workouts</Link></li>
         </ul>
       );
 

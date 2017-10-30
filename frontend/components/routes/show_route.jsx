@@ -23,7 +23,6 @@ class ShowRoute extends React.Component {
 
   render() {
     const { route, user, loading } = this.props;
-    // debugger
 
     if (this.props.errors.length > 0) {
       return (

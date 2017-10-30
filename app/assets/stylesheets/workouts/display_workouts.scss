@@ -1,0 +1,81 @@
+.display-workouts-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.display-workouts-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-basis: 100%;
+}
+
+.create-workout-button {
+  background: -webkit-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: -o-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: -moz-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  background: linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
+  border-radius: 3px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin-left: 10px;
+}
+
+.workout-index {
+  border: 1px solid red;
+  flex-grow: 1;
+  border-top: 1px solid $light-gray;
+}
+
+.workout-index ul {
+  flex-direction: row;
+  display: flex;
+}
+
+.workout-item {
+  width: 140px;
+  height: 140px;
+  position: relative;
+  border: 1px solid $gray;
+  margin: 10px;
+}
+
+// to add a fake element with background and lower opacity
+.workout-item::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  z-index: -1;
+  background: image-url('workout-icon.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+}
+
+.workout-item-details {
+  background: white;
+  opacity: 0.8;
+  color: $gray;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid red;
+}
+
+.workout-index-sidebar {
+  width: 25%;
+  // margin: 10px;
+  border: 1px solid red;
+}
