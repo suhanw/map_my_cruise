@@ -20,7 +20,8 @@ export const receiveWorkouts = (payload) => {
 };
 
 export const receiveWorkout = (payload) => {
-  const normalizedPayload = workoutNormalizer(payload.workout);
+  let normalizedPayload = workoutNormalizer(payload.workout);
+  normalizedPayload = merge(normalizedPayload, {user: payload.user});
   return {
     type: RECEIVE_WORKOUT,
     payload: normalizedPayload,

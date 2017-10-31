@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import WorkoutIndexItem from './workout_index_item';
+import Spinner from '../spinner';
 
 class WorkoutIndex extends React.Component {
   constructor(props) {
@@ -10,6 +11,13 @@ class WorkoutIndex extends React.Component {
   }
 
   render() {
+    if (this.props.loading) {
+      return (
+        <div className="spinner-box">
+          <Spinner />;
+        </div>
+      );
+    }
     return (
       <section className="workout-index">
         <ul>
