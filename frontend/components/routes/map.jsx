@@ -188,7 +188,6 @@ class Map extends React.Component {
       // this.directionsRenderer.setOptions(
       //   {preserveViewport: false}
       // );
-      // debugger
       this.directionsRenderer.setDirections(result);
     } else {
       this.props.receiveRouteErrors(['Dude, that route is impossible, mission-wise.']);

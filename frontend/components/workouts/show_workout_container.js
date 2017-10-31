@@ -3,13 +3,14 @@ import ShowWorkout from './show_workout';
 import {fetchWorkout, deleteWorkout} from '../../actions/workouts_actions';
 import {closeModal, openModal} from '../../actions/modal_actions';
 
-const mapStateToProps = ({entities: {workouts, users, routes}, errors, ui:{modal}}, ownProps) => {
+const mapStateToProps = ({entities: {workouts, users, routes, comments}, errors, ui:{modal}}, ownProps) => {
   const workoutId = ownProps.match.params.workoutId;
   let loading = true;
   let workout = workouts.workouts_by_id[workoutId];
   let workoutCreator;
   let routeCreator;
   let route;
+  let commentsArr;
 
 
   if (workout) {
@@ -27,6 +28,7 @@ const mapStateToProps = ({entities: {workouts, users, routes}, errors, ui:{modal
     errors: errors.workouts,
     loading,
     modal,
+    commentsArr,
   };
 };
 

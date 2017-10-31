@@ -5,12 +5,14 @@ import Spinner from '../spinner';
 import {randomizer} from '../../util/randomizer';
 import Modal from '../modals/modal';
 import ConfirmDeleteModal from '../modals/confirm_delete_modal';
+import CommentIndexContainer from '../comments/comment_index_container';
 
 class ShowWorkout extends React.Component {
   constructor(props) {
     super(props);
 
     this.handleDelete = this.handleDelete.bind(this);
+    this.renderComments = this.renderComments.bind(this);
   }
 
   render() {
@@ -118,9 +120,9 @@ class ShowWorkout extends React.Component {
             <div className="likes">
               This will be likes
             </div>
-            <div className="comments">
-              This will be comments
-            </div>
+
+            {this.renderComments()}
+
           </section>
         </section>
 
@@ -147,6 +149,12 @@ class ShowWorkout extends React.Component {
     return ('0' + h).slice(-2) + ":" +
     ('0' + m).slice(-2) + ":" +
     ('0' + s).slice(-2);
+  }
+
+  renderComments() {
+    return (
+      <CommentIndexContainer  />
+    );
   }
 
   handleDelete(e) {

@@ -15,7 +15,6 @@ export const workoutNormalizer = (oldWorkout) => {
     route: route,
   });
   const normalizedPayload = normalize(oldWorkout, workout);
-  debugger
   return normalizedPayload.entities;
 };
 
