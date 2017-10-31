@@ -1,0 +1,109 @@
+.workout-form-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+.workout-form {
+  width: 70%;
+}
+
+.workout-form-box {
+  border: 1px solid $light-gray;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  background: $lighter-gray;
+  padding: 10px;
+}
+
+.workout-form h2 {
+  width: 100%;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $light-gray;
+}
+
+.workout-form p {
+  padding: 20px 0;
+}
+
+.workout-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: bold;
+  margin: 10px 0;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+label.workout-form-duration {
+  flex-direction: row;
+  flex-wrap: wrap;
+  // justify-content: center;
+  align-items: center;
+}
+
+label.workout-form-duration span{
+  flex-basis: 100%;
+}
+
+label.workout-form-duration input{
+  margin: 10px 10px;
+  width: 100px;
+}
+
+label.workout-form-duration input:first-of-type {
+  margin-left: 0;
+}
+
+.workout-form select,
+.workout-form-duration,
+.workout-form-route-option {
+  flex-basis: 100%;
+}
+
+.workout-form input,
+.workout-form select {
+  font-size: 14px;
+  border: 1px solid #dbdbdb;
+  border-radius: 3px;
+  padding: 10px;
+  margin: 10px 0;
+  background: white;
+  color: black;
+  caret-color : black;
+  letter-spacing: .05em;
+  height: 36px;
+  font-weight: normal;
+}
+
+.workout-form input::placeholder {
+  color: $light-gray;
+}
+
+.workout-form input:focus {
+  background: #ffffff;
+  border: #0076C0 solid 1px;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 0 0 0 2px #addfff;
+}
+
+.workout-form-route-option select {
+  width: 50%;
+}
+
+.workout-form-route-option option:first-child {
+  color: $light-gray;
+}
+
+.workout-form-button {
+  width: 100%;
+}
+
+.workout-form-sidebar {
+  width: 25%;
+  margin: 10px;
+}
