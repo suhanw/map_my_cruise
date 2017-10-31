@@ -16,7 +16,9 @@
 }
 
 .workout-data table {
-  border: 1px solid $light-gray;
+  // border-top: 1px solid $light-gray;
+  border-right: 1px solid $light-gray;
+  border-left: 1px solid $light-gray;
   background: -webkit-linear-gradient(to bottom, $lighter-gray 1%, $lightest-gray 80%);
   background: -o-linear-gradient(to bottom, $lighter-gray 1%, $lightest-gray 80%);
   background: -moz-linear-gradient(to bottom, $lighter-gray 1%, $lightest-gray 80%);
@@ -69,6 +71,10 @@
 .workout-data .fit {
   white-space: nowrap;
   width: 1px;
+}
+
+.workout-map-box {
+  margin: 10px 0;
 }
 
 .workout-show-buttons {

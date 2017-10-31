@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Modal = ({ modal, errors, component: Component, closeModal, dispatchAction }) => {
+const Modal = ({ modal, errors, component: Component, closeModal, dispatchAction, history }) => {
   let content;
   if (modal) {
     content = (
@@ -8,7 +8,8 @@ const Modal = ({ modal, errors, component: Component, closeModal, dispatchAction
         <Component modal={modal}
           errors={errors}
           closeModal={closeModal}
-          dispatchAction={dispatchAction}/>
+          dispatchAction={dispatchAction}
+          history={history}/>
       </div>
     );
   } else {

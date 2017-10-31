@@ -1,7 +1,10 @@
-.route-index-container div {
+.route-index-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 20px;
+  border-bottom: $light-gray 1px solid;
+
 }
 
 .create-route-button {
@@ -57,9 +60,8 @@ div[id*='route-thumbnail'] {
 
 .search-and-sort {
   display: flex;
-  margin: 20px 0;
+  margin-bottom: 20px;
   padding: 20px 0;
-  border-top: $light-gray 1px solid;
   border-bottom: $light-gray 1px solid;
 }
 

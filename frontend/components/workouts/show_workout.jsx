@@ -2,15 +2,21 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import RouteMap from '../routes/route_map';
 import Spinner from '../spinner';
+import {randomizer} from '../../util/randomizer';
+import Modal from '../modals/modal';
+import ConfirmDeleteModal from '../modals/confirm_delete_modal';
 
 class ShowWorkout extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   render() {
 
     const { workout, route, user, loading } = this.props;
+    const adGifClass = `ad-gif-${randomizer(3, 1)}`;
 
     if (this.props.errors.length > 0) {
       return (
@@ -28,8 +34,15 @@ class ShowWorkout extends React.Component {
       );
     }
 
+
     return (
       <section className="workout-show-container">
+
+        <Modal modal={this.props.modal}
+          component={ConfirmDeleteModal}
+          closeModal={this.props.closeModal}
+          dispatchAction={this.props.deleteWorkout}
+          history={this.props.history} />
 
         <section className="workout-details">
           <section className="workout-data">
@@ -79,14 +92,16 @@ class ShowWorkout extends React.Component {
               </tbody>
             </table>
             <table className="workout-show-buttons">
-              <tr>
-                <td>
-                  <Link to={`/workouts/${workout.id}/edit`}>EDIT</Link>
-                  <button>DELETE</button>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <Link to={`/workouts/${workout.id}/edit`}>EDIT</Link>
+                    <button onClick={this.handleDelete}>DELETE</button>
+                  </td>
+                </tr>
+              </tbody>
             </table>
-            <figure className="route-map-box">
+            <figure className="workout-map-box">
               <RouteMap route={route} />
             </figure>
           </section>
@@ -100,8 +115,11 @@ class ShowWorkout extends React.Component {
           </section>
         </section>
 
-        <aside className="workout-sidebar">
-          This will be ad.
+        <aside className="workout-show-sidebar">
+          <div className={adGifClass}>
+            <small>Ad</small>
+            <small>Rent this movie somewhere near you.</small>
+          </div>
         </aside>
       </section>
     );
@@ -120,6 +138,11 @@ class ShowWorkout extends React.Component {
     return ('0' + h).slice(-2) + ":" +
     ('0' + m).slice(-2) + ":" +
     ('0' + s).slice(-2);
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+    this.props.openModal({confirmDeleteWorkout: this.props.workout.id});
   }
 }
 

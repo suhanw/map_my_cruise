@@ -105,7 +105,7 @@ class Header extends React.Component {
           <ul className="shortcut-bar-links">
             <li>Workout Dashboard</li>
             <li><Link to="/routes/create">Create Route</Link></li>
-            <li>Log Workout</li>
+            <li><Link to="/workouts/create">Log Workout</Link></li>
             <li>Find Friends</li>
           </ul>
         </nav>

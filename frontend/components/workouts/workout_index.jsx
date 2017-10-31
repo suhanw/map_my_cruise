@@ -7,17 +7,34 @@ class WorkoutIndex extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      loading: true,
+    };
+
     this.renderItems = this.renderItems.bind(this);
   }
 
   render() {
-    if (this.props.loading) {
+    if (this.state.loading) {
       return (
         <div className="spinner-box">
           <Spinner />;
         </div>
       );
     }
+
+
+    if (!(this.props.workouts.ordered_ids.length)) {
+      return (
+        <section className="workout-index">
+          <span className="message">
+            You have no workouts.
+            Click <Link to="/workouts/create">here</Link> to log a workout.
+          </span>
+        </section>
+      );
+    }
+
     return (
       <section className="workout-index">
         <ul>
@@ -44,7 +61,9 @@ class WorkoutIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchWorkouts();
+    this.props.fetchWorkouts().then(
+      this.setState({loading: false})
+    );
   }
 }
 

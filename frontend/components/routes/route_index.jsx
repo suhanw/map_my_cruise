@@ -8,15 +8,22 @@ import Spinner from '../spinner';
 class RouteIndex extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: true,
+    };
+
     this.renderItems = this.renderItems.bind(this);
   }
 
   componentDidMount(){
-    this.props.fetchRoutes();
+    this.props.fetchRoutes().then(
+      this.setState({loading: false})
+    );
   }
 
   render(){
-    if (this.props.loading) {
+    if (this.state.loading) {
       return (
         <div className="spinner-box">
           <Spinner />;
@@ -24,13 +31,21 @@ class RouteIndex extends React.Component {
       );
     }
 
-    if (!Boolean(this.props.routes.ordered_ids.length)) {
+    if (!(this.props.routes.ordered_ids.length)) {
       return (
         <section className="route-index-container">
-          You have no routes.
-          Click <Link to="/routes/create">here</Link> to create a new route.
+          <div>
+            <h2>
+              MY ROUTES
+            </h2>
+            <Link to="routes/create" className="create-route-button">CREATE A ROUTE</Link>
+          </div>
+          <span className="message">
+            You have no routes.
+            Click <Link to="/routes/create">here</Link> to create a new route.
+          </span>
         </section>
-      )
+      );
     }
 
     return (
@@ -38,8 +53,9 @@ class RouteIndex extends React.Component {
         <Modal modal={this.props.modal}
           component={ConfirmDeleteModal}
           closeModal={this.props.closeModal}
-          dispatchAction={this.props.deleteRoute} />
-        <div>
+          dispatchAction={this.props.deleteRoute}
+          history={this.props.history} />
+        <div className="route-index-header">
           <h2>
             MY ROUTES
           </h2>
