@@ -1,7 +1,6 @@
 import React from 'react';
 import {randomizer} from '../../util/randomizer';
 
-
 class WorkoutForm extends React.Component {
   constructor(props) {
     super(props);
@@ -20,22 +19,33 @@ class WorkoutForm extends React.Component {
 
     const date = new Date().toISOString().substr(0, 10);
 
+
     this.state = {
       name,
       date,
       route,
-      h,
-      m,
-      s,
+      h, //duration
+      m, //duration
+      s, //duration
+      loadingRoutes: true,
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.renderRouteOptions = this.renderRouteOptions.bind(this);
   }
 
   componentDidMount(){
-    this.fetchRoutes()
+    this.props.fetchRoutes().then(
+      ()=>{
+        this.setState({
+          loadingRoutes: false
+        });
+      }
+    );
   }
+
+
 
   render() {
 
@@ -68,10 +78,8 @@ class WorkoutForm extends React.Component {
 
             <label className="workout-form-route-option">
               Route
-              <select onChange={this.handleChange('route')}>
-                <option selected disabled="disabled" value="">Select your route</option>
-                <option>ssdf</option>
-                <option>ssdf</option>
+              <select onChange={this.handleChange('route')} value={this.state.route ? this.state.route : ""}>
+                {this.renderRouteOptions()}
               </select>
             </label>
 
@@ -110,14 +118,62 @@ class WorkoutForm extends React.Component {
   }
 
   handleChange(key) {
+    const that = this;
     return (e) => {
-      this.setState({[key]: e.target.value});
+      that.setState({[key]: e.target.value});
     };
   }
 
   handleClick(e) {
     e.preventDefault();
 
+    let duration = this.state.h * 3600;
+    duration += this.state.m * 60;
+    duration += this.state.s * 1;
+
+
+
+    const workout = {
+      name: this.state.name,
+      date: this.state.date,
+      duration: duration,
+      route_id: this.state.route,
+    };
+
+
+    this.props.action(workout).then(
+      (action)=>{
+        const workoutId = Object.keys(action.payload.workouts_by_id)[0];
+        debugger
+        this.props.history.push(`/workouts/${workoutId}`);
+      }
+    );
+
+  }
+
+  renderRouteOptions() {
+
+    if (this.state.loadingRoutes) {
+      return (
+        <option selected disabled="disabled" value="">
+          Loading available routes..
+        </option>
+      );
+    } else {
+      let routeOptions = [];
+      routeOptions.push(
+        <option key="default" selected disabled="disabled" value="">Select your route</option>
+      );
+      this.props.routes.ordered_ids.forEach((routeId)=>{
+        const route = this.props.routes.routes_by_id[routeId];
+        routeOptions.push(
+          <option key={route.id} value={route.id}>{
+              `${route.name} - ${route.distance}mi in ${route.city}`
+          }</option>
+        );
+      });
+      return routeOptions;
+    }
   }
 
   renderHours(duration) {
@@ -131,7 +187,6 @@ class WorkoutForm extends React.Component {
   renderSeconds(duration) {
     return Math.floor(duration % 3600 % 60);
   }
-
 }
 
 export default WorkoutForm;

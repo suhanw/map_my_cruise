@@ -14,8 +14,9 @@
 
 class Workout < ApplicationRecord
   validates :user, :route, :name, :duration, presence: true
+  validates :name, uniqueness: { scope: :user }
 
   belongs_to :user
   belongs_to :route
-  
+
 end
