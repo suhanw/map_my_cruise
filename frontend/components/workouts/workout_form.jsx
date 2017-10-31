@@ -16,9 +16,9 @@ class WorkoutForm extends React.Component {
       name,
       workout_date: initDate,
       route,
-      h: null, //duration
-      m: null, //duration
-      s: null, //duration
+      h: '', //duration
+      m: '', //duration
+      s: '', //duration
       loadingRoutes: true,
     };
 

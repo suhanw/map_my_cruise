@@ -31,7 +31,7 @@ class RouteIndexItem extends React.Component  {
   }
 
   renderOptions() {
-    if (this.props.route.user_id === this.props.currentUser.id) {
+    if (this.props.route.user === this.props.currentUser.id) {
       return (
         <div className="route-index-item-options">
           <Link to={`routes/${this.props.route.id}/edit`}>Edit</Link>

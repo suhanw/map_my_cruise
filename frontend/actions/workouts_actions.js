@@ -9,7 +9,7 @@ export const RECEIVE_WORKOUT_ERRORS = 'RECEIVE_WORKOUT_ERRORS';
 
 export const receiveWorkouts = (payload) => {
   let normalizedPayload = workoutsNormalizer(payload.workouts_by_id);
-  normalizedPayload = merge(
+  normalizedPayload = merge (
     normalizedPayload,
     {ordered_ids: payload.ordered_ids}
   );
@@ -21,7 +21,6 @@ export const receiveWorkouts = (payload) => {
 
 export const receiveWorkout = (payload) => {
   let normalizedPayload = workoutNormalizer(payload.workout);
-  normalizedPayload = merge(normalizedPayload, {user: payload.user});
   return {
     type: RECEIVE_WORKOUT,
     payload: normalizedPayload,

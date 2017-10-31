@@ -9,7 +9,7 @@ const mapStateToProps = ({entities, errors}, ownProps) => {
   let user;
 
   if (route) {
-    user = entities.users[route.user_id];
+    user = entities.users[route.user];
     if (user) {
       loading = false;
     }

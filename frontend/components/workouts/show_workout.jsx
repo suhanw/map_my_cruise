@@ -15,7 +15,7 @@ class ShowWorkout extends React.Component {
 
   render() {
 
-    const { workout, route, user, loading } = this.props;
+    const { workout, route, workoutCreator, routeCreator, loading } = this.props;
     const adGifClass = `ad-gif-${randomizer(3, 1)}`;
 
     if (this.props.errors.length > 0) {
@@ -76,14 +76,14 @@ class ShowWorkout extends React.Component {
               <tbody>
                 <tr>
                   <td className="fit avatar">
-                    <img src={user.avatar_url} />
+                    <img src={workoutCreator.avatar_url} />
                   </td>
                   <td className="fit date">
                     <span>{workout.created_at}</span>
                     <span>
                       {'by '}
                       <div className="username">
-                        {`${user.fname} ${user.lname}`}
+                        {`${workoutCreator.fname} ${workoutCreator.lname}`}
                       </div>
                     </span>
                   </td>
@@ -103,6 +103,14 @@ class ShowWorkout extends React.Component {
             </table>
             <figure className="workout-map-box">
               <RouteMap route={route} />
+              <figcaption>
+                <small>
+                  VIEW ROUTE <Link to={`/routes/${route.id}`}>{route.name}</Link>
+                </small>
+                <small>
+                  Mapped {route.created_at} by {`${routeCreator.fname} ${routeCreator.lname}`}.
+                </small>
+              </figcaption>
             </figure>
           </section>
           <section className="comments-likes">

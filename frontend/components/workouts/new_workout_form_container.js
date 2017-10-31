@@ -4,12 +4,12 @@ import WorkoutForm from './workout_form';
 import {openModal, closeModal} from '../../actions/modal_actions';
 import {fetchRoutes} from '../../actions/routes_actions';
 
-const mapStateToProps = ({errors, ui: {modal}, entities: {workouts}}, ownProps)=>{
+const mapStateToProps = ({errors, ui: {modal}, entities: {workouts, routes}}, ownProps)=>{
   let workout = {
     name: '',
     workout_date: '',
-    duration: null,
-    route: null,
+    duration: 0,
+    route: 0,
   };
 
   return {

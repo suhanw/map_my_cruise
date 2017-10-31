@@ -23,7 +23,7 @@ const RoutesReducer = (state=defaultState, action) => {
 
     case RECEIVE_ROUTE:
       return merge({}, state, {
-        routes_by_id: {[action.payload.route.id]: action.payload.route},
+        routes_by_id: action.payload.routes_by_id
       });
 
     case REMOVE_ROUTE:

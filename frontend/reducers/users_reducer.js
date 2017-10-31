@@ -11,9 +11,9 @@ const UsersReducer = (state=defaultState, {type, payload}) => {
   let newState;
   switch (type) {
     case RECEIVE_ROUTE:
-      return Object.assign({}, state, {[payload.user.id]: payload.user});
+      return Object.assign({}, state, payload.users);
     case RECEIVE_WORKOUT:
-      return Object.assign({}, state, {[payload.user.id]: payload.user});
+      return Object.assign({}, state, payload.users);
     default:
       return state;
   }

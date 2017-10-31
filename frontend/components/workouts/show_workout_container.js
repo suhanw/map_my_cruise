@@ -7,22 +7,23 @@ const mapStateToProps = ({entities: {workouts, users, routes}, errors, ui:{modal
   const workoutId = ownProps.match.params.workoutId;
   let loading = true;
   let workout = workouts.workouts_by_id[workoutId];
-  let user;
+  let workoutCreator;
+  let routeCreator;
   let route;
 
 
   if (workout) {
-    user = users[workout.user_id];
+    workoutCreator = users[workout.user];
     route = routes.routes_by_id[workout.route];
-    if (user && route) {
-      loading = false;
-    }
-  } 
+    routeCreator = users[route.user];
+    loading = false;
+  }
 
   return {
     workout,
-    user,
+    workoutCreator,
     route,
+    routeCreator,
     errors: errors.workouts,
     loading,
     modal,

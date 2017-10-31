@@ -77,6 +77,21 @@
   margin: 10px 0;
 }
 
+.workout-map-box figcaption {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+  color: $dark-gray;
+  border: 1px solid $gray;
+  border-top: 0;
+  padding: 10px;
+}
+
+.workout-map-box figcaption a {
+  color: $blue;
+}
+
 .workout-show-buttons {
   text-align: right;
   box-sizing: border-box;

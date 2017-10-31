@@ -1,4 +1,6 @@
 import * as RouteApiUtil from '../util/routes_api_util';
+import merge from 'lodash/merge';
+import {routeNormalizer, routesNormalizer} from '../util/normalizer';
 
 export const RECEIVE_ROUTES = 'RECEIVE_ROUTES';
 export const RECEIVE_ROUTE = 'RECEIVE_ROUTE';
@@ -6,16 +8,22 @@ export const REMOVE_ROUTE = 'REMOVE_ROUTE';
 export const RECEIVE_ROUTE_ERRORS = 'RECEIVE_ROUTE_ERRORS';
 
 export const receiveRoutes = (payload) => {
-  return {
+let normalizedPayload = routesNormalizer(payload.routes_by_id);
+normalizedPayload = merge(
+  normalizedPayload,
+  {ordered_ids: payload.ordered_ids}
+);
+return {
     type: RECEIVE_ROUTES,
-    payload
+    payload: normalizedPayload
   };
 };
 
 export const receiveRoute = (payload) => {
+  let normalizedPayload = routeNormalizer(payload.route);
   return {
     type: RECEIVE_ROUTE,
-    payload
+    payload: normalizedPayload
   };
 };
 

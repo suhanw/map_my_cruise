@@ -102,7 +102,7 @@ class RouteForm extends React.Component {
     e.preventDefault();
     this.props.action(this.state).then(
       ({payload})=> {
-        this.props.history.push(`/routes/${payload.route.id}`);
+        this.props.history.push(`/routes/${Object.keys(payload.routes_by_id)[0]}`);
       },
       () => {
         this.props.openModal('errors');
