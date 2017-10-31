@@ -14,7 +14,7 @@ class DisplayWorkouts extends React.Component {
           <h2>
             MY WORKOUTS
           </h2>
-          <Link to="/workouts/create" className="create-workout-button">
+          <Link to="/workouts/create" className="orange-button">
             LOG A WORKOUT
           </Link>
         </div>

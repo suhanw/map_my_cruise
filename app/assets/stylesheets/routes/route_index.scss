@@ -7,19 +7,11 @@
 
 }
 
-.create-route-button {
-  background: -webkit-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-  background: -o-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-  background: -moz-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-  background: linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-  border-radius: 3px;
-  font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 14px;
-  color: white;
+.route-index-header {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
 }
 
 .route-index-table {

@@ -34,11 +34,11 @@ class RouteIndex extends React.Component {
     if (!(this.props.routes.ordered_ids.length)) {
       return (
         <section className="route-index-container">
-          <div>
+          <div className="route-index-header">
             <h2>
               MY ROUTES
             </h2>
-            <Link to="routes/create" className="create-route-button">CREATE A ROUTE</Link>
+            <Link to="routes/create" className="orange-button">CREATE A ROUTE</Link>
           </div>
           <span className="message">
             You have no routes.
@@ -59,7 +59,7 @@ class RouteIndex extends React.Component {
           <h2>
             MY ROUTES
           </h2>
-          <Link to="routes/create" className="create-route-button">CREATE A ROUTE</Link>
+          <Link to="routes/create" className="orange-button">CREATE A ROUTE</Link>
         </div>
 
         <section className="search-and-sort">
