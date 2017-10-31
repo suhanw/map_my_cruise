@@ -93,46 +93,28 @@
 }
 
 .workout-show-buttons {
-  text-align: right;
+  // text-align: right;
   box-sizing: border-box;
   border: 1px solid $light-gray;
 }
 
-.workout-show-buttons a,
-.workout-show-buttons button {
-  border-radius: 3px;
-  font-family: 'PT Sans Narrow', sans-serif;
+.workout-show-buttons td {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.workout-index-link {
+  margin-left: auto;
+  margin-right: 10px;
+  color: $blue;
   font-size: 14px;
-  color: white;
-  padding: 5px;
-  margin: 10px 0;
+}
+
+.workout-show-buttons .orange-button {
   margin-left: 10px;
-  box-shadow: 1px 1px 1px 1px $gray;
-  display: inline-block;
-  height: 25px;
-}
-
-.workout-show-buttons a,
-.workout-show-buttons button {
-  background: -webkit-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-  background: -o-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-  background: -moz-linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-  background: linear-gradient(to bottom, #ff9628 5%, #ff8714 100%);
-}
-
-// .workout-show-buttons button {
-//   background: -webkit-linear-gradient(to bottom, $light-gray 5%, $gray 100%);
-//   background: -o-linear-gradient(to bottom, $light-gray 5%, $gray 100%);
-//   background: -moz-linear-gradient(to bottom, $light-gray 5%, $gray 100%);
-//   background: linear-gradient(to bottom, $light-gray 5%, $gray 100%);
-// }
-
-.workout-show-buttons a:active,
-.workout-show-buttons button:active {
-  position: relative;
-  top: 1px;
-  left: 2px;
-  box-shadow: none;
+  padding-top: 10px;
 }
 
 .comments {

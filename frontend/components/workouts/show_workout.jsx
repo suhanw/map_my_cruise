@@ -95,8 +95,9 @@ class ShowWorkout extends React.Component {
               <tbody>
                 <tr>
                   <td>
-                    <Link to={`/workouts/${workout.id}/edit`}>EDIT</Link>
-                    <button onClick={this.handleDelete}>DELETE</button>
+                    <Link to={`/workouts/${workout.id}/edit`} className="orange-button">EDIT</Link>
+                    <button onClick={this.handleDelete} className="orange-button">DELETE</button>
+                    <Link className="workout-index-link" to="/workouts">Back to My Workouts</Link>
                   </td>
                 </tr>
               </tbody>

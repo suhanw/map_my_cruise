@@ -3,6 +3,7 @@ import {Link, Route} from 'react-router-dom';
 import RouteIndexItem from './route_index_item';
 import RouteMap from './route_map';
 import Spinner from '../spinner';
+import {randomizer} from '../../util/randomizer';
 
 class ShowRoute extends React.Component {
   constructor(props) {
@@ -22,6 +23,7 @@ class ShowRoute extends React.Component {
   }
 
   render() {
+    const adGifClass = `ad-gif-${randomizer(3, 1)}`;
     const { route, user, loading } = this.props;
 
     if (this.props.errors.length > 0) {
@@ -69,6 +71,10 @@ class ShowRoute extends React.Component {
         </section>
 
         <aside className="route-sidebar">
+          <div className={adGifClass}>
+            <small>Ad</small>
+            <small>Rent this movie somewhere near you.</small>
+          </div>
           <section className="route-shortcut-buttons">
             <Link to="/routes/create" className="create-route-button">CREATE A ROUTE</Link>
             <Link to={`/routes/${route.id}/edit`} className="edit-route-button">EDIT ROUTE</Link>

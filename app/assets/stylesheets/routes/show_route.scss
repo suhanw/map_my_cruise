@@ -70,7 +70,7 @@
 .route-sidebar {
   width: 25%;
   // height: auto;
-  margin: 10px;
+  // margin: 10px;
 }
 
 .route-shortcut-buttons {
@@ -81,6 +81,7 @@
   border: 1px solid $light-gray;
   /* offset-x | offset-y | blur-radius | spread-radius | color */
   box-shadow: 1px 1px 2px .5px $light-gray;
+  margin-top: 20px;
 }
 
 .route-shortcut-buttons .create-route-button,
