@@ -3,8 +3,8 @@ json.extract! workout,
   :user_id,
   :name,
   :duration,
-  :privacy
-
+  :privacy,
+  :workout_date
 
 json.created_at workout.created_at.strftime("%m/%d/%Y");
 

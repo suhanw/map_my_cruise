@@ -2,7 +2,7 @@ class Api::WorkoutsController < ApplicationController
   before_action :require_login
 
   def index
-    @workouts = current_user.workouts.order(created_at: :desc).includes(:route)
+    @workouts = current_user.workouts.order(workout_date: :desc).includes(:route)
     render :index
   end
 
@@ -19,6 +19,7 @@ class Api::WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
+    @workout.workout_date = Date.parse workout_params[:workout_date]
     @workout.user = current_user
     if @workout.save
       render :show
@@ -61,7 +62,8 @@ class Api::WorkoutsController < ApplicationController
       :route_id,
       :name,
       :duration,
-      :privacy
+      :privacy,
+      :workout_date,
     )
 
   end

@@ -7,7 +7,7 @@ import {fetchRoutes} from '../../actions/routes_actions';
 const mapStateToProps = ({errors, ui: {modal}, entities: {routes}}, ownProps)=>{
   let workout = {
     name: '',
-    date: '',
+    workout_date: '',
     duration: null,
     route: null,
   };

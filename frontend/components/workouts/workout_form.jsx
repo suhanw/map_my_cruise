@@ -5,7 +5,7 @@ class WorkoutForm extends React.Component {
   constructor(props) {
     super(props);
 
-    const {name, duration, route} = this.props.workout;
+    const {name, workout_date, duration, route} = this.props.workout;
 
     let h;
     let m;
@@ -17,12 +17,11 @@ class WorkoutForm extends React.Component {
       s = this.renderSeconds(duration);
     }
 
-    const date = new Date().toISOString().substr(0, 10);
-
+    const initDate = workout_date ? workout_date : new Date().toISOString().substr(0, 10);
 
     this.state = {
       name,
-      date,
+      workout_date: initDate,
       route,
       h, //duration
       m, //duration
@@ -72,8 +71,8 @@ class WorkoutForm extends React.Component {
             <label className="workout-form-date">
               Date
               <input type="date"
-                value={this.state.date}
-                onChange={this.handleChange('date')} />
+                value={this.state.workout_date}
+                onChange={this.handleChange('workout_date')} />
             </label>
 
             <label className="workout-form-route-option">
@@ -131,11 +130,9 @@ class WorkoutForm extends React.Component {
     duration += this.state.m * 60;
     duration += this.state.s * 1;
 
-
-
     const workout = {
       name: this.state.name,
-      date: this.state.date,
+      workout_date: this.state.workout_date,
       duration: duration,
       route_id: this.state.route,
     };

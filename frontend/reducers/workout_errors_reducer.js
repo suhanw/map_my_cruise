@@ -10,7 +10,7 @@ import {CLEAR_ERRORS} from '../actions/clear_actions';
 
 const defaultState = [];
 
-const RouteErrorsReducer = (state=defaultState, action)=>{
+const WorkoutErrorsReducer = (state=defaultState, action)=>{
   Object.freeze(state);
   switch (action.type) {
 
@@ -28,4 +28,4 @@ const RouteErrorsReducer = (state=defaultState, action)=>{
   }
 };
 
-export default RouteErrorsReducer;
+export default WorkoutErrorsReducer;

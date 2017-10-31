@@ -10,7 +10,7 @@ class WorkoutIndexItem extends React.Component  {
         <div className="workout-item-details">
           <span>{workout.name}</span>
           <span>{route.distance} mi</span>
-          <span>{workout.created_at}</span>
+          <span>{workout.workout_date}</span>
         </div>
       </li>
     );
