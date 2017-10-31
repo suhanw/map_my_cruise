@@ -109,7 +109,7 @@ class WorkoutForm extends React.Component {
 
             <label className="workout-form-route-option">
               Route
-              <select onChange={this.handleChange('route')} value={this.state.route ? this.state.route : ""}>
+              <select onChange={this.handleChange('route')} value={this.state.route ? this.state.route : "default"}>
                 {this.renderRouteOptions()}
               </select>
             </label>
@@ -188,7 +188,7 @@ class WorkoutForm extends React.Component {
   renderRouteOptions() {
     if (this.state.loadingRoutes) {
       return (
-        <option selected disabled="disabled" value="">
+        <option disabled="disabled" value="default">
           Loading available routes..
         </option>
       );
@@ -198,7 +198,7 @@ class WorkoutForm extends React.Component {
 
     if (this.props.formType === 'new') {
       routeOptions.push(
-        <option key="default" selected disabled="disabled" value="">Select your route</option>
+        <option key="default" disabled="disabled" value="default">Select your route</option>
       );
     }
 
@@ -206,7 +206,6 @@ class WorkoutForm extends React.Component {
       const route = this.props.routes.routes_by_id[routeId];
       routeOptions.push(
         <option key={route.id}
-          selected={(route.id === this.state.route_id) ? "true" : ""}
           value={route.id}  >{
             `${route.name} - ${route.distance}mi in ${route.city}`
         }</option>
