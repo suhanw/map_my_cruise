@@ -66,7 +66,6 @@ class Map extends React.Component {
   }
 
   renderInitMap(center){
-    console.log('rendering init map');
     const mapOptions = { center: center, zoom: 15 };
     const mapDom = document.getElementById('map');
     this.map = new google.maps.Map(

@@ -24,7 +24,7 @@ class RouteIndexItem extends React.Component  {
           <td>{this.props.route.distance}mi</td>
           <td>{this.props.route.name}</td>
           <td>{city}</td>
-          <td>{this.props.route.privacy}</td>
+          <td>coming soon</td>
           <td>{this.renderOptions()}</td>
         </tr>
     );

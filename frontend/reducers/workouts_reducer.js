@@ -25,6 +25,7 @@ const WorkoutsReducer = (state=defaultState, action) => {
       return newState;
 
     case RECEIVE_WORKOUT:
+      debugger
       return merge({}, state, {
         workouts_by_id: action.payload.workouts_by_id,
       });

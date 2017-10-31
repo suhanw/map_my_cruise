@@ -8,6 +8,8 @@ import configureStore from './store/store';
 // import * as RouteActions from './actions/routes_actions';
 import * as WorkoutActions from './actions/workouts_actions';
 import {clearErrors} from './actions/clear_actions';
+// import * as CommentApiUtil from './util/comments_api_util';
+import * as CommentActions from './actions/comments_actions';
 // TESTING
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -33,6 +35,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
   window.createWorkout = WorkoutActions.createWorkout;
   window.updateWorkout = WorkoutActions.updateWorkout;
   window.deleteWorkout = WorkoutActions.deleteWorkout;
+  window.createComment = CommentActions.createComment;
+  window.deleteComment = CommentActions.deleteComment;
   window.clearErrors = clearErrors;
   window.getState = store.getState;
   window.dispatch = store.dispatch;

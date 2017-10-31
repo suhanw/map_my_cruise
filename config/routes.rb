@@ -8,6 +8,15 @@ Rails.application.routes.draw do
 
     resources :routes, only: [:index, :show, :create, :update, :destroy]
     resources :workouts, only: [:index, :show, :create, :update, :destroy]
+
+    resources :workouts do
+      resources :comments, only: [:create]
+    end
+
+    resources :comments, only: [:destroy]
+
+    # for testing
+    resources :comments, only: [:show]
   end
 
 end
