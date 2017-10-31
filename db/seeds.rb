@@ -37,16 +37,19 @@ Workout.create!({
   route_id: Route.find_by(name: 'best route').id,
   name: 'workout1',
   duration: 2100,
+  workout_date: '2017-10-31'
 });
 Workout.create!({
   user_id: User.find_by(email:'eh@mi.com').id,
   route_id: Route.find_by(name:'best route').id,
   name: 'workout2',
   duration: 2234,
+  workout_date: '2017-10-25'
 });
 Workout.create!({
   user_id: User.find_by(email:'eh@mi.com').id,
   route_id: Route.find_by(name: 'test route').id,
   name: 'workout3',
   duration: 1810,
+  workout_date: '2017-8-31'
 });

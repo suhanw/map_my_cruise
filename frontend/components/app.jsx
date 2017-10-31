@@ -13,6 +13,7 @@ import EditRouteFormContainer from './routes/edit_route_form_container';
 import DisplayWorkouts from './workouts/display_workouts';
 import ShowWorkoutContainer from './workouts/show_workout_container';
 import NewWorkoutFormContainer from './workouts/new_workout_form_container';
+import EditWorkoutFormContainer from './workouts/edit_workout_form_container';
 import ScrollToTop from './scroll_to_top';
 
 
@@ -34,6 +35,7 @@ const App = () => {
           <ProtectRoute path="/routes/:routeId" component={ShowRouteContainer} />
           <ProtectRoute path="/routes" component={RouteIndexContainer} />
 
+          <ProtectRoute path="/workouts/:workoutId/edit" component={EditWorkoutFormContainer} />
           <ProtectRoute path="/workouts/create" component={NewWorkoutFormContainer} />
           <ProtectRoute path="/workouts/:workoutId" component={ShowWorkoutContainer} />
           <ProtectRoute path="/workouts" component={DisplayWorkouts} />

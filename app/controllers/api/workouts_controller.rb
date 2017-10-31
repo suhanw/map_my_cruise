@@ -19,7 +19,7 @@ class Api::WorkoutsController < ApplicationController
 
   def create
     @workout = Workout.new(workout_params)
-    @workout.workout_date = Date.parse workout_params[:workout_date]
+
     @workout.user = current_user
     if @workout.save
       render :show
@@ -58,6 +58,11 @@ class Api::WorkoutsController < ApplicationController
 
   private
   def workout_params
+    if params[:workout][:workout_date] == ""
+      params[:workout][:workout_date] = nil
+    else
+      params[:workout][:workout_date] = Date.parse params[:workout][:workout_date]
+    end
     params.require(:workout).permit(
       :route_id,
       :name,

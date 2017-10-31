@@ -1,5 +1,8 @@
 import React from 'react';
 import {randomizer} from '../../util/randomizer';
+import Modal from '../modals/modal';
+import FormErrorModal from '../modals/form_error_modal';
+import Spinner from '../spinner';
 
 class WorkoutForm extends React.Component {
   constructor(props) {
@@ -7,34 +10,52 @@ class WorkoutForm extends React.Component {
 
     const {name, workout_date, duration, route} = this.props.workout;
 
-    let h;
-    let m;
-    let s;
-
-    if (duration) {
-      h = this.renderHours(duration);
-      m = this.renderMinutes(duration);
-      s = this.renderSeconds(duration);
-    }
-
     const initDate = workout_date ? workout_date : new Date().toISOString().substr(0, 10);
 
     this.state = {
       name,
       workout_date: initDate,
       route,
-      h, //duration
-      m, //duration
-      s, //duration
+      h: null, //duration
+      m: null, //duration
+      s: null, //duration
       loadingRoutes: true,
     };
+
+    if (this.props.formType === 'edit') {
+      this.state['loading'] = true;
+      this.state = Object.assign(this.state, this.renderDuration(duration));
+    }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.renderRouteOptions = this.renderRouteOptions.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.formType === 'edit') {
+      this.setState ({
+        name: newProps.workout.name,
+        workout_date: newProps.workout.workout_date,
+        route_id: newProps.workout.route,
+        h: this.renderHours(newProps.workout.duration),
+        m: this.renderMinutes(newProps.workout.duration),
+        s: this.renderSeconds(newProps.workout.duration),
+      });
+    }
+  }
+
   componentDidMount(){
+    if (this.props.formType === 'edit') {
+      this.props.fetchWorkout(this.props.match.params.workoutId).then(
+        ()=>{
+          this.setState({
+            loading: false
+          });
+        }
+      );
+    }
+
     this.props.fetchRoutes().then(
       ()=>{
         this.setState({
@@ -42,17 +63,28 @@ class WorkoutForm extends React.Component {
         });
       }
     );
+
   }
 
-
-
   render() {
-
     const adGifClass = `ad-gif-${randomizer(3, 1)}`;
 
+    if (this.state.loading) {
+      return (
+        <div className="spinner-box">
+          <Spinner />;
+        </div>
+      );
+    }
 
     return (
       <section className="workout-form-container">
+
+        <Modal modal={this.props.modal}
+          errors = {this.props.errors.workouts}
+          component={FormErrorModal}
+          closeModal={this.props.closeModal} />
+
         <form className="workout-form">
           <h2>LOG A WORKOUT</h2>
           <p>
@@ -126,9 +158,9 @@ class WorkoutForm extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    let duration = this.state.h * 3600;
-    duration += this.state.m * 60;
-    duration += this.state.s * 1;
+    let duration = this.state.h ? this.state.h * 3600 : 0;
+    duration += this.state.m ? this.state.m * 60 : 0;
+    duration += this.state.s ? this.state.s * 1 : 0;
 
     const workout = {
       name: this.state.name,
@@ -137,40 +169,51 @@ class WorkoutForm extends React.Component {
       route_id: this.state.route,
     };
 
+    if (this.props.formType === 'edit') {
+      workout.id = this.props.workout.id;
+    }
 
     this.props.action(workout).then(
       (action)=>{
         const workoutId = Object.keys(action.payload.workouts_by_id)[0];
-        debugger
         this.props.history.push(`/workouts/${workoutId}`);
+      },
+      ()=>{
+        this.props.openModal('errors');
       }
     );
 
   }
 
   renderRouteOptions() {
-
     if (this.state.loadingRoutes) {
       return (
         <option selected disabled="disabled" value="">
           Loading available routes..
         </option>
       );
-    } else {
-      let routeOptions = [];
+    }
+
+    let routeOptions = [];
+
+    if (this.props.formType === 'new') {
       routeOptions.push(
         <option key="default" selected disabled="disabled" value="">Select your route</option>
       );
-      this.props.routes.ordered_ids.forEach((routeId)=>{
-        const route = this.props.routes.routes_by_id[routeId];
-        routeOptions.push(
-          <option key={route.id} value={route.id}>{
-              `${route.name} - ${route.distance}mi in ${route.city}`
-          }</option>
-        );
-      });
-      return routeOptions;
     }
+
+    this.props.routes.ordered_ids.forEach((routeId)=>{
+      const route = this.props.routes.routes_by_id[routeId];
+      routeOptions.push(
+        <option key={route.id}
+          selected={(route.id === this.state.route_id) ? "true" : ""}
+          value={route.id}  >{
+            `${route.name} - ${route.distance}mi in ${route.city}`
+        }</option>
+      );
+    });
+    return routeOptions;
+
   }
 
   renderHours(duration) {
@@ -183,6 +226,14 @@ class WorkoutForm extends React.Component {
 
   renderSeconds(duration) {
     return Math.floor(duration % 3600 % 60);
+  }
+
+  renderDuration(duration) {
+    return {
+      h: this.renderHours(duration),
+      m: this.renderMinutes(duration),
+      s: this.renderSeconds(duration),
+    };
   }
 }
 
