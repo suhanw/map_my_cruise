@@ -20,10 +20,14 @@ const SessionReducer = (state = defaultState, action) => {
       return newState;
 
     case RECEIVE_FRIEND_STATUSES:
-      friendsArr = Object.keys(action.payload.friends);
+      friendsArr = [];
+      if (action.payload.friends) {
+        // note: Object.keys return array of STRINGS, so map over to parse to int.
+        friendsArr = Object.keys(action.payload.friends).map((id)=>parseInt(id));
+      }
       newState = merge({}, state, {
         currentUser: {
-          friends: friendsArr
+          friends: friendsArr,
         }
       });
       return newState;
@@ -31,7 +35,7 @@ const SessionReducer = (state = defaultState, action) => {
     case RECEIVE_FRIEND_STATUS:
       newState = Object.assign({}, state);
       if (!newState.currentUser.friends) { newState.currentUser.friends = []; }
-      friendsArr = Object.keys(action.payload.friends);
+      friendsArr = Object.keys(action.payload.friends).map((id)=>parseInt(id));
       newState.currentUser.friends = newState.currentUser.friends.concat(friendsArr);
       return newState;
 

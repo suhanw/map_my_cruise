@@ -1,6 +1,10 @@
 import {connect} from 'react-redux';
 import FriendIndex from './friend_index';
-import {fetchFriendStatuses} from '../../actions/friends_actions';
+import {
+  fetchFriendStatuses,
+  deleteFriendStatus,
+  updateFriendStatus
+} from '../../actions/friends_actions';
 
 const mapStateToProps = ({entities: {friends, users}, session: {currentUser}}) => {
   return {
@@ -14,6 +18,8 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
     fetchFriendStatuses: () => dispatch(fetchFriendStatuses()),
+    deleteFriendStatus: (friendStatusId) => dispatch(deleteFriendStatus(friendStatusId)),
+    updateFriendStatus: (friendStatus) => dispatch(updateFriendStatus(friendStatus)),
   };
 };
 

@@ -1,8 +1,29 @@
 .display-friends-container {
   border: 1px solid green;
+}
 
+.display-friends-container h3 {
+  font-weight: bold;
 }
 
 .friend-index {
   border: 1px solid red;
+}
+
+.friend-box {
+  border: 1px solid red;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 300px;
+}
+
+.friend-avatar {
+  width: 50px;
+  height: auto;
+}
+
+.friend-options {
+  margin-left: auto;
 }

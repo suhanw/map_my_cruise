@@ -17,7 +17,6 @@ import EditWorkoutFormContainer from './workouts/edit_workout_form_container';
 import DisplayFriends from './friends/display_friends';
 import ScrollToTop from './scroll_to_top';
 
-
 const App = () => {
   return (
     <div className="app">

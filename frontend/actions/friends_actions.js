@@ -62,7 +62,6 @@ export const updateFriendStatus = (friendStatus) => {
   return (dispatch) => {
     return FriendsApiUtil.updateFriendStatus(friendStatus).then(
       (updatedFriendStatus) => {
-        debugger
         // conditional to dispatch action based on acceptance/rejection of friend request
         if (updatedFriendStatus.friend_status === 'yes') {
           dispatch(receiveFriendStatus(updatedFriendStatus));
