@@ -143,6 +143,13 @@ class ShowWorkout extends React.Component {
     this.props.fetchWorkout(workoutId);
   }
 
+  componentWillReceiveProps(newProps) {
+    const newWorkoutId = newProps.match.params.workoutId;
+    if (newWorkoutId !== this.props.match.params.workoutId) {
+      this.props.fetchWorkout(newWorkoutId);
+    }
+  }
+
   renderDuration(duration) {
     const h = Math.floor(duration / 3600);
     const m = Math.floor(duration % 3600 / 60);
