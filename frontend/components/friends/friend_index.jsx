@@ -6,9 +6,13 @@ import Spinner from '../spinner';
 class FriendIndex extends React.Component {
   render() {
     return (
-      <section>
-        ASDFASDFA
-        <FriendIndexItem />
+      <section className="friend-index">
+        <section className="friends">
+          <h3>FRIENDS</h3>
+        </section>
+        <section className="pending-friends">
+          <h3>PENDING REQUESTS</h3>
+        </section>
       </section>
     );
   }

@@ -7,6 +7,7 @@ class DisplayFriends extends React.Component {
   render() {
     return (
       <section className="display-friends-container">
+        <h2>MY FRIENDS</h2>
         <FriendIndexContainer />
       </section>
     );
