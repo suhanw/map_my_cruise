@@ -70,3 +70,25 @@ Comment.create!({
   workout_id: Workout.find_by(name: 'workout1').id,
   body: 'comment3'
 })
+
+FriendStatus.destroy_all
+FriendStatus.create!({
+  friender_id: User.find_by(email:'eh@mi.com').id,
+  friendee_id: User.find_by(email:'suhan@test.com').id,
+  friend_status: 'yes'
+  })
+FriendStatus.create!({
+  friender_id: User.find_by(email:'eh@mi.com').id,
+  friendee_id: User.find_by(email:'suhan2@test.com').id,
+  friend_status: 'pending'
+  })
+FriendStatus.create!({
+  friender_id: User.find_by(email:'suhan3@test.com').id,
+  friendee_id: User.find_by(email:'eh@mi.com').id,
+  friend_status: 'yes'
+  })
+FriendStatus.create!({
+  friender_id: User.find_by(email:'suhan5@test.com').id,
+  friendee_id: User.find_by(email:'eh@mi.com').id,
+  friend_status: 'pending'
+  })

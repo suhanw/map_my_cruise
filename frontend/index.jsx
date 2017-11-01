@@ -10,6 +10,7 @@ import * as WorkoutActions from './actions/workouts_actions';
 import {clearErrors} from './actions/clear_actions';
 // import * as CommentApiUtil from './util/comments_api_util';
 import * as CommentActions from './actions/comments_actions';
+import * as FriendActions from './actions/friends_actions';
 // TESTING
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -30,6 +31,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // bootstrapping current user
 
   // TESTING
+  window.fetchFriendStatuses = FriendActions.fetchFriendStatuses;
+  window.createFriendStatus = FriendActions.createFriendStatus;
+  window.updateFriendStatus = FriendActions.updateFriendStatus;
+  window.deleteFriendStatus = FriendActions.deleteFriendStatus;
   window.fetchWorkouts = WorkoutActions.fetchWorkouts;
   window.fetchWorkout = WorkoutActions.fetchWorkout;
   window.createWorkout = WorkoutActions.createWorkout;

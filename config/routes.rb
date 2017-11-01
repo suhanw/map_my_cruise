@@ -15,8 +15,11 @@ Rails.application.routes.draw do
 
     resources :comments, only: [:destroy]
 
+    resources :friend_statuses, only: [:index, :create, :update, :destroy]
+
     # for testing
     resources :comments, only: [:show]
+    resources :friend_statuses, only: [:show]
   end
 
 end

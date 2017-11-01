@@ -35,7 +35,22 @@ class User < ApplicationRecord
   has_many :routes
   has_many :workouts
   has_many :comments
-  
+
+  has_many :requested_friend_statuses,
+    foreign_key: :friender_id,
+    class_name: 'FriendStatus'
+
+  has_many :requested_friends,
+    through: :requested_friend_statuses,
+    source: :friendee
+
+  has_many :received_friend_statuses,
+    foreign_key: :friendee_id,
+    class_name: 'FriendStatus'
+
+  has_many :received_friends,
+    through: :received_friend_statuses,
+    source: :friender
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -62,14 +77,19 @@ class User < ApplicationRecord
   end
 
   def owns_route?(route)
-    self.routes.include?(route);
+    self.routes.include?(route)
   end
 
   def owns_workout?(workout)
-    self.workouts.include?(workout);
+    self.workouts.include?(workout)
+  end
+
+  def is_friend_of?(user)
+    self.requested_friends.include?(user) || self.received_friends.include?(user)
   end
 
   private
+
   def validate_name
     if fname == ""
       errors.add(:base, "First name can't be blank")
