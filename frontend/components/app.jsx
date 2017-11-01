@@ -14,6 +14,7 @@ import DisplayWorkouts from './workouts/display_workouts';
 import ShowWorkoutContainer from './workouts/show_workout_container';
 import NewWorkoutFormContainer from './workouts/new_workout_form_container';
 import EditWorkoutFormContainer from './workouts/edit_workout_form_container';
+import DisplayFriends from './friends/display_friends';
 import ScrollToTop from './scroll_to_top';
 
 
@@ -39,6 +40,8 @@ const App = () => {
           <ProtectRoute path="/workouts/create" component={NewWorkoutFormContainer} />
           <ProtectRoute path="/workouts/:workoutId" component={ShowWorkoutContainer} />
           <ProtectRoute path="/workouts" component={DisplayWorkouts} />
+
+          <ProtectRoute path="/friends" component={DisplayFriends} />
         </Switch>
       </ScrollToTop>
 
