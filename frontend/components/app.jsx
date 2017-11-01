@@ -19,7 +19,7 @@ import ScrollToTop from './scroll_to_top';
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <HeaderContainer />
 
       <Route exact path="/" component={Splash} />

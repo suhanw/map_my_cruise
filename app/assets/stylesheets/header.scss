@@ -3,16 +3,20 @@
   box-sizing: border-box;
 }
 
-.ad-banner {
-  width: 730px;
-  height: 60px;
-  margin: auto;
-  padding: 10px;
-  background: image-url('ad-banner.png');
-  background-size: cover;
+.app {
+  display: flex;
+  flex-direction: column;
 }
 
-header {
+.ad-banner {
+  margin: 0 auto;
+  width: 730px;
+  height: 150px;
+  padding: 10px;
+}
+
+.app header {
+  margin-top: 20px;
   box-shadow: 0 -1px 5px #9297a3;
 }
 

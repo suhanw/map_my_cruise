@@ -2,16 +2,18 @@ import {connect} from 'react-redux';
 import {createComment, deleteComment} from '../../actions/comments_actions';
 import CommentIndex from '../comments/comment_index';
 
-const mapStateToProps = ({entities: {comments}}, ownProps) => {
+const mapStateToProps = ({entities: {comments, users}}, ownProps) => {
   let workoutComments = [];
-  if (ownProps.workoutCommentsArr) { //to check if workout has comments
-    workoutComments = ownProps.workoutCommentsArr.map((commentId)=>{
+  if (ownProps.workout.comments) { //to check if workout has comments
+    workoutComments = ownProps.workout.comments.map((commentId)=>{
       return comments[commentId];
     });
   }
 
   return {
+    workout: ownProps.workout,
     workoutComments,
+    users,
   };
 };
 

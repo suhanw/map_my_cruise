@@ -117,7 +117,8 @@ class ShowWorkout extends React.Component {
             </figure>
           </section>
           <section className="comments-likes">
-            <div className="likes">
+            <h2>COMMENTS AND LIKES</h2>
+            <div className="workout-likes">
               This will be likes
             </div>
 
@@ -153,7 +154,7 @@ class ShowWorkout extends React.Component {
 
   renderComments() {
     return (
-      <CommentIndexContainer workoutCommentsArr={this.props.workout.comments} />
+      <CommentIndexContainer workout={this.props.workout} />
     );
   }
 

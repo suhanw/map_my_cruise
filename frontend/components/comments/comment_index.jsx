@@ -5,16 +5,29 @@ import Spinner from '../spinner';
 
 class CommentIndex extends React.Component {
   render () {
-    let workoutComments = this.props.workoutComments.map((comment) => {
+    const that = this;
+    // loop through the array of comment ids for a given workout
+    let workoutComments = [];
+    workoutComments = this.props.workoutComments.map((comment) => {
       return (
         <CommentIndexItem key={comment.id}
+          workout={that.props.workout}
           comment={comment}
-          deleteComment={this.props.deleteComment} />
+          user={that.props.users[comment.user]}
+          deleteComment={that.props.deleteComment} />
       );
     });
 
+    if (!workoutComments.length) {
+      return (
+        <section className="workout-comments">
+          Be the first to comment!
+        </section>
+      );
+    }
+
     return (
-      <section className="comments">
+      <section className="workout-comments">
         <ul>
           {workoutComments}
         </ul>
