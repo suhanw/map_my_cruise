@@ -88,3 +88,28 @@
     left: 2px;
     box-shadow: none;
   }
+
+  .input-text {
+    font-size: 14px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 10px 0;
+    background: white;
+    color: black;
+    caret-color : black;
+    letter-spacing: .05em;
+    height: 36px;
+    font-weight: normal;
+  }
+
+  .input-text::placeholder {
+    color: $light-gray;
+  }
+
+  .input-text:focus {
+    background: #ffffff;
+    border: #0076C0 solid 1px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow: 0 0 0 2px #addfff;
+  }

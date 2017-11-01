@@ -7,7 +7,7 @@ class Api::WorkoutsController < ApplicationController
   end
 
   def show
-    @workout = Workout.includes(:comments).find_by(id: params[:id])
+    @workout = Workout.includes(:comments).order("comments.created_at").find_by(id: params[:id])
     if !@workout
       render json: ["This workout does not exist"], status: 404
     elsif !current_user.owns_workout?(@workout)

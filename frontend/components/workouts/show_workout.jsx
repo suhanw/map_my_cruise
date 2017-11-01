@@ -6,6 +6,7 @@ import {randomizer} from '../../util/randomizer';
 import Modal from '../modals/modal';
 import ConfirmDeleteModal from '../modals/confirm_delete_modal';
 import CommentIndexContainer from '../comments/comment_index_container';
+import ResourceNotFound from '../resource_not_found';
 
 class ShowWorkout extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class ShowWorkout extends React.Component {
     if (this.props.errors.length > 0) {
       return (
         <section className='workout-show-container'>
-          {this.props.errors.toString()}
+          <ResourceNotFound errors={this.props.errors.toString()}/>
         </section>
       );
     }
@@ -154,7 +155,7 @@ class ShowWorkout extends React.Component {
 
   renderComments() {
     return (
-      <CommentIndexContainer workout={this.props.workout} />
+      <CommentIndexContainer workoutId={this.props.workout.id} />
     );
   }
 

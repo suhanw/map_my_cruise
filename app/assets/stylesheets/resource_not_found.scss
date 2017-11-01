@@ -1,0 +1,13 @@
+.resource-not-found {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.resource-not-found iframe {
+  width: 600px;
+  height: 400px;
+  overflow: hidden;
+  border: none;
+}

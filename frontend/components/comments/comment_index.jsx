@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import CommentIndexItem from './comment_index_item';
 import Spinner from '../spinner';
+import CommentFormContainer from './comment_form_container';
 
 class CommentIndex extends React.Component {
   render () {
@@ -31,6 +32,7 @@ class CommentIndex extends React.Component {
         <ul>
           {workoutComments}
         </ul>
+        <CommentFormContainer workout={this.props.workout} />
       </section>
     );
   }

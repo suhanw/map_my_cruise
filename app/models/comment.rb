@@ -11,9 +11,16 @@
 #
 
 class Comment < ApplicationRecord
-  validates :user_id, :workout_id, :body, presence: true
+  validates :user_id, :workout_id, presence: true
+  validate :validate_body
 
   belongs_to :user
   belongs_to :workout
 
+  private
+  def validate_body
+    if body == ""
+      errors.add(:base, "Are you speechless by how awesome Tom Cruise is at running in an awesome manner?")
+    end
+  end
 end

@@ -4,6 +4,7 @@ import RouteIndexItem from './route_index_item';
 import RouteMap from './route_map';
 import Spinner from '../spinner';
 import {randomizer} from '../../util/randomizer';
+import ResourceNotFound from '../resource_not_found';
 
 class ShowRoute extends React.Component {
   constructor(props) {
@@ -29,7 +30,7 @@ class ShowRoute extends React.Component {
     if (this.props.errors.length > 0) {
       return (
         <section className='route-show-container'>
-          {this.props.errors.toString()}
+          <ResourceNotFound errors={this.props.errors.toString()}/>
         </section>
       );
     }

@@ -1,3 +1,4 @@
+
 json.workout do
   json.partial! 'api/workouts/workout', workout: @workout
   json.comments do
