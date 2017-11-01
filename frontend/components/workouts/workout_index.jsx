@@ -62,7 +62,9 @@ class WorkoutIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchWorkouts().then(
-      this.setState({loading: false})
+      ()=>{
+        this.setState({loading: false});
+      }
     );
   }
 }

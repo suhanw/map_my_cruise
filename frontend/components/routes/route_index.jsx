@@ -18,7 +18,9 @@ class RouteIndex extends React.Component {
 
   componentDidMount(){
     this.props.fetchRoutes().then(
-      this.setState({loading: false})
+      () => {
+        this.setState({loading: false});
+      }
     );
   }
 
