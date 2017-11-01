@@ -1,6 +1,23 @@
 import {normalize, schema} from 'normalizr';
 import merge from 'lodash/merge';
 
+export const friendNormalizer = (oldFriend) => {
+  const user = new schema.Entity('users');
+  const friend = new schema.Entity('friends', {
+    friend: user,
+  });
+  const normalizedPayload = normalize(oldFriend, friend);
+  return normalizedPayload.entities;
+};
+
+export const friendsNormalizer = (friends) => {
+  let entities = {};
+  for (let key in friends) {
+    merge(entities, friendNormalizer(friends[key]));
+  }
+  return entities;
+};
+
 export const workoutNormalizer = (oldWorkout) => {
   const user = new schema.Entity('users');
   const route = new schema.Entity('routes_by_id', {

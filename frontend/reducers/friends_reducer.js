@@ -15,13 +15,10 @@ const FriendsReducer = (state=defaultState, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_FRIEND_STATUSES:
-      return action.payload;
+      return action.payload.friends;
 
     case RECEIVE_FRIEND_STATUS:
-      newState = merge({}, state, {
-        [action.payload.id]: action.payload,
-      });
-      return newState;
+      return action.payload.friends;
 
     case REMOVE_FRIEND_STATUS:
       newState = merge({}, state);

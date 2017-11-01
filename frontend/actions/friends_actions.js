@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 import * as FriendsApiUtil from '../util/friends_api_util';
-// import {workoutNormalizer, workoutsNormalizer} from '../util/normalizer';
+import {friendNormalizer, friendsNormalizer} from '../util/normalizer';
 
 
 export const RECEIVE_FRIEND_STATUSES = 'RECEIVE_FRIEND_STATUSES';
@@ -9,16 +9,18 @@ export const REMOVE_FRIEND_STATUS = 'REMOVE_FRIEND_STATUS';
 export const RECEIVE_FRIEND_STATUS_ERRORS = 'RECEIVE_FRIEND_STATUS_ERRORS';
 
 export const receiveFriendStatuses = (friendStatuses) => {
+  let normalizedPayload = friendsNormalizer(friendStatuses);
   return {
     type: RECEIVE_FRIEND_STATUSES,
-    payload: friendStatuses,
+    payload: normalizedPayload,
   };
 };
 
 export const receiveFriendStatus = (friendStatus) => {
+  let normalizedPayload = friendNormalizer(friendStatus);
   return {
     type: RECEIVE_FRIEND_STATUS,
-    payload: friendStatus,
+    payload: normalizedPayload,
   };
 };
 
