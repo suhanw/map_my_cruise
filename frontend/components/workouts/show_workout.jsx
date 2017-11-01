@@ -153,7 +153,7 @@ class ShowWorkout extends React.Component {
 
   renderComments() {
     return (
-      <CommentIndexContainer  />
+      <CommentIndexContainer workoutCommentsArr={this.props.workout.comments} />
     );
   }
 

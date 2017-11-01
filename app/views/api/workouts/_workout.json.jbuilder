@@ -16,8 +16,8 @@ json.route do
   json.partial! 'api/routes/route', route: workout.route
 end
 
-json.comments do
-  json.array! @workout.comments do |comment|
-    json.partial! 'api/comments/comment', comment: comment
-  end
-end
+# json.comments do
+#   json.array! @workout.comments do |comment|
+#     json.partial! 'api/comments/comment', comment: comment
+#   end
+# end

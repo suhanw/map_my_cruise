@@ -5,10 +5,20 @@ import Spinner from '../spinner';
 
 class CommentIndex extends React.Component {
   render () {
+    let workoutComments = this.props.workoutComments.map((comment) => {
+      return (
+        <CommentIndexItem key={comment.id}
+          comment={comment}
+          deleteComment={this.props.deleteComment} />
+      );
+    });
+
     return (
-      <div className="comments">
-        This will be comments
-      </div>
+      <section className="comments">
+        <ul>
+          {workoutComments}
+        </ul>
+      </section>
     );
   }
 }
