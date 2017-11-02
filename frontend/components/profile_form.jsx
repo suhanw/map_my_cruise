@@ -1,4 +1,7 @@
 import React from 'react';
+import Modal from './modals/modal';
+import MessageModal from './modals/message_modal';
+import FormErrorModal from './modals/form_error_modal';
 
 class ProfileForm extends React.Component {
 
@@ -12,12 +15,15 @@ class ProfileForm extends React.Component {
         oldPassword: '',
         newPassword: '',
         confirmNewPassword: '',
+        messageClass: 'message-modal',
+        message: '',
       }
     );
 
     this.handleChange = this.handleChange.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.renderMessage = this.renderMessage.bind(this);
   }
 
   render(){
@@ -27,6 +33,14 @@ class ProfileForm extends React.Component {
 
     return (
       <section>
+
+        <Modal modal={this.props.modal}
+          errors = {this.props.errors}
+          component={FormErrorModal}
+          closeModal={this.props.closeModal} />
+
+        <MessageModal className={this.state.messageClass} message={this.state.message} />
+
         <form className="profile-form">
           <h2>MY PERSONAL PROFILE</h2>
           <small className="required-legend">Required</small>
@@ -126,7 +140,18 @@ class ProfileForm extends React.Component {
     const file = this.state.imageFile;
     if (file) formData.append("user[image]", file);
 
-    this.props.editProfile(formData);
+    this.props.editProfile(formData).then(
+      this.renderMessage,
+      () => this.props.openModal('errors')
+    );
+  }
+
+  renderMessage(){
+    this.setState({
+      messageClass: 'message-modal-show',
+      message: "Profile is saved successfully!",
+    });
+    setTimeout(()=>this.setState({messageClass: 'message-modal'}), 1500);
   }
 }
 

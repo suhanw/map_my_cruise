@@ -9,9 +9,9 @@ class Api::WorkoutsController < ApplicationController
   def show
     @workout = Workout.includes(:comments).order("comments.created_at").find_by(id: params[:id])
     if !@workout
-      render json: ["This workout does not exist"], status: 404
-    elsif !current_user.owns_workout?(@workout)
-      render json: ["This is not your workout"], status: 401
+      render json: ["This workout does not exist."], status: 404
+    # elsif !current_user.owns_workout?(@workout)
+    #   render json: ["This is not your workout."], status: 401
     else
       render :show
     end
@@ -31,9 +31,9 @@ class Api::WorkoutsController < ApplicationController
   def update
     @workout = Workout.find_by(id: params[:id])
     if !@workout
-      render json: ["This workout does not exist"], status: 404
+      render json: ["This workout does not exist."], status: 404
     elsif !current_user.owns_workout?(@workout)
-      render json: ["This is not your workout"], status: 401
+      render json: ["This is not your workout."], status: 401
     else
       if @workout.update(workout_params)
         render :show
@@ -47,9 +47,9 @@ class Api::WorkoutsController < ApplicationController
   def destroy
     @workout = Workout.find_by(id: params[:id])
     if !@workout
-      render json: ["This workout does not exist"], status: 404
+      render json: ["This workout does not exist."], status: 404
     elsif !current_user.owns_workout?(@workout)
-      render json: ["This is not your workout"], status: 401
+      render json: ["This is not your workout."], status: 401
     else
       @workout.destroy
       render :show

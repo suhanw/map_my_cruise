@@ -4,7 +4,7 @@ const Modal = ({ modal, errors, component: Component, closeModal, dispatchAction
   let content;
   if (modal) {
     content = (
-      <div className="modal-backdrop" onClick={closeModal}>
+      <div onClick={closeModal}>
         <Component modal={modal}
           errors={errors}
           closeModal={closeModal}

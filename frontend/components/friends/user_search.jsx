@@ -30,6 +30,11 @@ class UserSearch extends React.Component {
 
   componentWillReceiveProps(newProps) {
     this.setState({errors: newProps.errors});
+
+  }
+
+  componentWillMount() {
+    this.props.clearResults();
   }
 
   render(){

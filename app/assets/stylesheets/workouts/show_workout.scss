@@ -129,7 +129,10 @@
   margin-bottom: 10px;
 }
 
-.workout-comments {
+.workout-comments span {
+  display: inline-block;
+  margin-bottom: 10px;
+  // color: red;
 }
 
 .workout-comments li {

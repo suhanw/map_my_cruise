@@ -132,10 +132,10 @@ h1.nav-logo i {
 
 
 
-.avatar-dropdown li:last-of-type,
-.routes-dropdown li:last-of-type,
-.workouts-dropdown li:last-of-type,
-.friends-dropdown li:last-of-type {
+.avatar-dropdown a:last-of-type li,
+.routes-dropdown a:last-of-type li,
+.workouts-dropdown a:last-of-type li,
+.friends-dropdown a:last-of-type li {
   border-bottom: 1px solid #dbdbdb;
 }
 
@@ -196,23 +196,28 @@ h1.nav-logo i {
   justify-content: space-evenly;
 }
 
-.shortcut-bar-links li {
+.shortcut-bar-links a {
   flex-grow: 1;
   text-align: center;
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 14px;
   color: #9297a3;
-  height: 40px;
   padding: 10px 0;
   border-left: #dbdbdb solid 1px;
   border-bottom: #9297a3 solid 1px;
+  height: 40px;
 }
 
-.shortcut-bar-links li:last-of-type {
+.shortcut-bar-links li {
+  // flex-grow: 1;
+
+}
+
+.shortcut-bar-links a:last-of-type {
   border-right: #dbdbdb solid 1px;
 }
 
-.shortcut-bar-links li:hover {
+.shortcut-bar-links a:hover {
   border-bottom: black solid 2px;
   color: black;
   cursor: pointer;

@@ -1,13 +1,18 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {randomizer} from '../util/randomizer';
+
+const mapStateToProps = ({session: {currentUser}}) => {
+  return {
+    currentUser,
+  };
+};
 
 class Splash extends React.Component {
 
-
-
   render() {
-    const randSplashImg = Math.floor(Math.random() * (13-1) + 1);
-    const randSplashClass = `splash-image splash-image-${randSplashImg}`;
+    const randSplashClass = `splash-image splash-image-${randomizer(12, 1)}`;
 
     return (
       <main>
@@ -19,12 +24,16 @@ class Splash extends React.Component {
             has control of our entire drone fleet. Plan to run from explosions, sandstorms,
             alien tripods, pre-crime cop, the mummy, and terrorists with MapMyCruise.
           </p>
-          <span className="splash-signup-buttons">
-            <Link to="/signup"
-              className="splash-signup-demo">LOG IN WITH DEMO</Link>
-            <Link to="/signup"
-              className="splash-signup-email">SIGN UP WITH EMAIL</Link>
-          </span>
+          {!this.props.currentUser ?
+            (
+              <span className="splash-signup-buttons">
+                <Link to="/signup"
+                  className="splash-signup-demo">LOG IN WITH DEMO</Link>
+                <Link to="/signup"
+                  className="splash-signup-email">SIGN UP WITH EMAIL</Link>
+              </span>
+            ) : null
+          }
         </section>
 
         <section className="splash-icons">
@@ -89,4 +98,4 @@ class Splash extends React.Component {
 }
 
 
-export default Splash;
+export default connect(mapStateToProps, null)(Splash);

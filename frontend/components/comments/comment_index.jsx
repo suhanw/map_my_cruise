@@ -19,19 +19,25 @@ class CommentIndex extends React.Component {
       );
     });
 
-    if (!workoutComments.length) {
-      return (
-        <section className="workout-comments">
-          Be the first to comment!
-        </section>
-      );
-    }
+    // if (!workoutComments.length) {
+    //   return (
+    //   );
+    // }
 
     return (
       <section className="workout-comments">
-        <ul>
-          {workoutComments}
-        </ul>
+        {!workoutComments.length ?
+          (
+            <span>
+              Be the first to comment!
+            </span>
+          ) :
+          (
+            <ul>
+              {workoutComments}
+            </ul>
+          )
+        }
         <CommentFormContainer workout={this.props.workout} />
       </section>
     );

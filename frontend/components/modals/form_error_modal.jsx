@@ -10,15 +10,17 @@ class FormErrorModal extends React.Component {
     });
 
     return (
-      <div className="modal">
-        <h1>Errors</h1>
-        <img src="https://media.giphy.com/media/xUHVbjyYeC1Z6/giphy.gif" />
-        <ul>
-          {errorsDom}
-        </ul>
-        <button className="close-button">
-          CLOSE
-        </button>
+      <div className="modal-backdrop">
+        <div className="modal form-error">
+          <h1>Errors</h1>
+          <img src="https://media.giphy.com/media/xUHVbjyYeC1Z6/giphy.gif" />
+          <ul>
+            {errorsDom}
+          </ul>
+          <button className="close-button">
+            CLOSE
+          </button>
+        </div>
       </div>
     );
   }

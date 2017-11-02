@@ -1,4 +1,4 @@
-import {RECEIVE_USER_SEARCH_RESULTS} from '../actions/user_search_actions';
+import {RECEIVE_USER_SEARCH_RESULTS, CLEAR_RESULTS} from '../actions/user_search_actions';
 import {CLEAR_ENTITIES} from '../actions/clear_actions';
 
 const defaultState = [];
@@ -11,8 +11,11 @@ const UserSearchResultsReducer = (state=defaultState, action) => {
       // new search terms.
       return action.payload.userSearchResults;
 
+    case CLEAR_RESULTS:
+      return [];
+
     case CLEAR_ENTITIES:
-      return {};
+      return [];
     default:
       return state;
   }

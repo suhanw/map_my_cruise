@@ -21,8 +21,8 @@ class Header extends React.Component {
 
     let avatarDropdown = (
       <ul className="avatar-dropdown">
-        <li><Link to="/edit_profile">Settings</Link></li>
-        <li><button onClick={this.props.logout}>Logout</button></li>
+        <Link to="/edit_profile"><li>Settings</li></Link>
+        <a onClick={this.props.logout}><li>Logout</li></a>
       </ul>
     );
 
@@ -50,22 +50,22 @@ class Header extends React.Component {
 
       let routesDropdown = (
         <ul className="routes-dropdown">
-          <li><Link to="/routes/create">Create Route</Link></li>
-          <li><Link to="/routes">My Routes</Link></li>
+          <Link to="/routes/create"><li>Create Route</li></Link>
+          <Link to="/routes"><li>My Routes</li></Link>
         </ul>
       );
 
       let workoutsDropdown = (
         <ul className="workouts-dropdown">
-          <li><Link to="/workouts/create">Log Workout</Link></li>
-          <li><Link to="/workouts">My Workouts</Link></li>
+          <Link to="/workouts/create"><li>Log Workout</li></Link>
+          <Link to="/workouts"><li>My Workouts</li></Link>
         </ul>
       );
 
       let friendsDropdown = (
         <ul className="friends-dropdown">
-          <li><Link to="/friends/find">Find Friends</Link></li>
-          <li><Link to="/friends">My Friends</Link></li>
+          <Link to="/friends/find"><li>Find Friends</li></Link>
+          <Link to="/friends"><li>My Friends</li></Link>
         </ul>
       );
 
@@ -103,10 +103,10 @@ class Header extends React.Component {
       <section className="shortcut-main">
         <nav className="shortcut-bar">
           <ul className="shortcut-bar-links">
-            <li><Link to="/workouts/">Workout Dashboard</Link></li>
-            <li><Link to="/routes/create">Create Route</Link></li>
-            <li><Link to="/workouts/create">Log Workout</Link></li>
-            <li><Link to="/friends/find">Find Friends</Link></li>
+            <Link to="/workouts/"><li>Workout Dashboard</li></Link>
+            <Link to="/routes/create"><li>Create Route</li></Link>
+            <Link to="/workouts/create"><li>Log Workout</li></Link>
+            <Link to="/friends/find"><li>Find Friends</li></Link>
           </ul>
         </nav>
       </section>

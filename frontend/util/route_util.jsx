@@ -18,7 +18,7 @@ const Protect = ({component: Component, path, exact, loggedIn}) => {
         loggedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/login" />
+          <Redirect push to="/login" />
         )
       )} />
     );

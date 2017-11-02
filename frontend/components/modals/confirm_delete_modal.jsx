@@ -17,11 +17,13 @@ class ConfirmDeleteModal extends React.Component {
     }
 
     return(
-      <div className="modal">
-        <h1>{confirmMessage}</h1>
-        <img src="https://media.giphy.com/media/sKq26uRsmRt4s/giphy.gif" />
-        <button className="ok-button" onClick={this.handleClick}>OK</button>
-        <button className="cancel-button" onClick={this.props.closeModal}>Cancel</button>
+      <div className="modal-backdrop">
+        <div className="modal confirm-delete">
+          <h1>{confirmMessage}</h1>
+          <img src="https://media.giphy.com/media/sKq26uRsmRt4s/giphy.gif" />
+          <button className="ok-button" onClick={this.handleClick}>OK</button>
+          <button className="cancel-button" onClick={this.props.closeModal}>Cancel</button>
+        </div>
       </div>
     );
   }

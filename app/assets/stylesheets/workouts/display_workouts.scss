@@ -74,7 +74,6 @@
   color: $blue;
 }
 
-
 div[class*="ad-gif"] {
   display: flex;
   border: 1px solid $gray;
@@ -92,6 +91,7 @@ div[class*="ad-gif"] {
   box-sizing: border-box;
 }
 
+// to add black background behind the gif background
 div[class*="ad-gif"]::after {
   position: absolute;
   top: 0;
