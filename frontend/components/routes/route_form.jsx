@@ -35,12 +35,29 @@ class RouteForm extends React.Component {
 
       return;
     });
+
+    this.renderCursorTooltip();
+  }
+
+  renderCursorTooltip() {
+    let cursorToolTip = document.getElementById('cursor-tooltip');
+    window.onmousemove = (e) => {
+      let x = e.clientX;
+      let y = e.clientY;
+
+      cursorToolTip.style.top = `${y+10}px`;
+      cursorToolTip.style.left = `${x+10}px`;
+    };
   }
 
   render(){
 
     return (
       <section id="route-form-container">
+
+        <div id="cursor-tooltip">
+          Click on 2 points (start and end) to map a route.
+        </div>
 
         <Modal modal={this.props.modal}
           errors = {this.props.errors}
@@ -53,8 +70,6 @@ class RouteForm extends React.Component {
           <div id="directions"></div>
         </form>
         <Map className="map"
-          width="100%"
-          height="100vh"
           setRouteState={this.setRouteState}
           openModal={this.props.openModal}
           receiveRouteErrors={this.props.receiveRouteErrors}

@@ -50,6 +50,18 @@ class Map extends React.Component {
     this.routePath = google.maps.geometry.encoding.decodePath(newProps.route.polyline);
   }
 
+  renderCursorTooltip() {
+    let cursorToolTip = document.getElementById('cursor-tooltip');
+    window.onmousemove = (e) => {
+      let x = e.clientX;
+      let y = e.clientY;
+
+      cursorToolTip.style.top = `${y+10}px`;
+      cursorToolTip.style.left = `${x+10}px`;
+      // cursorToolTip.style.display = `block`;
+    };
+  }
+
   render() {
     if (this.state.loading) {
       return(
@@ -66,7 +78,11 @@ class Map extends React.Component {
   }
 
   renderInitMap(center){
-    const mapOptions = { center: center, zoom: 15 };
+    const mapOptions = {
+      center: center,
+      zoom: 15,
+      draggableCursor: "crosshair"
+    };
     const mapDom = document.getElementById('map');
     this.map = new google.maps.Map(
       mapDom,
@@ -80,9 +96,6 @@ class Map extends React.Component {
       panel: document.getElementById('directions'), // to display directions
       preserveViewport: true, // to prevent the map from zooming into path
     });
-
-    mapDom.style.width = this.props.width;
-    mapDom.style.height = this.props.height;
 
     // to render existing route for edit form
     if (this.props.formType === 'edit') {
