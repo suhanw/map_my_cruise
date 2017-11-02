@@ -8,7 +8,7 @@ import UserSearchContainer from './user_search_container';
 class DisplayFriends extends React.Component {
   render() {
     const adGifClass = `ad-gif-${randomizer(3, 1)}`;
-    
+
     return (
       <section className="display-friends-container">
         <h2>MY FRIENDS</h2>
