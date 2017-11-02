@@ -50,7 +50,8 @@ class RouteForm extends React.Component {
       cursorToolTip.style.left = `${x+10}px`;
 
       if (this.state.polyline !== '') {
-        cursorToolTip.style.visibility = "hidden";
+        // cursorToolTip.style.visibility = "hidden";
+        cursorToolTip.innerHTML = "Click along any point on the route and drag to modify the route.";
       }
     };
   }
@@ -62,10 +63,6 @@ class RouteForm extends React.Component {
 
         <div id="cursor-tooltip">
           Click on 2 points (start and end) to map a route.
-        </div>
-
-        <div>
-
         </div>
 
         <Modal modal={this.props.modal}
