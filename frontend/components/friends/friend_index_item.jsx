@@ -68,14 +68,28 @@ class FriendIndexItem extends React.Component {
         </div>
       );
     } else { // for user search results
-      friendOptions = (
-        <div className="friend-options">
-          <button className="blue-button"
-            onClick={this.handleClick(friendStatus)}>
-            ADD
-          </button>
-        </div>
-      );
+      // debugger
+      // const { currentUserFriends } = this.props;
+
+      // if (currentUserFriends.indexOf(friendStatus.friendee_id) !== -1) {
+      //   friendOptions = (
+      //     <div className="friend-options">
+      //       <button className="blue-button">
+      //         Added
+      //       </button>
+      //     </div>
+      //   );
+      // } else {
+        friendOptions = (
+          <div className="friend-options">
+            <button className="blue-button"
+              onClick={this.handleClick(friendStatus)}>
+              ADD
+            </button>
+          </div>
+        );
+      // }
+
     }
 
     return friendOptions;

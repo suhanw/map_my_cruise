@@ -41,6 +41,7 @@ const App = () => {
           <ProtectRoute path="/workouts" component={DisplayWorkouts} />
 
           <ProtectRoute path="/friends" component={DisplayFriends} />
+
         </Switch>
       </ScrollToTop>
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import {Link, Switch} from 'react-router-dom';
 import FriendIndexContainer from './friend_index_container';
-import UserSearchContainer from './user_search_container';
 import {ProtectRoute} from '../../util/route_util';
 import {randomizer} from '../../util/randomizer';
+import UserSearchContainer from './user_search_container';
 
 class DisplayFriends extends React.Component {
   render() {
