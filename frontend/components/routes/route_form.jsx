@@ -12,11 +12,12 @@ class RouteForm extends React.Component {
     this.handleSearch = this.handleSearch.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
     this.setRouteState = this.setRouteState.bind(this);
+    this.renderCursorTooltip = this.renderCursorTooltip.bind(this);
   }
 
-  componentWillReceiveProps(newProps){
-    this.setState(newProps.route);
-  }
+  // componentWillReceiveProps(newProps){
+  //   this.setState(newProps.route);
+  // }
 
   componentDidMount() {
     if (this.props.formType === 'edit') {
@@ -47,6 +48,10 @@ class RouteForm extends React.Component {
 
       cursorToolTip.style.top = `${y+10}px`;
       cursorToolTip.style.left = `${x+10}px`;
+
+      if (this.state.polyline !== '') {
+        cursorToolTip.style.visibility = "hidden";
+      }
     };
   }
 
@@ -57,6 +62,10 @@ class RouteForm extends React.Component {
 
         <div id="cursor-tooltip">
           Click on 2 points (start and end) to map a route.
+        </div>
+
+        <div>
+
         </div>
 
         <Modal modal={this.props.modal}

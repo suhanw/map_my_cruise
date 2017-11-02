@@ -72,8 +72,8 @@ class Map extends React.Component {
     }
 
     return (
-      <div id='map'>
-      </div>
+        <div id='map'>
+        </div>
     );
   }
 
