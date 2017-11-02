@@ -74,21 +74,21 @@ Comment.create!({
 FriendStatus.destroy_all
 FriendStatus.create!({
   friender_id: User.find_by(email:'eh@mi.com').id,
-  friendee_id: User.find_by(email:'suhan@test.com').id,
+  friendee_id: User.find_by(email:'v@c.com').id,
   friend_status: 'yes'
   })
 FriendStatus.create!({
   friender_id: User.find_by(email:'eh@mi.com').id,
-  friendee_id: User.find_by(email:'suhan2@test.com').id,
+  friendee_id: User.find_by(email:'ja@mr.com').id,
   friend_status: 'pending'
   })
 FriendStatus.create!({
-  friender_id: User.find_by(email:'suhan3@test.com').id,
+  friender_id: User.find_by(email:'c@eot.com').id,
   friendee_id: User.find_by(email:'eh@mi.com').id,
   friend_status: 'yes'
   })
 FriendStatus.create!({
-  friender_id: User.find_by(email:'suhan5@test.com').id,
+  friender_id: User.find_by(email:'lg@tt.com').id,
   friendee_id: User.find_by(email:'eh@mi.com').id,
   friend_status: 'pending'
   })
