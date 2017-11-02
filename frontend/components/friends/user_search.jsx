@@ -11,6 +11,7 @@ class UserSearch extends React.Component {
       searchTerm: "",
       loadingSearchResults: false,
       loadingPendingRequests: true,
+      errors: this.props.errors,
     };
 
     this.renderUserSearchResults = this.renderUserSearchResults.bind(this);
@@ -27,9 +28,31 @@ class UserSearch extends React.Component {
     );
   }
 
+  componentWillReceiveProps(newProps) {
+    this.setState({errors: newProps.errors});
+  }
+
   render(){
+
+    let errorDom = null;
+
+    if (this.state.errors.length) {
+      let errorDomItems = this.state.errors.map((error, i)=>{
+        return (
+          <li key={i}>{error}</li>
+        );
+      });
+
+      errorDom = (
+        <ul className="errors">
+          {errorDomItems}
+        </ul>
+      );
+    }
+
     return (
       <section className="user-search" onSubmit={this.handleSubmit}>
+        <h3>FIND FRIENDS BY EMAIL, FIRST NAME, OR LAST NAME:</h3>
         <form className="user-search-form">
           <input type="text"
             className="input-text"
@@ -37,6 +60,7 @@ class UserSearch extends React.Component {
           <button type="submit"
             className="orange-button">SEARCH</button>
         </form>
+        {errorDom}
 
         {this.renderPendingFriendRequests()}
 
@@ -44,12 +68,16 @@ class UserSearch extends React.Component {
           {this.renderUserSearchResults()}
         </section>
 
-        <section className="pending-friend-requests">
-          <h3>PENDING FRIEND REQUESTS</h3>
-          <ul>
-            {this.pendingFriendRequests}
-          </ul>
-        </section>
+        {this.pendingFriendRequests.length ?
+          (
+            <section className="pending-friend-requests">
+              <h3>PENDING FRIEND REQUESTS</h3>
+              <ul>
+                {this.pendingFriendRequests}
+              </ul>
+            </section>
+          ) :
+          null}
       </section>
     );
   }
@@ -132,6 +160,10 @@ class UserSearch extends React.Component {
 
   }
 
+  renderErrors() {
+
+  }
+
   handleChange(e) {
     this.setState({searchTerm: e.target.value});
   }
@@ -142,7 +174,11 @@ class UserSearch extends React.Component {
     this.props.searchUsers(this.state.searchTerm).then(
       () => {
         this.setState({loadingSearchResults: false});
-      });
+      },
+      () => {
+        this.setState({loadingSearchResults: false});
+      }
+    );
   }
 }
 

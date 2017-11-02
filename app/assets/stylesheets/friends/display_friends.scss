@@ -1,29 +1,100 @@
 .display-friends-container {
-  border: 1px solid green;
+  // border: 1px solid green;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.display-friends-container h2 {
+  flex-basis: 100%;
 }
 
 .display-friends-container h3 {
-  font-weight: bold;
+  color: $gray;
+  margin-top: 10px;
 }
 
 .friend-index {
-  border: 1px solid red;
+  width: 70%;
 }
 
-.friend-box {
-  border: 1px solid red;
+.friends, .pending-friend-requests, .pending-friend-receipts {
+  margin-top: 20px;
+}
+
+.user-search {
+  width: 70%;
+}
+
+.user-search-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.user-search-form input {
+  flex-grow: 2;
+  margin-right: 10px;
+}
+
+.user-search-form button {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.user-search-results {
+  margin-bottom: 20px;
+}
+
+.user-search-results ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+}
+
+
+.friend-box, .search-result-box {
   margin: 10px 0;
+  padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 300px;
+  background: $lightest-gray;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 2px 2px 0 0 $light-gray;
+}
+
+.friend-box {
+  // width: 100%;
+  margin: 10px;
+}
+
+.search-result-box {
+  width: 45%;
+  margin-right: 20px;
 }
 
 .friend-avatar {
   width: 50px;
   height: auto;
+  margin-right: 10px;
 }
 
 .friend-options {
   margin-left: auto;
+}
+
+.friend-options .orange-button {
+  margin-right: 10px;
+}
+
+.friend-added {
+  color: $gray;
+  margin-left: auto;
+}
+
+.user-search .errors {
+  margin-top: 0;
 }

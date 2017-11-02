@@ -6,12 +6,13 @@ import {createFriendStatus,
   deleteFriendStatus
 } from '../../actions/friends_actions';
 
-const mapStateToProps = ({entities: {friends, users, userSearchResults}, session: {currentUser}}) => {
+const mapStateToProps = ({entities: {friends, users, userSearchResults}, errors: {user_search}, session: {currentUser}}) => {
   return {
     currentUser,
     friends,
     userSearchResults,
     users,
+    errors: user_search,
   };
 };
 

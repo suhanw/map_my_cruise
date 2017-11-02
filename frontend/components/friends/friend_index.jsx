@@ -44,24 +44,38 @@ class FriendIndex extends React.Component {
 
     return (
       <section className="friend-index">
-        <section className="friends">
-          <h3>FRIENDS</h3>
-          <ul>
-            {this.actualFriends}
-          </ul>
-        </section>
+
+        {this.actualFriends.length ?
+          (
+            <section className="friends">
+              <h3>FRIENDS</h3>
+              <ul>
+                {this.actualFriends}
+              </ul>
+            </section>
+          ) :
+          null}
+
+        {this.pendingFriendRequests.length ?
+          (
         <section className="pending-friend-requests">
-          <h3>PENDING FRIEND REQUESTS</h3>
-          <ul>
-            {this.pendingFriendRequests}
-          </ul>
+              <h3>PENDING FRIEND REQUESTS</h3>
+              <ul>
+                {this.pendingFriendRequests}
+              </ul>
         </section>
-        <section className="pending-friend-receipts">
-          <h3>FRIEND REQUESTS</h3>
-          <ul>
-            {this.pendingFriendReceipts}
-          </ul>
-        </section>
+        ) : null }
+
+        {this.pendingFriendReceipts.length ?
+          (
+            <section className="pending-friend-receipts">
+              <h3>FRIEND REQUESTS</h3>
+              <ul>
+                {this.pendingFriendReceipts}
+              </ul>
+            </section>
+          ) :
+          null }
       </section>
     );
   }

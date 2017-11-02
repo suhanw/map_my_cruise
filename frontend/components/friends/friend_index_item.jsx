@@ -5,18 +5,28 @@ class FriendIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      friendType: this.props.friendType,
+    };
+
     this.renderFriendOptions = this.renderFriendOptions.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   render() {
-    const { user, friendType, friendStatus } = this.props;
+    const { user, friendStatus } = this.props;
+    const { friendType } = this.state;
+    let cssClass = "friend-box";
+
+    if (friendType === 'userSearchResult' || friendType === 'added') {
+      cssClass = "search-result-box";
+    }
 
     return (
-      <li className="friend-box">
+      <li className={cssClass}>
         <img src={user.avatar_url} className="friend-avatar" />
         <span>
-          {`${user.fname} ${user.lname}`}
+          {`${user.fname} ${user.lname} (${user.email})`}
         </span>
         {this.renderFriendOptions(friendType, friendStatus)}
       </li>
@@ -29,7 +39,7 @@ class FriendIndexItem extends React.Component {
     if (friendType === "actual") {
       friendOptions = (
         <div className="friend-options">
-          <button
+          <button className="blue-button"
             onClick={this.handleClick(friendStatus.id)}>
             Unfriend
           </button>
@@ -67,40 +77,36 @@ class FriendIndexItem extends React.Component {
           </button>
         </div>
       );
-    } else { // for user search results
-      // debugger
-      // const { currentUserFriends } = this.props;
-
-      // if (currentUserFriends.indexOf(friendStatus.friendee_id) !== -1) {
-      //   friendOptions = (
-      //     <div className="friend-options">
-      //       <button className="blue-button">
-      //         Added
-      //       </button>
-      //     </div>
-      //   );
-      // } else {
+    } else if(friendType === 'userSearchResult') { // for user search results
         friendOptions = (
           <div className="friend-options">
             <button className="blue-button"
-              onClick={this.handleClick(friendStatus)}>
+              onClick={this.handleClick(friendStatus, "added")}>
               ADD
             </button>
           </div>
         );
-      // }
+    } else {
+      friendOptions = (
+        <div className="friend-added">
+          Added
+        </div>
+      );
 
     }
 
     return friendOptions;
   }
 
-  handleClick(arg) {
+  handleClick(arg, friendType) {
     const {action, fetchFriendStatuses} = this.props;
     // arg can be either friendStatus POJO, or friendStatusID
     return () => {
       action(arg).then(()=>{
         fetchFriendStatuses();
+        if (friendType) {
+          this.setState({friendType});
+        }
       });
     };
   }
