@@ -1,6 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Spinner from './spinner';
+import Modal from './modals/modal';
+import FormErrorModal from './modals/form_error_modal';
 
 class SessionForm extends React.Component {
 
@@ -27,10 +29,10 @@ class SessionForm extends React.Component {
   render() {
 
     // to render any errors
-    let errors;
-    if(this.props.errors.length > 0) {
-      errors = this.renderErrors(this.props.errors);
-    }
+    // let errors;
+    // if(this.props.errors.length > 0) {
+    //   errors = this.renderErrors(this.props.errors);
+    // }
 
     // to render the login or signup link above form
     let shortcutLink = 'SIGN UP';
@@ -38,7 +40,9 @@ class SessionForm extends React.Component {
 
     // to render fields specific to new user form
     let signupFields;
+    let spinnerMessage = 'log you in!';
     if (this.props.formType === 'signup') {
+      spinnerMessage = 'sign you up!';
       shortcutLink = 'LOG IN';
       shortcutLinkUrl = '/login';
       signupFields = (
@@ -58,12 +62,17 @@ class SessionForm extends React.Component {
     return (
       <section className="session-form-background">
 
+        <Modal modal={this.props.modal}
+          errors = {this.props.errors}
+          component={FormErrorModal}
+          closeModal={this.props.closeModal} />
+
         {this.state.loading ?
           (
             <div className="spinner-backdrop">
               <Spinner
                 spinnerType="session"
-                spinnerMessage="HANG ON while we log you in!" />
+                spinnerMessage={`HANG ON while we ${spinnerMessage}`} />
             </div>
           ) : null
         }
@@ -83,8 +92,6 @@ class SessionForm extends React.Component {
         </section>
 
         <form className="session-form" onSubmit={this.handleSubmit}>
-
-          {errors}
 
           {signupFields}
 
@@ -128,7 +135,14 @@ class SessionForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.submitForm(this.state);
+    this.props.submitForm(this.state).then(
+      () => this.setState({loading: false}),
+      () => {
+        this.setState({loading: false});
+        this.props.openModal('errors');
+      }
+    );
+    this.setState({loading: true});
   }
 
   demoLogin() {
