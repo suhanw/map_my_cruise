@@ -20,8 +20,13 @@ class Api::UsersController < ApplicationController
   end
 
   def index
-    # TODO: to refactor with query search params
-    @users = User.all
+    if params[:search_term] == ""
+      render json: ['Please enter a search term.']
+    elsif params[:search_term]
+      @users = User.where("email LIKE ?", "%#{params[:search_term]}%")
+    else
+      render json: ['Please enter a search term.']
+    end
   end
 
   def show

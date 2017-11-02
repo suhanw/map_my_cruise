@@ -36,7 +36,7 @@ const SessionReducer = (state = defaultState, action) => {
       // if current user doesn't have friends, initialize the 'friends' key with empty arr
       if (!newState.currentUser.friends) { newState.currentUser.friends = []; }
       friendsArr = Object.keys(action.payload.friends).map((id)=>parseInt(id));
-      // don't add friend to 'friends' array if it's status change from 'pending' to 'yes'
+      // don't add friend to 'friends' array if it's a status change from 'pending' to 'yes'
       // because it is already in the array when it was 'pending'
       if (newState.currentUser.friends.indexOf(friendsArr[0]) === -1) {
         newState.currentUser.friends = newState.currentUser.friends.concat(friendsArr);

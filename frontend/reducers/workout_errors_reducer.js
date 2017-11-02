@@ -6,8 +6,6 @@ import {
 } from '../actions/workouts_actions';
 import {CLEAR_ERRORS} from '../actions/clear_actions';
 
-
-
 const defaultState = [];
 
 const WorkoutErrorsReducer = (state=defaultState, action)=>{

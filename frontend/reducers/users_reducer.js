@@ -1,3 +1,4 @@
+import merge from 'lodash/merge';
 import {
   RECEIVE_ROUTES,
   RECEIVE_ROUTE,
@@ -7,6 +8,7 @@ import {
   RECEIVE_FRIEND_STATUSES,
   RECEIVE_FRIEND_STATUS
 } from '../actions/friends_actions';
+import {RECEIVE_USER_SEARCH_RESULTS} from '../actions/user_search_actions';
 import {CLEAR_ENTITIES} from '../actions/clear_actions';
 
 const defaultState = {};
@@ -26,6 +28,13 @@ const UsersReducer = (state=defaultState, {type, payload}) => {
       return Object.assign({}, state, payload.users);
     case RECEIVE_FRIEND_STATUS:
       return Object.assign({}, state, payload.users);
+
+    case RECEIVE_USER_SEARCH_RESULTS:
+      return merge({}, state, payload.users);
+
+    case CLEAR_ENTITIES:
+      return {};
+            
     default:
       return state;
   }

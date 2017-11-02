@@ -13,6 +13,7 @@ import RouteErrorsReducer from './route_errors_reducer';
 import WorkoutErrorsReducer from './workout_errors_reducer';
 import CommentErrorsReducer from './comment_errors_reducer';
 import FriendErrorsReducer from './friend_errors_reducer';
+import UserSearchErrorsReducer from './user_search_errors_reducer';
 
 const ErrorsReducer = combineReducers({
   session: SessionErrorsReducer,
@@ -20,6 +21,7 @@ const ErrorsReducer = combineReducers({
   workouts: WorkoutErrorsReducer,
   comments: CommentErrorsReducer,
   friends: FriendErrorsReducer,
+  user_search: UserSearchErrorsReducer,
 });
 
 export default ErrorsReducer;
