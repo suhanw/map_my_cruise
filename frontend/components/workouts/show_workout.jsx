@@ -14,6 +14,7 @@ class ShowWorkout extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this);
     this.renderComments = this.renderComments.bind(this);
+    this.renderWorkoutOptions = this.renderWorkoutOptions.bind(this);
   }
 
   render() {
@@ -97,11 +98,8 @@ class ShowWorkout extends React.Component {
             <table className="workout-show-buttons">
               <tbody>
                 <tr>
-                  <td>
-                    <Link to={`/workouts/${workout.id}/edit`} className="orange-button">EDIT</Link>
-                    <button onClick={this.handleDelete} className="orange-button">DELETE</button>
-                    <Link className="workout-index-link" to="/workouts">Back to My Workouts</Link>
-                  </td>
+                  {this.renderWorkoutOptions()}
+
                 </tr>
               </tbody>
             </table>
@@ -164,6 +162,27 @@ class ShowWorkout extends React.Component {
     return (
       <CommentIndexContainer workoutId={this.props.workout.id} />
     );
+  }
+
+  renderWorkoutOptions() {
+    let optionsDom;
+    if (this.props.workoutCreator.id === this.props.currentUser.id) {
+      optionsDom = (
+        <td>
+          <Link to={`/workouts/${this.props.workout.id}/edit`} className="orange-button">EDIT</Link>
+          <button onClick={this.handleDelete} className="orange-button">DELETE</button>
+          <Link className="workout-index-link" to="/workouts">Back to My Workouts</Link>
+        </td>
+      )
+    } else {
+      optionsDom = (
+        <td>
+          <Link className="workout-index-link" to="/workouts">Back to My Workouts</Link>
+        </td>
+      );
+    }
+
+    return optionsDom;
   }
 
   handleDelete(e) {

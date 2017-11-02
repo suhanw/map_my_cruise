@@ -27,11 +27,13 @@ class Api::UsersController < ApplicationController
       already_friends = FriendStatus
                   .where("friender_id = ? OR friendee_id = ?", current_user.id, current_user.id)
                   .pluck(:friender_id, :friendee_id).flatten
+
+      already_friends = [current_user.id] if already_friends.empty?
+
       @users = User.where(
         "email LIKE ? OR fname LIKE ? OR lname LIKE ?",
-        "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%"
-      ).where("id NOT IN (?)", already_friends) unless already_friends.empty?
-
+        "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%")
+        .where("id NOT IN (?)", already_friends)
     end
   end
 

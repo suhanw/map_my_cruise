@@ -4,7 +4,7 @@ import WorkoutForm from './workout_form';
 import {openModal, closeModal} from '../../actions/modal_actions';
 import {fetchRoutes} from '../../actions/routes_actions';
 
-const mapStateToProps = ({errors, ui: {modal}, entities: {workouts, routes}}, ownProps)=>{
+const mapStateToProps = ({errors, ui: {modal}, entities: {workouts, routes}, session: {currentUser}}, ownProps)=>{
   let workout = workouts.workouts_by_id[ownProps.match.params.workoutId];
   if(!workout) {
     workout = {
@@ -21,6 +21,7 @@ const mapStateToProps = ({errors, ui: {modal}, entities: {workouts, routes}}, ow
     workout,
     formType: 'edit',
     routes,
+    currentUser,
   };
 };
 

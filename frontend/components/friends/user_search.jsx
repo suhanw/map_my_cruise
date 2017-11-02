@@ -157,17 +157,30 @@ class UserSearch extends React.Component {
       );
     });
 
-    return (
+    userSearchResultsDom = (
       <ul>
         {userSearchResultsDom}
       </ul>
     );
 
+    if (!userSearchResults.length) {
+      userSearchResultsDom = (
+        <ul className="errors">
+          <li>No users match your search.</li>
+        </ul>
+      );
+    }
+
+    // return (
+    //   <ul>
+    //     {userSearchResultsDom}
+    //   </ul>
+    // );
+
+    return userSearchResultsDom;
+
   }
 
-  renderErrors() {
-
-  }
 
   handleChange(e) {
     this.setState({searchTerm: e.target.value});

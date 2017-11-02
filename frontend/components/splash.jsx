@@ -12,7 +12,7 @@ const mapStateToProps = ({session: {currentUser}}) => {
 class Splash extends React.Component {
 
   render() {
-    const randSplashClass = `splash-image splash-image-${randomizer(13, 1)}`;
+    const randSplashClass = `splash-image splash-image-${randomizer(12, 1)}`;
 
     return (
       <main>

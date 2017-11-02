@@ -67,12 +67,19 @@ class WorkoutForm extends React.Component {
   }
 
   render() {
+
     const adGifClass = `ad-gif-${randomizer(3, 1)}`;
 
     if (this.state.loading) {
       return (
         <div className="spinner-box">
           <Spinner />;
+        </div>
+      );
+    } else if (this.props.workout.user !== this.props.currentUser.id) {
+      return (
+        <div>
+          You are not authorized to edit this workout!
         </div>
       );
     }

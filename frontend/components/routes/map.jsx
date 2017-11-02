@@ -89,6 +89,9 @@ class Map extends React.Component {
       mapOptions
     );
 
+    // to allow user to add markers
+    this.map.addListener('click', this.handleMapClick);
+
     // create and hook DirectionsRenderer to map
     this.directionsRenderer = new google.maps.DirectionsRenderer({
       draggable: true,
@@ -126,7 +129,6 @@ class Map extends React.Component {
       this.map.fitBounds(bounds);
     }
 
-    this.map.addListener('click', this.handleMapClick);
   }
 
   handleMapClick(event) {
@@ -198,9 +200,6 @@ class Map extends React.Component {
 
   renderPath(result, status) {
     if (status === 'OK') {
-      // this.directionsRenderer.setOptions(
-      //   {preserveViewport: false}
-      // );
       this.directionsRenderer.setDirections(result);
     } else {
       this.props.receiveRouteErrors(['Dude, that route is impossible, mission-wise.']);
