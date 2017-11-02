@@ -12,7 +12,7 @@ const defaultState = {
 
 const SessionReducer = (state = defaultState, action) => {
   let newState;
-  let friendsArr;
+  let friendsArr = [];
 
   switch (action.type) {
     case RECEIVE_USER:
@@ -20,7 +20,6 @@ const SessionReducer = (state = defaultState, action) => {
       return newState;
 
     case RECEIVE_FRIEND_STATUSES:
-      friendsArr = [];
       if (action.payload.friends) {
         // note: Object.keys return array of STRINGS, so map over to parse to int.
         friendsArr = Object.keys(action.payload.friends).map((id)=>parseInt(id));
@@ -34,9 +33,14 @@ const SessionReducer = (state = defaultState, action) => {
 
     case RECEIVE_FRIEND_STATUS:
       newState = Object.assign({}, state);
+      // if current user doesn't have friends, initialize the 'friends' key with empty arr
       if (!newState.currentUser.friends) { newState.currentUser.friends = []; }
       friendsArr = Object.keys(action.payload.friends).map((id)=>parseInt(id));
-      newState.currentUser.friends = newState.currentUser.friends.concat(friendsArr);
+      // don't add friend to 'friends' array if it's status change from 'pending' to 'yes'
+      // because it is already in the array when it was 'pending'
+      if (newState.currentUser.friends.indexOf(friendsArr[0]) === -1) {
+        newState.currentUser.friends = newState.currentUser.friends.concat(friendsArr);
+      }
       return newState;
 
     case REMOVE_FRIEND_STATUS:
