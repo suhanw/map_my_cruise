@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from './modals/modal';
 import MessageModal from './modals/message_modal';
 import FormErrorModal from './modals/form_error_modal';
+import Spinner from './spinner';
 
 class ProfileForm extends React.Component {
 
@@ -17,6 +18,7 @@ class ProfileForm extends React.Component {
         confirmNewPassword: '',
         messageClass: 'message-modal',
         message: '',
+        loading: false,
       }
     );
 
@@ -33,6 +35,16 @@ class ProfileForm extends React.Component {
 
     return (
       <section>
+
+        {this.state.loading ?
+          (
+            <div className="spinner-backdrop">
+              <Spinner
+                spinnerType="session"
+                spinnerMessage="HANG ON while we save your profile!" />
+            </div>
+          ) : null
+        }
 
         <Modal modal={this.props.modal}
           errors = {this.props.errors}
@@ -140,6 +152,8 @@ class ProfileForm extends React.Component {
     const file = this.state.imageFile;
     if (file) formData.append("user[image]", file);
 
+    this.setState({loading:true});
+
     this.props.editProfile(formData).then(
       this.renderMessage,
       () => this.props.openModal('errors')
@@ -150,6 +164,7 @@ class ProfileForm extends React.Component {
     this.setState({
       messageClass: 'message-modal-show',
       message: "Profile is saved successfully!",
+      loading: false,
     });
     setTimeout(()=>this.setState({messageClass: 'message-modal'}), 1500);
   }

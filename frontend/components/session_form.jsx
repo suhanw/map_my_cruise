@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import Spinner from './spinner';
 
 class SessionForm extends React.Component {
 
@@ -11,6 +12,7 @@ class SessionForm extends React.Component {
       password: '',
       fname: '',
       lname: '',
+      loading: false,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -56,6 +58,17 @@ class SessionForm extends React.Component {
     return (
       <section className="session-form-background">
 
+        {this.state.loading ?
+          (
+            <div className="spinner-backdrop">
+              <Spinner
+                spinnerType="session"
+                spinnerMessage="HANG ON while we log you in!" />
+            </div>
+          ) : null
+        }
+
+
         <section className="session-form">
           <Link to={shortcutLinkUrl} className="session-form-shortcut">
             {shortcutLink}
@@ -69,9 +82,7 @@ class SessionForm extends React.Component {
           <p>OR</p>
         </section>
 
-
         <form className="session-form" onSubmit={this.handleSubmit}>
-
 
           {errors}
 
@@ -125,6 +136,7 @@ class SessionForm extends React.Component {
       email: 'eh@mi.com',
       password: 'testing',
     });
+    this.setState({loading: true});
   }
 }
 
