@@ -67,6 +67,14 @@ class FriendIndexItem extends React.Component {
           </button>
         </div>
       );
+    } else { // for user search results
+      friendOptions = (
+        <div className="friend-options">
+          <button className="blue-button">
+            ADD
+          </button>
+        </div>
+      );
     }
 
     return friendOptions;

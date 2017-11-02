@@ -1,6 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {Link, Switch} from 'react-router-dom';
 import FriendIndexContainer from './friend_index_container';
+import UserSearchContainer from './user_search_container';
+import {ProtectRoute} from '../../util/route_util';
 import {randomizer} from '../../util/randomizer';
 
 class DisplayFriends extends React.Component {
@@ -8,7 +10,10 @@ class DisplayFriends extends React.Component {
     return (
       <section className="display-friends-container">
         <h2>MY FRIENDS</h2>
-        <FriendIndexContainer />
+        <Switch>
+          <ProtectRoute path="/friends/find" component={UserSearchContainer} />
+          <ProtectRoute path="/friends" component={FriendIndexContainer} />
+        </Switch>
       </section>
     );
   }

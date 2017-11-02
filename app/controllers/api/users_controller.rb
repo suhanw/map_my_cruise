@@ -20,6 +20,7 @@ class Api::UsersController < ApplicationController
   end
 
   def index
+    # add logic of filtering out users who are already friends with curr user
     if params[:search_term] == ""
       render json: ['Please enter a search term.']
     elsif params[:search_term]

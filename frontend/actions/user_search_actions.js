@@ -20,7 +20,7 @@ export const receiveUserSearchErrors = (errors) => {
 // thunk
 export const searchUsers = (searchTerm) => {
   return (dispatch) => {
-    UserSearchApiUtil.searchUsers(searchTerm).then(
+    return UserSearchApiUtil.searchUsers(searchTerm).then(
       (payload) => dispatch(receiveUserSearchResults(payload)),
       (errors) => dispatch(receiveUserSearchErrors(errors.responseJSON))
     );
