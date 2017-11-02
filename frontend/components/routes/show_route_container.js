@@ -5,8 +5,12 @@ import {fetchRoute, deleteRoute} from '../../actions/routes_actions';
 const mapStateToProps = ({entities, errors}, ownProps) => {
   const routeId = ownProps.match.params.routeId;
   let loading = true;
-  let route = entities.routes.routes_by_id[routeId];
+  let route;
   let user;
+
+  if (entities.routes.routes_by_id) {
+    route = entities.routes.routes_by_id[routeId];
+  }
 
   if (route) {
     user = entities.users[route.user];
