@@ -31,9 +31,9 @@ class ShowWorkout extends React.Component {
 
     if (loading) {
       return (
-        <div className="spinner-box">
-          <Spinner />;
-        </div>
+          <div className="spinner-box">
+            <Spinner />;
+          </div>
       );
     }
 

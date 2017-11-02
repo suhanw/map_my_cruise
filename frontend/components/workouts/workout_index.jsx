@@ -17,9 +17,11 @@ class WorkoutIndex extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <div className="spinner-box">
-          <Spinner />;
-        </div>
+        <section className="workout-index">
+          <div className="spinner-box">
+            <Spinner />;
+          </div>
+        </section>
       );
     }
 

@@ -25,17 +25,14 @@ class Api::UsersController < ApplicationController
     elsif !params[:search_term]
       render json: ['Please enter a search term.'], status: 404
     else
-      # add logic of filtering out users who are already friends with curr user
       already_friends = FriendStatus
                   .where("friender_id = ? OR friendee_id = ?", current_user.id, current_user.id)
                   .pluck(:friender_id, :friendee_id).flatten
-      unless already_friends.empty?
-        @users = User.where("email LIKE ?", "%#{params[:search_term]}%")
-                      .where("id NOT IN (?)", already_friends)
-      else
-        @users = User.where("email LIKE ?", "%#{params[:search_term]}%")
-      end
-      
+      @users = User.where(
+        "email LIKE ? OR fname LIKE ? OR lname LIKE ?",
+        "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%"
+      ).where("id NOT IN (?)", already_friends) unless already_friends.empty?
+
     end
   end
 

@@ -26,9 +26,11 @@ class FriendIndex extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <div className="spinnerBox">
-          <Spinner />
-        </div>
+        <section className="friend-index">
+          <div className="spinnerBox">
+            <Spinner />
+          </div>
+        </section>
       );
     }
 

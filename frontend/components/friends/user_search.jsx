@@ -145,7 +145,7 @@ class UserSearch extends React.Component {
       );
     }
 
-    const userSearchResultsDom = userSearchResults.map((userId) => {
+    let userSearchResultsDom = userSearchResults.map((userId) => {
       const friendStatus = { friendee_id: userId }; //all you need to make friend request
       return (
         <FriendIndexItem key={userId}
