@@ -70,7 +70,8 @@ class FriendIndexItem extends React.Component {
     } else { // for user search results
       friendOptions = (
         <div className="friend-options">
-          <button className="blue-button">
+          <button className="blue-button"
+            onClick={this.handleClick(friendStatus)}>
             ADD
           </button>
         </div>
