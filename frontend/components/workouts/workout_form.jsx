@@ -76,7 +76,7 @@ class WorkoutForm extends React.Component {
           <Spinner />;
         </div>
       );
-    } else if (this.props.workout.user !== this.props.currentUser.id) {
+    } else if (this.props.formType === 'edit' && this.props.workout.user !== this.props.currentUser.id) {
       return (
         <div>
           You are not authorized to edit this workout!

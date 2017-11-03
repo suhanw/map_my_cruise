@@ -4,7 +4,7 @@ const Footer = () => (
   <footer>
     <section className="mobile-app-bar">
       <ul>
-        <li>Track every mile you run, connect your devices, and get closer to your next PR.</li>
+        <li>If you want actual apps that are useful for you, please feel free to click on the links.</li>
         <li>
           <figure className='mobile-apple-icon'>
           </figure>
@@ -37,9 +37,9 @@ const Footer = () => (
       <section className="links-bar">
         <ul className="social-links">
           <li>SOCIAL</li>
-          <li>Like us on Facebook</li>
-          <li>Follow us on Twitter</li>
-          <li>MapMyRun Blog</li>
+          <li><a href="https://www.linkedin.com/in/suhanwijaya/" target="_">Add me on LinkedIn</a></li>
+          <li><a href="https://github.com/suhanw" target="_">Add me on Github</a></li>
+          <li><a href="https://www.facebook.com/suhanw" target="_">Add me on Facebook</a></li>
         </ul>
         <ul className="help-links">
           <li>HELP</li>
