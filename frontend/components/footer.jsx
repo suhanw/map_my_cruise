@@ -1,17 +1,21 @@
+
+
 import React from 'react';
 
 const Footer = () => (
   <footer>
     <section className="mobile-app-bar">
       <ul>
-        <li>If you want actual apps that are useful for you, please feel free to click on the links.</li>
+        <li>If you want actual apps that are useful, please feel free to click on the links.</li>
         <li>
-          <figure className='mobile-apple-icon'>
-          </figure>
+          <a href="https://www.apple.com/ios/app-store/" target="_">
+            <figure className='mobile-apple-icon'></figure>
+          </a>
         </li>
         <li>
-          <figure className='mobile-google-icon'>
-          </figure>
+          <a href="https://play.google.com/store?hl=en" target="_">
+            <figure className='mobile-google-icon'></figure>
+          </a>
         </li>
       </ul>
     </section>
@@ -48,31 +52,39 @@ const Footer = () => (
           <li>Developer / API</li>
         </ul>
         <ul className='about-us-links'>
-          <li>ABOUT US</li>
+          <li>ABOUT ME</li>
           <li>Advertise</li>
           <li>Join Our Team</li>
           <li>Shop Under Armour</li>
         </ul>
         <ul className='fitness-community-links'>
-          <li>UA FITNESS COMMUNITY</li>
+          <li>TOMFOOLERY COMMUNITY</li>
+          <li>
+            <figure className='fitness-community-icon spock'>
+              <a href="https://www.youtube.com/watch?v=cSLeBKT7-sM" target="_">
+                <i className="fa fa-hand-spock-o" aria-hidden="true"></i>
+              </a>
+            </figure>
+          </li>
           <li>
             <figure className='fitness-community-icon paper'>
-              <i className="fa fa-hand-paper-o" aria-hidden="true"></i>
+              <a href="https://www.youtube.com/watch?v=cSLeBKT7-sM" target="_">
+                <i className="fa fa-hand-paper-o" aria-hidden="true"></i>
+              </a>
             </figure>
           </li>
           <li>
             <figure className='fitness-community-icon rock'>
-              <i className="fa fa-hand-rock-o" aria-hidden="true"></i>
+              <a href="https://www.youtube.com/watch?v=cSLeBKT7-sM" target="_">
+                <i className="fa fa-hand-rock-o" aria-hidden="true"></i>
+              </a>
             </figure>
           </li>
           <li>
             <figure className='fitness-community-icon scissors'>
-              <i className="fa fa-hand-peace-o" aria-hidden="true"></i>
-            </figure>
-          </li>
-          <li>
-            <figure className='fitness-community-icon spock'>
-              <i className="fa fa-hand-spock-o" aria-hidden="true"></i>
+              <a href="https://www.youtube.com/watch?v=cSLeBKT7-sM" target="_">
+                <i className="fa fa-hand-peace-o" aria-hidden="true"></i>
+              </a>
             </figure>
           </li>
         </ul>

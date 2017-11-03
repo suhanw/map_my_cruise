@@ -37,6 +37,10 @@ class UserSearch extends React.Component {
     this.props.clearResults();
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   render(){
 
     let errorDom = null;
@@ -162,20 +166,6 @@ class UserSearch extends React.Component {
         {userSearchResultsDom}
       </ul>
     );
-
-    if (!userSearchResults.length) {
-      userSearchResultsDom = (
-        <ul className="errors">
-          <li>No users match your search.</li>
-        </ul>
-      );
-    }
-
-    // return (
-    //   <ul>
-    //     {userSearchResultsDom}
-    //   </ul>
-    // );
 
     return userSearchResultsDom;
 

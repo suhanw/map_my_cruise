@@ -34,6 +34,11 @@ class Api::UsersController < ApplicationController
         "email LIKE ? OR fname LIKE ? OR lname LIKE ?",
         "%#{params[:search_term]}%", "%#{params[:search_term]}%", "%#{params[:search_term]}%")
         .where("id NOT IN (?)", already_friends)
+      if @users.empty?
+        render json: ['No users matched your search.'], status: 404
+      else
+        render :index
+      end
     end
   end
 
