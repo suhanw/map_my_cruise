@@ -1,51 +1,43 @@
 # Sloth
 
-[Sloth live](http://sloth-chat.herokuapp.com)
+[MapMyCruise](http://mapmycruise.herokuapp.com)
 
-Sloth is a full-stack web application inspired by Slack. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
+MapMyCruise is a full-stack web application inspired by MapMyRun. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
 ## Features & Implementation
 
-### Live chat
-
-![Live chat example](docs/live-chat.gif)
-
-Messages are stored at the database level with associated an `user_id` and `channel_id`. Message authors can freely edit and delete their own messages. Realtime updating is accomplished using Pusher. A single instance of Pusher is constructed on each visit to the message feed component. Based on the data returned by the Pusher event, a client can update their feed and notifications.
-
-### Channels
-
-![Channels example](docs/channels.gif)
-
-Messages are organized by their parent Channels. All users can freely create and join channels. Users will only keep track of messages and notifications for channels in which they are members.
-
-### Direct messages
-
-![Direct messaging example](docs/direct-messaging.gif)
-
-Direct messages can only be seen by a specified group of members. The number of members per channel is limited to 7 users. Unlike regular channels, which can be muted, direct messages will always notify all specified members.
-
-### Notifications
-
-Along with updating the message feed, every message created generates a notification for every subscribed member. Notification are cleared on channel entry.
-
-### Giphy integration
-
-![Giphy example](docs/giphy.gif)
-
-By typing the command `/giphy` followed by a query string, users can generate a random related GIF from Giphy's library. This is accomplished using Giphy's public API.
-
 ### Single page
 
-Sloth is a single page app that allows for quick navigation between its various components. As data is fetched from Rails, components are only updated when necessary.
+MapMyCruise is a single page app that allows for quick navigation between its various components. As data is fetched from Rails, components are only updated when necessary.
+
+### Routes
+
+Routes are stored at the database level associated with `user_id`. Route creators can freely edit and delete their own routes. Route creation is accomplished using Google Maps API. A user creates a route by choosing 2 points on a map (start and end), which sends a DirectionsService request to calculate the best route between those 2 points. A DirectionsRenderer object is initialized to receive the response and render the calculated route on the map. The user can choose to further customize the route by dragging along any point on the route. The route is finally persisted to the database as an encoded string that represents a Polyline object.
+
+### Workouts
+
+Workouts are associated with `user_id` and `route_id`. After planning a route, a user can log a workout with that route. Workout creators can freely edit and delete their own workouts.
+
+## Comments
+
+Comments are associated with `user_id` and `workout_id`. The associated comments are rendered when viewing a specific workout. Users can comment on workouts logged by other users.
+
+## Friending
+
+Friends are stored at the database level as a join table associating `friender_id` and `friendee_id`, with a `friend_status` flag. 'Friender' is a user who makes the friend request, whereas 'friendee' is the user who receives the request. A user can view existing friends, friend requests, and friend requests received from other users.
 
 ## Future Directions for the Project
 
-In addition to the features already implemented, I plan to continue work on this project.  The next steps for Sloth are outlined below.
+In addition to the features already implemented, I plan to continue work on this project.  The next steps for MapMyCruise are outlined below.
 
-### Search
+### Privacy Settings
 
-Slack has a global search that allows users to find specific messages or other users. The results populate a list that appears in a new right-hand sidebar component. I intend to build this new component up using the Fuse.js library for fuzzy-searching.
+MapMyRun allows users to change the privacy settings on the routes/workouts they created, to either allow friends and global users to view and comment on routes/workouts, or keep them private. On the backend, I intend to implement a field on the `routes` and `workouts` tables to capture the settings at the database level, and re-factor the controller actions to respond to 'GET' requests with the appropriate data based on the settings. On the frontend, I intend to re-factor the edit components to allow users to change the privacy settings.
 
-### Reactions
+### Route Search
 
-Slack allows users to leave reactions to individual messages. Reactions are essentially tags that are associated with emojis. Slack admins can also create custom emojis. To build this I would have to build a new component for emoji selection.
+MapMyRun allows users to search for routes created by other users within a particular geographic area. The results are rendered as markers on a map. I intend to build this new component using the Google Maps Places library to search and pan to specific geographic areas on the map, and Markers object to locate specific routes on the map.
+
+### Route Bookmarking
+
+Hand in hand with the 2 features above, MapMyRun allows a user to bookmark a route they find in the search, based on the route's privacy settings. The user will then be able to log workouts based on the route that has been bookmarked. On the backend, I intend to create a `bookmarks` join table associating `route_id` and `user_id`, as well as the associated create and delete routers and controller actions. On the frontend, I will re-factor the components to view routes to include an option to bookmark, and the components to create/edit workouts to enable users to select bookmarked routes.
