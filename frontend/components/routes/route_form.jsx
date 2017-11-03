@@ -7,24 +7,18 @@ class RouteForm extends React.Component {
   constructor(props) {
     super(props);
 
-    // const {id, name, polyline, distance, city} = this.props.route;
-    //
-    // this.state = {
-    //   id,
-    //   name,
-    //   polyline,
-    //   distance,
-    //   city,
-    //   panelCollapsed: false,
-    // };
-
     this.state = this.props.route;
+    this.state['panelCollapsed'] = false;
+    this.state['panelClass'] = "route-form-details";
+
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
     this.setRouteState = this.setRouteState.bind(this);
     this.renderCursorTooltip = this.renderCursorTooltip.bind(this);
     this.togglePanel = this.togglePanel.bind(this);
+    this.renderToggler = this.renderToggler.bind(this);
   }
 
 
@@ -85,10 +79,9 @@ class RouteForm extends React.Component {
           component={FormErrorModal}
           closeModal={this.props.closeModal} />
 
-        <form className="route-form-details">
+        <form className={this.state.panelClass}>
 
-          <div className="panel-toggler"
-            onClick={this.togglePanel}>Collapse</div>
+          {this.renderToggler()}
 
           {this.renderSearchBar()}
           {this.renderFormInput()}
@@ -158,8 +151,31 @@ class RouteForm extends React.Component {
     });
   }
 
-  togglePanel() {
+  renderToggler() {
+    let toggleIcon = (this.state.panelCollapsed ?
+    <i className="fa fa-caret-up" aria-hidden="true"></i> :
+    <i className="fa fa-caret-down" aria-hidden="true"></i> );
 
+    return (
+      <div className="panel-toggler"
+        onClick={this.togglePanel}>
+        {toggleIcon}
+      </div>
+    );
+  }
+
+  togglePanel() {
+    if (this.state.panelCollapsed) {
+      this.setState({
+        panelCollapsed: false,
+        panelClass: "route-form-details",
+      });
+    } else {
+      this.setState({
+        panelCollapsed: true,
+        panelClass: "route-form-details collapse",
+      });
+    }
   }
 }
 
