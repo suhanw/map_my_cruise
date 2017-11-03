@@ -30,8 +30,9 @@ class WorkoutIndex extends React.Component {
       return (
         <section className="workout-index">
           <span className="message">
-            You have no workouts.
+            Have you been working out??? Get to running!
             Click <Link to="/workouts/create">here</Link> to log a workout.
+            <img src="https://media.giphy.com/media/xT0GqxMO3R5GEh5KdW/giphy.gif" />
           </span>
         </section>
       );

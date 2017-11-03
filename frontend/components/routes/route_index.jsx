@@ -43,8 +43,9 @@ class RouteIndex extends React.Component {
             <Link to="routes/create" className="orange-button">CREATE A ROUTE</Link>
           </div>
           <span className="message">
-            You have no routes.
+            You have no routes, lazy bum. Plan some routes!
             Click <Link to="/routes/create">here</Link> to create a new route.
+            <img src="https://media.giphy.com/media/2AbTBqALqk2MU/giphy.gif" />
           </span>
         </section>
       );

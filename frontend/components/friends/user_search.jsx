@@ -129,7 +129,7 @@ class UserSearch extends React.Component {
 
   isPendingFriendRequest(friend) {
     const { currentUser } = this.props;
-    return friend.friender_id === currentUser.id;
+    return friend.friender_id === currentUser.id && friend.friend_status === 'pending';
   }
 
   renderUserSearchResults() {
