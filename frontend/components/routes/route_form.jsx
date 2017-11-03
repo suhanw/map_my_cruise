@@ -7,6 +7,17 @@ class RouteForm extends React.Component {
   constructor(props) {
     super(props);
 
+    // const {id, name, polyline, distance, city} = this.props.route;
+    //
+    // this.state = {
+    //   id,
+    //   name,
+    //   polyline,
+    //   distance,
+    //   city,
+    //   panelCollapsed: false,
+    // };
+
     this.state = this.props.route;
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
@@ -19,7 +30,13 @@ class RouteForm extends React.Component {
 
   componentDidMount() {
     if (this.props.formType === 'edit') {
-      this.props.fetchRoute(this.props.match.params.routeId);
+      const that = this;
+      this.props.fetchRoute(this.props.match.params.routeId).then(
+        () => {
+          this.setState(that.props.route);
+        },
+        () => this.props.openModal('errors')
+      );
     }
 
     document.getElementById("directions").addEventListener('DOMSubtreeModified', ()=>{
