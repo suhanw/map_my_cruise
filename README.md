@@ -14,17 +14,25 @@ MapMyCruise is a single page app that allows for quick navigation between its va
 
 Routes are stored at the database level associated with `user_id`. Route creators can freely edit and delete their own routes. Route creation is accomplished using Google Maps API. A user creates a route by choosing 2 points on a map (start and end), which sends a DirectionsService request to calculate the best route between those 2 points. A DirectionsRenderer object is initialized to receive the response and render the calculated route on the map. The user can choose to further customize the route by dragging along any point on the route. The route is finally persisted to the database as an encoded string that represents a Polyline object.
 
+![Routes](docs/README_gifs/routes.gif)
+
 ### Workouts
 
 Workouts are associated with `user_id` and `route_id`. After planning a route, a user can log a workout with that route. Workout creators can freely edit and delete their own workouts.
 
-## Comments
+![Routes](docs/README_gifs/workouts.gif)
+
+### Comments
 
 Comments are associated with `user_id` and `workout_id`. The associated comments are rendered when viewing a specific workout. Users can comment on workouts logged by other users.
 
-## Friending
+![Routes](docs/README_gifs/comments.gif)
+
+### Friending
 
 Friends are stored at the database level as a join table associating `friender_id` and `friendee_id`, with a `friend_status` flag. 'Friender' is a user who makes the friend request, whereas 'friendee' is the user who receives the request. A user can view existing friends, friend requests, and friend requests received from other users.
+
+![Routes](docs/README_gifs/friends.gif)
 
 ## Future Directions for the Project
 
