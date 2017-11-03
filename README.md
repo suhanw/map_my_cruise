@@ -1,6 +1,6 @@
 # MapMyCruise
 
-[MapMyCruise](http://mapmycruise.herokuapp.com)
+<a href="http://mapmycruise.herokuapp.com" target="_">MapMyCruise</a>
 
 MapMyCruise is a full-stack web application inspired by MapMyRun. It utilizes Ruby on Rails on the backend, a PostgreSQL database, and React.js with a Redux architectural framework on the frontend.
 
