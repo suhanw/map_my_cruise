@@ -121,6 +121,13 @@ footer {
   color: #9297a3;
 }
 
+.social-links li:hover a,
+.about-us-links li:hover a,
+.help-links li:hover a {
+  color: white;
+  text-decoration: underline;
+}
+
 .links-bar ul li:first-of-type {
   color: white;
   margin: 5px 0;

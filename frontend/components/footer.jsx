@@ -1,6 +1,5 @@
-
-
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 const Footer = () => (
   <footer>
@@ -26,13 +25,13 @@ const Footer = () => (
         </figure>
         <ul>
           <li className="mapmyrun-link">
-            <i className="fa fa-superpowers" aria-hidden="true"></i>
+            <i className="fa fa-fighter-jet" aria-hidden="true"></i>
             mapmycruise
           </li>
-          <li className="fitness-link">fitness</li>
-          <li className="walk-link">walk</li>
-          <li className="ride-link">ride</li>
-          <li className="hike-link">hike</li>
+          <li className="fitness-link"><a href="http://www.mapmyfitness.com/" target="_">fitness</a></li>
+          <li className="walk-link"><a href="http://www.mapmywalk.com/" target="_">walk</a></li>
+          <li className="ride-link"><a href="http://www.mapmyride.com/" target="_">ride</a></li>
+          <li className="hike-link"><a href="http://www.mapmyhike.com/" target="_">hike</a></li>
         </ul>
       </section>
     </section>
@@ -45,17 +44,17 @@ const Footer = () => (
           <li><a href="https://github.com/suhanw" target="_">Add me on Github</a></li>
           <li><a href="https://www.facebook.com/suhanw" target="_">Add me on Facebook</a></li>
         </ul>
-        <ul className="help-links">
-          <li>HELP</li>
-          <li>Account Settings</li>
-          <li>Support</li>
-          <li>Developer / API</li>
-        </ul>
         <ul className='about-us-links'>
+          <li>AFFILIATIONS</li>
+          <li><a href="https://www.appacademy.io/" target="_">App Academy</a></li>
+          <li><a href="http://www.ucla.edu/" target="_">UC, Los Angeles</a></li>
+          <li><a href="https://en.wikipedia.org/wiki/Singapore" target="_">Singapore</a></li>
+        </ul>
+        <ul className="help-links">
           <li>ABOUT ME</li>
-          <li>Advertise</li>
-          <li>Join Our Team</li>
-          <li>Shop Under Armour</li>
+          <li><a href="https://www.sixflags.com/magicmountain" target="_">Roller Coasters</a></li>
+          <li><a href="http://www.imdb.com/?ref_=nv_home" target="_">Movies</a></li>
+          <li><a href="https://gimletmedia.com/reply-all/" target="_">Podcasts</a></li>
         </ul>
         <ul className='fitness-community-links'>
           <li>TOMFOOLERY COMMUNITY</li>
@@ -94,13 +93,13 @@ const Footer = () => (
 
     <section className="legal-bar">
       <strong>
-        <i className="fa fa-superpowers" aria-hidden="true"></i>
+        <i className="fa fa-fighter-jet" aria-hidden="true"></i>
         UNDER THE SEA
       </strong>
       <ul>
         <li>© 2017 Wijaya®, Inc. All rights reserved</li>
-        <li>Privacy Policy</li>
-        <li>Terms of Use</li>
+        <li>No Privacy Policy</li>
+        <li>No Terms of Use</li>
       </ul>
     </section>
   </footer>
