@@ -101,7 +101,7 @@ class RouteForm extends React.Component {
     return (
       <section className="route-form-map-search">
         <h3>Choose map location</h3>
-        <input type="search" placeholder="coming soon" />
+        <input type="search" placeholder="Coming soon" />
         <button onClick={this.handleSearch}>
           SEARCH
         </button>
