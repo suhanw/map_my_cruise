@@ -1,4 +1,4 @@
-# Sloth
+# MapMyCruise
 
 [MapMyCruise](http://mapmycruise.herokuapp.com)
 
