@@ -74,7 +74,7 @@ class Header extends React.Component {
         <nav className='nav-bar'>
           <Link to="/">
             <h1 className='nav-logo'>
-              <i className="fa fa-fighter-jet" aria-hidden="true"></i>
+              <i className="fa fa-fighter-jet" aria-hidden="true"></i> 
               mapmycruise
             </h1>
           </Link>
