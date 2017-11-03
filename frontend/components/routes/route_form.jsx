@@ -13,11 +13,9 @@ class RouteForm extends React.Component {
     this.saveRoute = this.saveRoute.bind(this);
     this.setRouteState = this.setRouteState.bind(this);
     this.renderCursorTooltip = this.renderCursorTooltip.bind(this);
+    this.togglePanel = this.togglePanel.bind(this);
   }
 
-  // componentWillReceiveProps(newProps){
-  //   this.setState(newProps.route);
-  // }
 
   componentDidMount() {
     if (this.props.formType === 'edit') {
@@ -71,6 +69,10 @@ class RouteForm extends React.Component {
           closeModal={this.props.closeModal} />
 
         <form className="route-form-details">
+
+          <div className="panel-toggler"
+            onClick={this.togglePanel}>Collapse</div>
+
           {this.renderSearchBar()}
           {this.renderFormInput()}
           <div id="directions"></div>
@@ -137,6 +139,10 @@ class RouteForm extends React.Component {
       distance: newState.distance,
       city: newState.city,
     });
+  }
+
+  togglePanel() {
+
   }
 }
 
