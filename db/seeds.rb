@@ -1,4 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
+  # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -56,17 +56,17 @@ Workout.create!({
 
 Comment.destroy_all
 Comment.create!({
-  user_id: User.find_by(email:'suhan@test.com').id,
+  user_id: User.find_by(email:'m@tg.com').id,
   workout_id: Workout.find_by(name: 'workout1').id,
   body: 'comment1'
 })
 Comment.create!({
-  user_id: User.find_by(email:'suhan@test.com').id,
+  user_id: User.find_by(email:'d@d.com').id,
   workout_id: Workout.find_by(name: 'workout1').id,
   body: 'comment2'
 })
 Comment.create!({
-  user_id: User.find_by(email:'suhan@test.com').id,
+  user_id: User.find_by(email:'d@d.com').id,
   workout_id: Workout.find_by(name: 'workout1').id,
   body: 'comment3'
 })

@@ -18,10 +18,16 @@ const WorkoutsReducer = (state=defaultState, action) => {
   switch (action.type) {
 
     case RECEIVE_WORKOUTS:
-      newState = merge({}, state, {
+      // newState = merge({}, state, {
+      //   workouts_by_id: action.payload.workouts_by_id,
+      //   ordered_ids: action.payload.ordered_ids,
+      // });
+      // when we delete route, the route might still be in old state,
+      // so shouldn't merge with old state...
+      newState = merge({}, {
         workouts_by_id: action.payload.workouts_by_id,
         ordered_ids: action.payload.ordered_ids,
-      })
+      });
       return newState;
 
     case RECEIVE_WORKOUT:

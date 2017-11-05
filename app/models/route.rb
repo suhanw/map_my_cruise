@@ -20,7 +20,7 @@ class Route < ApplicationRecord
   validates :name, uniqueness: { scope: :user }
 
   belongs_to :user
-  has_many :workouts
+  has_many :workouts, dependent: :destroy
 
   private
 

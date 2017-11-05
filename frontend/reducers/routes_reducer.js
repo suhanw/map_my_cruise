@@ -18,7 +18,10 @@ const RoutesReducer = (state=defaultState, action) => {
   switch (action.type) {
 
     case RECEIVE_ROUTES:
-      newState = merge({}, state, action.payload);
+      // newState = merge({}, state, action.payload);
+      // when we delete route, the route might still be in old state,
+      // so shouldn't merge with old state...
+      newState = merge({}, action.payload);
       return newState;
 
     case RECEIVE_ROUTE:

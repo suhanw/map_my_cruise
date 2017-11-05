@@ -19,7 +19,7 @@ class WorkoutIndex extends React.Component {
       return (
         <section className="workout-index">
           <div className="spinner-box">
-            <Spinner />;
+            <Spinner />
           </div>
         </section>
       );
