@@ -163,7 +163,7 @@ class ProfileForm extends React.Component {
   renderMessage(){
     this.setState({
       messageClass: 'message-modal-show',
-      message: "Profile is saved successfully!",
+      message: "Profile saved successfully!",
       loading: false,
     });
     setTimeout(()=>this.setState({messageClass: 'message-modal'}), 1500);
