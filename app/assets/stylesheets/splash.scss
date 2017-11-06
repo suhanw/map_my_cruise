@@ -1,5 +1,4 @@
 .splash-image {
-  // background: url('http://static.celebuzz.com/uploads/2015/07/tom-cruise-mission-impossible-run-072815.gif');
   height: 400px;
   width: 100vw;
   display: flex;
@@ -12,87 +11,80 @@
   background: image-url('splash/ghost_protocol.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-2 {
   background: image-url('splash/eot.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-3 {
   background: image-url('splash/mi3-2.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-4 {
   background: image-url('splash/mi3-3.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-5 {
   background: image-url('splash/mi3.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-5 {
   background: image-url('splash/mi5.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-6 {
   background: image-url('splash/mr.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-7 {
   background: image-url('splash/vs.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-8 {
   background: url('https://media.giphy.com/media/cmPlBWlZRn7vG/giphy.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-9 {
   background: url('https://media.giphy.com/media/rdoSts3m3NMQ/giphy.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-10 {
   background: image-url('splash/fg.gif');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 100%;
+  background-size: cover;
 }
 .splash-image-11 {
   background: url('https://media.giphy.com/media/sJeRFAiWbNams/giphy.gif');
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
 }
 .splash-image-12 {
   background: url('https://media.giphy.com/media/1YkP9j56IPnHi/giphy.gif');
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: top;
 }
-
-// .splash-image-13 {
-//   background: url('https://media.giphy.com/media/yLgpej6UJc6He/giphy.gif');
-//   background-size: 100%;
-//   background-repeat: no-repeat;
-//   background-position: top;
-// }
 
 .splash-image h1, .splash-image p, .splash-signup-buttons {
   width: 400px;
@@ -142,7 +134,7 @@
 .splash-icons {
   background-color: #e8e8e8;
   color: #9297a3;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .splash-icons ul {
@@ -152,7 +144,6 @@
 }
 
 .splash-icons li {
-  // flex-grow: 1;
   width: 25%;
   padding: 20px;
   text-align: center;

@@ -116,10 +116,7 @@ class ShowWorkout extends React.Component {
             </figure>
           </section>
           <section className="comments-likes">
-            <h2>COMMENTS AND LIKES</h2>
-            <div className="workout-likes">
-              This will be likes (coming soon)
-            </div>
+            <h2>COMMENTS</h2>
 
             {this.renderComments()}
 

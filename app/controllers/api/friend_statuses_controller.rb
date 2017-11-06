@@ -10,7 +10,6 @@ class Api::FriendStatusesController < ApplicationController
 
   def create # to submit friend request
     if current_user.is_friend_of?(User.find_by(id: friend_params[:friendee_id]))
-      # debugger
       render json: ['You already tried to friend this person, creep.'], status: 422
     else
       @friend_status = FriendStatus.new({

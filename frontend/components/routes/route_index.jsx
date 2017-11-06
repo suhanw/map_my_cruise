@@ -45,7 +45,7 @@ class RouteIndex extends React.Component {
           <span className="message">
             You have no routes, lazy bum. Plan some routes!
             Click <Link to="/routes/create">here</Link> to create a new route.
-            <img src="https://media.giphy.com/media/2AbTBqALqk2MU/giphy.gif" />
+            <img src="https://media.giphy.com/media/2AbTBqALqk2MU/giphy.gif" className="gif"/>
           </span>
         </section>
       );
@@ -64,18 +64,6 @@ class RouteIndex extends React.Component {
           </h2>
           <Link to="routes/create" className="orange-button">CREATE A ROUTE</Link>
         </div>
-
-        <section className="search-and-sort">
-          <input className="route-search-input" type="search" placeholder="coming soon" />
-          <button className="route-search-button">SEARCH</button>
-          <button className="route-search-reset">Reset</button>
-          <select className="route-sort-options">
-            <option>Coming soon</option>
-            <option>Oldest</option>
-            <option>Longest</option>
-            <option>Shortest</option>
-          </select>
-        </section>
 
         <table className="route-index-table">
           <tbody className="route-index-tbody">

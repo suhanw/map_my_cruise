@@ -125,8 +125,12 @@
 .workout-likes {
   padding: 10px 0;
   border-top: 1px solid $light-gray;
-  border-bottom: 1px solid $light-gray;
   margin-bottom: 10px;
+}
+
+.workout-comments {
+  border-top: 1px solid $light-gray;
+
 }
 
 .workout-comments span {

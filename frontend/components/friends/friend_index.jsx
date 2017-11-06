@@ -41,7 +41,7 @@ class FriendIndex extends React.Component {
             I'm sorry you have no friends.
             Click <Link to="/friends/find">here</Link> to make an attempt at friendship.
           </span>
-          <img src="https://media.giphy.com/media/XAhGDQXrvm2qc/giphy.gif" />
+          <img src="https://media.giphy.com/media/XAhGDQXrvm2qc/giphy.gif" className="gif"/>
         </section>
       );
     }

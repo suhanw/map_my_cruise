@@ -83,7 +83,6 @@ class RouteForm extends React.Component {
 
           {this.renderToggler()}
 
-          {this.renderSearchBar()}
           {this.renderFormInput()}
           <div id="directions"></div>
         </form>
