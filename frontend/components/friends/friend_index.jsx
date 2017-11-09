@@ -107,7 +107,7 @@ class FriendIndex extends React.Component {
             friendStatus={friendStatus}
             friendType="actual"
             action={deleteFriendStatus}
-            fetchFriendStatuses={fetchFriendStatuses} />
+            fetchFriendStatuses={this.props.fetchFriendStatuses} />
         );
       } else if (this.isPendingFriendRequest(friendStatus)) {
         // to check if current user is the person who made the friend request
@@ -117,7 +117,7 @@ class FriendIndex extends React.Component {
             friendStatus={friendStatus}
             friendType="request"
             action={deleteFriendStatus}
-            fetchFriendStatuses={fetchFriendStatuses} />
+            fetchFriendStatuses={this.props.fetchFriendStatuses} />
         );
       } else {
         // else, the current user received this friend request
@@ -127,7 +127,7 @@ class FriendIndex extends React.Component {
             friendStatus={friendStatus}
             friendType="receipt"
             action={updateFriendStatus}
-            fetchFriendStatuses={fetchFriendStatuses} />
+            fetchFriendStatuses={this.props.fetchFriendStatuses} />
         );
       }
     });
