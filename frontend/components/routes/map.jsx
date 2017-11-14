@@ -20,9 +20,6 @@ class Map extends React.Component {
     this.renderPath = this.renderPath.bind(this);
   }
 
-  componentWillMount() {
-  }
-
   componentDidMount(){
     this.center = {
       lat: 34.030059,

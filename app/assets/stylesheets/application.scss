@@ -29,7 +29,8 @@
    box-sizing: border-box;
  }
 
-  section[class$="-container"] h2 {
+  section[class$="-container"] h2,
+  .route-form-title {
     font-family: 'PT Sans Narrow', sans-serif;
     font-size: 20px;
     font-weight: 600;

@@ -80,8 +80,10 @@ class RouteForm extends React.Component {
           closeModal={this.props.closeModal} />
 
         <form className={this.state.panelClass}>
+          <h2 className="route-form-title">CREATE A ROUTE</h2>
 
           {this.renderToggler()}
+
 
           {this.renderFormInput()}
           <div id="directions"></div>
