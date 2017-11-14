@@ -58,7 +58,6 @@ class Map extends React.Component {
 
       cursorToolTip.style.top = `${y+10}px`;
       cursorToolTip.style.left = `${x+10}px`;
-      // cursorToolTip.style.display = `block`;
     };
   }
 
