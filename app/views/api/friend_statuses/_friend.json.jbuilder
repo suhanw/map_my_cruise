@@ -12,10 +12,10 @@
 
 json.id friend_status.id
 json.friend do
-  if friend_status.friender == current_user
-    json.partial! 'api/users/user', user: friend_status.friendee
+  if friender.id == current_user_id
+    json.partial! 'api/users/user', user: friendee
   else
-    json.partial! 'api/users/user', user: friend_status.friender
+    json.partial! 'api/users/user', user: friender
   end
 end
 json.friender_id friend_status.friender_id # to indicate who's the requestor

@@ -61,7 +61,7 @@ class UserSearch extends React.Component {
 
     return (
       <section className="user-search" onSubmit={this.handleSubmit}>
-        <h3>FIND FRIENDS BY EMAIL, FIRST NAME, OR LAST NAME:</h3>
+        <h3>Find friends by email, first name, or last name:</h3>
         <form className="user-search-form">
           <input type="text"
             className="input-text"
