@@ -26,6 +26,17 @@ class ProfileForm extends React.Component {
     this.handleUpload = this.handleUpload.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.renderMessage = this.renderMessage.bind(this);
+    this.renderSpinner = this.renderSpinner.bind(this);
+  }
+
+  renderSpinner() {
+    return (
+      <div className="spinner-backdrop">
+        <Spinner
+          spinnerType="session"
+          spinnerMessage="HANG ON while we save your profile!" />
+      </div>
+    );
   }
 
   render(){
@@ -36,15 +47,7 @@ class ProfileForm extends React.Component {
     return (
       <section>
 
-        {this.state.loading ?
-          (
-            <div className="spinner-backdrop">
-              <Spinner
-                spinnerType="session"
-                spinnerMessage="HANG ON while we save your profile!" />
-            </div>
-          ) : null
-        }
+        {this.state.loading ? this.renderSpinner() : null}
 
         <Modal modal={this.props.modal}
           errors = {this.props.errors}
@@ -155,8 +158,11 @@ class ProfileForm extends React.Component {
     this.setState({loading:true});
 
     this.props.editProfile(formData).then(
-      this.renderMessage,
-      () => this.props.openModal('errors')
+      this.renderMessage, //success cb
+      () => { //fail cb
+        this.setState({loading:false});
+        this.props.openModal('errors');
+      }
     );
   }
 
@@ -166,7 +172,12 @@ class ProfileForm extends React.Component {
       message: "Profile saved successfully!",
       loading: false,
     });
-    setTimeout(()=>this.setState({messageClass: 'message-modal'}), 1500);
+    let timer = setTimeout(()=>{
+      this.setState({messageClass: 'message-modal'});
+      clearTimeout(timer);
+      timer = null;
+    }, 1500);
+
   }
 }
 

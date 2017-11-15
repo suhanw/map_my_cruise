@@ -26,7 +26,7 @@ class Workout < ApplicationRecord
   private
   def workout_date_cannot_be_in_the_future
     if workout_date > Date.today
-      errors.add(:base, "Date cannot be in the future! You are not in Edge of Tomorrow.")
+      errors.add(:base, "Please do not use future date. You are not in Edge of Tomorrow.")
     end
   end
 end
