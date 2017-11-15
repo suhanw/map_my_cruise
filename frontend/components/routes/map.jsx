@@ -5,7 +5,6 @@ import Spinner from '../spinner';
 class Map extends React.Component {
   constructor(props) {
     super(props);
-    this.renderInitMap = this.renderInitMap.bind(this);
 
     this.state = {
       loading: true,
@@ -14,6 +13,7 @@ class Map extends React.Component {
     this.startPos = null;
     this.endPos = null;
 
+    this.renderInitMap = this.renderInitMap.bind(this);
     this.handleMapClick = this.handleMapClick.bind(this);
     this.placeMarker = this.placeMarker.bind(this);
     this.generatePath = this.generatePath.bind(this);

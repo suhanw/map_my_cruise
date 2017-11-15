@@ -21,9 +21,12 @@ class Api::UsersController < ApplicationController
   def index
     if params[:search_term] == ""
       render json: ['Please enter a search term.'], status: 404
+      return
     elsif !params[:search_term]
       render json: ['Please enter a search term.'], status: 404
-    else
+      return
+    end
+    # else
       lowercase_search_term = params[:search_term].downcase
       already_friends = FriendStatus
                   .where("friender_id = ? OR friendee_id = ?", current_user.id, current_user.id)
@@ -40,7 +43,7 @@ class Api::UsersController < ApplicationController
       else
         render :index
       end
-    end
+    # end
   end
 
   def show

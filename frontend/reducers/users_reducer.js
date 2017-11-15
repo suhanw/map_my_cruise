@@ -34,7 +34,7 @@ const UsersReducer = (state=defaultState, {type, payload}) => {
 
     case CLEAR_ENTITIES:
       return {};
-            
+
     default:
       return state;
   }
