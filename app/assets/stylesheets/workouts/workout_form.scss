@@ -5,8 +5,14 @@
   box-sizing: border-box;
 }
 
+.workout-form-container > .message {
+  width: 70%;
+  border-top: 1px solid $light-gray;
+}
+
 .workout-form {
   width: 70%;
+  border-top: 1px solid $light-gray;
 }
 
 .workout-form-box {
@@ -19,10 +25,9 @@
   padding: 10px;
 }
 
-.workout-form h2 {
+.workout-form-container h2 {
   width: 100%;
   padding-bottom: 20px;
-  border-bottom: 1px solid $light-gray;
 }
 
 .workout-form p {

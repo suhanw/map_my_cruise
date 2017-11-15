@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {randomizer} from '../../util/randomizer';
 import Modal from '../modals/modal';
 import FormErrorModal from '../modals/form_error_modal';
@@ -29,7 +30,9 @@ class WorkoutForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.renderWorkoutForm = this.renderWorkoutForm.bind(this);
     this.renderRouteOptions = this.renderRouteOptions.bind(this);
+    this.renderErrorMessage = this.renderErrorMessage.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -76,73 +79,18 @@ class WorkoutForm extends React.Component {
           <Spinner />;
         </div>
       );
-    } else if (this.props.formType === 'edit' && this.props.workout.user !== this.props.currentUser.id) {
-      return (
-        <div>
-          You are not authorized to edit this workout!
-        </div>
-      );
     }
 
     return (
       <section className="workout-form-container">
+        <h2>LOG A WORKOUT</h2>
 
         <Modal modal={this.props.modal}
           errors = {this.props.errors.workouts}
           component={FormErrorModal}
           closeModal={this.props.closeModal} />
 
-        <form className="workout-form">
-          <h2>LOG A WORKOUT</h2>
-          <p>
-            If you've been active, get credit for it! Add your workout
-            details below, and stay on top of your fitness goals.
-          </p>
-
-          <section className="workout-form-box">
-            <label className="workout-form-name">
-              Workout name
-              <input type="text"
-                value={this.state.name}
-                placeholder="Name your workout"
-                onChange={this.handleChange('name')} />
-            </label>
-            <label className="workout-form-date">
-              Date
-              <input type="date"
-                value={this.state.workout_date}
-                onChange={this.handleChange('workout_date')} />
-            </label>
-
-            <label className="workout-form-route-option">
-              Route
-              <select onChange={this.handleChange('route')} value={this.state.route ? this.state.route : "default"}>
-                {this.renderRouteOptions()}
-              </select>
-            </label>
-
-
-            <label className="workout-form-duration">
-              <span>Duration</span>
-              <input type="text" placeholder="hh"
-                value={this.state.h}
-                onChange={this.handleChange('h')} /> : <input type="text" placeholder="mm"
-                value={this.state.m}
-                onChange={this.handleChange('m')} /> : <input type="text" placeholder="ss"
-                value={this.state.s}
-                onChange={this.handleChange('s')} />
-            </label>
-
-            <label className="workout-form-button">
-              <button className="blue-button"
-                onClick={this.handleClick}>
-                SAVE
-              </button>
-            </label>
-
-          </section>
-
-        </form>
+        {this.renderErrorMessage() ? this.renderErrorMessage() : this.renderWorkoutForm()}
 
         <aside className="workout-form-sidebar">
           <div className={adGifClass}>
@@ -152,6 +100,80 @@ class WorkoutForm extends React.Component {
         </aside>
 
       </section>
+    );
+  }
+
+  renderErrorMessage() {
+    if (this.props.formType === 'edit' && this.props.workout.user !== this.props.currentUser.id) {
+      return (
+        <span className="message">
+          You are not authorized to edit this workout!
+        </span>
+      );
+    } else if (!this.state.loadingRoutes && !this.props.routes.ordered_ids.length) { // if no routes have been created yet
+      return (
+        <span className="message">
+          You need a route before you can log a workout. Click <Link to="/routes/create">here</Link> to create your first route.
+        </span>
+      );
+    } else {
+      return null;
+    }
+  }
+
+  renderWorkoutForm() {
+    return (
+      <form className="workout-form">
+
+        <p>
+          If you've been active, get credit for it! Add your workout
+          details below, and stay on top of your fitness goals.
+        </p>
+
+        <section className="workout-form-box">
+          <label className="workout-form-name">
+            Workout name
+            <input type="text"
+              value={this.state.name}
+              placeholder="Name your workout"
+              onChange={this.handleChange('name')} />
+          </label>
+          <label className="workout-form-date">
+            Date
+            <input type="date"
+              value={this.state.workout_date}
+              onChange={this.handleChange('workout_date')} />
+          </label>
+
+          <label className="workout-form-route-option">
+            Route
+            <select onChange={this.handleChange('route')} value={this.state.route ? this.state.route : "default"}>
+              {this.renderRouteOptions()}
+            </select>
+          </label>
+
+
+          <label className="workout-form-duration">
+            <span>Duration</span>
+            <input type="text" placeholder="hh"
+              value={this.state.h}
+              onChange={this.handleChange('h')} /> : <input type="text" placeholder="mm"
+              value={this.state.m}
+              onChange={this.handleChange('m')} /> : <input type="text" placeholder="ss"
+              value={this.state.s}
+              onChange={this.handleChange('s')} />
+          </label>
+
+          <label className="workout-form-button">
+            <button className="blue-button"
+              onClick={this.handleClick}>
+              SAVE
+            </button>
+          </label>
+
+        </section>
+
+      </form>
     );
   }
 
