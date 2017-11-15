@@ -168,9 +168,7 @@ class UserSearch extends React.Component {
     );
 
     return userSearchResultsDom;
-
   }
-
 
   handleChange(e) {
     this.setState({searchTerm: e.target.value});
