@@ -17,9 +17,16 @@ class Workout < ApplicationRecord
   validates :user, :route, :name, :duration, :workout_date, presence: true
   validates :name, uniqueness: { scope: :user }
   validates :duration, numericality: { greater_than: 0 }
+  validate :workout_date_cannot_be_in_the_future
 
   belongs_to :user
   belongs_to :route
   has_many :comments
 
+  private
+  def workout_date_cannot_be_in_the_future
+    if workout_date > Date.today
+      errors.add(:base, "Date cannot be in the future! You are not in Edge of Tomorrow.")
+    end
+  end
 end
