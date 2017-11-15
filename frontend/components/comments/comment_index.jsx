@@ -15,6 +15,7 @@ class CommentIndex extends React.Component {
           workout={that.props.workout}
           comment={comment}
           user={that.props.users[comment.user]}
+          currentUser={that.props.currentUser}
           deleteComment={that.props.deleteComment} />
       );
     });

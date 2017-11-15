@@ -6,6 +6,7 @@ class CommentIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.renderDeleteButton = this.renderDeleteButton.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -19,13 +20,23 @@ class CommentIndexItem extends React.Component {
           <h3 className="comment-author">
             {`${user.fname} ${user.lname}`}
           </h3>
-          <button onClick={this.handleClick}>Delete</button>
+          {this.renderDeleteButton()}
           <article className="comment-body">
             {comment.body}
           </article>
         </div>
       </li>
     );
+  }
+
+  renderDeleteButton() {
+    const {user, currentUser} = this.props;
+    if (user.id === currentUser.id) {
+      return (
+        <button onClick={this.handleClick}>Delete</button>
+      );
+    }
+    return null;
   }
 
   handleClick() {
