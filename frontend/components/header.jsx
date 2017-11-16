@@ -103,7 +103,7 @@ class Header extends React.Component {
       <section className="shortcut-main">
         <nav className="shortcut-bar">
           <ul className="shortcut-bar-links">
-            <Link to="/dashboard"><li>My Dashboard</li></Link>
+            <Link to="/workouts"><li>My Dashboard</li></Link>
             <Link to="/routes/create"><li>Create Route</li></Link>
             <Link to="/workouts/create"><li>Log Workout</li></Link>
             <Link to="/friends/find"><li>Find Friends</li></Link>

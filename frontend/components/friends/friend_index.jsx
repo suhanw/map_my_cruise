@@ -62,15 +62,6 @@ class FriendIndex extends React.Component {
           ) :
           null}
 
-        {this.pendingFriendRequests.length ?
-          (
-        <section className="pending-friend-requests">
-              <h3>PENDING FRIEND REQUESTS</h3>
-              <ul>
-                {this.pendingFriendRequests}
-              </ul>
-        </section>
-        ) : null }
 
         {this.pendingFriendReceipts.length ?
           (
@@ -148,3 +139,14 @@ class FriendIndex extends React.Component {
 }
 
 export default FriendIndex;
+
+// to render pending friend requests
+// {this.pendingFriendRequests.length ?
+//   (
+// <section className="pending-friend-requests">
+//       <h3>PENDING FRIEND REQUESTS</h3>
+//       <ul>
+//         {this.pendingFriendRequests}
+//       </ul>
+// </section>
+// ) : null }

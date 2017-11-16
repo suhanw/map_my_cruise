@@ -13,11 +13,12 @@ class Dashboard extends React.Component {
     const sectionNavTabs = ['/dashboard', '/dashboard/workouts', '/dashboard/routes'];
     return (
       <section className="dashboard-container">
+        <h2>MY DASHBOARD</h2>
         <SectionNav sectionNavTabs={sectionNavTabs}/>
 
         <ProtectRoute path="/dashboard/workouts" component={DisplayWorkouts} />
         <ProtectRoute path="/dashboard/routes" component={RouteIndexContainer} />
-        <ProtectRoute path="/dashboard" component={ActivityFeed} />
+        <ProtectRoute exact path="/dashboard" component={ActivityFeed} />
 
       </section>
     );

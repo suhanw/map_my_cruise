@@ -11,9 +11,7 @@ class SectionNav extends React.Component {
       selectedTab: 0,
     };
 
-    // this.renderStyles = this.renderStyles.bind(this);
     this.renderTabs = this.renderTabs.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   render() {
@@ -57,18 +55,22 @@ class SectionNav extends React.Component {
   }
 
   renderTabName(tabPath) {
-    if (tabPath === '/dashboard') {
+    let tabPathArr = tabPath.split('/');
+    let tabName;
+    if (tabPathArr.length > 2) {
+        tabName = tabPathArr[2];
+        tabName = tabName.toUpperCase();
+        if (tabPathArr[1] === 'friends') {
+          return 'FIND FRIENDS';
+        }
+        return `MY ${tabName}`;
+    } else if (tabPathArr[1] === 'dashboard') {
       return 'ACTIVITY FEED';
-    } else {
-      let tabName = tabPath.split('/')[2];
-      tabName = tabName.toUpperCase();
-      return `MY ${tabName}`;
+    } else if (tabPathArr[1] === 'friends') {
+      return 'MY FRIENDS';
     }
   }
 
-  handleClick(i) {
-
-  }
 }
 
 

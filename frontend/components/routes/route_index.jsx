@@ -40,7 +40,7 @@ class RouteIndex extends React.Component {
             <h2>
               MY ROUTES
             </h2>
-            <Link to="routes/create" className="orange-button">CREATE A ROUTE</Link>
+            <Link to="/routes/create" className="orange-button">CREATE A ROUTE</Link>
           </div>
           <span className="message">
             You have no routes, lazy bum. Plan some routes!
@@ -62,7 +62,7 @@ class RouteIndex extends React.Component {
           <h2>
             MY ROUTES
           </h2>
-          <Link to="routes/create" className="orange-button">CREATE A ROUTE</Link>
+          <Link to="/routes/create" className="orange-button">CREATE A ROUTE</Link>
         </div>
 
         <table className="route-index-table">
