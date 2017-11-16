@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101153817) do
+ActiveRecord::Schema.define(version: 20171116230645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.string "feedable_type"
+    t.bigint "feedable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feedable_type", "feedable_id"], name: "index_activities_on_feedable_type_and_feedable_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false

@@ -23,6 +23,8 @@ class Workout < ApplicationRecord
   belongs_to :route
   has_many :comments
 
+  has_one :activity, as: :feedable, dependent: :destroy
+
   private
   def workout_date_cannot_be_in_the_future
     if workout_date > Date.today
