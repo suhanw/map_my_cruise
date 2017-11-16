@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
 // takes in an array of sections
 
@@ -42,14 +42,15 @@ class SectionNav extends React.Component {
     const {sectionNavTabs} = this.props;
     const tabDoms = sectionNavTabs.map((tabPath, i)=>{
       return (
-        <Link
+        <NavLink
           key={i}
+          exact={true}
           to={tabPath}
-          className={(i === selectedTab) ? "selected-tab" : ""}>
+          activeClassName="selected-tab">
           <li>
             {this.renderTabName(tabPath)}
           </li>
-        </Link>
+        </NavLink>
       );
     });
     return tabDoms;
