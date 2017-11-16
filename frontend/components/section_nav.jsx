@@ -43,7 +43,7 @@ class SectionNav extends React.Component {
     const tabDoms = sectionNavTabs.map((tabPath, i)=>{
       return (
         <Link
-          key={i} 
+          key={i}
           to={tabPath}
           className={(i === selectedTab) ? "selected-tab" : ""}>
           <li>
@@ -59,7 +59,7 @@ class SectionNav extends React.Component {
     if (tabPath === '/dashboard') {
       return 'ACTIVITY FEED';
     } else {
-      let tabName = tabPath.slice(1);
+      let tabName = tabPath.split('/')[2];
       tabName = tabName.toUpperCase();
       return `MY ${tabName}`;
     }

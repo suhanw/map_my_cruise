@@ -41,6 +41,7 @@ const App = () => {
           <ProtectRoute path="/workouts/:workoutId/edit" component={EditWorkoutFormContainer} />
           <ProtectRoute path="/workouts/create" component={NewWorkoutFormContainer} />
           <ProtectRoute path="/workouts/:workoutId" component={ShowWorkoutContainer} />
+          <ProtectRoute path="/workouts" component={DisplayWorkouts} />
 
           <ProtectRoute path="/friends" component={DisplayFriends} />
 
@@ -54,5 +55,3 @@ const App = () => {
 };
 
 export default App;
-
-// <ProtectRoute path="/workouts" component={DisplayWorkouts} />

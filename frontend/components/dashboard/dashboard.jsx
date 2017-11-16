@@ -10,16 +10,15 @@ import ActivityFeed from './activity_feed';
 class Dashboard extends React.Component {
 
   render() {
-    const sectionNavTabs = ['/dashboard', '/workouts', '/routes'];
+    const sectionNavTabs = ['/dashboard', '/dashboard/workouts', '/dashboard/routes'];
     return (
       <section className="dashboard-container">
         <SectionNav sectionNavTabs={sectionNavTabs}/>
 
-        <ProtectRoute path="/workouts" component={DisplayWorkouts} />
-        <ProtectRoute path="/routes" component={RouteIndexContainer} />
+        <ProtectRoute path="/dashboard/workouts" component={DisplayWorkouts} />
+        <ProtectRoute path="/dashboard/routes" component={RouteIndexContainer} />
         <ProtectRoute path="/dashboard" component={ActivityFeed} />
 
-        <DisplayWorkouts />
       </section>
     );
   }
