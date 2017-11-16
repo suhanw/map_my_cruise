@@ -1,0 +1,40 @@
+.section-nav {
+  flex-basis: 100%;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.section-nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
+.section-nav ul a {
+  flex-grow: 1;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid $light-gray;
+  border-left: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
+  background: $lightest-gray;
+}
+
+.section-nav ul li.space-filler {
+  height: 45px;
+  background: none;
+  border: none;
+  border-left: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
+  flex-grow: 1.5;
+}
+
+.section-nav ul a.selected-tab {
+  background: none;
+  border-bottom: none;
+  border-top: 2px solid $light-blue;
+}

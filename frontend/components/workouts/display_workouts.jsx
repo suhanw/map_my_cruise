@@ -2,10 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import WorkoutIndexContainer from './workout_index_container';
 import {randomizer} from '../../util/randomizer';
+import SectionNav from '../section_nav';
 
 class DisplayWorkouts extends React.Component {
 
+
   render() {
+    const sectionNavTabs = ['ACTIVITY FEED', 'MY WORKOUTS'];
     const adGifClass = `ad-gif-${randomizer(3, 1)}`;
     return (
       <section className="display-workouts-container">
