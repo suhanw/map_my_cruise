@@ -53,9 +53,7 @@ class ActivityFeed extends React.Component {
             <Link to="/friends">View All</Link> | <Link to="/friends/find">Find Friends</Link>
           </nav>
         </span>
-        <figure className="activity-feed-friends-thumbnails">
-          <FriendIndexContainer thumbnail />
-        </figure>
+        <FriendIndexContainer thumbnail />
       </section>
     );
   }

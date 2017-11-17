@@ -13,6 +13,7 @@ class FriendIndex extends React.Component {
 
     this.isPendingFriendRequest = this.isPendingFriendRequest.bind(this);
     this.renderFriends = this.renderFriends.bind(this);
+    this.renderThumbnails = this.renderThumbnails.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +24,34 @@ class FriendIndex extends React.Component {
     );
   }
 
+  renderThumbnails() {
+    if (this.state.loading) {
+      return (
+        <section className="activity-feed-friends-thumbnails">
+          <ul>
+            <li>
+              <small>Loading...</small>
+            </li>
+          </ul>
+        </section>
+      );
+    }
+
+    return (
+      <section className="activity-feed-friends-thumbnails">
+        {this.renderFriends(this.props.thumbnail)}
+        <ul>
+          {this.actualFriends}
+        </ul>
+      </section>
+    );
+  }
+
   render() {
+    if (this.props.thumbnail) {
+      return this.renderThumbnails();
+    }
+
     if (this.state.loading) {
       return (
         <section className="friend-index">
@@ -46,7 +74,7 @@ class FriendIndex extends React.Component {
       );
     }
 
-    this.renderFriends(); //this updates instance variables that categorize the friends
+    this.renderFriends(this.props.thumbnail); //this updates instance variables that categorize the friends
 
     return (
       <section className="friend-index">
@@ -77,7 +105,7 @@ class FriendIndex extends React.Component {
     );
   }
 
-  renderFriends() {
+  renderFriends(thumbnail) {
     const { friends, users, deleteFriendStatus, updateFriendStatus } = this.props;
 
     let actualFriends = [];
@@ -94,6 +122,7 @@ class FriendIndex extends React.Component {
         // this is an existing friend
         actualFriends.push(
           <FriendIndexItem key={friendUser.id}
+            thumbnail={thumbnail}
             user={friendUser}
             friendStatus={friendStatus}
             friendType="actual"
@@ -104,6 +133,7 @@ class FriendIndex extends React.Component {
         // to check if current user is the person who made the friend request
         pendingFriendRequests.push(
           <FriendIndexItem key={friendUser.id}
+            thumbnail={thumbnail}
             user={friendUser}
             friendStatus={friendStatus}
             friendType="request"
@@ -114,6 +144,7 @@ class FriendIndex extends React.Component {
         // else, the current user received this friend request
         pendingFriendReceipts.push(
           <FriendIndexItem key={friendUser.id}
+            thumbnail={thumbnail}
             user={friendUser}
             friendStatus={friendStatus}
             friendType="receipt"

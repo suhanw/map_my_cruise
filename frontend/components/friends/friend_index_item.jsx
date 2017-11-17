@@ -11,9 +11,27 @@ class FriendIndexItem extends React.Component {
 
     this.renderFriendOptions = this.renderFriendOptions.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.renderThumbnail = this.renderThumbnail.bind(this);
+  }
+
+  renderThumbnail() {
+    const { user, friendStatus } = this.props;
+    return (
+      <li>
+        <img src={user.avatar_url}
+          className="friend-avatar"
+          alt={`${user.fname} ${user.lname}`} />
+        <small>{user.fname}</small>
+      </li>
+    );
   }
 
   render() {
+
+    if (this.props.thumbnail) {
+      return this.renderThumbnail();
+    }
+
     const { user, friendStatus } = this.props;
     const { friendType } = this.state;
     let cssClass = "friend-box";

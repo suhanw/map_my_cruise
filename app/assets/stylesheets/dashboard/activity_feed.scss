@@ -173,7 +173,8 @@ section.activity-feed {
 .activity-feed-friends {
   border: 1px solid $gray;
   background: $lightest-gray;
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -230,6 +231,7 @@ section.activity-feed {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 5px;
 }
 
 .activity-feed-friends h3 {
@@ -243,6 +245,40 @@ section.activity-feed {
 }
 
 .activity-feed-friends-thumbnails {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.activity-feed-friends-thumbnails > ul {
+  flex-basis: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.activity-feed-friends-thumbnails > ul > li {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin: 5px 0;
+  flex-basis: 25%;
+}
+
+.activity-feed-friends-thumbnails > ul > li > img.friend-avatar {
+  height: 50px;
+  width: 50px;
+  margin-right: 0;
+}
+
+.activity-feed-friends-thumbnails > ul > li > small {
   flex-basis: 100%;
-  border: 1px solid red;
+  font-size: 10px;
+  color: $gray;
+  text-align: center;
 }
