@@ -20,7 +20,7 @@ class Api::WorkoutsController < ApplicationController
   def create
     @workout = Workout.new(workout_params)
     @workout.user = current_user
-    @workout.activity = Activity.new()
+    @workout.activity = Activity.new(user_id: current_user.id)
     if @workout.save
       render :show
     else

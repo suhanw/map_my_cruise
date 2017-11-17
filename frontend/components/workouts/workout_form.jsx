@@ -12,7 +12,6 @@ class WorkoutForm extends React.Component {
     const {name, workout_date, duration, route} = this.props.workout;
 
     const initDate = workout_date ? workout_date : new Date().toISOString().substr(0, 10);
-
     this.state = {
       name,
       workout_date: initDate,

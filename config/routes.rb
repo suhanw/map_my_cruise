@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
     resources :friend_statuses, only: [:index, :create, :update, :destroy]
 
+    resources :activities, only: [:index]
+
     # # for testing
     # resources :comments, only: [:show]
     # resources :friend_statuses, only: [:show]

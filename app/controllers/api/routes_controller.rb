@@ -20,7 +20,7 @@ class Api::RoutesController < ApplicationController
   def create
     @route = Route.new(route_params)
     @route.user = current_user
-    @route.activity = Activity.new();
+    @route.activity = Activity.new(user_id: current_user.id);
     if @route.save
       render :show
     else
