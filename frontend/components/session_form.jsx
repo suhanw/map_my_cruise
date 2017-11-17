@@ -136,7 +136,10 @@ class SessionForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.submitForm(this.state).then(
-      () => this.setState({loading: false}),
+      () => {
+        this.setState({loading: false});
+        this.props.history.push('/dashboard');
+      },
       () => {
         this.setState({loading: false});
         this.props.openModal('errors');
@@ -149,7 +152,9 @@ class SessionForm extends React.Component {
     this.props.login({
       email: 'eh@mi.com',
       password: 'testing',
-    });
+    }).then(
+      () => this.props.history.push('/dashboard')
+    );
     this.setState({loading: true});
   }
 }

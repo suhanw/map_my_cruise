@@ -81,7 +81,9 @@ class ActivityFeedItem extends React.Component {
           <img className="avatar" src={user.avatar_url} />
           <section>
             <span className="user-action">
-              {`${user.fname} ${user.lname} ran ${routeDist} miles`}
+                <Link to={`/workouts/${workout.id}`}>
+                  {`${user.fname} ${user.lname}`} ran {`${routeDist} miles`}
+                </Link>
             </span>
             <span className="feed-workout-details">
               <figure>
