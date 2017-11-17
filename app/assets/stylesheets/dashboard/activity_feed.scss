@@ -1,0 +1,145 @@
+section.activity-feed {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.activity-feed-main {
+  flex-grow: 1;
+  margin-left: 0;
+  // border: 1px solid green;
+}
+
+.activity-feed-sidebar {
+  // border: 1px solid red;
+}
+
+.activity-feed-main article {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  // flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.activity-feed-main article > .avatar {
+  width: 65px;
+  height: auto;
+  border: 1px solid $gray;
+}
+
+.activity-feed-main article > section {
+  margin: 0 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  align-items: stretch;
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 1px 1px 1px 0 $gray;
+}
+
+.activity-feed-main article > section > span {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-feed-main article > section > .user-action,
+.activity-feed-main article > section > .comment-section {
+  border-left: 1px solid $gray;
+  border-right: 1px solid $gray;
+  padding: 15px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+.activity-feed-main article > section > .user-action{
+  border-top: 1px solid $gray;
+}
+
+.activity-feed-main article > section > .user-action i {
+  font-size: 25px;
+  color: $gray;
+}
+
+.activity-feed-main article > section > .comment-section{
+  border-bottom: 1px solid $gray;
+  background: $lightest-gray;
+}
+
+.activity-feed-main article.route > section > figure {
+  border: 1px solid $light-gray;
+}
+
+.activity-feed-main article.route > section > figcaption {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: $lightest-gray;
+  border: 1px solid $gray;
+  border-left: 0;
+}
+
+.activity-feed-main article.route > section > figcaption > i,
+.activity-feed-main article.workout span.feed-workout-details i {
+  font-size: 22px;
+  color: $blue;
+  margin: 5px 0;
+}
+
+.activity-feed-main article.route > section > figcaption > strong {
+  font-size: 32px;
+}
+
+.activity-feed-main article.route > section > figcaption > small,
+.feed-workout-details > figure small {
+  font-size: 12px;
+  color: $gray;
+  letter-spacing: 2px;
+}
+
+
+.activity-feed-main article.workout span.feed-workout-details {
+  border: 1px solid $gray;
+  background: $lightest-gray;
+  height: 120px;
+  align-items: stretch;
+}
+
+.activity-feed-main article.workout span.feed-workout-details > figure {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid $gray;
+}
+
+.activity-feed-main article.workout span.feed-workout-details > figure:last-of-type {
+  border-right: 0;
+}
+
+.activity-feed-main article.workout span.feed-workout-details > figure strong {
+  font-size: 20px;
+}
+
+.activity-feed-main article.workout span.feed-workout-details .fa-fighter-jet {
+  color: $orange;
+}
+
+.activity-feed-main article.workout span.feed-workout-details .fa-clock-o {
+  color: $light-green;
+}
+
+.activity-feed-main article.workout span.feed-workout-details figure div,
+.activity-feed-main article.workout span.feed-workout-details figure strong {
+  margin-top: 10px;
+}
+
+.activity-feed-main article.workout span.feed-workout-details figure strong {
+}

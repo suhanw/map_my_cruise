@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import Spinner from '../spinner';
 import ActivityFeedItem from './activity_feed_item';
 
-
 class ActivityFeed extends React.Component {
   constructor(props) {
     super(props);
@@ -18,19 +17,25 @@ class ActivityFeed extends React.Component {
   render() {
     if (this.state.loading) {
       return (
-        <section className="activity-feed-container">
+        <section className="activity-feed">
           <div className="spinner-box">
             <Spinner />
           </div>
+
+
         </section>
       );
     }
 
     return (
-      <section className="activity-feed-container">
-        <ul>
+      <section className="activity-feed">
+        <ul className="activity-feed-main">
           {this.renderActivities()}
         </ul>
+
+        <aside className="activity-feed-sidebar">
+          This is sidebar
+        </aside>
       </section>
     );
   }

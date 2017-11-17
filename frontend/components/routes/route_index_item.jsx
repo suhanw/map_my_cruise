@@ -17,7 +17,7 @@ class RouteIndexItem extends React.Component  {
         <tr>
           <td>
             <Link to={`/routes/${this.props.route.id}`}>
-              <RouteMap route={this.props.route} thumbnail />
+              <RouteMap route={this.props.route} thumbnail size={[80, 80]} />
             </Link>
           </td>
           <td>{this.props.route.created_at}</td>

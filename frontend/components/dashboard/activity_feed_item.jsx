@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import Spinner from '../spinner';
 import * as WorkoutActions from '../../actions/workouts_actions';
 import * as RouteActions from '../../actions/routes_actions';
+import RouteMap from '../routes/route_map';
+import CommentIndexContainer from '../comments/comment_index_container';
 
 const mapStateToProps = (state, ownProps) => {
   const {entities: {workouts, routes, users}} = state;
@@ -30,6 +32,10 @@ class ActivityFeedItem extends React.Component {
     this.state = {
       loading: true,
     };
+
+    this.renderRouteItem = this.renderRouteItem.bind(this);
+    this.renderWorkoutItem = this.renderWorkoutItem.bind(this);
+    this.renderDuration = this.renderDuration.bind(this);
   }
 
   render() {
@@ -53,9 +59,115 @@ class ActivityFeedItem extends React.Component {
       feedable = this.props.workouts.workouts_by_id[feedable_id];
     }
 
+    if (feedable_type === 'Route') {
+      return this.renderRouteItem(feedable);
+    } else if (feedable_type === 'Workout') {
+      return this.renderWorkoutItem(feedable);
+    }
+
+  }
+
+  renderWorkoutItem(workout) {
+    const {user_id} = this.props.activity;
+    const user = this.props.users[user_id];
+    const routeDist = this.props.routes.routes_by_id[workout.route].distance;
+    let workoutDate = workout.workout_date.split("-");
+    workoutDate = workoutDate.slice(1).concat(workoutDate.slice(0, 1));
+    workoutDate = workoutDate.join('/');
+
     return (
       <li>
-        {`${user.fname} ${user.lname} created ${feedable_type} ${feedable.name}`}
+        <article className="workout">
+          <img className="avatar" src={user.avatar_url} />
+          <section>
+            <span className="user-action">
+              {`${user.fname} ${user.lname} ran ${routeDist} miles`}
+            </span>
+            <span className="feed-workout-details">
+              <figure>
+                <i className="fa fa-road" aria-hidden="true"></i>
+                <small>
+                  DISTANCE
+                </small>
+                <div>
+                  <strong>{routeDist}</strong> <small>mi</small>
+                </div>
+              </figure>
+              <figure>
+                <i className="fa fa-fighter-jet fa-rotate-270" aria-hidden="true"></i>
+                <small>
+                  AVG PACE
+                </small>
+                <strong>
+                  {this.renderDuration(workout.duration/routeDist)}
+                </strong>
+              </figure>
+              <figure>
+                <i className="fa fa-clock-o" aria-hidden="true"></i>
+                <small>
+                  DURATION
+                </small>
+                <strong>
+                  {this.renderDuration(workout.duration)}
+                </strong>
+              </figure>
+            </span>
+            <span className="comment-section">
+              <strong>
+                <i className="fa fa-commenting-o" aria-hidden="true"></i>
+                {workout.comments.length}
+              </strong>
+              <small>{workoutDate}</small>
+            </span>
+            <span className="comment-section-items">
+              <CommentIndexContainer workoutId={workout.id} />
+            </span>
+          </section>
+        </article>
+      </li>
+    );
+  }
+
+  renderDuration(duration) {
+    const h = Math.floor(duration / 3600);
+    const m = Math.floor(duration % 3600 / 60);
+    const s = Math.floor(duration % 3600 % 60);
+
+    return ('0' + h).slice(-2) + ":" +
+    ('0' + m).slice(-2) + ":" +
+    ('0' + s).slice(-2);
+  }
+
+  renderRouteItem(route) {
+    const {user_id} = this.props.activity;
+    const user = this.props.users[user_id];
+
+    return (
+      <li>
+        <article className="route">
+          <img className="avatar" src={user.avatar_url} />
+          <section>
+            <span className="user-action">
+              <strong>
+                {`${user.fname} ${user.lname} created the route ${route.name}`}
+              </strong>
+              <i className="fa fa-map-marker" aria-hidden="true"></i>
+            </span>
+            <figure>
+              <RouteMap route={route} thumbnail size={[300, 150]}/>
+            </figure>
+            <figcaption>
+              <i className="fa fa-road" aria-hidden="true"></i>
+              <small>DISTANCE</small>
+              <strong>{route.distance}</strong>
+              <small>mi</small>
+            </figcaption>
+            <span className="comment-section">
+              <strong></strong>
+              <small>{route.created_at}</small>
+            </span>
+          </section>
+        </article>
       </li>
     );
   }

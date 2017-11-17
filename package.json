@@ -8,6 +8,7 @@
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.4",
     "normalizr": "^3.2.4",
+    "number-to-words": "^1.2.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",

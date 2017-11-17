@@ -45,6 +45,7 @@ class RouteMap extends React.Component {
     // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
     const routePathCoords = this.routePolyline.getPath().getArray();
     const bounds = new google.maps.LatLngBounds();
+    const {size} = this.props;
     routePathCoords.forEach((coord)=>{
       bounds.extend(coord);
     });
@@ -60,15 +61,15 @@ class RouteMap extends React.Component {
 
       let imgSrc = "https://maps.googleapis.com/maps/api/staticmap?";
       imgSrc += "&visible";
-      imgSrc += "&size=80x80";
+      imgSrc += `&size=${size.join('x')}`;
       imgSrc += `&path=color:0xff0000ff|weight:1|${thumbPath}`;
       imgSrc += "&key=AIzaSyBikueOt0xpkbFjWOncTXfVj5HEg_pu8f8";
 
       const thumbnailDom = document.getElementById(`route-thumbnail-${this.props.route.id}`);
       thumbnailDom.style
         .background = `url(${imgSrc}) no-repeat left top`;
-      thumbnailDom.style.height='80px';
-      thumbnailDom.style.width='80px';
+        thumbnailDom.style.width=`${size[0]}px`;
+      thumbnailDom.style.height=`${size[1]}px`;
 
     } else { //RENDER FULL ROUTE MAP
       // create a Google map and wrap the mapDOMNode in a Google Map
