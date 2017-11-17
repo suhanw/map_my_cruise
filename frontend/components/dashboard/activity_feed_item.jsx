@@ -114,7 +114,8 @@ class ActivityFeedItem extends React.Component {
             </span>
             <span className="comment-section">
               <strong>
-                <i className="fa fa-commenting-o" aria-hidden="true"></i>
+                <i className={`fa fa-commenting-o ${workout.comments.length ? `has-comments`: null}`} aria-hidden="true"></i>
+                &nbsp;
                 {workout.comments.length}
               </strong>
               <small>{workoutDate}</small>

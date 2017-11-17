@@ -141,5 +141,31 @@ section.activity-feed {
   margin-top: 10px;
 }
 
-.activity-feed-main article.workout span.feed-workout-details figure strong {
+.activity-feed-main article > section > .comment-section > strong {
+  font-size: 12px;
+}
+
+.activity-feed-main article > section > .comment-section > strong .fa-commenting-o {
+  font-size: 14px;
+}
+
+.has-comments {
+  color: $blue;
+  font-weight: bold;
+}
+
+.activity-feed-main article section .comment-section-items {
+  border: 1px solid $gray;
+  border-top: 0;
+  padding: 10px;
+}
+
+.activity-feed-main article section .comment-section-items .workout-comments {
+  font-size: 12px;
+  width: 100%;
+  border: 0;
+}
+
+.activity-feed-main article section .comment-section-items .workout-comments .comment-details {
+  border: 0;
 }

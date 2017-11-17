@@ -11,6 +11,7 @@ class CommentIndexItem extends React.Component {
   }
 
   render() {
+    debugger
     let comment = this.props.comment;
     let user = this.props.user;
     return (
@@ -20,7 +21,9 @@ class CommentIndexItem extends React.Component {
           <h3 className="comment-author">
             {`${user.fname} ${user.lname}`}
           </h3>
-          {this.renderDeleteButton()}
+          <span className="comment-delete">
+            {this.renderDeleteButton()} | {comment.created_at}
+          </span>
           <article className="comment-body">
             {comment.body}
           </article>
