@@ -12,6 +12,8 @@ class ActivityFeed extends React.Component {
     };
 
     this.renderActivities = this.renderActivities.bind(this);
+    this.renderUserProfile = this.renderUserProfile.bind(this);
+    this.renderFriends = this.renderFriends.bind(this);
   }
 
   render() {
@@ -33,9 +35,41 @@ class ActivityFeed extends React.Component {
           {this.renderActivities()}
         </ul>
 
-        <aside className="activity-feed-sidebar">
-          This is sidebar
-        </aside>
+        <section className="activity-feed-sidebar">
+          {this.renderUserProfile()}
+          {this.renderFriends()}
+        </section>
+      </section>
+    );
+  }
+
+  renderFriends() {
+    return (
+      null
+    );
+  }
+
+  renderUserProfile() {
+    const {currentUser} = this.props;
+
+    return (
+      <section className="activity-feed-user-profile">
+        <img className="avatar" src={currentUser.avatar_url} />
+        <span className="user-name">
+          {currentUser.fname.toUpperCase()} {currentUser.lname.toUpperCase()}
+          <hr />
+          <small>
+            Joined on {currentUser.created_at}
+          </small>
+        </span>
+        <div className="user-options">
+          <Link to="/edit_profile">
+            Edit Profile
+          </Link>
+          <Link to="/friends/find">
+            Find Friends
+          </Link>
+        </div>
       </section>
     );
   }

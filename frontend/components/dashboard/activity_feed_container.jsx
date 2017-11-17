@@ -2,12 +2,17 @@ import {connect} from 'react-redux';
 import ActivityFeed from './activity_feed';
 import {fetchActivities} from '../../actions/activities_actions';
 
-const mapStateToProps = ({entities: {activities, workouts, routes, users}}, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
+  const {
+    entities: {activities, workouts, routes, users},
+    session: {currentUser}
+  } = state;
   return {
     activities,
     workouts,
     routes,
     users,
+    currentUser,
   };
 };
 

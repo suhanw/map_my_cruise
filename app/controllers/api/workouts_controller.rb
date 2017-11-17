@@ -6,7 +6,8 @@ class Api::WorkoutsController < ApplicationController
     render :index
   end
 
-  def show
+  def show(last=nil)
+
     @workout = Workout.includes(:route).includes(:comments).order("comments.created_at").find_by(id: params[:id])
     if !@workout
       render json: ["This workout does not exist."], status: 404

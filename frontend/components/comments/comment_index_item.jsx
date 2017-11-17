@@ -11,7 +11,7 @@ class CommentIndexItem extends React.Component {
   }
 
   render() {
-    debugger
+    
     let comment = this.props.comment;
     let user = this.props.user;
     return (

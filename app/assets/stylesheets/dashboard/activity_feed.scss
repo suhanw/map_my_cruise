@@ -5,13 +5,8 @@ section.activity-feed {
 }
 
 .activity-feed-main {
-  flex-grow: 1;
+  width: 70%;
   margin-left: 0;
-  // border: 1px solid green;
-}
-
-.activity-feed-sidebar {
-  // border: 1px solid red;
 }
 
 .activity-feed-main article {
@@ -168,4 +163,61 @@ section.activity-feed {
 
 .activity-feed-main article section .comment-section-items .workout-comments .comment-details {
   border: 0;
+}
+
+.activity-feed-sidebar {
+  width: 30%;
+}
+
+.activity-feed-user-profile {
+  border: 1px solid $gray;
+  background: $lightest-gray;
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  align-items: flex-start;
+  box-shadow: 1px 1px 1px 0 $gray;
+}
+
+.activity-feed-user-profile .avatar {
+  width: 90px;
+  height: auto;
+}
+
+.activity-feed-user-profile .user-name {
+  padding: 10px;
+  letter-spacing: 2px;
+  font-family: 'PT Sans Narrow', sans-serif;
+  flex-grow: 1;
+}
+
+.activity-feed-user-profile .user-name hr {
+  margin: 5px 0;
+  background: $light-gray;
+  height: 1px;
+}
+
+.activity-feed-user-profile .user-name small {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 12px;
+}
+
+.activity-feed-user-profile .user-options {
+  flex-basis: 100%;
+  display: flex;
+  border-top: 1px solid $gray;
+}
+
+.activity-feed-user-profile .user-options a {
+  font-size: 14px;
+  color: $light-blue;
+  flex-grow: 1;
+  text-align: center;
+  padding: 5px;
+}
+
+.activity-feed-user-profile .user-options a:last-of-type {
+  border-left: 1px solid $gray;
 }
