@@ -13,8 +13,8 @@ section.activity-feed {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  // flex-wrap: wrap;
-  margin: 10px 0;
+  margin-top: 10px;
+  margin-bottom: 40px;
 }
 
 .activity-feed-main article > .avatar {
@@ -169,7 +169,8 @@ section.activity-feed {
   width: 30%;
 }
 
-.activity-feed-user-profile {
+.activity-feed-user-profile,
+.activity-feed-friends {
   border: 1px solid $gray;
   background: $lightest-gray;
   margin: 10px 0;
@@ -202,6 +203,7 @@ section.activity-feed {
 .activity-feed-user-profile .user-name small {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 12px;
+  letter-spacing: 1px;
 }
 
 .activity-feed-user-profile .user-options {
@@ -220,4 +222,27 @@ section.activity-feed {
 
 .activity-feed-user-profile .user-options a:last-of-type {
   border-left: 1px solid $gray;
+}
+
+
+.activity-feed-friends-header {
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.activity-feed-friends h3 {
+  font-size: 10px;
+  color: $gray;
+}
+
+.activity-feed-friends-options {
+  font-size: 10px;
+  color: $blue;
+}
+
+.activity-feed-friends-thumbnails {
+  flex-basis: 100%;
+  border: 1px solid red;
 }

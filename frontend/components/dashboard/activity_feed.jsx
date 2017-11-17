@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Spinner from '../spinner';
 import ActivityFeedItem from './activity_feed_item';
+import FriendIndexContainer from '../friends/friend_index_container';
 
 class ActivityFeed extends React.Component {
   constructor(props) {
@@ -45,7 +46,17 @@ class ActivityFeed extends React.Component {
 
   renderFriends() {
     return (
-      null
+      <section className="activity-feed-friends">
+        <span className="activity-feed-friends-header">
+          <h3>FRIENDS</h3>
+          <nav className="activity-feed-friends-options">
+            <Link to="/friends">View All</Link> | <Link to="/friends/find">Find Friends</Link>
+          </nav>
+        </span>
+        <figure className="activity-feed-friends-thumbnails">
+          <FriendIndexContainer thumbnail />
+        </figure>
+      </section>
     );
   }
 
@@ -59,7 +70,7 @@ class ActivityFeed extends React.Component {
           {currentUser.fname.toUpperCase()} {currentUser.lname.toUpperCase()}
           <hr />
           <small>
-            Joined on {currentUser.created_at}
+            Running since {currentUser.created_at}
           </small>
         </span>
         <div className="user-options">
