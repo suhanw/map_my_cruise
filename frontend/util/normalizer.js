@@ -68,3 +68,8 @@ export const commentNormalizer = (oldComment) => {
   const normalizedPayload = normalize(oldComment, comment);
   return normalizedPayload.entities;
 };
+
+// export const activitiesNormalize = () => {
+//   const user = new schema.Entity('users');
+//   const route =
+// };

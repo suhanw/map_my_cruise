@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import Spinner from '../spinner';
+import ActivityFeedItem from './activity_feed_item';
 
 
 class ActivityFeed extends React.Component {
@@ -38,9 +39,8 @@ class ActivityFeed extends React.Component {
     const {ordered_ids, activities_by_id} = this.props.activities;
     const activitiesDom = ordered_ids.map((id)=>{
       return (
-        <li>
-          {activities_by_id[id].user_id}
-        </li>
+        <ActivityFeedItem key={id}
+          activity = {activities_by_id[id]} />
       );
     });
 

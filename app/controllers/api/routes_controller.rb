@@ -10,8 +10,8 @@ class Api::RoutesController < ApplicationController
     @route = Route.find_by(id: params[:id])
     if !@route
       render json: ["This route does not exist"], status: 404
-    elsif !current_user.owns_route?(@route)
-      render json: ["This is not your route"], status: 401
+    # elsif !current_user.owns_route?(@route)
+    #   render json: ["This is not your route"], status: 401
     else
       render :show
     end
