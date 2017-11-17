@@ -5,7 +5,7 @@ import SectionNav from '../section_nav';
 import {ProtectRoute} from '../../util/route_util';
 import DisplayWorkouts from '../workouts/display_workouts';
 import RouteIndexContainer from '../routes/route_index_container';
-import ActivityFeed from './activity_feed';
+import ActivityFeedContainer from './activity_feed_container';
 
 class Dashboard extends React.Component {
 
@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
 
         <ProtectRoute path="/dashboard/workouts" component={DisplayWorkouts} />
         <ProtectRoute path="/dashboard/routes" component={RouteIndexContainer} />
-        <ProtectRoute exact path="/dashboard" component={ActivityFeed} />
+        <ProtectRoute exact path="/dashboard" component={ActivityFeedContainer} />
 
       </section>
     );

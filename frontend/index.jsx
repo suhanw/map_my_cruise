@@ -5,7 +5,7 @@ import configureStore from './store/store';
 
 // to delete
 // import * as ActivitiesApiUtil from './util/activities_api_util';
-import * as ActivitiesActions from './actions/activities_actions';
+// import * as ActivitiesActions from './actions/activities_actions';
 // to delete
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
   // bootstrapping current user
 
   // to delete
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  window.fetchActivities = ActivitiesActions.fetchActivities;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
+  // window.fetchActivities = ActivitiesActions.fetchActivities;
   // to delete
 
   const main = document.getElementById('main');
