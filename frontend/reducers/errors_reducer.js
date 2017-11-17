@@ -14,8 +14,10 @@ import WorkoutErrorsReducer from './workout_errors_reducer';
 import CommentErrorsReducer from './comment_errors_reducer';
 import FriendErrorsReducer from './friend_errors_reducer';
 import UserSearchErrorsReducer from './user_search_errors_reducer';
+import ActivityErrorsReducer from './activity_errors_reducer';
 
 const ErrorsReducer = combineReducers({
+  activities: ActivityErrorsReducer,
   session: SessionErrorsReducer,
   routes: RouteErrorsReducer,
   workouts: WorkoutErrorsReducer,

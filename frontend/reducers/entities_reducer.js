@@ -5,8 +5,10 @@ import WorkoutsReducer from './workouts_reducer';
 import CommentsReducer from './comments_reducer';
 import FriendsReducer from './friends_reducer';
 import UserSearchResultsReducer from './user_search_results_reducer';
+import ActivitiesReducer from './activities_reducer';
 
 const EntitiesReducer = combineReducers({
+  activities: ActivitiesReducer,
   routes: RoutesReducer,
   workouts: WorkoutsReducer,
   users: UsersReducer,
