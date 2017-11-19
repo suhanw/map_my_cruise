@@ -49,19 +49,16 @@ class ActivityFeedItem extends React.Component {
         </li>
       );
     }
-
+    
     const {user_id, feedable_type, feedable_id} = this.props.activity;
     const user = this.props.users[user_id];
     let feedable;
-    if (feedable_type === 'Route') {
-      feedable = this.props.routes.routes_by_id[feedable_id];
-    } else if (feedable_type === 'Workout') {
-      feedable = this.props.workouts.workouts_by_id[feedable_id];
-    }
 
     if (feedable_type === 'Route') {
+      feedable = this.props.routes.routes_by_id[feedable_id];
       return this.renderRouteItem(feedable);
     } else if (feedable_type === 'Workout') {
+      feedable = this.props.workouts.workouts_by_id[feedable_id];
       return this.renderWorkoutItem(feedable);
     }
 
@@ -84,6 +81,7 @@ class ActivityFeedItem extends React.Component {
                 <Link to={`/workouts/${workout.id}`}>
                   {`${user.fname} ${user.lname}`} ran {`${routeDist} miles`}
                 </Link>
+                <div className="workout-icon"></div>
             </span>
             <span className="feed-workout-details">
               <figure>

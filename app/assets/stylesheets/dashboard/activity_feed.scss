@@ -13,8 +13,8 @@ section.activity-feed {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  margin-top: 10px;
-  margin-bottom: 40px;
+  // margin-top: 10px;
+  // margin-bottom: 40px;
 }
 
 .activity-feed-main article > .avatar {
@@ -58,6 +58,25 @@ section.activity-feed {
 .activity-feed-main article > section > .user-action i {
   font-size: 25px;
   color: $gray;
+}
+
+.activity-feed-main article > section > .user-action > .workout-icon {
+  width: 25px;
+  height: 25px;
+  position: relative;
+}
+
+.activity-feed-main article > section > .user-action > .workout-icon::after {
+  background: asset-url('workout-icon.png');
+  background-size: contain;
+  content: "";
+  opacity: 0.5;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 0.5;
 }
 
 .activity-feed-main article > section > .comment-section{
@@ -173,7 +192,6 @@ section.activity-feed {
 .activity-feed-friends {
   border: 1px solid $gray;
   background: $lightest-gray;
-  margin-top: 10px;
   margin-bottom: 20px;
   display: flex;
   flex-direction: row;
