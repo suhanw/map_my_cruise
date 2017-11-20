@@ -15,6 +15,7 @@ class ActivityFeed extends React.Component {
     this.renderActivities = this.renderActivities.bind(this);
     this.renderUserProfile = this.renderUserProfile.bind(this);
     this.renderFriends = this.renderFriends.bind(this);
+    this.scrollFetch = this.scrollFetch.bind(this);
   }
 
   render() {
@@ -40,6 +41,14 @@ class ActivityFeed extends React.Component {
         </section>
       </section>
     );
+  }
+
+  scrollFetch(e) {
+    const offset = this.props.activities.ordered_ids.length;
+    if (window.innerHeight + window.scrollY >= document.body.scrollHeight) { // detect when someone scrolls to the bottom of browser window
+      console.log('bottom', offset);
+      this.props.fetchActivities(offset);
+    }
   }
 
   renderFriends() {
@@ -99,12 +108,25 @@ class ActivityFeed extends React.Component {
     return activitiesDom;
   }
 
+  componentWillReceiveProps(newProps){
+    console.log('old props', this.props.activities.ordered_ids.length);
+    console.log('new props', newProps.activities.ordered_ids.length);
+  }
+
   componentDidMount() {
+    document.addEventListener('scroll', this.scrollFetch);
+    const {activities} = this.props;
+    // if (activities.ordered_ids && activities.ordered_ids.length) { // to avoid dispatching AJAX if feed is already populated
+    //   this.setState({loading: false});
+    //   return;
+    // }
     this.props.fetchActivities().then(
-      ()=>{
-        this.setState({loading: false});
-      }
+      ()=> this.setState({loading: false})
     );
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('scroll', this.scrollFetch);
   }
 }
 

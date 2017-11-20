@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    fetchActivities: () => dispatch(fetchActivities()),
+    fetchActivities: (offset=0) => dispatch(fetchActivities(offset)),
   };
 };
 

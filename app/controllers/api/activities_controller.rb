@@ -1,9 +1,18 @@
 class Api::ActivitiesController < ApplicationController
   def index
     # get actual friends
-    friends = current_user.requested_friends.where("friend_statuses.friend_status = 'yes'") + current_user.received_friends.where("friend_statuses.friend_status = 'yes'")
+    friends = current_user.requested_friends.where("friend_statuses.friend_status = 'yes'")
+    friends += current_user.received_friends.where("friend_statuses.friend_status = 'yes'")
     relevant_users = friends << current_user
-    @activities = Activity.where(user: relevant_users).includes(:feedable).includes(:user).order(created_at: :desc).limit(5)
+
+    offset = params['offset'].to_i
+
+    @activities = Activity.where(user: relevant_users)
+                          .includes(:feedable)
+                          .includes(:user)
+                          .order(created_at: :desc)
+                          .offset(offset)
+                          .limit(3)
     render :index
   end
 end

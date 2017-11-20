@@ -4,10 +4,9 @@ export const RECEIVE_ACTIVITIES = 'RECEIVE_ACTIVITIES';
 export const RECEIVE_ACTIVITIES_ERRORS = 'RECEIVE_ACTIVITIES_ERRORS';
 
 export const receiveActivities = (payload) => {
-  let normalizedPayload = payload;
   return {
     type: RECEIVE_ACTIVITIES,
-    payload: normalizedPayload
+    payload,
   };
 };
 
@@ -18,9 +17,9 @@ export const receiveActivitiesErrors = (errors) => {
   };
 };
 
-export const fetchActivities = () => {
+export const fetchActivities = (offset) => {
   return (dispatch) => {
-    return ActivitiesApiUtil.fetchActivities().then(
+    return ActivitiesApiUtil.fetchActivities(offset).then(
       (payload) => dispatch(receiveActivities(payload)),
       (errors) => dispatch(receiveActivitiesErrors(errors.responseJSON))
     );

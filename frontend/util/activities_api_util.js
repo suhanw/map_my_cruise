@@ -1,6 +1,9 @@
-export const fetchActivities = () => {
+export const fetchActivities = (offset) => {
   return $.ajax({
-    url:'api/activities/',
+    url:`api/activities/`,
     method: 'get',
+    data: {
+      offset,
+    }
   });
 };
