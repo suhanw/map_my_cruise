@@ -49,7 +49,7 @@ class ActivityFeedItem extends React.Component {
         </li>
       );
     }
-    
+
     const {user_id, feedable_type, feedable_id} = this.props.activity;
     const user = this.props.users[user_id];
     let feedable;
@@ -79,7 +79,7 @@ class ActivityFeedItem extends React.Component {
           <section>
             <span className="user-action">
                 <Link to={`/workouts/${workout.id}`}>
-                  {`${user.fname} ${user.lname}`} ran {`${routeDist} miles`}
+                  {`${user.fname} ${user.lname}`} ran {`${routeDist} miles`} for the workout {workout.name.toUpperCase()}
                 </Link>
                 <div className="workout-icon"></div>
             </span>
@@ -150,7 +150,7 @@ class ActivityFeedItem extends React.Component {
           <section>
             <span className="user-action">
               <strong>
-                {`${user.fname} ${user.lname} created the route ${route.name}`}
+                {`${user.fname} ${user.lname} created the route ${route.name.toUpperCase()}`}
               </strong>
               <i className="fa fa-map-marker" aria-hidden="true"></i>
             </span>
