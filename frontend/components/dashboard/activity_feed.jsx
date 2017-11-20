@@ -24,8 +24,6 @@ class ActivityFeed extends React.Component {
           <div className="spinner-box">
             <Spinner />
           </div>
-
-
         </section>
       );
     }
@@ -85,12 +83,18 @@ class ActivityFeed extends React.Component {
 
   renderActivities() {
     const {ordered_ids, activities_by_id} = this.props.activities;
-    const activitiesDom = ordered_ids.map((id)=>{
-      return (
-        <ActivityFeedItem key={id}
-          activity = {activities_by_id[id]} />
-      );
-    });
+    let activitiesDom;
+
+    if (ordered_ids.length) {
+      activitiesDom = ordered_ids.map((id)=>{
+        return (
+          <ActivityFeedItem key={id}
+            activity = {activities_by_id[id]} />
+        );
+      });
+    } else {
+      activitiesDom = <li className="message">No activity to display.</li>;
+    }
 
     return activitiesDom;
   }

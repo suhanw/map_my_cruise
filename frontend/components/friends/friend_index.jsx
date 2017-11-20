@@ -37,6 +37,16 @@ class FriendIndex extends React.Component {
       );
     }
 
+    if (!this.props.currentUser.friends.length) {
+      return (
+        <section className="activity-feed-friends-thumbnails">
+          <small>
+            I'm sorry you have no friends.
+          </small>
+        </section>
+      );
+    }
+
     return (
       <section className="activity-feed-friends-thumbnails">
         {this.renderFriends(this.props.thumbnail)}

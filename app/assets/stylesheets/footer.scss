@@ -74,16 +74,28 @@ footer {
   margin: 5px 0;
 }
 
-.products-bar .mapmyrun-link {
+.mapmyrun-link {
   margin-left: 0;
   padding-left: 0;
-}
-
-.mapmyrun-link {
   font-size: 18px;
   color: #0076C0;
   border-right: #dbdbdb solid 1px;
-  min-width: 160px;
+  min-width: 120px;
+}
+
+.mapmyrun-link a {
+  display: flex;
+  align-items: center;
+}
+
+.mapmyrun-logo {
+  background: asset-url('mapmyrun.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 25px;
+  height: 18px;
+  margin-right: 5px;
 }
 
 .fitness-link {

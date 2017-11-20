@@ -25,9 +25,9 @@ const Footer = () => (
         </figure>
         <ul>
           <li className="mapmyrun-link">
-            <a href ="https://github.com/suhanw/map_my_cruise" target="_">
-              <i className="fa fa-fighter-jet" aria-hidden="true"></i>
-              mapmycruise
+            <a href ="http://www.mapmyrun.com/" target="_">
+              <div className="mapmyrun-logo"></div>
+              mapmyrun
             </a>
           </li>
           <li className="fitness-link"><a href="http://www.mapmyfitness.com/" target="_">fitness</a></li>
