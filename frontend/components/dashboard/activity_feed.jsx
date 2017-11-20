@@ -46,7 +46,6 @@ class ActivityFeed extends React.Component {
   scrollFetch(e) {
     const offset = this.props.activities.ordered_ids.length;
     if (window.innerHeight + window.scrollY >= document.body.scrollHeight) { // detect when someone scrolls to the bottom of browser window
-      console.log('bottom', offset);
       this.props.fetchActivities(offset);
     }
   }
@@ -108,10 +107,6 @@ class ActivityFeed extends React.Component {
     return activitiesDom;
   }
 
-  componentWillReceiveProps(newProps){
-    console.log('old props', this.props.activities.ordered_ids.length);
-    console.log('new props', newProps.activities.ordered_ids.length);
-  }
 
   componentDidMount() {
     document.addEventListener('scroll', this.scrollFetch);
