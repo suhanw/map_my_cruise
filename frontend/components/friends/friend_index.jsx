@@ -37,7 +37,8 @@ class FriendIndex extends React.Component {
       );
     }
 
-    if (!this.props.currentUser.friends.length) {
+    this.renderFriends(this.props.thumbnail);
+    if (!this.actualFriends.length) {
       return (
         <section className="activity-feed-friends-thumbnails">
           <small>
@@ -49,7 +50,6 @@ class FriendIndex extends React.Component {
 
     return (
       <section className="activity-feed-friends-thumbnails">
-        {this.renderFriends(this.props.thumbnail)}
         <ul>
           {this.actualFriends}
         </ul>
@@ -72,7 +72,10 @@ class FriendIndex extends React.Component {
       );
     }
 
-    if (!this.props.currentUser.friends.length) {
+    this.renderFriends(this.props.thumbnail); //this updates instance variables that categorize the friends
+
+    // if (!this.props.currentUser.friends.length) {
+    if (!this.actualFriends.length && !this.pendingFriendReceipts.length) {
       return (
         <section className="friend-index">
           <span className="message">
@@ -83,8 +86,6 @@ class FriendIndex extends React.Component {
         </section>
       );
     }
-
-    this.renderFriends(this.props.thumbnail); //this updates instance variables that categorize the friends
 
     return (
       <section className="friend-index">
