@@ -30,7 +30,6 @@ class ConfirmDeleteModal extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    this.props.dispatchAction(Object.values(this.props.modal)[0]);
     this.props.closeModal();
     let redirectPath;
     if (this.props.modal.confirmDeleteRoute) {
@@ -38,7 +37,9 @@ class ConfirmDeleteModal extends React.Component {
     } else if (this.props.modal.confirmDeleteWorkout) {
       redirectPath = '/workouts';
     }
-    this.props.history.push(redirectPath);
+    this.props.dispatchAction(Object.values(this.props.modal)[0]).then(
+      ()=>this.props.history.push(redirectPath)
+    );
   }
 }
 

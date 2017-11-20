@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 import {RECEIVE_ACTIVITIES} from '../actions/activities_actions';
 import {CLEAR_ENTITIES} from '../actions/clear_actions';
 import {REMOVE_ROUTE} from '../actions/routes_actions';
+import {REMOVE_WORKOUT} from '../actions/workouts_actions';
 
 const defaultState = {
   activities_by_id: {},
@@ -11,6 +12,7 @@ const defaultState = {
 const ActivitiesReducer = (state=defaultState, action) => {
   let newState;
   let new_ordered_ids;
+  let activity_id;
   switch (action.type) {
     case RECEIVE_ACTIVITIES:
       const {activities_by_id, ordered_ids} = action.payload;
@@ -24,7 +26,15 @@ const ActivitiesReducer = (state=defaultState, action) => {
       return newState;
 
     case REMOVE_ROUTE:
-      const {activity_id} = action.payload.route;
+      activity_id = action.payload.route.activity_id;
+      new_ordered_ids = state.ordered_ids.slice(0);
+      new_ordered_ids.splice(new_ordered_ids.indexOf(activity_id), 1); //splice is mutative
+      newState = merge({}, state);
+      newState.ordered_ids = new_ordered_ids; // replace the ordered_ids array in state
+      return newState;
+
+    case REMOVE_WORKOUT:
+      activity_id = action.payload.workout.activity_id;
       new_ordered_ids = state.ordered_ids.slice(0);
       new_ordered_ids.splice(new_ordered_ids.indexOf(activity_id), 1); //splice is mutative
       newState = merge({}, state);
