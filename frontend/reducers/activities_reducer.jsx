@@ -42,7 +42,7 @@ const ActivitiesReducer = (state=defaultState, action) => {
       return newState;
 
     case CLEAR_ENTITIES:
-      return {};
+      return defaultState;
 
     default:
       return state;
