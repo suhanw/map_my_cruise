@@ -116,10 +116,10 @@ class ActivityFeed extends React.Component {
   componentDidMount() {
     document.addEventListener('scroll', this.scrollFetch);
     const {activities} = this.props;
-    // if (activities.ordered_ids && activities.ordered_ids.length) { // to avoid dispatching AJAX if feed is already populated
-    //   this.setState({loading: false});
-    //   return;
-    // }
+    if (activities.ordered_ids && activities.ordered_ids.length) { // to avoid dispatching AJAX if feed is already populated
+      this.setState({loading: false});
+      return;
+    }
     this.props.fetchActivities().then(
       ()=> this.setState({loading: false})
     );

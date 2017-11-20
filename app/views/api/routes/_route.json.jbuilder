@@ -13,4 +13,6 @@ json.user do
   json.partial! 'api/users/user', user: route.user
 end
 
-json.activity_id route.activity.id
+if route.activity # when route is deleted, activity is destroyed, so this will be falsey
+  json.activity_id route.activity.id
+end
