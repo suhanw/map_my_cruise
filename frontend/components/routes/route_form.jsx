@@ -10,15 +10,18 @@ class RouteForm extends React.Component {
     this.state = this.props.route;
     this.state['panelCollapsed'] = false;
     this.state['panelClass'] = "route-form-details";
+    this.state['mapSearchLocation'] = null;
 
+    this.autocomplete = null;
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
     this.saveRoute = this.saveRoute.bind(this);
     this.setRouteState = this.setRouteState.bind(this);
     this.renderCursorTooltip = this.renderCursorTooltip.bind(this);
     this.togglePanel = this.togglePanel.bind(this);
     this.renderToggler = this.renderToggler.bind(this);
+    this.addAutocomplete = this.addAutocomplete.bind(this);
+    this.onPlaceChanged = this.onPlaceChanged.bind(this);
   }
 
 
@@ -26,13 +29,12 @@ class RouteForm extends React.Component {
     if (this.props.formType === 'edit') {
       const that = this;
       this.props.fetchRoute(this.props.match.params.routeId).then(
-        () => {
-          this.setState(that.props.route);
-        },
+        () => this.setState(that.props.route),
         () => this.props.openModal('errors')
       );
     }
 
+    // to add TC gif to Google's warning
     document.getElementById("directions").addEventListener('DOMSubtreeModified', ()=>{
       const warnbox = document.querySelector(".warnbox-content");
 
@@ -42,11 +44,11 @@ class RouteForm extends React.Component {
         tcGif.setAttribute('src', 'https://media.giphy.com/media/5nPodXMLXXd1m/giphy.gif');
         warnbox.appendChild(tcGif);
       }
-
       return;
     });
 
     this.renderCursorTooltip();
+    this.addAutocomplete();
   }
 
   renderCursorTooltip() {
@@ -59,7 +61,6 @@ class RouteForm extends React.Component {
       cursorToolTip.style.left = `${x+10}px`;
 
       if (this.state.polyline !== '') {
-        // cursorToolTip.style.visibility = "hidden";
         cursorToolTip.innerHTML = "Click along any point on the route and drag to modify the route.";
       }
     };
@@ -79,21 +80,31 @@ class RouteForm extends React.Component {
           component={FormErrorModal}
           closeModal={this.props.closeModal} />
 
-        <form className={this.state.panelClass}>
+
+        <section className={this.state.panelClass}>
           <h2 className="route-form-title">CREATE A ROUTE</h2>
+          <form>
+            {this.renderSearchBar()}
+          </form>
+          <form>
 
-          {this.renderToggler()}
+            {this.renderToggler()}
+
+            {this.renderFormInput()}
+            <div id="directions"></div>
+          </form>
+
+        </section>
 
 
-          {this.renderFormInput()}
-          <div id="directions"></div>
-        </form>
         <Map className="map"
           setRouteState={this.setRouteState}
           openModal={this.props.openModal}
           receiveRouteErrors={this.props.receiveRouteErrors}
           formType={this.props.formType}
-          route={this.props.route} />
+          route={this.props.route}
+          mapSearchLocation={this.state.mapSearchLocation} />
+
       </section>
     );
   }
@@ -101,20 +112,34 @@ class RouteForm extends React.Component {
   renderSearchBar() {
     return (
       <section className="route-form-map-search">
-        <h3>Choose map location</h3>
-        <input type="search" placeholder="Coming soon" />
-        <button onClick={this.handleSearch}>
-          SEARCH
-        </button>
+        <h3>Choose Map Location</h3>
+        <input id="autocomplete" type="search" placeholder="Enter city or address" />
       </section>
     );
+  }
+
+  addAutocomplete() {
+    const searchInputField = document.getElementById('autocomplete');
+    this.autocomplete = new google.maps.places.Autocomplete(searchInputField);
+    this.autocomplete.addListener('place_changed', this.onPlaceChanged);
+  }
+
+  onPlaceChanged() {
+    let place = this.autocomplete.getPlace();
+    if (place.geometry) {
+      this.setState({mapSearchLocation: place.geometry.location});
+    } else {
+      const searchInputField = document.getElementById('autocomplete');
+      searchInputField.placeholder="Select from the dropdown list";
+      searchInputField.value = "";
+    }
   }
 
   renderFormInput() {
     return (
       <section className="route-form-input">
         <h3>Route Details</h3>
-        <input type="text" placeholder="Name this map"
+        <input type="text" placeholder="Name this route"
           onChange={this.handleChange}
           value={this.state.name} />
         <button onClick={this.saveRoute}>
@@ -128,13 +153,16 @@ class RouteForm extends React.Component {
     this.setState({name: e.target.value});
   }
 
-  handleSearch(e) {
-    e.preventDefault();
-  }
-
   saveRoute(e) {
     e.preventDefault();
-    this.props.action(this.state).then(
+    const {name, polyline, distance, city} = this.state;
+    const newRoute = {
+      name,
+      polyline,
+      distance,
+      city,
+    };
+    this.props.action(newRoute).then(
       ({payload})=> {
         this.props.history.push(`/routes/${Object.keys(payload.routes_by_id)[0]}`);
       },

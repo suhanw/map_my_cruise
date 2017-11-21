@@ -12,6 +12,8 @@ class Map extends React.Component {
 
     this.startPos = null;
     this.endPos = null;
+    this.map = null;
+    this.routePath = null;
 
     this.renderInitMap = this.renderInitMap.bind(this);
     this.handleMapClick = this.handleMapClick.bind(this);
@@ -44,7 +46,13 @@ class Map extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
-    this.routePath = google.maps.geometry.encoding.decodePath(newProps.route.polyline);
+    if (newProps.route) {
+      this.routePath = google.maps.geometry.encoding.decodePath(newProps.route.polyline);
+    }
+    if (newProps.mapSearchLocation) {
+      this.map.panTo(newProps.mapSearchLocation);
+      this.map.setZoom(15);
+    }
   }
 
   renderCursorTooltip() {
@@ -99,7 +107,7 @@ class Map extends React.Component {
     // to render existing route for edit form
     if (this.props.formType === 'edit') {
       // pass in the intermediate points between origin and destination
-      // as waypoints. Google only allows 23 free waypoints, inc. origin and dest.
+      // as waypoints. Google only allows 23 free waypoints, including origin and dest.
       const lastIdx = this.routePath.length < 23 ? this.routePath.length-1 : 22;
       const waypoints = this.routePath.slice(1, lastIdx).map((point)=>{
         return {
@@ -116,15 +124,14 @@ class Map extends React.Component {
 
       this.generatePath(request);
 
-      // // Credit to find center of polyline:
-      // // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
+      // Credit to find center of polyline:
+      // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
       const bounds = new google.maps.LatLngBounds();
       this.routePath.forEach((coord)=>{
         bounds.extend(coord);
       });
       this.map.fitBounds(bounds);
     }
-
   }
 
   handleMapClick(event) {
@@ -153,7 +160,6 @@ class Map extends React.Component {
       this.startPos = null;
       this.endPos = null;
     }
-    // this.map.panTo(latLng);
   }
 
   generatePath(request) {
@@ -201,14 +207,6 @@ class Map extends React.Component {
       this.props.receiveRouteErrors(['Dude, that route is impossible, mission-wise.']);
       this.props.openModal('errors');
     }
-  }
-
-  renderLoading(){
-    return (
-      <h2>
-        Loading...
-      </h2>
-    );
   }
 }
 
