@@ -118,7 +118,8 @@ section.activity-feed {
 }
 
 
-.activity-feed-main article.workout span.feed-workout-details {
+.activity-feed-main article.workout span.feed-workout-details,
+.activity-feed-main article.friend span.feed-friend-details {
   border: 1px solid $gray;
   background: $lightest-gray;
   height: 120px;

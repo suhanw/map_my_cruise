@@ -20,3 +20,4 @@ json.friend do
 end
 json.friender_id friend_status.friender_id # to indicate who's the requestor
 json.friend_status friend_status.friend_status
+json.updated_at friend_status.updated_at.strftime("%m/%d/%Y")

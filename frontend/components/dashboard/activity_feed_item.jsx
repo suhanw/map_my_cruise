@@ -73,13 +73,29 @@ class ActivityFeedItem extends React.Component {
   }
 
   renderFriendItem(friendStatus) {
-    const {fname, lname} = this.props.currentUser;
-    const {friend} = friendStatus;
+    const {user_id} = this.props.activity;
+    const currentUserId = this.props.currentUser.id;
+    const user = currentUserId === user_id ? this.props.currentUser : this.props.users[user_id];
+    const friendId = friendStatus.friend;
+    const friend = this.props.users[friendId];
 
+    let feedMsg = user_id === currentUserId ? `You are now friends with ${friend.fname} ${friend.lname}` : `${user.fname} ${user.lname} has accepted your friend request.`;
     return (
       <li>
         <article className="friend">
-          {`${fname} ${lname} is now friends with ${friend}`}
+          <img className="avatar" src={user.avatar_url} />
+          <section>
+            <span className="user-action">
+              {feedMsg}
+            </span>
+            <span className="feed-friend-details">
+              {`${friend.fname} ${friend.lname}`}
+            </span>
+            <span className="comment-section">
+              <strong></strong>
+              <small>{friendStatus.updated_at}</small>
+            </span>
+          </section>
         </article>
       </li>
     );
@@ -195,7 +211,7 @@ class ActivityFeedItem extends React.Component {
   }
 
   componentDidMount() {
-    const {activity, fetchRoute, fetchWorkout, fetchFriendStatus} = this.props;
+    const {activity, fetchRoute, fetchWorkout, fetchFriendStatus, friends} = this.props;
     if (activity.feedable_type === 'Route') {
       fetchRoute(activity.feedable_id).then(()=>this.setState({loading: false}));
     } else if (activity.feedable_type === 'Workout') {
