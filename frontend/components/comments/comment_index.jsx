@@ -20,11 +20,6 @@ class CommentIndex extends React.Component {
       );
     });
 
-    // if (!workoutComments.length) {
-    //   return (
-    //   );
-    // }
-
     return (
       <section className="workout-comments">
         {!workoutComments.length ?
