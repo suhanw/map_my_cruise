@@ -23,4 +23,5 @@ class FriendStatus < ApplicationRecord
     foreign_key: :friendee_id,
     class_name: 'User'
 
+  has_one :activity, as: :feedable, dependent: :destroy
 end

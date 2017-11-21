@@ -19,28 +19,29 @@ class Api::FriendStatusesController < ApplicationController
   def create # to submit friend request
     if current_user.is_friend_of?(User.find_by(id: friend_params[:friendee_id]))
       render json: ['You already tried to friend this person, creep.'], status: 422
-    else
-      @friend_status = FriendStatus.new({
-        friendee_id: friend_params[:friendee_id], # only has 'friendee'
-        friender_id: current_user.id,
-        friend_status: 'pending'
-      })
+      return
+    end
 
-      if @friend_status.save
-        render :show
-      else
-        render json: @friend_status.errors.full_messages, status: 422
-      end
+    @friend_status = FriendStatus.new({
+      friendee_id: friend_params[:friendee_id], # only has 'friendee'
+      friender_id: current_user.id,
+      friend_status: 'pending'
+    })
+
+    if @friend_status.save
+      render :show
+    else
+      render json: @friend_status.errors.full_messages, status: 422
     end
   end
 
   def update # to accept/reject friend request
     @friend_status = FriendStatus.find_by(id: params[:id])
     if friend_params[:friend_status] == 'yes' && @friend_status.update(friend_status: 'yes')
+      @friend_status.activity = Activity.new(user_id: current_user.id) # add to activity feed
       render :show
     elsif friend_params[:friend_status] == 'no'
-      @friend_status.friend_status = 'no';
-      @friend_status.destroy
+      @friend_status.friend_status = 'no'
       render :show
     else
       render json: ['Something went wrong, you are a horrible friend and human being.'], status: 422
