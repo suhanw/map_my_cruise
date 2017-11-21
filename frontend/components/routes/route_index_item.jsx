@@ -34,7 +34,7 @@ class RouteIndexItem extends React.Component  {
     if (this.props.route.user === this.props.currentUser.id) {
       return (
         <div className="route-index-item-options">
-          <Link to={`routes/${this.props.route.id}/edit`}>Edit</Link>
+          <Link to={`/routes/${this.props.route.id}/edit`}>Edit</Link>
           <button onClick={()=>{
               this.props.openModal({confirmDeleteRoute: this.props.route.id});
             }}>Delete</button>
