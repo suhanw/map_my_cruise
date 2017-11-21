@@ -76,8 +76,12 @@ class ActivityFeedItem extends React.Component {
     const {user_id} = this.props.activity;
     const currentUserId = this.props.currentUser.id;
     const user = currentUserId === user_id ? this.props.currentUser : this.props.users[user_id];
-    const friendId = friendStatus.friend;
-    const friend = this.props.users[friendId];
+    const friendeeId = friendStatus.friend;
+    const frienderId = friendStatus.friender_id;
+    const friend = this.props.users[friendeeId];
+
+    //if current user is not involved in the friendship (i.e., friendship between current user's friend with another user), don't render
+    if (currentUserId !== user_id && currentUserId !== friendeeId && currentUserId !== frienderId) return null;
 
     let feedMsg = user_id === currentUserId ? `You are now friends with ${friend.fname} ${friend.lname}.` : `${user.fname} ${user.lname} has accepted your friend request.`;
     return (

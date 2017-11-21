@@ -17,7 +17,7 @@ class Api::FriendStatusesController < ApplicationController
   end
 
   def show
-    @friend_status = FriendStatus.find(params[:id])
+    @friend_status = FriendStatus.find_by(id: params[:id])
     render :show
   end
 
