@@ -16,6 +16,11 @@ class Api::FriendStatusesController < ApplicationController
     render :index
   end
 
+  def show
+    @friend_status = FriendStatus.find(params[:id])
+    render :show
+  end
+
   def create # to submit friend request
     if current_user.is_friend_of?(User.find_by(id: friend_params[:friendee_id]))
       render json: ['You already tried to friend this person, creep.'], status: 422
@@ -60,7 +65,4 @@ class Api::FriendStatusesController < ApplicationController
     params.require(:friend).permit(:friendee_id, :friend_status)
   end
 
-  # for testing
-  def show
-  end
 end

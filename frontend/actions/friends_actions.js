@@ -40,6 +40,15 @@ export const receiveFriendStatusErrors = (errors) => {
 
 // THUNK action creators
 
+export const fetchFriendStatus = (friendStatusId) => {
+  return (dispatch) => {
+    return FriendsApiUtil.fetchFriendStatus(friendStatusId).then(
+      (friendStatus) => dispatch(receiveFriendStatus(friendStatus)),
+      (errors) => dispatch(receiveFriendStatusErrors(errors.responseJSON))
+    );
+  };
+};
+
 export const fetchFriendStatuses = () => {
   return (dispatch) => {
     return FriendsApiUtil.fetchFriendStatuses().then(

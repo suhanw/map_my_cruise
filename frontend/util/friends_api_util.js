@@ -5,6 +5,13 @@ export const fetchFriendStatuses = () => {
   });
 };
 
+export const fetchFriendStatus = (friendStatusId) => {
+  return $.ajax({
+    url: `api/friend_statuses/${friendStatusId}`,
+    method: 'get',
+  });
+};
+
 // 'friendStatus' is in the form of {friendee_id: 123}
 export const createFriendStatus = (friendStatus) => {
   return $.ajax({

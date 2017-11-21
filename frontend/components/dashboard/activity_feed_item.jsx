@@ -4,17 +4,21 @@ import {connect} from 'react-redux';
 import Spinner from '../spinner';
 import * as WorkoutActions from '../../actions/workouts_actions';
 import * as RouteActions from '../../actions/routes_actions';
+import * as FriendActions from '../../actions/friends_actions';
 import RouteMap from '../routes/route_map';
 import CommentIndexContainer from '../comments/comment_index_container';
 
 const mapStateToProps = (state, ownProps) => {
-  const {entities: {workouts, routes, users}} = state;
+  const {entities: {workouts, routes, users, friends}} = state;
+  const {session: {currentUser}} = state;
   const {activity} = ownProps;
   return {
     activity,
     workouts,
     routes,
     users,
+    friends,
+    currentUser,
   };
 };
 
@@ -22,6 +26,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchRoute: (routeId) => dispatch(RouteActions.fetchRoute(routeId)),
     fetchWorkout: (workoutId) => dispatch(WorkoutActions.fetchWorkout(workoutId)),
+    fetchFriendStatus: (friendStatusId) => dispatch(FriendActions.fetchFriendStatus(friendStatusId)),
   };
 };
 
@@ -35,6 +40,7 @@ class ActivityFeedItem extends React.Component {
 
     this.renderRouteItem = this.renderRouteItem.bind(this);
     this.renderWorkoutItem = this.renderWorkoutItem.bind(this);
+    this.renderFriendItem = this.renderFriendItem.bind(this);
     this.renderDuration = this.renderDuration.bind(this);
   }
 
@@ -60,8 +66,23 @@ class ActivityFeedItem extends React.Component {
     } else if (feedable_type === 'Workout') {
       feedable = this.props.workouts.workouts_by_id[feedable_id];
       return this.renderWorkoutItem(feedable);
+    } else if (feedable_type === 'FriendStatus') {
+      feedable = this.props.friends[feedable_id];
+      return this.renderFriendItem(feedable);
     }
+  }
 
+  renderFriendItem(friendStatus) {
+    const {fname, lname} = this.props.currentUser;
+    const {friend} = friendStatus;
+
+    return (
+      <li>
+        <article className="friend">
+          {`${fname} ${lname} is now friends with ${friend}`}
+        </article>
+      </li>
+    );
   }
 
   renderWorkoutItem(workout) {
@@ -174,11 +195,13 @@ class ActivityFeedItem extends React.Component {
   }
 
   componentDidMount() {
-    const {activity, fetchRoute, fetchWorkout} = this.props;
+    const {activity, fetchRoute, fetchWorkout, fetchFriendStatus} = this.props;
     if (activity.feedable_type === 'Route') {
       fetchRoute(activity.feedable_id).then(()=>this.setState({loading: false}));
     } else if (activity.feedable_type === 'Workout') {
       fetchWorkout(activity.feedable_id).then(()=>this.setState({loading: false}));
+    } else if (activity.feedable_type === 'FriendStatus') {
+      fetchFriendStatus(activity.feedable_id).then(()=>this.setState({loading: false}));
     }
   }
 }
