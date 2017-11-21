@@ -20,6 +20,7 @@ class RouteForm extends React.Component {
     this.renderCursorTooltip = this.renderCursorTooltip.bind(this);
     this.togglePanel = this.togglePanel.bind(this);
     this.renderToggler = this.renderToggler.bind(this);
+    this.renderSearchBar = this.renderSearchBar.bind(this);
     this.addAutocomplete = this.addAutocomplete.bind(this);
     this.onPlaceChanged = this.onPlaceChanged.bind(this);
   }
@@ -49,21 +50,6 @@ class RouteForm extends React.Component {
 
     this.renderCursorTooltip();
     this.addAutocomplete();
-  }
-
-  renderCursorTooltip() {
-    let cursorToolTip = document.getElementById('cursor-tooltip');
-    window.onmousemove = (e) => {
-      let x = e.clientX;
-      let y = e.clientY;
-
-      cursorToolTip.style.top = `${y+10}px`;
-      cursorToolTip.style.left = `${x+10}px`;
-
-      if (this.state.polyline !== '') {
-        cursorToolTip.innerHTML = "Click along any point on the route and drag to modify the route.";
-      }
-    };
   }
 
   render(){
@@ -126,13 +112,28 @@ class RouteForm extends React.Component {
 
   onPlaceChanged() {
     let place = this.autocomplete.getPlace();
-    if (place.geometry) {
+    if (place.geometry) { // if user selects from dropdown
       this.setState({mapSearchLocation: place.geometry.location});
-    } else {
+    } else { // else, clear search field and prompt user to select from dropdown
       const searchInputField = document.getElementById('autocomplete');
       searchInputField.placeholder="Select from the dropdown list";
       searchInputField.value = "";
     }
+  }
+
+  renderCursorTooltip() {
+    let cursorToolTip = document.getElementById('cursor-tooltip');
+    window.onmousemove = (e) => {
+      let x = e.clientX;
+      let y = e.clientY;
+
+      cursorToolTip.style.top = `${y+10}px`;
+      cursorToolTip.style.left = `${x+10}px`;
+
+      if (this.state.polyline !== '') {
+        cursorToolTip.innerHTML = "Click along any point on the route and drag to modify the route.";
+      }
+    };
   }
 
   renderFormInput() {
