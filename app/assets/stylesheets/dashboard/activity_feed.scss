@@ -13,7 +13,6 @@ section.activity-feed {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  // margin-top: 10px;
   margin-bottom: 40px;
 }
 
@@ -177,7 +176,8 @@ section.activity-feed {
 }
 
 .activity-feed-main article.workout span.feed-workout-details > figure strong,
-.activity-feed-main article.friend span.feed-friend-details div.friend-created strong {
+.activity-feed-main article.friend span.feed-friend-details div.friend-created strong,
+.activity-feed-main article.friend span.feed-friend-details div.friend-name {
   font-size: 20px;
 }
 
