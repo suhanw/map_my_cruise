@@ -20,6 +20,7 @@ class Map extends React.Component {
     this.placeMarker = this.placeMarker.bind(this);
     this.generatePath = this.generatePath.bind(this);
     this.renderPath = this.renderPath.bind(this);
+    this.renderExistingRoute = this.renderExistingRoute.bind(this);
   }
 
   componentDidMount(){
@@ -49,6 +50,7 @@ class Map extends React.Component {
     if (newProps.route) {
       this.routePath = google.maps.geometry.encoding.decodePath(newProps.route.polyline);
     }
+
     if (newProps.mapSearchLocation) {
       this.map.panTo(newProps.mapSearchLocation);
       this.map.setZoom(15);
@@ -106,32 +108,37 @@ class Map extends React.Component {
 
     // to render existing route for edit form
     if (this.props.formType === 'edit') {
-      // pass in the intermediate points between origin and destination
-      // as waypoints. Google only allows 23 free waypoints, including origin and dest.
-      const lastIdx = this.routePath.length < 23 ? this.routePath.length-1 : 22;
-      const waypoints = this.routePath.slice(1, lastIdx).map((point)=>{
-        return {
-          location: point,
-          stopover: false,
-        };
-      });
-      let request = {
-        origin: this.routePath[0],
-        destination: this.routePath[this.routePath.length-1],
-        waypoints: waypoints,
-        travelMode: 'WALKING',
-      };
-
-      this.generatePath(request);
-
-      // Credit to find center of polyline:
-      // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
-      const bounds = new google.maps.LatLngBounds();
-      this.routePath.forEach((coord)=>{
-        bounds.extend(coord);
-      });
-      this.map.fitBounds(bounds);
+      this.renderExistingRoute();
     }
+  }
+
+  renderExistingRoute() {
+    this.routePath = google.maps.geometry.encoding.decodePath(this.props.route.polyline);
+    // pass in the intermediate points between origin and destination
+    // as waypoints. Google only allows 23 free waypoints, including origin and dest.
+    const lastIdx = this.routePath.length < 23 ? this.routePath.length-1 : 22;
+    const waypoints = this.routePath.slice(1, lastIdx).map((point)=>{
+      return {
+        location: point,
+        stopover: false,
+      };
+    });
+    let request = {
+      origin: this.routePath[0],
+      destination: this.routePath[this.routePath.length-1],
+      waypoints: waypoints,
+      travelMode: 'WALKING',
+    };
+
+    this.generatePath(request);
+
+    // Credit to find center of polyline:
+    // https://stackoverflow.com/questions/3320925/google-maps-api-calculate-center-zoom-of-polyline
+    const bounds = new google.maps.LatLngBounds();
+    this.routePath.forEach((coord)=>{
+      bounds.extend(coord);
+    });
+    this.map.fitBounds(bounds);
   }
 
   handleMapClick(event) {
