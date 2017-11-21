@@ -10,7 +10,7 @@ class Api::ActivitiesController < ApplicationController
     @activities = Activity.where(user: relevant_users)
                           .includes(:feedable)
                           .includes(:user)
-                          .order(created_at: :desc)
+                          .order(updated_at: :desc)
                           .offset(offset)
                           .limit(3)
     render :index

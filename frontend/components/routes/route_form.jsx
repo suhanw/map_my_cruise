@@ -156,8 +156,9 @@ class RouteForm extends React.Component {
 
   saveRoute(e) {
     e.preventDefault();
-    const {name, polyline, distance, city} = this.state;
+    const {name, polyline, distance, city, id} = this.state;
     const newRoute = {
+      id,
       name,
       polyline,
       distance,
