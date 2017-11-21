@@ -79,7 +79,7 @@ class ActivityFeedItem extends React.Component {
     const friendId = friendStatus.friend;
     const friend = this.props.users[friendId];
 
-    let feedMsg = user_id === currentUserId ? `You are now friends with ${friend.fname} ${friend.lname}` : `${user.fname} ${user.lname} has accepted your friend request.`;
+    let feedMsg = user_id === currentUserId ? `You are now friends with ${friend.fname} ${friend.lname}.` : `${user.fname} ${user.lname} has accepted your friend request.`;
     return (
       <li>
         <article className="friend">
@@ -87,9 +87,21 @@ class ActivityFeedItem extends React.Component {
           <section>
             <span className="user-action">
               {feedMsg}
+              <i className="fa fa-user-plus" aria-hidden="true"></i>
             </span>
             <span className="feed-friend-details">
-              {`${friend.fname} ${friend.lname}`}
+              <img className="friend-avatar" src={friend.avatar_url} />
+              <div className="friend-name">
+                {`${friend.fname} ${friend.lname}`}
+              </div>
+              <div className="friend-created">
+                <small>
+                  RUNNING SINCE
+                </small>
+                <strong>
+                  {`${friend.created_at}`}
+                </strong>
+              </div>
             </span>
             <span className="comment-section">
               <strong></strong>

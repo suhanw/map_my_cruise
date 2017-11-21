@@ -111,7 +111,8 @@ section.activity-feed {
 }
 
 .activity-feed-main article.route > section > figcaption > small,
-.feed-workout-details > figure small {
+.feed-workout-details > figure small,
+.feed-friend-details div.friend-created small {
   font-size: 12px;
   color: $gray;
   letter-spacing: 2px;
@@ -126,6 +127,42 @@ section.activity-feed {
   align-items: stretch;
 }
 
+.activity-feed-main article.friend span.feed-friend-details {
+  justify-content: flex-start;
+}
+
+.activity-feed-main article.friend span.feed-friend-details img.friend-avatar {
+  align-self: stretch;
+  width: 120px;
+  border-right: 1px solid $gray;
+}
+
+.activity-feed-main article.friend span.feed-friend-details div {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.activity-feed-main article.friend span.feed-friend-details div.friend-name {
+  flex-basis: 25%;
+  text-align: center;
+}
+
+
+.activity-feed-main article.friend span.feed-friend-details div.friend-created {
+  align-items: stretch;
+}
+
+.activity-feed-main article.friend span.feed-friend-details div.friend-created small {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+
 .activity-feed-main article.workout span.feed-workout-details > figure {
   flex-grow: 1;
   display: flex;
@@ -139,7 +176,8 @@ section.activity-feed {
   border-right: 0;
 }
 
-.activity-feed-main article.workout span.feed-workout-details > figure strong {
+.activity-feed-main article.workout span.feed-workout-details > figure strong,
+.activity-feed-main article.friend span.feed-friend-details div.friend-created strong {
   font-size: 20px;
 }
 
