@@ -17,7 +17,7 @@ class Splash extends React.Component {
     return (
       <main>
         <section className={randSplashClass}>
-          <h1>YOUR MISSION, SHOULD YOU CHOOSE TO ACCEPT IT.</h1>
+          <h1>YOUR MISSION, <br/> SHOULD YOU CHOOSE TO ACCEPT IT.</h1>
           <p>
             36 hours ago, there was a breach in our military's communication
             network. Now, an emerging terror organization known as The Syndicate
