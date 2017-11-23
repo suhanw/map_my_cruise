@@ -44,7 +44,7 @@ const Footer = () => (
           <li>SOCIAL</li>
           <li><a href="https://www.linkedin.com/in/suhanwijaya/" target="_">Add me on LinkedIn</a></li>
           <li><a href="https://github.com/suhanw" target="_">Add me on Github</a></li>
-          <li><a href="https://angel.co/suhanw" target="_">Add me on AngelList</a></li>
+          <li><a href="https://stackoverflow.com/story/suhanw" target="_">Add me on Stack Overflow</a></li>
         </ul>
         <ul className='about-us-links'>
           <li>AFFILIATIONS</li>
