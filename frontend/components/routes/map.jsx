@@ -54,6 +54,7 @@ class Map extends React.Component {
     if (newProps.mapSearchLocation) {
       this.map.panTo(newProps.mapSearchLocation);
       this.map.setZoom(15);
+      this.props.resetMapSearchLocation();
     }
   }
 

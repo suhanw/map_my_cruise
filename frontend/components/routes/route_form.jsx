@@ -23,6 +23,7 @@ class RouteForm extends React.Component {
     this.renderSearchBar = this.renderSearchBar.bind(this);
     this.addAutocomplete = this.addAutocomplete.bind(this);
     this.onPlaceChanged = this.onPlaceChanged.bind(this);
+    this.resetMapSearchLocation = this.resetMapSearchLocation.bind(this);
   }
 
 
@@ -89,7 +90,8 @@ class RouteForm extends React.Component {
           receiveRouteErrors={this.props.receiveRouteErrors}
           formType={this.props.formType}
           route={this.props.route}
-          mapSearchLocation={this.state.mapSearchLocation} />
+          mapSearchLocation={this.state.mapSearchLocation}
+          resetMapSearchLocation={this.resetMapSearchLocation} />
 
       </section>
     );
@@ -180,6 +182,10 @@ class RouteForm extends React.Component {
       distance: newState.distance,
       city: newState.city,
     });
+  }
+
+  resetMapSearchLocation() {
+    this.setState({mapSearchLocation: null});
   }
 
   renderToggler() {
