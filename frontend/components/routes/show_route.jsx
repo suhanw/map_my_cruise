@@ -9,6 +9,8 @@ import ResourceNotFound from '../resource_not_found';
 class ShowRoute extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -79,6 +81,7 @@ class ShowRoute extends React.Component {
           <section className="route-shortcut-buttons">
             <Link to="/routes/create" className="create-route-button">CREATE A ROUTE</Link>
             <Link to={`/routes/${route.id}/edit`} className="edit-route-button">EDIT ROUTE</Link>
+            <button type="button" className="delete-route-button" onClick={this.handleClick}>DELETE ROUTE</button>
             <Link to="/workouts/create" className="log-workout-button">LOG THIS WORKOUT</Link>
             <Link to="/routes">Back to My Routes</Link>
           </section>
@@ -87,7 +90,13 @@ class ShowRoute extends React.Component {
     );
   }
 
-
+  handleClick(e) {
+    e.preventDefault();
+    const {route: {id}} = this.props;
+    this.props.deleteRoute(id).then(
+      () => this.props.history.push(`/routes`)
+    );
+  }
 }
 
 export default ShowRoute;
