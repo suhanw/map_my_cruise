@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import Map from './map';
 import Modal from '../modals/modal';
 import FormErrorModal from '../modals/form_error_modal';
@@ -55,6 +56,9 @@ class RouteForm extends React.Component {
 
   render(){
 
+    let routeFormTitle = "CREATE A ROUTE";
+    if (this.props.formType === 'edit') routeFormTitle = 'EDIT ROUTE';
+
     return (
       <section id="route-form-container">
 
@@ -69,7 +73,7 @@ class RouteForm extends React.Component {
 
 
         <section className={this.state.panelClass}>
-          <h2 className="route-form-title">CREATE A ROUTE</h2>
+          <h2 className="route-form-title">{routeFormTitle}</h2>
           <form>
             {this.renderSearchBar()}
           </form>
@@ -139,6 +143,12 @@ class RouteForm extends React.Component {
   }
 
   renderFormInput() {
+
+    let showRouteLink = null;
+    if (this.props.formType === 'edit') {
+      showRouteLink = <Link to={`/routes/${this.props.route.id}`}>Cancel</Link>;
+    }
+
     return (
       <section className="route-form-input">
         <h3>Route Details</h3>
@@ -148,6 +158,7 @@ class RouteForm extends React.Component {
         <button onClick={this.saveRoute}>
           SAVE ROUTE
         </button>
+        {showRouteLink}
       </section>
     );
   }

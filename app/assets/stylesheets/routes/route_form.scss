@@ -63,6 +63,15 @@
   border-radius: 5px;
 }
 
+.route-form-input > a {
+  flex-basis: 100%;
+  text-align: right;
+  color: $blue;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
 .route-form-map-search input,
 .route-form-map-search button {
   height: 30px;
@@ -148,7 +157,6 @@
   position: fixed;
   left: -120px;
   width: 120px;
-  // height: 60px;
   height: auto;
   z-index: 40;
   font-size: 12px;
