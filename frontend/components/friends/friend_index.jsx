@@ -29,8 +29,9 @@ class FriendIndex extends React.Component {
       return (
         <section className="activity-feed-friends-thumbnails">
           <ul>
-            <li>
-              <small>Loading...</small>
+            <li className="activity-feed-friends-thumbnails-spinner">
+              <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+              <small className="sr-only">Loading...</small>
             </li>
           </ul>
         </section>

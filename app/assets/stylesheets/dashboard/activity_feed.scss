@@ -327,6 +327,15 @@ section.activity-feed {
   flex-basis: 25%;
 }
 
+.activity-feed-friends-thumbnails-spinner {
+  flex-grow: 1;
+  text-align: center;
+}
+
+.activity-feed-friends-thumbnails-spinner > i.fa {
+  color: $gray;
+}
+
 .activity-feed-friends-thumbnails > ul > li > img.friend-avatar {
   height: 50px;
   width: 50px;
