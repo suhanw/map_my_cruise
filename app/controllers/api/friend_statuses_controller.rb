@@ -9,7 +9,6 @@ class Api::FriendStatusesController < ApplicationController
     # requested_friends = current_user.requested_friends
     # received_friends = current_user.received_friends
     # @friends = requested_friends + received_friends
-    debugger
     requested_friend_statuses = current_user.requested_friend_statuses.includes(:friendee)
     received_friends_statuses = current_user.received_friend_statuses.includes(:friender)
     @friend_statuses = requested_friend_statuses + received_friends_statuses
