@@ -104,7 +104,7 @@
 .splash-signup-buttons {
   padding-top: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -121,6 +121,7 @@
   height: 35px;
   border-radius: 3px;
   letter-spacing: .1em;
+  margin-right: 20px;
 }
 
 .splash-signup-demo {
