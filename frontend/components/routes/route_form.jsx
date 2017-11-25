@@ -25,6 +25,7 @@ class RouteForm extends React.Component {
     this.addAutocomplete = this.addAutocomplete.bind(this);
     this.onPlaceChanged = this.onPlaceChanged.bind(this);
     this.resetMapSearchLocation = this.resetMapSearchLocation.bind(this);
+    this.renderErrorMessage = this.renderErrorMessage.bind(this);
   }
 
 
@@ -60,6 +61,8 @@ class RouteForm extends React.Component {
     let routeFormTitle = "CREATE A ROUTE";
     if (this.props.formType === 'edit') routeFormTitle = 'EDIT ROUTE';
 
+    let errorMessage = this.renderErrorMessage();
+
     return (
       <section id="route-form-container">
 
@@ -81,7 +84,7 @@ class RouteForm extends React.Component {
 
           <form className="route-form-input-box">
             {this.renderToggler()}
-            {this.renderFormInput()}
+            {errorMessage ? errorMessage : this.renderFormInput()}
           </form>
           <div id="directions"></div>
 
@@ -99,6 +102,18 @@ class RouteForm extends React.Component {
 
       </section>
     );
+  }
+
+  renderErrorMessage() {
+    if (this.props.formType === 'edit' && this.props.route.user !== this.props.currentUser.id) {
+      return (
+        <span className="message">
+          You are not authorized to edit this route!
+        </span>
+      );
+    } else {
+      return null;
+    }
   }
 
   renderSearchBar() {

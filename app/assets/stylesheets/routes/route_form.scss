@@ -56,7 +56,11 @@
 .route-form-input-box {
   display: flex;
   flex-direction: column;
-  // flex-grow: 1;
+}
+
+.route-form-input-box > span.message {
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 .route-form-map-search,

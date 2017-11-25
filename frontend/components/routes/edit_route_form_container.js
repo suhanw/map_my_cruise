@@ -4,6 +4,7 @@ import {updateRoute, fetchRoute, receiveRouteErrors} from '../../actions/routes_
 import {openModal, closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  const {session: {currentUser}} = state;
   let route = state.entities.routes.routes_by_id[ownProps.match.params.routeId];
   if (!route) {
     route = {
@@ -14,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     };
   }
   return {
+    currentUser, 
     modal: state.ui.modal,
     errors: state.errors.routes,
     route: route,
