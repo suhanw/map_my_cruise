@@ -45,7 +45,7 @@ class RouteForm extends React.Component {
         warnbox.innerHTML += ' <b>Unless of course you are Tom Cruise running to save the world.</b>';
         const tcGif = document.createElement('img');
         tcGif.setAttribute('src', 'https://media.giphy.com/media/5nPodXMLXXd1m/giphy.gif');
-        tcGif.style = "width: 200px; margin: auto;";
+        tcGif.style = "width: 200px; margin: 5px auto;";
         warnbox.appendChild(tcGif);
       }
       return;
