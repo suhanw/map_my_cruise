@@ -59,6 +59,10 @@ section.activity-feed {
   color: $gray;
 }
 
+.activity-feed-main article > section > .user-action a {
+  color: $blue;
+}
+
 .activity-feed-main article > section > .user-action > .workout-icon {
   width: 25px;
   height: 25px;

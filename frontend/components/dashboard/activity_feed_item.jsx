@@ -131,10 +131,13 @@ class ActivityFeedItem extends React.Component {
           <img className="avatar" src={user.avatar_url} />
           <section>
             <span className="user-action">
+              <strong>
+                {`${user.fname} ${user.lname} ran ${routeDist} miles for the workout `}
                 <Link to={`/workouts/${workout.id}`}>
-                  {`${user.fname} ${user.lname}`} ran {`${routeDist} miles`} for the workout {workout.name.toUpperCase()}
+                  {workout.name.toUpperCase()}
                 </Link>
-                <div className="workout-icon"></div>
+              </strong>
+              <div className="workout-icon"></div>
             </span>
             <span className="feed-workout-details">
               <figure>
@@ -203,7 +206,10 @@ class ActivityFeedItem extends React.Component {
           <section>
             <span className="user-action">
               <strong>
-                {`${user.fname} ${user.lname} created the route ${route.name.toUpperCase()}`}
+                  {`${user.fname} ${user.lname} created the route `}
+                  <Link to={`/routes/${route.id}`}>
+                    {route.name.toUpperCase()}
+                  </Link>
               </strong>
               <i className="fa fa-map-marker" aria-hidden="true"></i>
             </span>

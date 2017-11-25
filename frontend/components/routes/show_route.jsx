@@ -10,6 +10,7 @@ class ShowRoute extends React.Component {
   constructor(props) {
     super(props);
 
+    this.renderRouteOptions = this.renderRouteOptions.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -72,22 +73,37 @@ class ShowRoute extends React.Component {
             <RouteMap route={route} />
           </section>
         </section>
-
         <aside className="route-sidebar">
           <div className={adGifClass}>
             <small>Ad</small>
             <small>Rent this movie somewhere near you.</small>
           </div>
-          <section className="route-shortcut-buttons">
-            <Link to="/routes/create" className="create-route-button">CREATE A ROUTE</Link>
-            <Link to={`/routes/${route.id}/edit`} className="edit-route-button">EDIT ROUTE</Link>
-            <button type="button" className="delete-route-button" onClick={this.handleClick}>DELETE ROUTE</button>
-            <Link to="/workouts/create" className="log-workout-button">LOG THIS WORKOUT</Link>
-            <Link to="/routes">Back to My Routes</Link>
-          </section>
+          {this.renderRouteOptions()}
         </aside>
       </section>
     );
+  }
+
+  renderRouteOptions() {
+    let optionsDom;
+    if (this.props.route.user === this.props.currentUser.id) {
+      optionsDom = (
+        <section className="route-shortcut-buttons">
+          <Link to="/routes/create" className="create-route-button">CREATE A ROUTE</Link>
+          <Link to={`/routes/${this.props.route.id}/edit`} className="edit-route-button">EDIT ROUTE</Link>
+          <button type="button" className="delete-route-button" onClick={this.handleClick}>DELETE ROUTE</button>
+          <Link to="/workouts/create" className="log-workout-button">LOG THIS WORKOUT</Link>
+          <Link to="/routes">Back to My Routes</Link>
+        </section>
+      );
+    } else {
+      optionsDom = (
+        <section className="route-shortcut-buttons">
+          <Link to="/routes">Back to My Routes</Link>
+        </section>
+      );
+    }
+    return optionsDom;
   }
 
   handleClick(e) {

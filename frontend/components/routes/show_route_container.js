@@ -2,8 +2,9 @@ import {connect} from 'react-redux';
 import ShowRoute from './show_route';
 import {fetchRoute, deleteRoute} from '../../actions/routes_actions';
 
-const mapStateToProps = ({entities, errors}, ownProps) => {
+const mapStateToProps = ({entities, errors, session}, ownProps) => {
   const routeId = ownProps.match.params.routeId;
+  const {currentUser} = session;
   let loading = true;
   let route;
   let user;
@@ -20,6 +21,7 @@ const mapStateToProps = ({entities, errors}, ownProps) => {
   }
 
   return {
+    currentUser,
     route,
     user,
     errors: errors.routes,
