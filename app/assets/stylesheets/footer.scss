@@ -1,5 +1,7 @@
 footer {
   box-sizing: border-box;
+  position: relative;
+  z-index: 50;
 }
 
 .mobile-app-bar, .mobile-app-bar ul, .products-bar, .products-bar ul,
@@ -17,6 +19,7 @@ footer {
   justify-content: flex-end;
   padding-right: 10px;
   padding-top: 20px;
+  background: #fff;
 }
 
 .mobile-app-bar li:first-of-type {

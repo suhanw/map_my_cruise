@@ -10,15 +10,17 @@
 }
 
 .route-form-details {
+  position: relative;
   z-index: 50;
   left: 0;
   padding: 10px;
   width: 400px;
   height: 85vh;
-  position: relative;
   background: white;
   transition: all .1s ease;
   border-right: 1px solid $gray;
+  display: flex;
+  flex-direction: column;
 }
 
 .collapse {
@@ -49,6 +51,12 @@
 
 .panel-toggler:hover {
   cursor: pointer;
+}
+
+.route-form-input-box {
+  display: flex;
+  flex-direction: column;
+  // flex-grow: 1;
 }
 
 .route-form-map-search,
@@ -128,8 +136,8 @@
 
 #directions {
   max-width: 400px;
-  height: 500px;
-  overflow-y: auto;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .route-form-details button:active {

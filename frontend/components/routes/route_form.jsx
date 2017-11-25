@@ -45,6 +45,7 @@ class RouteForm extends React.Component {
         warnbox.innerHTML += ' <b>Unless of course you are Tom Cruise running to save the world.</b>';
         const tcGif = document.createElement('img');
         tcGif.setAttribute('src', 'https://media.giphy.com/media/5nPodXMLXXd1m/giphy.gif');
+        tcGif.style = "width: 200px; margin: auto;";
         warnbox.appendChild(tcGif);
       }
       return;
@@ -77,13 +78,12 @@ class RouteForm extends React.Component {
           <form>
             {this.renderSearchBar()}
           </form>
-          <form>
 
+          <form className="route-form-input-box">
             {this.renderToggler()}
-
             {this.renderFormInput()}
-            <div id="directions"></div>
           </form>
+          <div id="directions"></div>
 
         </section>
 
