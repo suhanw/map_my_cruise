@@ -1,10 +1,10 @@
 import merge from 'lodash/merge';
-import {RECEIVE_WORKOUT} from '../actions/workouts_actions';
+import {RECEIVE_WORKOUT} from '../../actions/workouts_actions';
 import {
   RECEIVE_COMMENT,
   REMOVE_COMMENT
-} from '../actions/comments_actions';
-import {CLEAR_ENTITIES} from '../actions/clear_actions';
+} from '../../actions/comments_actions';
+import {CLEAR_ENTITIES} from '../../actions/clear_actions';
 
 const defaultState = {};
 

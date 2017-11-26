@@ -11,10 +11,10 @@ import {combineReducers} from 'redux';
 import SessionErrorsReducer from './session_errors_reducer';
 import RouteErrorsReducer from './routes/route_errors_reducer';
 import WorkoutErrorsReducer from './workouts/workout_errors_reducer';
-import CommentErrorsReducer from './comment_errors_reducer';
+import CommentErrorsReducer from './comments/comment_errors_reducer';
 import FriendErrorsReducer from './friends/friend_errors_reducer';
 import UserSearchErrorsReducer from './friends/user_search_errors_reducer';
-import ActivityErrorsReducer from './activity_errors_reducer';
+import ActivityErrorsReducer from './activities/activity_errors_reducer';
 
 const ErrorsReducer = combineReducers({
   activities: ActivityErrorsReducer,

@@ -1,8 +1,8 @@
 import {
   RECEIVE_ACTIVITIES,
   RECEIVE_ACTIVITIES_ERRORS
-} from '../actions/activities_actions';
-import {CLEAR_ERRORS} from '../actions/clear_actions';
+} from '../../actions/activities_actions';
+import {CLEAR_ERRORS} from '../../actions/clear_actions';
 
 const defaultState = [];
 

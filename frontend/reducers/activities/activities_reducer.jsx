@@ -1,8 +1,8 @@
 import merge from 'lodash/merge';
-import {RECEIVE_ACTIVITIES} from '../actions/activities_actions';
-import {CLEAR_ENTITIES} from '../actions/clear_actions';
-import {REMOVE_ROUTE} from '../actions/routes_actions';
-import {REMOVE_WORKOUT} from '../actions/workouts_actions';
+import {RECEIVE_ACTIVITIES} from '../../actions/activities_actions';
+import {CLEAR_ENTITIES} from '../../actions/clear_actions';
+import {REMOVE_ROUTE} from '../../actions/routes_actions';
+import {REMOVE_WORKOUT} from '../../actions/workouts_actions';
 
 const defaultState = {
   activities_by_id: {},

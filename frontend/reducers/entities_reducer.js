@@ -2,10 +2,10 @@ import {combineReducers} from 'redux';
 import RoutesReducer from './routes/routes_reducer';
 import UsersReducer from './users_reducer';
 import WorkoutsReducer from './workouts/workouts_reducer';
-import CommentsReducer from './comments_reducer';
+import CommentsReducer from './comments/comments_reducer';
 import FriendsReducer from './friends/friends_reducer';
 import UserSearchResultsReducer from './friends/user_search_results_reducer';
-import ActivitiesReducer from './activities_reducer';
+import ActivitiesReducer from './activities/activities_reducer';
 
 const EntitiesReducer = combineReducers({
   activities: ActivitiesReducer,

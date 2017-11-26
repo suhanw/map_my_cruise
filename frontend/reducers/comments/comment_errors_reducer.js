@@ -2,8 +2,8 @@ import {
   RECEIVE_COMMENT,
   REMOVE_COMMENT,
   RECEIVE_COMMENT_ERRORS,
-} from '../actions/comments_actions';
-import {CLEAR_ERRORS} from '../actions/clear_actions';
+} from '../../actions/comments_actions';
+import {CLEAR_ERRORS} from '../../actions/clear_actions';
 
 const defaultState = [];
 
