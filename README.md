@@ -34,6 +34,12 @@ Friends are stored at the database level as a join table associating `friender_i
 
 ![Routes](docs/README_gifs/friends.gif)
 
+### Activity Feed
+
+The landing page upon login is a feed that displays the current user's as well as his/her friends' activities, which includes the creation of new routes, logging of new workouts, and new friendships. On the backend, an `activities` table is designed with polymorphic associations to the `routes`, `workouts`, and `friend_status` tables, to keep DRY code and enable scalability for future implementation of new "activities". The activity feed is implemented with infinite scroll to reduce page size for quicker loading, where newest activities are rendered at the top, and older activities are only fetched asynchronously and inserted into the page as the user scrolls towards the bottom.
+
+![Routes](docs/README_gifs/activity_feed.gif)
+
 ## Future Directions for the Project
 
 In addition to the features already implemented, I plan to continue work on this project.  The next steps for MapMyCruise are outlined below.
