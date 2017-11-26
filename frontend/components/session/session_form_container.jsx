@@ -1,8 +1,8 @@
 import {connect} from 'react-redux';
 import SessionForm from './session_form';
-import {signup, login} from '../actions/session_actions';
-import {clearErrors} from '../actions/clear_actions';
-import {openModal, closeModal} from '../actions/modal_actions';
+import {signup, login} from '../../actions/session_actions';
+import {clearErrors} from '../../actions/clear_actions';
+import {openModal, closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   let formType = (ownProps.match.path === '/login') ? 'login' : 'signup';

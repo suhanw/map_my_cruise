@@ -1,11 +1,11 @@
 import React from 'react';
 import {Route, Switch} from 'react-router-dom';
 import {AuthRoute, ProtectRoute} from '../util/route_util';
-import SessionFormContainer from './session_form_container';
-import HeaderContainer from './header_container';
+import SessionFormContainer from './session/session_form_container';
+import HeaderContainer from './header/header_container';
 import Splash from './splash';
 import Footer from './footer';
-import ProfileFormContainer from './profile_form_container';
+import ProfileFormContainer from './profile/profile_form_container';
 import RouteIndexContainer from './routes/route_index_container';
 import ShowRouteContainer from './routes/show_route_container';
 import NewRouteFormContainer from './routes/new_route_form_container';

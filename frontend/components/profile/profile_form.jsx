@@ -1,8 +1,8 @@
 import React from 'react';
-import Modal from './modals/modal';
-import MessageModal from './modals/message_modal';
-import FormErrorModal from './modals/form_error_modal';
-import Spinner from './spinner';
+import Modal from '../modals/modal';
+import MessageModal from '../modals/message_modal';
+import FormErrorModal from '../modals/form_error_modal';
+import Spinner from '../spinner';
 
 class ProfileForm extends React.Component {
 

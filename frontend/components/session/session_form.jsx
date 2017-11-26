@@ -1,8 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Spinner from './spinner';
-import Modal from './modals/modal';
-import FormErrorModal from './modals/form_error_modal';
+import Spinner from '../spinner';
+import Modal from '../modals/modal';
+import FormErrorModal from '../modals/form_error_modal';
 
 class SessionForm extends React.Component {
 

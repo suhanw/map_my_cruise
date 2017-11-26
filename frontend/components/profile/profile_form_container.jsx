@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import ProfileForm from './profile_form';
-import {editProfile} from '../actions/session_actions';
-import {openModal, closeModal} from '../actions/modal_actions';
+import {editProfile} from '../../actions/session_actions';
+import {openModal, closeModal} from '../../actions/modal_actions';
 
 const mapStateToProps = ({session:{currentUser}, errors: {session}, ui:{modal}}) => {
   return {

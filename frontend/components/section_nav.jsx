@@ -25,16 +25,7 @@ class SectionNav extends React.Component {
       </nav>
     );
   }
-
-  // renderStyles() {
-  //   const {sectionNavTabs} = this.props;
-  //   const tabWidth = (1 / sectionNavTabs.length) * 100;
-  //
-  //   return {
-  //     width: `${tabWidth}%`,
-  //   };
-  // }
-
+  
   renderTabs() {
     const {selectedTab} = this.state;
     const {sectionNavTabs} = this.props;
