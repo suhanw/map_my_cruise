@@ -3,8 +3,8 @@ import {
   RECEIVE_ROUTE,
   REMOVE_ROUTE,
   RECEIVE_ROUTE_ERRORS,
-} from '../actions/routes_actions';
-import {CLEAR_ERRORS} from '../actions/clear_actions';
+} from '../../actions/routes_actions';
+import {CLEAR_ERRORS} from '../../actions/clear_actions';
 
 
 

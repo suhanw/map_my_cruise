@@ -4,9 +4,9 @@ import {
   RECEIVE_ROUTE,
   REMOVE_ROUTE,
   RECEIVE_ROUTE_ERRORS,
-} from '../actions/routes_actions';
-import {RECEIVE_WORKOUTS, RECEIVE_WORKOUT} from '../actions/workouts_actions';
-import {CLEAR_ENTITIES} from '../actions/clear_actions';
+} from '../../actions/routes_actions';
+import {RECEIVE_WORKOUTS, RECEIVE_WORKOUT} from '../../actions/workouts_actions';
+import {CLEAR_ENTITIES} from '../../actions/clear_actions';
 
 const defaultState = {
   routes_by_id: {},
