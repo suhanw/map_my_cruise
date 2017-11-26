@@ -4,8 +4,8 @@ import {
   RECEIVE_WORKOUT,
   REMOVE_WORKOUT,
   RECEIVE_WORKOUT_ERRORS,
-} from '../actions/workouts_actions';
-import {CLEAR_ENTITIES} from '../actions/clear_actions';
+} from '../../actions/workouts_actions';
+import {CLEAR_ENTITIES} from '../../actions/clear_actions';
 
 const defaultState = {
   workouts_by_id: {},
