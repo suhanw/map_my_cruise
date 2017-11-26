@@ -2,8 +2,8 @@ import {
   RECEIVE_USER_SEARCH_RESULTS,
   CLEAR_RESULTS,
   RECEIVE_USER_SEARCH_ERRORS
-} from '../actions/user_search_actions';
-import {CLEAR_ENTITIES} from '../actions/clear_actions';
+} from '../../actions/user_search_actions';
+import {CLEAR_ENTITIES} from '../../actions/clear_actions';
 
 const defaultState = [];
 

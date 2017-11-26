@@ -13,7 +13,7 @@ import RouteErrorsReducer from './routes/route_errors_reducer';
 import WorkoutErrorsReducer from './workouts/workout_errors_reducer';
 import CommentErrorsReducer from './comment_errors_reducer';
 import FriendErrorsReducer from './friends/friend_errors_reducer';
-import UserSearchErrorsReducer from './user_search_errors_reducer';
+import UserSearchErrorsReducer from './friends/user_search_errors_reducer';
 import ActivityErrorsReducer from './activity_errors_reducer';
 
 const ErrorsReducer = combineReducers({

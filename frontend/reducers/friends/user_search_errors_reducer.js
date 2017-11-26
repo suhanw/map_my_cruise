@@ -1,8 +1,8 @@
 import {
   RECEIVE_USER_SEARCH_ERRORS,
   RECEIVE_USER_SEARCH_RESULTS,
-} from '../actions/user_search_actions';
-import {CLEAR_ERRORS} from '../actions/clear_actions';
+} from '../../actions/user_search_actions';
+import {CLEAR_ERRORS} from '../../actions/clear_actions';
 
 const defaultState = [];
 
