@@ -8,7 +8,7 @@
 // }
 
 import {combineReducers} from 'redux';
-import SessionErrorsReducer from './session_errors_reducer';
+import SessionErrorsReducer from './session/session_errors_reducer';
 import RouteErrorsReducer from './routes/route_errors_reducer';
 import WorkoutErrorsReducer from './workouts/workout_errors_reducer';
 import CommentErrorsReducer from './comments/comment_errors_reducer';

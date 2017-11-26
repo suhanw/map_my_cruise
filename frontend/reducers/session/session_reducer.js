@@ -1,10 +1,10 @@
 import merge from 'lodash/merge';
-import {RECEIVE_USER} from '../actions/session_actions';
+import {RECEIVE_USER} from '../../actions/session_actions';
 import {
   RECEIVE_FRIEND_STATUSES,
   RECEIVE_FRIEND_STATUS,
   REMOVE_FRIEND_STATUS
-} from '../actions/friends_actions';
+} from '../../actions/friends_actions';
 
 const defaultState = {
   currentUser: null,
