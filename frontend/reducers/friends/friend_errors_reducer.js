@@ -1,5 +1,5 @@
-import {CLEAR_ERRORS} from '../actions/clear_actions';
-import { RECEIVE_FRIEND_STATUS_ERRORS, RECEIVE_FRIEND_STATUS } from '../actions/friends_actions';
+import {CLEAR_ERRORS} from '../../actions/clear_actions';
+import { RECEIVE_FRIEND_STATUS_ERRORS, RECEIVE_FRIEND_STATUS } from '../../actions/friends_actions';
 
 const defaultState = [];
 

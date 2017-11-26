@@ -3,7 +3,7 @@ import RoutesReducer from './routes/routes_reducer';
 import UsersReducer from './users_reducer';
 import WorkoutsReducer from './workouts/workouts_reducer';
 import CommentsReducer from './comments_reducer';
-import FriendsReducer from './friends_reducer';
+import FriendsReducer from './friends/friends_reducer';
 import UserSearchResultsReducer from './user_search_results_reducer';
 import ActivitiesReducer from './activities_reducer';
 

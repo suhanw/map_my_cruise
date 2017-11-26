@@ -1,11 +1,11 @@
 import merge from 'lodash/merge';
-import {CLEAR_ENTITIES} from '../actions/clear_actions';
+import {CLEAR_ENTITIES} from '../../actions/clear_actions';
 import {
   RECEIVE_FRIEND_STATUSES,
   RECEIVE_FRIEND_STATUS,
   REMOVE_FRIEND_STATUS,
   RECEIVE_FRIEND_STATUS_ERRORS
-} from '../actions/friends_actions';
+} from '../../actions/friends_actions';
 
 
 const defaultState = {};
