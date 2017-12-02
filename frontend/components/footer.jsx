@@ -42,9 +42,9 @@ const Footer = () => (
       <section className="links-bar">
         <ul className="social-links">
           <li>SOCIAL</li>
-          <li><a href="https://www.linkedin.com/in/suhanwijaya/" target="_">Add me on LinkedIn</a></li>
-          <li><a href="https://github.com/suhanw" target="_">Add me on Github</a></li>
-          <li><a href="https://stackoverflow.com/story/suhanw" target="_">Add me on Stack Overflow</a></li>
+          <li><a href="https://www.linkedin.com/in/suhanwijaya/" target="_">LinkedIn</a></li>
+          <li><a href="https://github.com/suhanw" target="_">Github</a></li>
+          <li><a href="https://stackoverflow.com/story/suhanw" target="_">Stack Overflow</a></li>
         </ul>
         <ul className='about-us-links'>
           <li>AFFILIATIONS</li>
@@ -55,7 +55,7 @@ const Footer = () => (
         <ul className="help-links">
           <li>ABOUT ME</li>
           <li><a href="https://www.sixflags.com/magicmountain" target="_">Roller Coasters</a></li>
-          <li><a href="http://www.imdb.com/?ref_=nv_home" target="_">Movies</a></li>
+          <li><a href="http://www.imdb.com/list/ls027581037/" target="_">Movies</a></li>
           <li><a href="https://gimletmedia.com/reply-all/" target="_">Podcasts</a></li>
         </ul>
         <ul className='fitness-community-links'>
