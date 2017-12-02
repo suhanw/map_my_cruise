@@ -132,7 +132,9 @@ class SessionForm extends React.Component {
     if (!password.length) {
       clearTimeout(this.demoPasswordTimer);
       this.demoPasswordTimer = 0;
-      this.demoLogin();
+      this.setState({loading: true});
+      const that = this;
+      setTimeout(()=>that.demoLogin(), 1000);
       return;
     }
     let newPassword = this.state.password + password.shift();
