@@ -27,7 +27,7 @@ class Splash extends React.Component {
           {!this.props.currentUser ?
             (
               <span className="splash-signup-buttons">
-                <Link to="/login"
+                <Link to="/login/demo"
                   className="splash-signup-demo">LOG IN WITH DEMO</Link>
                 <Link to="/signup"
                   className="splash-signup-email">SIGN UP WITH EMAIL</Link>

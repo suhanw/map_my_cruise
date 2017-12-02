@@ -17,9 +17,14 @@ class SessionForm extends React.Component {
       loading: false,
     };
 
+    this.demoEmailTimer = 0;
+    this.demoPasswordTimer = 0;
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.renderDemoEmail = this.renderDemoEmail.bind(this);
+    this.renderDemoPassword = this.renderDemoPassword.bind(this);
   }
 
   componentWillMount() {
@@ -27,13 +32,6 @@ class SessionForm extends React.Component {
   }
 
   render() {
-
-    // to render any errors
-    // let errors;
-    // if(this.props.errors.length > 0) {
-    //   errors = this.renderErrors(this.props.errors);
-    // }
-
     // to render the login or signup link above form
     let shortcutLink = 'SIGN UP';
     let shortcutLinkUrl = '/signup';
@@ -57,8 +55,6 @@ class SessionForm extends React.Component {
       );
     }
 
-
-
     return (
       <section className="session-form-background">
 
@@ -76,7 +72,6 @@ class SessionForm extends React.Component {
             </div>
           ) : null
         }
-
 
         <section className="session-form">
           <Link to={shortcutLinkUrl} className="session-form-shortcut">
@@ -112,6 +107,38 @@ class SessionForm extends React.Component {
 
       </section>
     );
+  }
+
+  componentDidMount() {
+    if (this.props.location.pathname.includes('demo')) {
+      this.renderDemoEmail('eh@mi.com'.split(''));
+    }
+  }
+
+  renderDemoEmail(email) {
+    if (!email.length) {
+      clearTimeout(this.demoEmailTimer);
+      this.demoEmailTimer = 0;
+      this.renderDemoPassword('reallylongpassword'.split(''));
+      return;
+    }
+    let newEmail = this.state.email + email.shift();
+    this.setState({email: newEmail});
+    const that = this;
+    this.demoEmailTimer = setTimeout(()=>that.renderDemoEmail(email), 50);
+  }
+
+  renderDemoPassword(password) {
+    if (!password.length) {
+      clearTimeout(this.demoPasswordTimer);
+      this.demoPasswordTimer = 0;
+      this.demoLogin();
+      return;
+    }
+    let newPassword = this.state.password + password.shift();
+    this.setState({password: newPassword});
+    const that = this;
+    this.demoPasswordTimer = setTimeout(()=>that.renderDemoPassword(password), 50);
   }
 
   renderErrors(errors) {
