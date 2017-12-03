@@ -5,6 +5,10 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
+    this.renderAvatar = this.renderAvatar.bind(this);
+    this.renderNavBar = this.renderNavBar.bind(this);
+    this.renderShortcutBar = this.renderShortcutBar.bind(this);
+    this.renderNotifications = this.renderNotifications.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -96,6 +100,10 @@ class Header extends React.Component {
         {profileSection}
       </section>
     );
+  }
+
+  renderNotifications() {
+
   }
 
   renderShortcutBar() {
