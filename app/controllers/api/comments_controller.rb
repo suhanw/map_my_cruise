@@ -1,3 +1,5 @@
+require 'pusher'
+
 class Api::CommentsController < ApplicationController
   before_action :require_login
 
@@ -8,10 +10,15 @@ class Api::CommentsController < ApplicationController
 
 
   def create
+    # create Pusher channel specific to workout owner...
+
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.activity = Activity.new()
     if @comment.save
+      Pusher.trigger('my-channel', 'my-event', {
+        message: 'hello!'
+      })
       render :show
     else
       render json: @comment.errors.full_messages, status: 422

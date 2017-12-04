@@ -1,3 +1,5 @@
+/* globals Pusher */
+
 import React from 'react';
 import {Link} from 'react-router-dom';
 
@@ -15,6 +17,7 @@ class Header extends React.Component {
   render(){
     return (
       <header>
+        {this.renderNotifications()}
         {this.renderNavBar()}
         {this.renderShortcutBar()}
       </header>
@@ -103,7 +106,15 @@ class Header extends React.Component {
   }
 
   renderNotifications() {
+    let pusher = new Pusher('18fcca192420fc0ccfe4', {
+      cluster: 'us2',
+      encrypted: true
+    });
 
+    let channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', (data)=>{
+      alert(data.message);
+    });
   }
 
   renderShortcutBar() {
