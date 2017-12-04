@@ -71,6 +71,7 @@ section.activity-feed {
 
 .activity-feed-main article > section > .user-action > .workout-icon::after {
   background: asset-url('workout-icon.png');
+  background-repeat: no-repeat;
   background-size: contain;
   content: "";
   opacity: 0.5;
