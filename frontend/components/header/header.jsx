@@ -111,9 +111,9 @@ class Header extends React.Component {
       encrypted: true
     });
 
-    let channel = pusher.subscribe('my-channel');
+    let channel = pusher.subscribe(`user_${this.props.currentUser.id}`);
     channel.bind('my-event', (data)=>{
-      alert(data.message);
+      console.log(data.message);
     });
   }
 
