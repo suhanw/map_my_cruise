@@ -12,6 +12,10 @@ class Header extends React.Component {
       encrypted: true
     });
 
+    this.state = {
+      loadingNotifications: true,
+    };
+
     this.renderAvatar = this.renderAvatar.bind(this);
     this.renderNavBar = this.renderNavBar.bind(this);
     this.renderShortcutBar = this.renderShortcutBar.bind(this);
@@ -61,26 +65,28 @@ class Header extends React.Component {
         </section>
       );
 
-      let routesDropdown = (
-        <ul className="routes-dropdown">
-          <Link to="/routes/create"><li>Create Route</li></Link>
-          <Link to="/routes"><li>My Routes</li></Link>
-        </ul>
-      );
+    let notificationSection = loggedIn ? this.renderNotifications() : null;
 
-      let workoutsDropdown = (
-        <ul className="workouts-dropdown">
-          <Link to="/workouts/create"><li>Log Workout</li></Link>
-          <Link to="/workouts"><li>My Workouts</li></Link>
-        </ul>
-      );
+    let routesDropdown = (
+      <ul className="routes-dropdown">
+        <Link to="/routes/create"><li>Create Route</li></Link>
+        <Link to="/routes"><li>My Routes</li></Link>
+      </ul>
+    );
 
-      let friendsDropdown = (
-        <ul className="friends-dropdown">
-          <Link to="/friends/find"><li>Find Friends</li></Link>
-          <Link to="/friends"><li>My Friends</li></Link>
-        </ul>
-      );
+    let workoutsDropdown = (
+      <ul className="workouts-dropdown">
+        <Link to="/workouts/create"><li>Log Workout</li></Link>
+        <Link to="/workouts"><li>My Workouts</li></Link>
+      </ul>
+    );
+
+    let friendsDropdown = (
+      <ul className="friends-dropdown">
+        <Link to="/friends/find"><li>Find Friends</li></Link>
+        <Link to="/friends"><li>My Friends</li></Link>
+      </ul>
+    );
 
     return (
       <section className="nav-main">
@@ -106,27 +112,38 @@ class Header extends React.Component {
             </li>
           </ul>
         </nav>
-        {this.renderNotifications()}
+        {notificationSection}
         {profileSection}
       </section>
     );
   }
 
   renderNotifications() {
-    let loggedIn = Boolean(this.props.currentUser);
-    if (!loggedIn) return null;
+    if (this.state.loadingNotifications) {
+      this.props.fetchNotifications().then(
+        () => this.setState({loadingNotifications: false})
+      );
+      return null;
+    }
+
+    const {notifications_by_id, ordered_ids} = this.props.notifications;
 
     let channel = this.pusher.subscribe(`user_${this.props.currentUser.id}`);
     channel.bind('notification_event', (data)=>{
       // console.log(data.message);
+      this.props.fetchNotifications();      
     });
+
+    let badgeIcon = (
+      <div className={`badge-icon ${ordered_ids.length ? '': 'hidden'}`}>
+        {ordered_ids.length}
+      </div>
+    );
 
     return (
       <section className="notifications">
         <i className="fa fa-bell-o" aria-hidden="true">
-          <div className="badge-icon">
-            2
-          </div>
+          {badgeIcon}
         </i>
         <span>
           Notifications

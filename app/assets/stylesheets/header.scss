@@ -113,6 +113,10 @@ h1.nav-logo i {
   width: 15px;
 }
 
+.notifications i > .badge-icon.hidden {
+  visibility: hidden;
+}
+
 .avatar {
   cursor: pointer;
   font-family: 'PT Sans Narrow', sans-serif;
