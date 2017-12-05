@@ -4,7 +4,7 @@ json.notifications_by_id do
   @notifications.each do |notification|
     ordered_ids.push(notification.id)
     json.set! notification.id do
-      json.extract! notification, :id, :user_id, :notifiable_type, :notifiable_id
+      json.extract! notification, :id, :user_id, :notifiable_type, :notifiable_id, :read
     end
   end
 end

@@ -15,8 +15,10 @@ import CommentErrorsReducer from './comments/comment_errors_reducer';
 import FriendErrorsReducer from './friends/friend_errors_reducer';
 import UserSearchErrorsReducer from './friends/user_search_errors_reducer';
 import ActivityErrorsReducer from './activities/activity_errors_reducer';
+import NotificationErrorsReducer from './notifications/notification_errors_reducer';
 
 const ErrorsReducer = combineReducers({
+  notifications: NotificationErrorsReducer,
   activities: ActivityErrorsReducer,
   session: SessionErrorsReducer,
   routes: RouteErrorsReducer,
