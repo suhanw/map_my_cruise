@@ -42,9 +42,9 @@
 
 h1.nav-logo {
   /*font-family: 'Open Sans', sans-serif;*/
-  font-family: Armour-Condensed, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 24px;
-  font-weight: 500;
+  font-weight: 600;
   color: $blue;
   padding-bottom: 6px;
   margin-left: 10px;
@@ -79,9 +79,12 @@ h1.nav-logo i {
 }
 
 .notifications {
+  position: relative;
   color: $gray;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 50px;
 }
 
 .notifications span{
@@ -93,6 +96,7 @@ h1.nav-logo i {
 .notifications i {
   position: relative;
   font-size: 25px;
+  cursor: pointer;
 }
 
 .notifications i > .badge-icon {
@@ -117,6 +121,7 @@ h1.nav-logo i {
   visibility: hidden;
 }
 
+
 .avatar {
   cursor: pointer;
   font-family: 'PT Sans Narrow', sans-serif;
@@ -133,8 +138,18 @@ h1.nav-logo i {
 .avatar img {
   width: 35px;
   height: 35px;
-  // margin-left: 10px;
-  // margin-right: 10px;
+}
+
+.notification-dropdown {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  width: 400px;
+  visibility: hidden;
+}
+
+.notification-dropdown.active {
+  visibility: visible;
 }
 
 .avatar-dropdown,
@@ -164,7 +179,8 @@ h1.nav-logo i {
 .avatar-dropdown li,
 .routes-dropdown li,
 .workouts-dropdown li,
-.friends-dropdown li {
+.friends-dropdown li,
+.notification-dropdown li {
   font-family: 'PT Sans Narrow', sans-serif;
   color: $gray;
   background-color: #ffffff;
@@ -174,16 +190,18 @@ h1.nav-logo i {
   padding: 10px 25px;
 }
 
-
+.notification-dropdown li {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 12px;
+}
 
 .avatar-dropdown a:last-of-type li,
 .routes-dropdown a:last-of-type li,
 .workouts-dropdown a:last-of-type li,
-.friends-dropdown a:last-of-type li {
+.friends-dropdown a:last-of-type li,
+.notification-dropdown li:last-of-type {
   border-bottom: 1px solid #dbdbdb;
 }
-
-
 
 .avatar:hover > .avatar-dropdown,
 .nav-bar-routes:hover > .routes-dropdown,

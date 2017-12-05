@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {Link} from 'react-router-dom';
+import NotificationItem from './notification_item';
 
 class Header extends React.Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class Header extends React.Component {
     this.renderNavBar = this.renderNavBar.bind(this);
     this.renderShortcutBar = this.renderShortcutBar.bind(this);
     this.renderNotifications = this.renderNotifications.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.renderNotificationDropdown = this.renderNotificationDropdown.bind(this);
   }
 
   render(){
@@ -37,7 +39,7 @@ class Header extends React.Component {
     let avatarDropdown = (
       <ul className="avatar-dropdown">
         <Link to="/edit_profile"><li>Settings</li></Link>
-        <a onClick={this.props.logout}><li>Logout</li></a>
+        <a onClick={this.handleLogout}><li>Logout</li></a>
       </ul>
     );
 
@@ -65,7 +67,11 @@ class Header extends React.Component {
         </section>
       );
 
-    let notificationSection = loggedIn ? this.renderNotifications() : null;
+
+    let notificationSection = null;
+    if (loggedIn) {
+      notificationSection = this.renderNotifications();
+    }
 
     let routesDropdown = (
       <ul className="routes-dropdown">
@@ -131,7 +137,7 @@ class Header extends React.Component {
     let channel = this.pusher.subscribe(`user_${this.props.currentUser.id}`);
     channel.bind('notification_event', (data)=>{
       // console.log(data.message);
-      this.props.fetchNotifications();      
+      this.props.fetchNotifications();
     });
 
     let badgeIcon = (
@@ -140,16 +146,27 @@ class Header extends React.Component {
       </div>
     );
 
+    let notificationDropdown = (
+      <ul className={`notification-dropdown`}>
+        {ordered_ids.map((id)=> <NotificationItem key={id} notification={notifications_by_id[id]}/>)}
+      </ul>
+    );
+
     return (
       <section className="notifications">
-        <i className="fa fa-bell-o" aria-hidden="true">
+        <i className="fa fa-bell-o" aria-hidden="true" onClick={this.renderNotificationDropdown}>
           {badgeIcon}
         </i>
         <span>
           Notifications
         </span>
+        {notificationDropdown}
       </section>
     );
+  }
+
+  renderNotificationDropdown(e) {
+
   }
 
   renderShortcutBar() {
@@ -167,8 +184,10 @@ class Header extends React.Component {
     );
   }
 
-  handleClick(e) {
-    this.props.logout();
+  handleLogout(e) {
+    this.props.logout().then(
+      ()=>this.setState({loadingNotifications:true}) // to make sure notifications are fetched on the next logon
+    );
   }
 }
 
