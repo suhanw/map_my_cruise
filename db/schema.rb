@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171117004957) do
+ActiveRecord::Schema.define(version: 20171205152043) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20171117004957) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friender_id", "friendee_id"], name: "index_friend_statuses_on_friender_id_and_friendee_id", unique: true
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string "notifiable_type"
+    t.bigint "notifiable_id"
+    t.integer "user_id"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
   end
 
   create_table "routes", force: :cascade do |t|
