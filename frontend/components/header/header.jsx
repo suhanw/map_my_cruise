@@ -15,6 +15,7 @@ class Header extends React.Component {
 
     this.state = {
       loadingNotifications: true,
+      notificationDropdownActive: false,
     };
 
     this.renderAvatar = this.renderAvatar.bind(this);
@@ -22,7 +23,7 @@ class Header extends React.Component {
     this.renderShortcutBar = this.renderShortcutBar.bind(this);
     this.renderNotifications = this.renderNotifications.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
-    this.renderNotificationDropdown = this.renderNotificationDropdown.bind(this);
+    this.toggleNotificationDropdown = this.toggleNotificationDropdown.bind(this);
   }
 
   render(){
@@ -56,20 +57,17 @@ class Header extends React.Component {
   }
 
   renderNavBar() {
-
     let loggedIn = Boolean(this.props.currentUser);
-
-    let profileSection = loggedIn ?
-      this.renderAvatar() : (
+    let profileSection = (
         <section>
           <Link to="/login" className='profile-login'>LOG IN</Link>
           <Link to="/signup" className='profile-signup'>SIGN UP</Link>
         </section>
       );
-
-
     let notificationSection = null;
+
     if (loggedIn) {
+      profileSection = this.renderAvatar();
       notificationSection = this.renderNotifications();
     }
 
@@ -147,14 +145,14 @@ class Header extends React.Component {
     );
 
     let notificationDropdown = (
-      <ul className={`notification-dropdown`}>
+      <ul className={`notification-dropdown ${this.state.notificationDropdownActive ? "active" : ""}`}>
         {ordered_ids.map((id)=> <NotificationItem key={id} notification={notifications_by_id[id]}/>)}
       </ul>
     );
 
     return (
       <section className="notifications">
-        <i className="fa fa-bell-o" aria-hidden="true" onClick={this.renderNotificationDropdown}>
+        <i className="fa fa-bell-o" aria-hidden="true" onClick={this.toggleNotificationDropdown}>
           {badgeIcon}
         </i>
         <span>
@@ -165,8 +163,12 @@ class Header extends React.Component {
     );
   }
 
-  renderNotificationDropdown(e) {
-
+  toggleNotificationDropdown(e) {
+    if (this.state.notificationDropdownActive) {
+      this.setState({notificationDropdownActive: false});
+    } else {
+      this.setState({notificationDropdownActive: true});
+    }
   }
 
   renderShortcutBar() {

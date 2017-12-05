@@ -87,7 +87,8 @@ h1.nav-logo i {
   height: 50px;
 }
 
-.notifications span{
+.notifications span,
+.avatar span {
   font-family: 'PT Sans Narrow', sans-serif;
   font-size: 14px;
   color: $gray;
@@ -129,7 +130,7 @@ h1.nav-logo i {
   color: $gray;
   background-repeat: no-repeat;
   background-position: right;
-  // height: 35px;
+  height: 55px;
   position: relative;
   display: flex;
   flex-direction: column;
