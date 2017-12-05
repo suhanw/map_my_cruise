@@ -3,10 +3,14 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store';
 
-document.addEventListener('DOMContentLoaded', ()=>{
+//for testing
+import {fetchNotifications} from './actions/notifications_actions';
+//for testing
 
-  // bootstrapping current user
+document.addEventListener('DOMContentLoaded', ()=>{
   let store;
+  
+  // bootstrapping current user
   if (window.currentUser) {
     const preloadedState = {
       session: {
@@ -19,6 +23,11 @@ document.addEventListener('DOMContentLoaded', ()=>{
     store = configureStore();
   }
   // bootstrapping current user
+
+  //for testing
+  window.dispatch = store.dispatch;
+  window.fetchNotifications = fetchNotifications;
+  //for testing
 
   const main = document.getElementById('main');
 

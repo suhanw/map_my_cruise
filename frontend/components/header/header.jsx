@@ -118,7 +118,7 @@ class Header extends React.Component {
 
     let channel = this.pusher.subscribe(`user_${this.props.currentUser.id}`);
     channel.bind('notification_event', (data)=>{
-      console.log(data.message);
+      // console.log(data.message);
     });
 
     return (
