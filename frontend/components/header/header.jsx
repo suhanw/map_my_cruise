@@ -22,7 +22,6 @@ class Header extends React.Component {
   render(){
     return (
       <header>
-        {this.renderNotifications()}
         {this.renderNavBar()}
         {this.renderShortcutBar()}
       </header>
@@ -105,6 +104,7 @@ class Header extends React.Component {
             </li>
           </ul>
         </nav>
+        {this.renderNotifications()}
         {profileSection}
       </section>
     );
@@ -118,6 +118,12 @@ class Header extends React.Component {
     channel.bind('notification_event', (data)=>{
       console.log(data.message);
     });
+
+    return (
+      <section className="notifications">
+        <i className="fa fa-bell-o" aria-hidden="true"></i>
+      </section>
+    );
   }
 
   renderShortcutBar() {

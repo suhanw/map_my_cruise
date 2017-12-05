@@ -25,11 +25,13 @@
 
 .nav-main {
   justify-content: space-between;
+  align-items: center;
   flex-direction: row;
   min-width: 400px;
   max-width: 960px;
   margin: auto;
   padding: 10px 0;
+  border: 1px solid red;
 }
 
 .nav-bar {
@@ -37,6 +39,7 @@
   flex-wrap: wrap;
   align-items: center;
   width: 80%;
+  border: 1px solid red;
 }
 
 h1.nav-logo {
@@ -77,6 +80,10 @@ h1.nav-logo i {
   cursor: pointer;
 }
 
+.notifications {
+  border: 1px solid red;
+}
+
 
 .avatar {
   cursor: pointer;
@@ -87,6 +94,7 @@ h1.nav-logo i {
   background-position: right;
   height: 35px;
   position: relative;
+  border: 1px solid red;
 }
 
 .avatar img {
