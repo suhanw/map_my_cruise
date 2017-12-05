@@ -17,7 +17,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :workout
 
-  has_one :activity, as: :feedable, dependent: :destroy
+  has_one :notification, as: :notifiable, dependent: :destroy
 
   private
   def validate_body

@@ -106,15 +106,20 @@ class Header extends React.Component {
   }
 
   renderNotifications() {
-    let pusher = new Pusher('18fcca192420fc0ccfe4', {
-      cluster: 'us2',
-      encrypted: true
-    });
+    let loggedIn = Boolean(this.props.currentUser);
+    if (!loggedIn) {
+      return null;
+    }
 
-    let channel = pusher.subscribe(`user_${this.props.currentUser.id}`);
-    channel.bind('my-event', (data)=>{
-      console.log(data.message);
-    });
+    // let pusher = new Pusher('18fcca192420fc0ccfe4', {
+    //   cluster: 'us2',
+    //   encrypted: true
+    // });
+    //
+    // let channel = pusher.subscribe(`user_${this.props.currentUser.id}`);
+    // channel.bind('my-event', (data)=>{
+    //   console.log(data.message);
+    // });
   }
 
   renderShortcutBar() {

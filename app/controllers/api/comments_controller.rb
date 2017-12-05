@@ -10,17 +10,16 @@ class Api::CommentsController < ApplicationController
 
 
   def create
-
     @comment = Comment.new(comment_params)
     @comment.user = current_user
-    @comment.activity = Activity.new()
+    commentable_owner = @comment.workout.user
+    @comment.notification = Notification.new(user_id: commentable_owner.id, read: false)
+    # create Pusher channel specific to workout owner
+    # owner_channel = "user_#{commentable_owner.id}"
+    # Pusher.trigger(owner_channel, 'my-event', {
+    #   message: "someone commented on #{commentable_owner.email}'s workout"
+    # })
     if @comment.save
-      # create Pusher channel specific to workout owner
-      owner = @comment.workout.user
-      owner_channel = "user_#{owner.id}"
-      Pusher.trigger(owner_channel, 'my-event', {
-        message: "someone commented on #{owner.email}'s workout"
-      })
       render :show
     else
       render json: @comment.errors.full_messages, status: 422
