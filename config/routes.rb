@@ -19,9 +19,8 @@ Rails.application.routes.draw do
 
     resources :activities, only: [:index]
 
-    # # for testing
-    # resources :comments, only: [:show]
-    # resources :friend_statuses, only: [:show]
+    resources :notifications, only: [:index]
+
   end
 
 end
