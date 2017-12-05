@@ -31,7 +31,6 @@
   max-width: 960px;
   margin: auto;
   padding: 10px 0;
-  border: 1px solid red;
 }
 
 .nav-bar {
@@ -39,7 +38,6 @@
   flex-wrap: wrap;
   align-items: center;
   width: 80%;
-  border: 1px solid red;
 }
 
 h1.nav-logo {
@@ -81,9 +79,39 @@ h1.nav-logo i {
 }
 
 .notifications {
-  border: 1px solid red;
+  color: $gray;
+  display: flex;
+  flex-direction: column;
 }
 
+.notifications span{
+  font-family: 'PT Sans Narrow', sans-serif;
+  font-size: 14px;
+  color: $gray;
+}
+
+.notifications i {
+  position: relative;
+  font-size: 25px;
+}
+
+.notifications i > .badge-icon {
+  box-sizing: border-box;
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: bold;
+  font-size: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: red;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
 
 .avatar {
   cursor: pointer;
@@ -92,16 +120,17 @@ h1.nav-logo i {
   color: $gray;
   background-repeat: no-repeat;
   background-position: right;
-  height: 35px;
+  // height: 35px;
   position: relative;
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
 }
 
 .avatar img {
-  width: 34px;
-  height: 34px;
-  margin-left: 10px;
-  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+  // margin-left: 10px;
+  // margin-right: 10px;
 }
 
 .avatar-dropdown,

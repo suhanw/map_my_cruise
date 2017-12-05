@@ -40,8 +40,10 @@ class Header extends React.Component {
 
     return (
       <section className="avatar">
-        {`Welcome, ${this.props.currentUser.fname} ${this.props.currentUser.lname}`}
         <img src={this.props.currentUser.avatar_url} />
+        <span>
+          {`${this.props.currentUser.fname} ${this.props.currentUser.lname}`}
+        </span>
         {avatarDropdown}
       </section>
     );
@@ -121,7 +123,14 @@ class Header extends React.Component {
 
     return (
       <section className="notifications">
-        <i className="fa fa-bell-o" aria-hidden="true"></i>
+        <i className="fa fa-bell-o" aria-hidden="true">
+          <div className="badge-icon">
+            2
+          </div>
+        </i>
+        <span>
+          Notifications
+        </span>
       </section>
     );
   }
