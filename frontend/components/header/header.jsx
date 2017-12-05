@@ -7,6 +7,11 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
+    this.pusher = new Pusher('18fcca192420fc0ccfe4', {
+      cluster: 'us2',
+      encrypted: true
+    });
+
     this.renderAvatar = this.renderAvatar.bind(this);
     this.renderNavBar = this.renderNavBar.bind(this);
     this.renderShortcutBar = this.renderShortcutBar.bind(this);
@@ -107,19 +112,12 @@ class Header extends React.Component {
 
   renderNotifications() {
     let loggedIn = Boolean(this.props.currentUser);
-    if (!loggedIn) {
-      return null;
-    }
+    if (!loggedIn) return null;
 
-    // let pusher = new Pusher('18fcca192420fc0ccfe4', {
-    //   cluster: 'us2',
-    //   encrypted: true
-    // });
-    //
-    // let channel = pusher.subscribe(`user_${this.props.currentUser.id}`);
-    // channel.bind('my-event', (data)=>{
-    //   console.log(data.message);
-    // });
+    let channel = this.pusher.subscribe(`user_${this.props.currentUser.id}`);
+    channel.bind('notification_event', (data)=>{
+      console.log(data.message);
+    });
   }
 
   renderShortcutBar() {
