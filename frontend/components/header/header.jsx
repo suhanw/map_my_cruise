@@ -24,6 +24,7 @@ class Header extends React.Component {
     this.renderNotifications = this.renderNotifications.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.toggleNotificationDropdown = this.toggleNotificationDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   render(){
@@ -33,6 +34,13 @@ class Header extends React.Component {
         {this.renderShortcutBar()}
       </header>
     );
+  }
+
+  componentDidMount() {
+    const that = this;
+    document.addEventListener('click', (e)=>{
+      that.hideDropdown(e);
+    });
   }
 
   renderAvatar() {
@@ -164,11 +172,16 @@ class Header extends React.Component {
   }
 
   toggleNotificationDropdown(e) {
+    e.nativeEvent.stopImmediatePropagation();
     if (this.state.notificationDropdownActive) {
       this.setState({notificationDropdownActive: false});
     } else {
       this.setState({notificationDropdownActive: true});
     }
+  }
+
+  hideDropdown(e) {
+    this.setState({notificationDropdownActive: false});
   }
 
   renderShortcutBar() {
