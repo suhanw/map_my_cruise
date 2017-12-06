@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
     resources :activities, only: [:index]
 
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :update]
 
   end
 

@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {fetchComment} from '../../actions/comments_actions';
+import {updateNotification} from '../../actions/notifications_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const {notification} = ownProps;
@@ -17,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     fetchComment: (commentId) => dispatch(fetchComment(commentId)),
+    updateNotification: (notification) => dispatch(updateNotification(notification)),
   };
 };
 
@@ -36,11 +38,6 @@ class NotificationItem extends React.Component {
       return null;
     }
 
-    if (this.props.notificationDropdownActive) {
-      console.log('dropdown active');
-    }
-
-
     const {notification} = this.props;
 
     if (notification.notifiable_type === 'Comment') {
@@ -55,7 +52,18 @@ class NotificationItem extends React.Component {
         () => this.setState({loading: false})
       );
     }
+  }
 
+  componentDidUpdate(prevProps, prevState) {
+    const notificationDropdownClosed = prevProps.notificationDropdownActive === true && this.props.notificationDropdownActive === false; // when user closes the notif dropdown
+    const notificationUnread = !this.props.notification.read; //if it's a new notification
+
+    if (notificationDropdownClosed && notificationUnread) {
+      const {notification} = this.props;
+      let newNotification = Object.assign({}, notification);
+      newNotification.read = true;
+      this.props.updateNotification(newNotification);
+    }
   }
 
   renderCommentItem(notification) {

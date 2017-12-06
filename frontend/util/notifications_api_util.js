@@ -4,3 +4,11 @@ export const fetchNotifications = () => {
     method: 'get',
   });
 };
+
+export const updateNotification = (notification) => {
+  return $.ajax({
+    url: `api/notifications/${notification.id}`,
+    method: 'patch',
+    data: {notification}
+  });
+};

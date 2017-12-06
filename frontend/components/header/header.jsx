@@ -43,6 +43,15 @@ class Header extends React.Component {
     });
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const notificationDropdownClosed = prevState.notificationDropdownActive === true && this.state.notificationDropdownActive === false; // when user closes the notif dropdown
+    if (notificationDropdownClosed) {
+      this.props.fetchNotifications().then(
+        () => this.setState({loadingNotifications: false})
+      );
+    }
+  }
+
   renderAvatar() {
 
     let avatarDropdown = (

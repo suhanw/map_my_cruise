@@ -25,3 +25,12 @@ export const fetchNotifications = () => {
     );
   };
 };
+
+export const updateNotification = (notification) => {
+  return (dispatch) => {
+    return NotificationsApiUtil.updateNotification(notification).then(
+      null,
+      (errors) => dispatch(receiveNotificationsErrors(errors.responseJSON))
+    );
+  };
+};
