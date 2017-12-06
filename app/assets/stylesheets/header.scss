@@ -146,12 +146,17 @@ section.avatar {
   position: absolute;
   top: 35px;
   right: 0;
-  width: 400px;
+  width: 300px;
+  box-shadow: 1px 1px 1px 0px $gray;
   visibility: hidden;
 }
 
 .notification-dropdown.active {
   visibility: visible;
+}
+
+.notification-dropdown a {
+  color: $blue;
 }
 
 .avatar-dropdown,
@@ -195,6 +200,10 @@ section.avatar {
 .notification-dropdown li {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 12px;
+}
+
+.notification-dropdown li.new-notification {
+  background-color: $lightest-gray;
 }
 
 .avatar-dropdown a:last-of-type li,

@@ -4,6 +4,7 @@ import {
   RECEIVE_ROUTE,
 } from '../actions/routes_actions';
 import {RECEIVE_WORKOUT, RECEIVE_WORKOUTS} from '../actions/workouts_actions';
+import {RECEIVE_COMMENT} from '../actions/comments_actions';
 import {
   RECEIVE_FRIEND_STATUSES,
   RECEIVE_FRIEND_STATUS
@@ -23,6 +24,8 @@ const UsersReducer = (state=defaultState, {type, payload}) => {
     case RECEIVE_WORKOUT:
       return Object.assign({}, state, payload.users);
     case RECEIVE_WORKOUTS:
+      return Object.assign({}, state, payload.users);
+    case RECEIVE_COMMENT:
       return Object.assign({}, state, payload.users);
     case RECEIVE_FRIEND_STATUSES:
       return Object.assign({}, state, payload.users);

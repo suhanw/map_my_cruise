@@ -44,3 +44,12 @@ export const deleteComment = (commentId) => {
     );
   };
 };
+
+export const fetchComment = (commentId) => {
+  return (dispatch) => {
+    return CommentApiUtil.fetchComment(commentId).then(
+      (comment) => dispatch(receiveComment(comment)),
+      (errors) => dispatch(receiveCommentErrors(errors.responseJSON))
+    );
+  };
+};

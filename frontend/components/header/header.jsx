@@ -139,22 +139,22 @@ class Header extends React.Component {
     }
 
     const {notifications_by_id, ordered_ids} = this.props.notifications;
+    let unread_count = this.props.notifications.unread_count;
 
     let channel = this.pusher.subscribe(`user_${this.props.currentUser.id}`);
     channel.bind('notification_event', (data)=>{
-      // console.log(data.message);
       this.props.fetchNotifications();
     });
 
     let badgeIcon = (
-      <div className={`badge-icon ${ordered_ids.length ? '': 'hidden'}`}>
-        {ordered_ids.length}
+      <div className={`badge-icon ${unread_count > 0 ? '': 'hidden'}`}>
+        {unread_count}
       </div>
     );
 
     let notificationDropdown = (
       <ul className={`notification-dropdown ${this.state.notificationDropdownActive ? "active" : ""}`}>
-        {ordered_ids.map((id)=> <NotificationItem key={id} notification={notifications_by_id[id]}/>)}
+        {ordered_ids.map((id)=> <NotificationItem key={id} notification={notifications_by_id[id]} notificationDropdownActive={this.state.notificationDropdownActive}/>)}
       </ul>
     );
 
@@ -176,6 +176,7 @@ class Header extends React.Component {
     if (this.state.notificationDropdownActive) {
       this.setState({notificationDropdownActive: false});
     } else {
+
       this.setState({notificationDropdownActive: true});
     }
   }

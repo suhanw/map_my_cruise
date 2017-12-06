@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create]
     end
 
-    resources :comments, only: [:destroy]
+    resources :comments, only: [:destroy, :show]
 
     resources :friend_statuses, only: [:index, :create, :update, :destroy, :show]
 

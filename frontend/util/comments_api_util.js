@@ -12,3 +12,10 @@ export const deleteComment = (commentId) => {
     method: 'delete',
   });
 };
+
+export const fetchComment = (commentId) => {
+  return $.ajax({
+    url:`api/comments/${commentId}`,
+    method: 'get',
+  });
+};

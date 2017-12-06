@@ -1,12 +1,9 @@
-require 'pusher'
-
 class Api::CommentsController < ApplicationController
   before_action :require_login
 
   def show
     @comment = Comment.find_by(id: params[:id])
   end
-  # above for testing
 
 
   def create
