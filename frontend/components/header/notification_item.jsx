@@ -59,10 +59,11 @@ class NotificationItem extends React.Component {
     const notificationUnread = !this.props.notification.read; //if it's a new notification
 
     if (notificationDropdownClosed && notificationUnread) {
+      console.log('notif item cdu');
       const {notification} = this.props;
       let newNotification = Object.assign({}, notification);
       newNotification.read = true;
-      this.props.updateNotification(newNotification);
+      this.props.updateNotification(newNotification); // to mark notif as read
     }
   }
 
