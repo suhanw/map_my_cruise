@@ -79,23 +79,32 @@ h1.nav-logo i {
   cursor: pointer;
 }
 
-.notifications {
+section.notifications {
   position: relative;
   color: $gray;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
   height: 50px;
 }
 
 .notifications span,
 .avatar span {
   font-family: 'PT Sans Narrow', sans-serif;
-  font-size: 14px;
   color: $gray;
 }
 
+.notifications span {
+  font-size: 10px;
+}
+
+.avatar span {
+  font-size: 12px;
+}
+
 .notifications i {
+  margin-top: 5px;
   position: relative;
   font-size: 25px;
   cursor: pointer;
@@ -135,6 +144,7 @@ section.avatar {
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .avatar img {
