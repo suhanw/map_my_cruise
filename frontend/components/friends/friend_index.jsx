@@ -75,7 +75,6 @@ class FriendIndex extends React.Component {
 
     this.renderFriends(this.props.thumbnail); //this updates instance variables that categorize the friends
 
-    // if (!this.props.currentUser.friends.length) {
     if (!this.actualFriends.length && !this.pendingFriendReceipts.length) {
       return (
         <section className="friend-index">
@@ -91,6 +90,17 @@ class FriendIndex extends React.Component {
     return (
       <section className="friend-index">
 
+        {this.pendingFriendReceipts.length ?
+          (
+            <section className="pending-friend-receipts">
+              <h3>FRIEND REQUESTS</h3>
+              <ul>
+                {this.pendingFriendReceipts}
+              </ul>
+            </section>
+          ) :
+          null }
+
         {this.actualFriends.length ?
           (
             <section className="friends">
@@ -102,17 +112,6 @@ class FriendIndex extends React.Component {
           ) :
           null}
 
-
-        {this.pendingFriendReceipts.length ?
-          (
-            <section className="pending-friend-receipts">
-              <h3>FRIEND REQUESTS</h3>
-              <ul>
-                {this.pendingFriendReceipts}
-              </ul>
-            </section>
-          ) :
-          null }
       </section>
     );
   }
@@ -182,14 +181,3 @@ class FriendIndex extends React.Component {
 }
 
 export default FriendIndex;
-
-// to render pending friend requests
-// {this.pendingFriendRequests.length ?
-//   (
-// <section className="pending-friend-requests">
-//       <h3>PENDING FRIEND REQUESTS</h3>
-//       <ul>
-//         {this.pendingFriendRequests}
-//       </ul>
-// </section>
-// ) : null }

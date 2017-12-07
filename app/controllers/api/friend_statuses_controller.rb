@@ -2,15 +2,8 @@ class Api::FriendStatusesController < ApplicationController
   before_action :require_login
 
   def index
-    # requested_friend_statuses = current_user.requested_friend_statuses
-    # received_friends_statuses = current_user.received_friend_statuses
-    # @friend_statuses = requested_friend_statuses + received_friends_statuses
-
-    # requested_friends = current_user.requested_friends
-    # received_friends = current_user.received_friends
-    # @friends = requested_friends + received_friends
-    requested_friend_statuses = current_user.requested_friend_statuses.includes(:friendee)
-    received_friends_statuses = current_user.received_friend_statuses.includes(:friender)
+    requested_friend_statuses = current_user.requested_friend_statuses.includes(:friendee).order(id: :desc)
+    received_friends_statuses = current_user.received_friend_statuses.includes(:friender).order(id: :desc)
     @friend_statuses = requested_friend_statuses + received_friends_statuses
     render :index
   end
@@ -46,7 +39,7 @@ class Api::FriendStatusesController < ApplicationController
       @friend_status.activity = Activity.new(user_id: current_user.id) # add to activity feed
       render :show
     elsif friend_params[:friend_status] == 'no'
-      @friend_status.friend_status = 'no'
+      @friend_status.destroy
       render :show
     else
       render json: ['Something went wrong, you are a horrible friend and human being.'], status: 422
