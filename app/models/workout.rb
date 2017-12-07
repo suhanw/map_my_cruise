@@ -21,7 +21,7 @@ class Workout < ApplicationRecord
 
   belongs_to :user
   belongs_to :route
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   has_one :activity, as: :feedable, dependent: :destroy
 
