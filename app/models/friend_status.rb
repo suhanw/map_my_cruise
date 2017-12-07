@@ -24,4 +24,6 @@ class FriendStatus < ApplicationRecord
     class_name: 'User'
 
   has_one :activity, as: :feedable, dependent: :destroy
+
+  has_one :notification, as: :notifiable, dependent: :destroy
 end

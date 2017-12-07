@@ -31,6 +31,7 @@ class Api::FriendStatusesController < ApplicationController
       friender_id: current_user.id,
       friend_status: 'pending'
     })
+    @friend_status.notification = Notification.new(user_id: @friend_status.friendee_id, read: false) # create notification for friendee
 
     if @friend_status.save
       render :show
