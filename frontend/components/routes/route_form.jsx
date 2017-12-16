@@ -41,17 +41,32 @@ class RouteForm extends React.Component {
       );
     }
 
-    // to add TC gif to Google's warning
+    // to style the directions
     document.getElementById("directions").addEventListener('DOMSubtreeModified', ()=>{
-      const warnbox = document.querySelector(".warnbox-content");
+      // const warnbox = document.querySelector(".warnbox-content");
 
-      if (!warnbox.innerHTML.includes('Tom Cruise') && Boolean(warnbox.innerHTML.length)) {
-        warnbox.innerHTML += ' <b>Unless of course you are Tom Cruise running to save the world.</b>';
-        const tcGif = document.createElement('img');
-        tcGif.setAttribute('src', 'https://media.giphy.com/media/5nPodXMLXXd1m/giphy.gif');
-        tcGif.style = "width: 200px; margin: 5px auto;";
-        warnbox.appendChild(tcGif);
+      // if (Boolean(warnbox) && !warnbox.innerHTML.includes('Tom Cruise')) {
+      //   warnbox.innerHTML += ' <b>Unless of course you are Tom Cruise running to save the world.</b>';
+      //   const tcGif = document.createElement('img');
+      //   tcGif.setAttribute('src', 'https://media.giphy.com/media/5nPodXMLXXd1m/giphy.gif');
+      //   tcGif.style = "width: 200px; margin: 5px auto;";
+      //   warnbox.appendChild(tcGif);
+      // }
+
+      const warnbox = document.querySelector(".adp-warnbox");
+      if (Boolean(warnbox)) warnbox.style = "display:none";
+
+      const directionsText = document.querySelector(".adp");
+      if (Boolean(directionsText)) {
+        directionsText.style = 'font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif';
+        directionsText.style = 'font-size: 12px';
       }
+
+      const directionMarkers = document.querySelectorAll('.adp-marker');
+      if (directionMarkers) {
+        directionMarkers.forEach((marker) => marker.style="height: 20px; width: auto; margin-right: 5px");
+      }
+
       return;
     });
 

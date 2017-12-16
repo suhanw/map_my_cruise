@@ -61,6 +61,11 @@ class Map extends React.Component {
     if (newProps.clearRoute) {
       this.directionsRenderer.setMap(null);
       document.getElementById('directions').innerHTML = '';
+      this.props.setRouteState({
+        polyline: '',
+        distance: null,
+        city: null,
+      });
       this.initDirectionsRenderer();
       this.props.resetClearRoute();
     }
