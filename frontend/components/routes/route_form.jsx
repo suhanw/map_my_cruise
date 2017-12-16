@@ -12,6 +12,7 @@ class RouteForm extends React.Component {
     this.state['panelCollapsed'] = false;
     this.state['panelClass'] = "route-form-details";
     this.state['mapSearchLocation'] = null;
+    this.state['clearMap'] = false;
 
     this.autocomplete = null;
 
@@ -26,6 +27,8 @@ class RouteForm extends React.Component {
     this.onPlaceChanged = this.onPlaceChanged.bind(this);
     this.resetMapSearchLocation = this.resetMapSearchLocation.bind(this);
     this.renderErrorMessage = this.renderErrorMessage.bind(this);
+    this.renderClearMapButton = this.renderClearMapButton.bind(this);
+    this.clearMap = this.clearMap.bind(this);
   }
 
 
@@ -239,6 +242,14 @@ class RouteForm extends React.Component {
         panelClass: "route-form-details collapse",
       });
     }
+  }
+
+  renderClearMapButton() {
+    
+  }
+
+  clearMap() {
+    this.setState({clearMap: true});
   }
 }
 
