@@ -60,6 +60,8 @@ class Map extends React.Component {
 
     if (newProps.clearRoute) {
       this.directionsRenderer.setMap(null);
+      document.getElementById('directions').innerHTML = '';
+      this.initDirectionsRenderer();
       this.props.resetClearRoute();
     }
   }
