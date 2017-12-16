@@ -21,6 +21,7 @@ class Map extends React.Component {
     this.generatePath = this.generatePath.bind(this);
     this.renderPath = this.renderPath.bind(this);
     this.renderExistingRoute = this.renderExistingRoute.bind(this);
+    this.initDirectionsRenderer = this.initDirectionsRenderer.bind(this);
   }
 
   componentDidMount(){
@@ -55,6 +56,11 @@ class Map extends React.Component {
       this.map.panTo(newProps.mapSearchLocation);
       this.map.setZoom(15);
       this.props.resetMapSearchLocation();
+    }
+
+    if (newProps.clearRoute) {
+      this.directionsRenderer.setMap(null);
+      this.props.resetClearRoute();
     }
   }
 
@@ -100,17 +106,21 @@ class Map extends React.Component {
     this.map.addListener('click', this.handleMapClick);
 
     // create and hook DirectionsRenderer to map
+    this.initDirectionsRenderer();
+
+    // to render existing route for edit form
+    if (this.props.formType === 'edit') {
+      this.renderExistingRoute();
+    }
+  }
+
+  initDirectionsRenderer() {
     this.directionsRenderer = new google.maps.DirectionsRenderer({
       draggable: true,
       map: this.map,
       panel: document.getElementById('directions'), // to display directions
       preserveViewport: true, // to prevent the map from zooming into path
     });
-
-    // to render existing route for edit form
-    if (this.props.formType === 'edit') {
-      this.renderExistingRoute();
-    }
   }
 
   renderExistingRoute() {

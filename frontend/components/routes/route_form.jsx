@@ -12,7 +12,7 @@ class RouteForm extends React.Component {
     this.state['panelCollapsed'] = false;
     this.state['panelClass'] = "route-form-details";
     this.state['mapSearchLocation'] = null;
-    this.state['clearMap'] = false;
+    this.state['clearRoute'] = false;
 
     this.autocomplete = null;
 
@@ -27,8 +27,8 @@ class RouteForm extends React.Component {
     this.onPlaceChanged = this.onPlaceChanged.bind(this);
     this.resetMapSearchLocation = this.resetMapSearchLocation.bind(this);
     this.renderErrorMessage = this.renderErrorMessage.bind(this);
-    this.renderClearMapButton = this.renderClearMapButton.bind(this);
-    this.clearMap = this.clearMap.bind(this);
+    this.clearRoute = this.clearRoute.bind(this);
+    this.resetClearRoute = this.resetClearRoute.bind(this);
   }
 
 
@@ -60,7 +60,6 @@ class RouteForm extends React.Component {
   }
 
   render(){
-
     let routeFormTitle = "CREATE A ROUTE";
     if (this.props.formType === 'edit') routeFormTitle = 'EDIT ROUTE';
 
@@ -100,6 +99,8 @@ class RouteForm extends React.Component {
           receiveRouteErrors={this.props.receiveRouteErrors}
           formType={this.props.formType}
           route={this.props.route}
+          clearRoute={this.state.clearRoute}
+          resetClearRoute={this.resetClearRoute}
           mapSearchLocation={this.state.mapSearchLocation}
           resetMapSearchLocation={this.resetMapSearchLocation} />
 
@@ -182,6 +183,7 @@ class RouteForm extends React.Component {
         <button type="submit" onClick={this.saveRoute}>
           SAVE ROUTE
         </button>
+        <button type="button" onClick={this.clearRoute}>CLEAR ROUTE</button>
         {showRouteLink}
       </section>
     );
@@ -247,12 +249,12 @@ class RouteForm extends React.Component {
     }
   }
 
-  renderClearMapButton() {
-
+  clearRoute() {
+    this.setState({clearRoute: true});
   }
 
-  clearMap() {
-    this.setState({clearMap: true});
+  resetClearRoute() {
+    this.setState({clearRoute: false});
   }
 }
 
