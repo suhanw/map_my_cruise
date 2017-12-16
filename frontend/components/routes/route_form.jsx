@@ -124,6 +124,8 @@ class RouteForm extends React.Component {
       <section className="route-form-map-search">
         <h3>Choose Map Location</h3>
         <input id="autocomplete" type="search" placeholder="Enter city or address" />
+        <button type="submit"
+          onClick={(e)=>e.preventDefault()}>SEARCH</button>
       </section>
     );
   }
@@ -143,6 +145,10 @@ class RouteForm extends React.Component {
       searchInputField.placeholder="Select from the dropdown list";
       searchInputField.value = "";
     }
+  }
+
+  resetMapSearchLocation() {
+    this.setState({mapSearchLocation: null});
   }
 
   renderCursorTooltip() {
@@ -173,7 +179,7 @@ class RouteForm extends React.Component {
         <input type="text" placeholder="Name this route"
           onChange={this.handleChange}
           value={this.state.name} />
-        <button onClick={this.saveRoute}>
+        <button type="submit" onClick={this.saveRoute}>
           SAVE ROUTE
         </button>
         {showRouteLink}
@@ -213,9 +219,6 @@ class RouteForm extends React.Component {
     });
   }
 
-  resetMapSearchLocation() {
-    this.setState({mapSearchLocation: null});
-  }
 
   renderToggler() {
     let toggleIcon = (this.state.panelCollapsed ?
@@ -245,7 +248,7 @@ class RouteForm extends React.Component {
   }
 
   renderClearMapButton() {
-    
+
   }
 
   clearMap() {
