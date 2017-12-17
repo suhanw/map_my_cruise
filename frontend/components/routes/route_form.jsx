@@ -83,9 +83,7 @@ class RouteForm extends React.Component {
     return (
       <section id="route-form-container">
 
-        <div id="cursor-tooltip">
-          Click on 2 points (start and end) to map a route.
-        </div>
+        <div id="cursor-tooltip"></div>
 
         <Modal modal={this.props.modal}
           errors = {this.props.errors}
@@ -104,7 +102,6 @@ class RouteForm extends React.Component {
             {errorMessage ? errorMessage : this.renderFormInput()}
           </form>
           <div id="directions"></div>
-
         </section>
 
 
@@ -176,7 +173,9 @@ class RouteForm extends React.Component {
       cursorToolTip.style.top = `${y+10}px`;
       cursorToolTip.style.left = `${x+10}px`;
 
-      if (this.state.polyline !== '') {
+      if (this.state.polyline === '') {
+        cursorToolTip.innerHTML = "Click on 2 points (start and end) to map a route.";
+      } else {
         cursorToolTip.innerHTML = "Click along any point on the route and drag to modify the route.";
       }
     };

@@ -71,17 +71,6 @@ class Map extends React.Component {
     }
   }
 
-  renderCursorTooltip() {
-    let cursorToolTip = document.getElementById('cursor-tooltip');
-    window.onmousemove = (e) => {
-      let x = e.clientX;
-      let y = e.clientY;
-
-      cursorToolTip.style.top = `${y+10}px`;
-      cursorToolTip.style.left = `${x+10}px`;
-    };
-  }
-
   render() {
     if (this.state.loading) {
       return(
@@ -127,6 +116,34 @@ class Map extends React.Component {
       map: this.map,
       panel: document.getElementById('directions'), // to display directions
       preserveViewport: true, // to prevent the map from zooming into path
+    });
+    
+    // to update polyline as user creates a new route, or drags the route
+    this.directionsRenderer.addListener('directions_changed', ()=>{
+      const directionsResult = this.directionsRenderer.getDirections();
+      const directionsRoute = directionsResult.routes[0];
+      const newPolyline = directionsRoute.overview_polyline;
+      const newDistance = directionsRoute.legs[0].distance.text;
+      const originLat = directionsResult.request.origin.location.lat();
+      const originLng = directionsResult.request.origin.location.lng();
+      const latLng = `${originLat},${originLng}`;
+
+      fetchCity(latLng).then(
+        (res) => {
+          if (res.status === 'OK') {
+            let newCity = res.results[0].formatted_address;
+            // send state back to RouteForm
+            this.props.setRouteState({
+              polyline: newPolyline,
+              distance: newDistance,
+              city: newCity,
+            });
+          } else {
+            this.props.receiveRouteErrors([res.error_message]);
+            this.props.openModal('errors');
+          }
+        }
+      );
     });
   }
 
@@ -190,39 +207,39 @@ class Map extends React.Component {
   generatePath(request) {
     let directionsService = new google.maps.DirectionsService();
 
-    // initiate async request for directions betw 2 points
+    // initiate request for directions betw 2 points
     directionsService.route(
       request,
       this.renderPath //if successful, render path
     );
 
-    // to update polyline as user creates a new route, or drags the route
-    this.directionsRenderer.addListener('directions_changed', ()=>{
-      const directionsResult = this.directionsRenderer.getDirections();
-      const directionsRoute = directionsResult.routes[0];
-      const newPolyline = directionsRoute.overview_polyline;
-      const newDistance = directionsRoute.legs[0].distance.text;
-      const originLat = directionsResult.request.origin.location.lat();
-      const originLng = directionsResult.request.origin.location.lng();
-      const latLng = `${originLat},${originLng}`;
-
-      fetchCity(latLng).then(
-        (res) => {
-          if (res.status === 'OK') {
-            let newCity = res.results[0].formatted_address;
-            // send state back to RouteForm
-            this.props.setRouteState({
-              polyline: newPolyline,
-              distance: newDistance,
-              city: newCity,
-            });
-          } else {
-            this.props.receiveRouteErrors([res.error_message]);
-            this.props.openModal('errors');
-          }
-        }
-      );
-    });
+    // // to update polyline as user creates a new route, or drags the route
+    // this.directionsRenderer.addListener('directions_changed', ()=>{
+    //   const directionsResult = this.directionsRenderer.getDirections();
+    //   const directionsRoute = directionsResult.routes[0];
+    //   const newPolyline = directionsRoute.overview_polyline;
+    //   const newDistance = directionsRoute.legs[0].distance.text;
+    //   const originLat = directionsResult.request.origin.location.lat();
+    //   const originLng = directionsResult.request.origin.location.lng();
+    //   const latLng = `${originLat},${originLng}`;
+    //
+    //   fetchCity(latLng).then(
+    //     (res) => {
+    //       if (res.status === 'OK') {
+    //         let newCity = res.results[0].formatted_address;
+    //         // send state back to RouteForm
+    //         this.props.setRouteState({
+    //           polyline: newPolyline,
+    //           distance: newDistance,
+    //           city: newCity,
+    //         });
+    //       } else {
+    //         this.props.receiveRouteErrors([res.error_message]);
+    //         this.props.openModal('errors');
+    //       }
+    //     }
+    //   );
+    // });
   }
 
   renderPath(result, status) {
