@@ -164,7 +164,8 @@
   flex-grow: 2;
 }
 
-.splash-icons a {
+.splash-icons a,
+.splash-icons a > i.fa-caret-right {
   color: #84aae8;
   font-size: 12px;
   font-weight: bold;
@@ -172,7 +173,11 @@
   margin: 10px 0;
 }
 
-.splash-icons li > i {
+.splash-icons a > i.fa-caret-right {
+  margin-left: 5px; 
+}
+
+.splash-icons li > a > i {
   font-size: 80px;
   color: #84aae8;
   text-shadow: 1px 1px 1px #6582b2;

@@ -39,7 +39,9 @@ class Splash extends React.Component {
         <section className="splash-icons">
           <ul>
             <li>
-              <i className="fa fa-map-marker" aria-hidden="true"></i>
+              <Link to="/routes/create">
+                <i className="fa fa-map-marker" aria-hidden="true"></i>
+              </Link>
               <h2>
                 MAP YOUR ROUTE
               </h2>
@@ -52,20 +54,24 @@ class Splash extends React.Component {
               </Link>
             </li>
             <li>
-              <i className="fa fa-podcast" aria-hidden="true"></i>
+              <Link to="/workouts/create">
+                <i className="fa fa-podcast" aria-hidden="true"></i>
+              </Link>
               <h2>
                 TRACK YOUR ACTIVITY
               </h2>
               <p>
                 Record activity with our mobile apps, import data from third-party devices, enter workouts manually and never miss a beat.
               </p>
-              <Link to="/workouts">
+              <Link to="/workouts/create">
                 Check it out
                 <i className="fa fa-caret-right" aria-hidden="true"></i>
               </Link>
             </li>
             <li>
-              <i className="fa fa-users" aria-hidden="true"></i>
+              <Link to="/friends">
+                <i className="fa fa-users" aria-hidden="true"></i>
+              </Link>
               <h2>
                 SHARE WITH FRIENDS
               </h2>
@@ -78,7 +84,9 @@ class Splash extends React.Component {
               </Link>
             </li>
             <li>
-              <i className="fa fa-imdb" aria-hidden="true"></i>
+              <a target="_blank" href="http://www.imdb.com/name/nm0000129/?ref_=tt_ov_st_sm">
+                <i className="fa fa-imdb" aria-hidden="true"></i>
+              </a>
               <h2>
                 WATCH TC MOVIES
               </h2>
@@ -86,8 +94,7 @@ class Splash extends React.Component {
                 Can't get enough of Tom Cruise running? Check out his entire filmography.
               </p>
               <a target="_blank" href="http://www.imdb.com/name/nm0000129/?ref_=tt_ov_st_sm">
-                Check it out
-                <i className="fa fa-caret-right" aria-hidden="true"></i>
+                Check it out <i className="fa fa-caret-right" aria-hidden="true"></i>
               </a>
             </li>
           </ul>
