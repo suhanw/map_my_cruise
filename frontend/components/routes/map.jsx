@@ -22,6 +22,21 @@ class Map extends React.Component {
     this.renderPath = this.renderPath.bind(this);
     this.renderExistingRoute = this.renderExistingRoute.bind(this);
     this.initDirectionsRenderer = this.initDirectionsRenderer.bind(this);
+    this.updateRoutePolyline = this.updateRoutePolyline.bind(this);
+  }
+
+  render() {
+    if (this.state.loading) {
+      return(
+        <div className="spinner-box">
+          <Spinner />;
+        </div>
+      );
+    }
+
+    return (
+        <div id='map'></div>
+    );
   }
 
   componentDidMount(){
@@ -71,21 +86,6 @@ class Map extends React.Component {
     }
   }
 
-  render() {
-    if (this.state.loading) {
-      return(
-        <div className="spinner-box">
-          <Spinner />;
-        </div>
-      );
-    }
-
-    return (
-        <div id='map'>
-        </div>
-    );
-  }
-
   renderInitMap(center){
     const mapOptions = {
       center: center,
@@ -117,34 +117,37 @@ class Map extends React.Component {
       panel: document.getElementById('directions'), // to display directions
       preserveViewport: true, // to prevent the map from zooming into path
     });
-    
-    // to update polyline as user creates a new route, or drags the route
-    this.directionsRenderer.addListener('directions_changed', ()=>{
-      const directionsResult = this.directionsRenderer.getDirections();
-      const directionsRoute = directionsResult.routes[0];
-      const newPolyline = directionsRoute.overview_polyline;
-      const newDistance = directionsRoute.legs[0].distance.text;
-      const originLat = directionsResult.request.origin.location.lat();
-      const originLng = directionsResult.request.origin.location.lng();
-      const latLng = `${originLat},${originLng}`;
 
-      fetchCity(latLng).then(
-        (res) => {
-          if (res.status === 'OK') {
-            let newCity = res.results[0].formatted_address;
-            // send state back to RouteForm
-            this.props.setRouteState({
-              polyline: newPolyline,
-              distance: newDistance,
-              city: newCity,
-            });
-          } else {
-            this.props.receiveRouteErrors([res.error_message]);
-            this.props.openModal('errors');
-          }
+    // to update polyline as user creates a new route, or drags the route
+    this.directionsRenderer.addListener('directions_changed', this.updateRoutePolyline);
+  }
+
+  updateRoutePolyline() {
+    // to update polyline as user creates a new route, or drags the route
+    const directionsResult = this.directionsRenderer.getDirections();
+    const directionsRoute = directionsResult.routes[0];
+    const newPolyline = directionsRoute.overview_polyline;
+    const newDistance = directionsRoute.legs[0].distance.text;
+    const originLat = directionsResult.request.origin.location.lat();
+    const originLng = directionsResult.request.origin.location.lng();
+    const latLng = `${originLat},${originLng}`;
+
+    fetchCity(latLng).then(
+      (res) => {
+        if (res.status === 'OK') {
+          let newCity = res.results[0].formatted_address;
+          // send state back to RouteForm
+          this.props.setRouteState({
+            polyline: newPolyline,
+            distance: newDistance,
+            city: newCity,
+          });
+        } else {
+          this.props.receiveRouteErrors([res.error_message]);
+          this.props.openModal('errors');
         }
-      );
-    });
+      }
+    );
   }
 
   renderExistingRoute() {
@@ -158,6 +161,7 @@ class Map extends React.Component {
         stopover: false,
       };
     });
+
     let request = {
       origin: this.routePath[0],
       destination: this.routePath[this.routePath.length-1],
@@ -206,40 +210,11 @@ class Map extends React.Component {
 
   generatePath(request) {
     let directionsService = new google.maps.DirectionsService();
-
     // initiate request for directions betw 2 points
     directionsService.route(
       request,
       this.renderPath //if successful, render path
     );
-
-    // // to update polyline as user creates a new route, or drags the route
-    // this.directionsRenderer.addListener('directions_changed', ()=>{
-    //   const directionsResult = this.directionsRenderer.getDirections();
-    //   const directionsRoute = directionsResult.routes[0];
-    //   const newPolyline = directionsRoute.overview_polyline;
-    //   const newDistance = directionsRoute.legs[0].distance.text;
-    //   const originLat = directionsResult.request.origin.location.lat();
-    //   const originLng = directionsResult.request.origin.location.lng();
-    //   const latLng = `${originLat},${originLng}`;
-    //
-    //   fetchCity(latLng).then(
-    //     (res) => {
-    //       if (res.status === 'OK') {
-    //         let newCity = res.results[0].formatted_address;
-    //         // send state back to RouteForm
-    //         this.props.setRouteState({
-    //           polyline: newPolyline,
-    //           distance: newDistance,
-    //           city: newCity,
-    //         });
-    //       } else {
-    //         this.props.receiveRouteErrors([res.error_message]);
-    //         this.props.openModal('errors');
-    //       }
-    //     }
-    //   );
-    // });
   }
 
   renderPath(result, status) {
