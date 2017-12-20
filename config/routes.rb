@@ -11,9 +11,11 @@ Rails.application.routes.draw do
 
     resources :workouts do
       resources :comments, only: [:create]
+      resources :likes, only: [:create]
     end
 
     resources :comments, only: [:destroy, :show]
+    resources :likes, only: [:destroy, :show]
 
     resources :friend_statuses, only: [:index, :create, :update, :destroy, :show]
 
