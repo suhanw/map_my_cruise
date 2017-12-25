@@ -12,7 +12,7 @@ class Api::CommentsController < ApplicationController
     commentable_owner = @comment.workout.user
     @comment.notification = Notification.new(user_id: commentable_owner.id, read: false)
     if @comment.save
-      render :show
+      render :show, status: 200
     else
       render json: @comment.errors.full_messages, status: 422
     end
@@ -24,7 +24,7 @@ class Api::CommentsController < ApplicationController
       render json: ["This comment does not exist"], status: 404
     else
       @comment.destroy
-      render :show
+      render :show, status: 200
     end
   end
 

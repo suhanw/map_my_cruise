@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (state) => {
   return null;
   // return {
-  //   createLike: () => dispatch(createLike()),
+  //   createLike: (workoutId) => dispatch(createLike(workoutId)),
   //   deleteLike: (likeId) => dispatch(deleteLike(likeId)),
   // };
 };

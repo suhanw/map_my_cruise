@@ -4,12 +4,12 @@ import Root from './components/root';
 import configureStore from './store/store';
 
 //for testing
-import {fetchNotifications} from './actions/notifications_actions';
+import * as LikeApiUtil from './util/likes_api_util';
 //for testing
 
 document.addEventListener('DOMContentLoaded', ()=>{
   let store;
-  
+
   // bootstrapping current user
   if (window.currentUser) {
     const preloadedState = {
@@ -26,7 +26,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   //for testing
   window.dispatch = store.dispatch;
-  window.fetchNotifications = fetchNotifications;
+  window.createLike = LikeApiUtil.createLike;
+  window.deleteLike = LikeApiUtil.deleteLike;
+  window.fetchLike = LikeApiUtil.fetchLike;
   //for testing
 
   const main = document.getElementById('main');
