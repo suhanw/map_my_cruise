@@ -117,7 +117,7 @@ class ShowWorkout extends React.Component {
               </figcaption>
             </figure>
           </section>
-          <section className="comments-likes">
+          <section className="workout-comments-likes">
             <h2>COMMENTS AND LIKES</h2>
 
             {this.renderLikes()}
@@ -166,7 +166,7 @@ class ShowWorkout extends React.Component {
 
   renderLikes() {
     return (
-      <LikeIndex workoutId={this.props.workout.id} />
+      <LikeIndex likableLikes={this.props.workout.likes} />
     );
   }
 

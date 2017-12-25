@@ -120,13 +120,17 @@
   padding-top: 10px;
 }
 
-.comments-likes h2 {
+.workout-comments-likes h2 {
   padding: 10px 0;
 }
 
-.workout-likes {
+.workout-comments-likes div.likes {
   padding: 10px 0;
   border-top: 1px solid $light-gray;
+}
+
+.workout-comments-likes div.likes i.has-likes {
+  color: $blue;
 }
 
 .workout-comments {

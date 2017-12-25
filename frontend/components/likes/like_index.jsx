@@ -4,12 +4,19 @@ import Spinner from '../spinner';
 // import {createLike, deleteLike} from '../../actions/likes_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const {session: {currentUser}, entities: {users}} = state;
-  const workoutId = ownProps.workoutId;
+  const {session: {currentUser}, entities: {users, likes}} = state;
+  const {likableLikes} = ownProps;
+  let likesArray = [];
+  if (likableLikes.length) { //to check if likable has likes
+    likesArray = likableLikes.map((likeId) => {
+      return likes[likeId];
+    });
+  }
+
   return {
     currentUser,
     users,
-    workoutId,
+    likesArray,
   };
 };
 
@@ -23,9 +30,13 @@ const mapDispatchToProps = (state) => {
 
 class LikeIndex extends React.Component {
   render() {
+    const numLikes = this.props.likesArray.length;
+    let hasLikes;
+    if (numLikes) hasLikes = 'has-likes';
     return (
-      <div className="workout-likes">
-        This will be likes (coming soon)
+      <div className="likes">
+        <i className={`fa fa-thumbs-o-up ${hasLikes}`} aria-hidden="true"></i>
+        {numLikes}
       </div>
     );
   }
