@@ -1,6 +1,6 @@
-export const createLike = (workoutId) => {
+export const createLike = (likableType, likableId) => {
   return $.ajax({
-    url: `api/workouts/${workoutId}/likes`,
+    url: `api/${likableType}/${likableId}/likes`,
     method: 'post',
   });
 };

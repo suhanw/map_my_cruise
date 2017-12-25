@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from '../spinner';
-// import {createLike, deleteLike} from '../../actions/likes_actions';
+import {createLike, deleteLike} from '../../actions/likes_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const {session: {currentUser}, entities: {users, likes}} = state;
@@ -20,12 +20,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (state) => {
-  return null;
-  // return {
-  //   createLike: (workoutId) => dispatch(createLike(workoutId)),
-  //   deleteLike: (likeId) => dispatch(deleteLike(likeId)),
-  // };
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const {likableType, likableId} = ownProps;
+  return {
+    createLike: () => dispatch(createLike(likableType, likableId)),
+    deleteLike: (likeId) => dispatch(deleteLike(likeId)),
+  };
 };
 
 class LikeIndex extends React.Component {
@@ -35,7 +35,8 @@ class LikeIndex extends React.Component {
     if (numLikes) hasLikes = 'has-likes';
     return (
       <div className="likes">
-        <i className={`fa fa-thumbs-o-up ${hasLikes}`} aria-hidden="true"></i>
+        <i className={`fa fa-thumbs-o-up ${hasLikes}`} aria-hidden="true"
+          onClick={this.props.createLike}></i>
         {numLikes}
       </div>
     );

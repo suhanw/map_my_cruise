@@ -27,9 +27,9 @@ export const receiveLikeErrors = (errors) => {
   };
 };
 
-export const createLike = (workoutId) => {
+export const createLike = (likableType, likableId) => {
   return (dispatch) => {
-    return LikeApiUtil.createLike(workoutId).then(
+    return LikeApiUtil.createLike(likableType, likableId).then(
       (newLike) => dispatch(receiveLike(newLike)),
       (errors) => dispatch(receiveLikeErrors(errors.responseJSON))
     );
