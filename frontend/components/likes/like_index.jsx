@@ -2,10 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from '../spinner';
 import {createLike, deleteLike} from '../../actions/likes_actions';
+import {fetchWorkout} from '../../actions/workouts_actions';
 
-const mapStateToProps = ({session: {currentUser}, entities: {users, likes}}, ownProps) => {
-  // const {session: {currentUser}, entities: {users, likes}} = state;
-  const {likableLikes} = ownProps;
+const mapStateToProps = (state, ownProps) => {
+  const {session: {currentUser}, entities: {users, likes, workouts}} = state;
+  let likableLikes = [];
+  if (ownProps.likableType === 'workouts') {
+    likableLikes = workouts.workouts_by_id[ownProps.likableId].likes;
+  }
   let likesArray = [];
   if (likableLikes.length) { //to check if likable has likes
     likesArray = likableLikes.map((likeId) => {
