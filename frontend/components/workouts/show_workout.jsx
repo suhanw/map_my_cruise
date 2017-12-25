@@ -6,6 +6,7 @@ import {randomizer} from '../../util/randomizer';
 import Modal from '../modals/modal';
 import ConfirmDeleteModal from '../modals/confirm_delete_modal';
 import CommentIndexContainer from '../comments/comment_index_container';
+import LikeIndex from '../likes/like_index';
 import ResourceNotFound from '../resource_not_found';
 
 class ShowWorkout extends React.Component {
@@ -14,6 +15,7 @@ class ShowWorkout extends React.Component {
 
     this.handleDelete = this.handleDelete.bind(this);
     this.renderComments = this.renderComments.bind(this);
+    this.renderLikes = this.renderLikes.bind(this);
     this.renderWorkoutOptions = this.renderWorkoutOptions.bind(this);
   }
 
@@ -116,8 +118,9 @@ class ShowWorkout extends React.Component {
             </figure>
           </section>
           <section className="comments-likes">
-            <h2>COMMENTS</h2>
+            <h2>COMMENTS AND LIKES</h2>
 
+            {this.renderLikes()}
             {this.renderComments()}
 
           </section>
@@ -158,6 +161,12 @@ class ShowWorkout extends React.Component {
   renderComments() {
     return (
       <CommentIndexContainer workoutId={this.props.workout.id} />
+    );
+  }
+
+  renderLikes() {
+    return (
+      <LikeIndex workoutId={this.props.workout.id} />
     );
   }
 

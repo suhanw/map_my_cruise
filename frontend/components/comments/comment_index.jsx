@@ -24,7 +24,7 @@ class CommentIndex extends React.Component {
       <section className="workout-comments">
         {!workoutComments.length ?
           (
-            <span>
+            <span className="workout-comments-message">
               Be the first to comment!
             </span>
           ) :

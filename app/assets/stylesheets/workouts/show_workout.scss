@@ -127,18 +127,19 @@
 .workout-likes {
   padding: 10px 0;
   border-top: 1px solid $light-gray;
-  margin-bottom: 10px;
 }
 
 .workout-comments {
   border-top: 1px solid $light-gray;
-
 }
 
 .workout-comments span {
   display: inline-block;
   margin-bottom: 10px;
-  // color: red;
+}
+
+.workout-comments span.workout-comments-message {
+  margin: 10px 0;
 }
 
 .workout-comments li {
