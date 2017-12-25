@@ -3,6 +3,11 @@ class Api::LikesController < ApplicationController
 
   def show
     @like = Like.find_by(id: params[:id])
+    if @like
+      render :show, status: 200
+    else
+      render json: ["This like does not exist"], status: 404
+    end
   end
 
   def create
@@ -17,11 +22,11 @@ class Api::LikesController < ApplicationController
 
   def destroy
     @like = Like.find_by(id: params[:id])
-    if !@like
-      render json: ["This like does not exist"], status: 404
-    else
+    if @like
       @like.destroy
       render :show, status: 200
+    else
+      render json: ["This like does not exist"], status: 404
     end
   end
 

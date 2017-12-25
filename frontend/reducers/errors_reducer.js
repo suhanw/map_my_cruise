@@ -12,6 +12,7 @@ import SessionErrorsReducer from './session/session_errors_reducer';
 import RouteErrorsReducer from './routes/route_errors_reducer';
 import WorkoutErrorsReducer from './workouts/workout_errors_reducer';
 import CommentErrorsReducer from './comments/comment_errors_reducer';
+import LikeErrorsReducer from './likes/like_errors_reducer';
 import FriendErrorsReducer from './friends/friend_errors_reducer';
 import UserSearchErrorsReducer from './friends/user_search_errors_reducer';
 import ActivityErrorsReducer from './activities/activity_errors_reducer';
@@ -24,6 +25,7 @@ const ErrorsReducer = combineReducers({
   routes: RouteErrorsReducer,
   workouts: WorkoutErrorsReducer,
   comments: CommentErrorsReducer,
+  likes: LikeErrorsReducer,
   friends: FriendErrorsReducer,
   user_search: UserSearchErrorsReducer,
 });

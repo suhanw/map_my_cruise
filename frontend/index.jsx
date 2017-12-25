@@ -5,6 +5,7 @@ import configureStore from './store/store';
 
 //for testing
 import * as LikeApiUtil from './util/likes_api_util';
+import {fetchLike, createLike, deleteLike} from './actions/likes_actions';
 //for testing
 
 document.addEventListener('DOMContentLoaded', ()=>{
@@ -26,9 +27,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
   //for testing
   window.dispatch = store.dispatch;
-  window.createLike = LikeApiUtil.createLike;
-  window.deleteLike = LikeApiUtil.deleteLike;
-  window.fetchLike = LikeApiUtil.fetchLike;
+  window.getState = store.getState;
+  window.createLike = createLike;
+  window.deleteLike = deleteLike;
+  window.fetchLike = fetchLike;
   //for testing
 
   const main = document.getElementById('main');

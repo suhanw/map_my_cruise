@@ -3,6 +3,7 @@ import RoutesReducer from './routes/routes_reducer';
 import UsersReducer from './users_reducer';
 import WorkoutsReducer from './workouts/workouts_reducer';
 import CommentsReducer from './comments/comments_reducer';
+import LikesReducer from './likes/likes_reducer';
 import FriendsReducer from './friends/friends_reducer';
 import UserSearchResultsReducer from './friends/user_search_results_reducer';
 import ActivitiesReducer from './activities/activities_reducer';
@@ -15,6 +16,7 @@ const EntitiesReducer = combineReducers({
   workouts: WorkoutsReducer,
   users: UsersReducer,
   comments: CommentsReducer,
+  likes: LikesReducer,
   friends: FriendsReducer,
   userSearchResults: UserSearchResultsReducer,
 });

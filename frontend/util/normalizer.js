@@ -26,10 +26,12 @@ export const workoutNormalizer = (oldWorkout) => {
   const comment = new schema.Entity('comments', {
     user: user,
   });
+  const like = new schema.Entity('likes');
   const workout = new schema.Entity('workouts_by_id', {
-    comments: [ comment ],
     user: user,
     route: route,
+    comments: [ comment ],
+    likes: [ like ],
   });
   const normalizedPayload = normalize(oldWorkout, workout);
   return normalizedPayload.entities;
@@ -66,6 +68,12 @@ export const commentNormalizer = (oldComment) => {
     user: user,
   });
   const normalizedPayload = normalize(oldComment, comment);
+  return normalizedPayload.entities;
+};
+
+export const likeNormalizer = (oldLike) => {
+  const like = new schema.Entity('likes');
+  const normalizedPayload = normalize(oldLike, like);
   return normalizedPayload.entities;
 };
 

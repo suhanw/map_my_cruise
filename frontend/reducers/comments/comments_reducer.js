@@ -12,7 +12,7 @@ const CommentsReducer = (state=defaultState, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_WORKOUT:
-      newState = merge({}, state, action.payload.comments);
+      return merge({}, state, action.payload.comments);
     case RECEIVE_COMMENT:
       return merge({}, state, action.payload.comments);
     case REMOVE_COMMENT:
