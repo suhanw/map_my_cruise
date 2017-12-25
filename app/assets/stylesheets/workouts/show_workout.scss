@@ -129,6 +129,10 @@
   border-top: 1px solid $light-gray;
 }
 
+.workout-comments-likes div.likes i {
+  cursor: pointer;
+}
+
 .workout-comments-likes div.likes i.has-likes {
   color: $blue;
 }

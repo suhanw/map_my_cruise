@@ -3,8 +3,8 @@ import {connect} from 'react-redux';
 import Spinner from '../spinner';
 import {createLike, deleteLike} from '../../actions/likes_actions';
 
-const mapStateToProps = (state, ownProps) => {
-  const {session: {currentUser}, entities: {users, likes}} = state;
+const mapStateToProps = ({session: {currentUser}, entities: {users, likes}}, ownProps) => {
+  // const {session: {currentUser}, entities: {users, likes}} = state;
   const {likableLikes} = ownProps;
   let likesArray = [];
   if (likableLikes.length) { //to check if likable has likes
@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser,
+    likes,
     users,
     likesArray,
   };
@@ -29,6 +30,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 };
 
 class LikeIndex extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.toggleLike = this.toggleLike.bind(this);
+  }
+
   render() {
     const numLikes = this.props.likesArray.length;
     let hasLikes;
@@ -36,10 +43,21 @@ class LikeIndex extends React.Component {
     return (
       <div className="likes">
         <i className={`fa fa-thumbs-o-up ${hasLikes}`} aria-hidden="true"
-          onClick={this.props.createLike}></i>
+          onClick={this.toggleLike}></i>
         {numLikes}
       </div>
     );
+  }
+
+  toggleLike() {
+    let currentUserLike = this.props.likesArray.find((like)=>{
+      return like.user_id === this.props.currentUser.id;
+    });
+    if (currentUserLike) {
+      this.props.deleteLike(currentUserLike.id);
+    } else {
+      this.props.createLike();
+    }
   }
 }
 
