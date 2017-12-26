@@ -34,10 +34,6 @@ class LikeIndex extends React.Component {
   constructor(props) {
     super(props);
 
-    this.currentUserLike = this.props.likesArray.find((like)=>{
-      return like.user_id === this.props.currentUser.id;
-    });
-
     this.toggleLike = this.toggleLike.bind(this);
   }
 
@@ -48,10 +44,6 @@ class LikeIndex extends React.Component {
 
     // if no likes, render 'Be the first to like this'
     if (numLikes === 0) likesText = ' be the first to like this';
-    // else if one person likes it, render the person's username
-    // else if (numLikes === 1) {
-    //
-    // }
     // else, render how many people like it
     else {
       // if currentUser likes, colorize icon
@@ -73,6 +65,14 @@ class LikeIndex extends React.Component {
         {likesText}
       </div>
     );
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.likesArray.length) {
+      this.currentUserLike = newProps.likesArray.find((like)=>{
+        return like && like.user_id === this.props.currentUser.id;
+      });
+    }
   }
 
   toggleLike() {

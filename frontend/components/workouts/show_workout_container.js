@@ -9,13 +9,12 @@ const mapStateToProps = ({entities: {workouts, users, routes, comments}, errors,
   let workoutCreator;
   let routeCreator;
   let route;
-  let commentsArr;
   let workout;
 
   if (workouts.workouts_by_id) { //edge case where user changes the URL to view workout
     workout = workouts.workouts_by_id[workoutId];
   }
-  
+
   if (workout) {
     workoutCreator = users[workout.user];
     route = routes.routes_by_id[workout.route];
@@ -32,7 +31,6 @@ const mapStateToProps = ({entities: {workouts, users, routes, comments}, errors,
     errors: errors.workouts,
     loading,
     modal,
-    commentsArr,
     currentUser,
   };
 };
