@@ -27,7 +27,7 @@ const WorkoutsReducer = (state=defaultState, action) => {
       return newState;
 
     case RECEIVE_WORKOUT:
-      return merge({}, state, {
+      return Object.assign({}, state, { // use Object.assign instead of merge so that arrays are replaced
         workouts_by_id: action.payload.workouts_by_id,
       });
 

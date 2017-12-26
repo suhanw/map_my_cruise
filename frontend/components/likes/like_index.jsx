@@ -2,16 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Spinner from '../spinner';
 import {createLike, deleteLike} from '../../actions/likes_actions';
-import {fetchWorkout} from '../../actions/workouts_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const {session: {currentUser}, entities: {users, likes, workouts}} = state;
-  let likableLikes = [];
-  if (ownProps.likableType === 'workouts') {
-    likableLikes = workouts.workouts_by_id[ownProps.likableId].likes;
-  }
+  const {session: {currentUser}, entities: {users, likes}} = state;
+  const {likableLikes} = ownProps;
+
   let likesArray = [];
-  if (likableLikes.length) { //to check if likable has likes
+  if (likableLikes && likableLikes.length) { //to check if likable has likes
     likesArray = likableLikes.map((likeId) => {
       return likes[likeId];
     });
@@ -19,17 +16,17 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     currentUser,
-    likes,
     users,
     likesArray,
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const {likableType, likableId} = ownProps;
+  const {fetchLikable, likableType, likableId} = ownProps;
   return {
     createLike: () => dispatch(createLike(likableType, likableId)),
     deleteLike: (likeId) => dispatch(deleteLike(likeId)),
+    fetchLikable: () => fetchLikable(likableId),
   };
 };
 
@@ -58,9 +55,13 @@ class LikeIndex extends React.Component {
       return like.user_id === this.props.currentUser.id;
     });
     if (currentUserLike) {
-      this.props.deleteLike(currentUserLike.id);
+      this.props.deleteLike(currentUserLike.id).then(
+        () => this.props.fetchLikable()
+      );
     } else {
-      this.props.createLike();
+      this.props.createLike().then(
+        () => this.props.fetchLikable()
+      );
     }
   }
 }

@@ -167,6 +167,8 @@ class ShowWorkout extends React.Component {
   renderLikes() {
     return (
       <LikeIndex
+        fetchLikable={this.props.fetchWorkout}
+        likableLikes={this.props.workout.likes}
         likableType="workouts"
         likableId={this.props.workout.id} />
     );
