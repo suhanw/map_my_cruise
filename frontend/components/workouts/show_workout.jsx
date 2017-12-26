@@ -183,7 +183,7 @@ class ShowWorkout extends React.Component {
           <button onClick={this.handleDelete} className="orange-button">DELETE</button>
           <Link className="workout-index-link" to="/workouts">Back to My Workouts</Link>
         </td>
-      )
+      );
     } else {
       optionsDom = (
         <td>
