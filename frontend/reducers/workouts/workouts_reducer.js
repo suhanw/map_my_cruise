@@ -31,8 +31,10 @@ const WorkoutsReducer = (state=defaultState, action) => {
         workouts_by_id: action.payload.workouts_by_id,
       });
       // to fix the problem of merge not overwriting existing array with empty array
-      let workoutId = parseInt(Object.keys(newState.workouts_by_id)[0]);
-      newState.workouts_by_id[workoutId].likes = action.payload.workouts_by_id[workoutId].likes;
+      let workoutId = parseInt(Object.keys(action.payload.workouts_by_id)[0]);
+      if (newState.workouts_by_id[workoutId].likes) {
+        newState.workouts_by_id[workoutId].likes = action.payload.workouts_by_id[workoutId].likes;
+      }
       return newState;
 
     case REMOVE_WORKOUT:
