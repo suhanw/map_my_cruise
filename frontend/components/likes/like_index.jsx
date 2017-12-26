@@ -34,33 +34,62 @@ class LikeIndex extends React.Component {
   constructor(props) {
     super(props);
 
+    this.currentUserLike = this.props.likesArray.find((like)=>{
+      return like.user_id === this.props.currentUser.id;
+    });
+
     this.toggleLike = this.toggleLike.bind(this);
   }
 
   render() {
-    const numLikes = this.props.likesArray.length;
-    let hasLikes;
-    if (numLikes) hasLikes = 'has-likes';
+    let numLikes = this.props.likesArray.length;
+    let currentUserLikeClass;
+    let likesText = '';
+
+    // if no likes, render 'Be the first to like this'
+    if (numLikes === 0) likesText = ' be the first to like this';
+    // else if one person likes it, render the person's username
+    // else if (numLikes === 1) {
+    //
+    // }
+    // else, render how many people like it
+    else {
+      // if currentUser likes, colorize icon
+      if (this.currentUserLike) {
+        currentUserLikeClass = 'current-user-like';
+        likesText = ` You ${numLikes > 1 ? 'and' : ''}`;
+        numLikes--;
+      }
+      if (numLikes > 0) {
+        likesText += ` ${numLikes} ${numLikes > 1 ? 'people' : 'person'}`;
+      }
+      likesText += ` liked this`;
+    }
+
     return (
       <div className="likes">
-        <i className={`fa fa-thumbs-o-up ${hasLikes}`} aria-hidden="true"
+        <i className={`fa fa-thumbs-o-up ${currentUserLikeClass}`} aria-hidden="true"
           onClick={this.toggleLike}></i>
-        {numLikes}
+        {likesText}
       </div>
     );
   }
 
   toggleLike() {
-    let currentUserLike = this.props.likesArray.find((like)=>{
-      return like.user_id === this.props.currentUser.id;
-    });
-    if (currentUserLike) {
-      this.props.deleteLike(currentUserLike.id).then(
-        () => this.props.fetchLikable()
+    if (this.currentUserLike) {
+      this.props.deleteLike(this.currentUserLike.id).then(
+        () => {
+          this.currentUserLike = null;
+          this.props.fetchLikable();
+        }
       );
     } else {
       this.props.createLike().then(
-        () => this.props.fetchLikable()
+        (action) => {
+          let currentUserLikeId = parseInt(Object.keys(action.payload.likes));
+          this.currentUserLike = action.payload.likes[currentUserLikeId];
+          this.props.fetchLikable();
+        }
       );
     }
   }
