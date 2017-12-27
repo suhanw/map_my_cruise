@@ -2,7 +2,7 @@ class Api::LikesController < ApplicationController
   before_action :require_login
 
   def show
-    @like = Like.find_by(id: params[:id])
+    @like = Like.includes(:user).find_by(id: params[:id])
     if @like
       render :show, status: 200
     else
@@ -13,6 +13,7 @@ class Api::LikesController < ApplicationController
   def create
     load_likable
     @like = @likable.likes.new(user: current_user)
+    @like.notification = Notification.new(user_id: @likable.user_id, read: false)
     if @like.save
       render :show, status: 200
     else
