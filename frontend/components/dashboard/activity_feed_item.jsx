@@ -232,6 +232,11 @@ class ActivityFeedItem extends React.Component {
               <small>mi</small>
             </figcaption>
             <span className="comment-section">
+              <LikeIndex
+                fetchLikable={this.props.fetchRoute}
+                likableLikes={route.likes}
+                likableType="routes"
+                likableId={route.id} />
               <strong></strong>
               <small>{route.created_at}</small>
             </span>
