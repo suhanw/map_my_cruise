@@ -35,23 +35,26 @@ The landing page upon login is a feed that displays the current user's as well a
 
 ![Routes](docs/README_gifs/activity_feed.gif)
 
-### Likes
+### Polymorphic Likes
 
 `likes` are designed with polymorphic associations with `routes` and `workouts` to keep DRY modular code as well as enable scalability for other resources that can be likable in the future.
 
 ``` Ruby
+# like.rb
 class Like < ApplicationRecord
   ...
   belongs_to :likable, polymorphic: true
   ...
 end
 
+# route.rb
 class Route < ApplicationRecord
   ...
   has_many :likes, as: :likable, dependent: :destroy
   ...
 end
 
+# workout.rb
 class Workout < ApplicationRecord
   ...
   has_many :likes, as: :likable, dependent: :destroy
@@ -59,8 +62,9 @@ class Workout < ApplicationRecord
 end
 ```
 
-Routing concern is used to declare common `like` routes for `likables` that include `routes` and `workouts`.
+Routing concern is used to declare common `like` routes for `likables` including `routes` and `workouts`.
 ```Ruby
+# routes.rb
 concern :likable do
   resources :likes, only: [:create]
 end
@@ -69,8 +73,9 @@ resources :routes, only: [:index, :show, :create, :update, :destroy], concerns: 
 resources :workouts, only: [:index, :show, :create, :update, :destroy], concerns: [:likable, :commentable]
 ```
 
-`likes` are associated with the relevant `likable` in the controller
+`likes` are created with the relevant `likable` in the controller
 ```Ruby
+# likes_controller.rb
 class Api::LikesController < ApplicationController
   ...
 
@@ -95,7 +100,42 @@ class Api::LikesController < ApplicationController
 end
 ```
 
+On the front-end, the `LikeIndex` React component is designed to be agnostic of the resource that is `likable`. `LikeIndex` knows what resource it's related to based on the props passed upon mounting.
+```JavaScript
+// show_workout.jsx
+renderLikes() {
+  return (
+    <LikeIndex
+      fetchLikable={this.props.fetchWorkout}
+      likableLikes={this.props.workout.likes}
+      likableType="workouts"
+      likableId={this.props.workout.id} />
+  );
+}
+```
 
+Based on the props passed in above, it creates 'thunk' dispatch functions for the specific resource (i.e., either route or workout).
+```JavaScript
+// like_index.jsx
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const {fetchLikable, likableType, likableId} = ownProps;
+  return {
+    createLike: () => dispatch(createLike(likableType, likableId)),
+    deleteLike: (likeId) => dispatch(deleteLike(likeId)),
+    fetchLikable: () => fetchLikable(likableId),
+  };
+};
+
+// likes_actions.jsx
+export const createLike = (likableType, likableId) => {
+  return (dispatch) => {
+    return LikeApiUtil.createLike(likableType, likableId).then(
+      (newLike) => dispatch(receiveLike(newLike)),
+      (errors) => dispatch(receiveLikeErrors(errors.responseJSON))
+    );
+  };
+};
+```
 
 
 ### Comments
