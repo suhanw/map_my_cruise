@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :likes, only: [:create]
     end
 
-    resources :routes, only: [:index, :show, :create, :update, :destroy]
+    resources :routes, only: [:index, :show, :create, :update, :destroy], concerns: [:likable]
     resources :workouts, only: [:index, :show, :create, :update, :destroy], concerns: [:likable, :commentable]
 
     resources :friend_statuses, only: [:index, :create, :update, :destroy, :show]

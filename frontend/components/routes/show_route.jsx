@@ -10,6 +10,7 @@ class ShowRoute extends React.Component {
   constructor(props) {
     super(props);
 
+    this.renderLikes = this.renderLikes.bind(this);
     this.renderRouteOptions = this.renderRouteOptions.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -72,7 +73,12 @@ class ShowRoute extends React.Component {
           <section className="route-map-box">
             <RouteMap route={route} />
           </section>
+          <section className="route-comments-likes">
+            <h2>COMMENTS AND LIKES</h2>
+            {this.renderLikes()}
+          </section>
         </section>
+
         <aside className="route-sidebar">
           <div className={adGifClass}>
             <small>Ad</small>
@@ -82,6 +88,10 @@ class ShowRoute extends React.Component {
         </aside>
       </section>
     );
+  }
+
+  renderLikes() {
+    
   }
 
   renderRouteOptions() {
