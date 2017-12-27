@@ -144,6 +144,81 @@ Comments are associated with `user_id` and `workout_id`. The associated comments
 
 ![Routes](docs/README_gifs/comments.gif)
 
+### Notifications
+
+Real-time notification is accomplished using the Pusher API and Websocket protocol.
+![Routes](docs/README_gifs/notifications.gif)
+
+On the front-end, the `Header` component is subscribed to a channel that listens for notification events. Upon notification event, it dispatches an AJAX request to fetch new notifications.
+```JavaScript
+// header.jsx
+renderNotifications() {
+  ...
+  let channel = this.pusher.subscribe(`user_${this.props.currentUser.id}`);
+  channel.bind('notification_event', (data)=>{
+    this.props.fetchNotifications();
+  });
+  ...
+}
+```
+
+On the back-end, the `notification` model publishes a notification event to the channel to which the `Header` component is subscribed, whenever a new notification instance is created.
+```Ruby
+# notification.rb
+class Notification < ApplicationRecord
+  after_create :trigger_push_event
+  belongs_to :notifiable, polymorphic: true
+
+  ...
+
+  private
+  def trigger_push_event
+    # create Pusher channel specific to resource owner
+    owner_channel = "user_#{self.user_id}"
+    Pusher.trigger(owner_channel, 'notification_event', {
+      message: "this is #{self.user.email}'s #{self.notifiable_type} notification"
+    })
+  end
+end
+```
+
+`notifications` have polymorphic associations to `notifiable` resources like `comments` and `likes`.
+```Ruby
+# comment.rb
+class Comment < ApplicationRecord
+  ...
+  has_one :notification, as: :notifiable, dependent: :destroy
+  ...
+end
+
+# like.rb
+class Like < ApplicationRecord
+  ...
+  has_one :notification, as: :notifiable, dependent: :destroy
+  ...
+end
+```
+The associated `notification` is created when the `notifiable` resource (e.g., `like`) is created by the controller.
+```Ruby
+# likes_controller.rb
+class Api::LikesController < ApplicationController
+  ...
+
+  def create
+    load_likable
+    @like = @likable.likes.new(user: current_user)
+    @like.notification = Notification.new(user_id: @likable.user_id, read: false)
+    if @like.save
+      render :show, status: 200
+    else
+      render json: @like.errors.full_messages, status: 422
+    end
+  end
+
+  ...
+end
+```
+
 ## Future Directions for the Project
 
 In addition to the features already implemented, I plan to continue work on this project.  The next steps for MapMyCruise are outlined below.
