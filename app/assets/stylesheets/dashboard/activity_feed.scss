@@ -83,9 +83,27 @@ section.activity-feed {
   opacity: 0.5;
 }
 
-.activity-feed-main article > section > .comment-section{
+.activity-feed-main article > section > .comment-section {
   border-bottom: 1px solid $gray;
   background: $lightest-gray;
+  justify-content: flex-start;
+  // color: $gray;
+}
+
+.activity-feed-main article > section > .comment-section > i.fa-circle {
+  font-size: 5px;
+}
+
+.activity-feed-main article > section > .comment-section > div.likes i {
+  cursor: pointer;
+}
+
+.activity-feed-main article > section > .comment-section > div.likes i.current-user-like {
+  color: $blue;
+}
+
+.activity-feed-main article > section > .comment-section > small {
+  margin-left: auto;
 }
 
 .activity-feed-main article.route > section > figure {

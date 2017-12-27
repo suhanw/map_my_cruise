@@ -7,6 +7,7 @@ import * as RouteActions from '../../actions/routes_actions';
 import * as FriendActions from '../../actions/friends_actions';
 import RouteMap from '../routes/route_map';
 import CommentIndexContainer from '../comments/comment_index_container';
+import LikeIndex from '../likes/like_index';
 
 const mapStateToProps = (state, ownProps) => {
   const {entities: {workouts, routes, users, friends}} = state;
@@ -169,6 +170,14 @@ class ActivityFeedItem extends React.Component {
               </figure>
             </span>
             <span className="comment-section">
+              <LikeIndex
+                fetchLikable={this.props.fetchWorkout}
+                likableLikes={workout.likes}
+                likableType="workouts"
+                likableId={workout.id} />
+              &nbsp;&nbsp;
+              <i className="fa fa-circle" aria-hidden="true"></i>
+              &nbsp;&nbsp;
               <strong>
                 <i className={`fa fa-commenting-o ${workout.comments.length ? `has-comments`: null}`} aria-hidden="true"></i>
                 &nbsp;
