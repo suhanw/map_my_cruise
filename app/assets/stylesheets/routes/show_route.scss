@@ -158,3 +158,8 @@ section.route-comments-likes div.likes {
 .route-comments-likes div.likes i.current-user-like {
   color: $blue;
 }
+
+section.route-comments {
+  border-top: 1px solid $light-gray;
+  padding: 10px 0;
+}

@@ -12,6 +12,7 @@ class ShowRoute extends React.Component {
     super(props);
 
     this.renderLikes = this.renderLikes.bind(this);
+    this.renderComments = this.renderComments.bind(this);
     this.renderRouteOptions = this.renderRouteOptions.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -77,6 +78,7 @@ class ShowRoute extends React.Component {
           <section className="route-comments-likes">
             <h2>COMMENTS AND LIKES</h2>
             {this.renderLikes()}
+            {this.renderComments()}
           </section>
         </section>
 
@@ -98,6 +100,14 @@ class ShowRoute extends React.Component {
         likableLikes={this.props.route.likes}
         likableType="routes"
         likableId={this.props.route.id} />
+    );
+  }
+
+  renderComments() {
+    return (
+      <section className="route-comments">
+        Comments feature coming soon.
+      </section>
     );
   }
 
