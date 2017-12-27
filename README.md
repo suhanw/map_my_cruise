@@ -73,7 +73,7 @@ resources :routes, only: [:index, :show, :create, :update, :destroy], concerns: 
 resources :workouts, only: [:index, :show, :create, :update, :destroy], concerns: [:likable, :commentable]
 ```
 
-`likes` are created with the relevant `likable` in the controller
+`likes` are created for the relevant `likable` in the controller
 ```Ruby
 # likes_controller.rb
 class Api::LikesController < ApplicationController
@@ -100,7 +100,7 @@ class Api::LikesController < ApplicationController
 end
 ```
 
-On the front-end, the `LikeIndex` React component is designed to be agnostic of the resource that is `likable`. `LikeIndex` knows what resource it's related to based on the props passed upon mounting.
+On the front-end, the `LikeIndex` React component is designed to be agnostic of the resource that is `likable`. `LikeIndex` knows what `likable` resource it's related to based on the props passed upon mounting.
 ```JavaScript
 // show_workout.jsx
 renderLikes() {
@@ -114,7 +114,7 @@ renderLikes() {
 }
 ```
 
-Based on the props passed in above, it creates 'thunk' dispatch functions for the specific resource (i.e., either route or workout).
+Based on the props passed in above, it creates dispatch functions for the specific `likable` resource (i.e., either route or workout).
 ```JavaScript
 // like_index.jsx
 const mapDispatchToProps = (dispatch, ownProps) => {
