@@ -19,7 +19,7 @@ class Notification < ApplicationRecord
 
   private
   def trigger_push_event
-    # create Pusher channel specific to workout owner
+    # create Pusher channel specific to resource owner
     owner_channel = "user_#{self.user_id}"
     Pusher.trigger(owner_channel, 'notification_event', {
       message: "this is #{self.user.email}'s #{self.notifiable_type} notification"
