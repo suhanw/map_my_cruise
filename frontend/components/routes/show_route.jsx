@@ -92,7 +92,6 @@ class ShowRoute extends React.Component {
   }
 
   renderLikes() {
-    debugger
     return (
       <LikeIndex
         fetchLikable={this.props.fetchRoute}

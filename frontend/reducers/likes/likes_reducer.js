@@ -15,6 +15,8 @@ const LikesReducer = (state=defaultState, action) => {
   switch (action.type) {
     case RECEIVE_WORKOUT:
       return merge({}, state, action.payload.likes);
+    case RECEIVE_ROUTE:
+      return merge({}, state, action.payload.likes);
     case RECEIVE_LIKE:
       return merge({}, state, action.payload.likes);
     case REMOVE_LIKE:

@@ -25,9 +25,15 @@ const RoutesReducer = (state=defaultState, action) => {
       return newState;
 
     case RECEIVE_ROUTE:
-      return merge({}, state, {
+      newState = merge({}, state, {
         routes_by_id: action.payload.routes_by_id
       });
+      // to fix the problem of merge not overwriting existing array with empty array
+      let routeId = parseInt(Object.keys(action.payload.routes_by_id)[0]);
+      if (newState.routes_by_id[routeId].likes) {
+        newState.routes_by_id[routeId].likes = action.payload.routes_by_id[routeId].likes;
+      }
+      return newState;
 
     case REMOVE_ROUTE:
       newState = merge({}, state);
