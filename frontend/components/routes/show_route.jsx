@@ -4,6 +4,7 @@ import RouteIndexItem from './route_index_item';
 import RouteMap from './route_map';
 import Spinner from '../spinner';
 import {randomizer} from '../../util/randomizer';
+import LikeIndex from '../likes/like_index';
 import ResourceNotFound from '../resource_not_found';
 
 class ShowRoute extends React.Component {
@@ -91,7 +92,14 @@ class ShowRoute extends React.Component {
   }
 
   renderLikes() {
-    
+    debugger
+    return (
+      <LikeIndex
+        fetchLikable={this.props.fetchRoute}
+        likableLikes={this.props.route.likes}
+        likableType="routes"
+        likableId={this.props.route.id} />
+    );
   }
 
   renderRouteOptions() {

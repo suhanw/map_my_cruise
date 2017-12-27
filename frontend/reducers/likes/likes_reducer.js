@@ -1,5 +1,6 @@
 import merge from 'lodash/merge';
 import {RECEIVE_WORKOUT} from '../../actions/workouts_actions';
+import {RECEIVE_ROUTE} from '../../actions/routes_actions';
 import {
   RECEIVE_LIKE,
   REMOVE_LIKE

@@ -47,8 +47,10 @@ export const workoutsNormalizer = (workouts) => {
 
 export const routeNormalizer = (oldComment) => {
   const user = new schema.Entity('users');
+  const like = new schema.Entity('likes');
   const route = new schema.Entity('routes_by_id', {
     user: user,
+    likes: [ like ],
   });
   const normalizedPayload = normalize(oldComment, route);
   return normalizedPayload.entities;

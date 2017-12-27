@@ -137,3 +137,24 @@
   left: 2px;
   box-shadow: none;
 }
+
+section.route-comments-likes {
+  width: 100%;
+}
+
+section.route-comments-likes h2 {
+  padding: 10px 0;
+}
+
+section.route-comments-likes div.likes {
+  padding: 10px 0;
+  border-top: 1px solid $light-gray;
+}
+
+.route-comments-likes div.likes i {
+  cursor: pointer;
+}
+
+.route-comments-likes div.likes i.current-user-like {
+  color: $blue;
+}
