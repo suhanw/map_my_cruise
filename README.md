@@ -149,7 +149,7 @@ Comments are associated with `user_id` and `workout_id`. The associated comments
 Real-time notification is accomplished using the Pusher API and Websocket protocol.
 ![Routes](docs/README_gifs/notifications.gif)
 
-On the front-end, the `Header` component is subscribed to a channel that listens for notification events. Upon notification event, it dispatches an AJAX request to fetch new notifications.
+On the front-end, the `Header` component is subscribed to a channel that listens for notification events. Upon a notification event, it dispatches an AJAX request to fetch new notifications.
 ```JavaScript
 // header.jsx
 renderNotifications() {
