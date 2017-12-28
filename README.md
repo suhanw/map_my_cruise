@@ -37,7 +37,7 @@ The landing page upon login is a feed that displays the current user's as well a
 
 ### Polymorphic Likes
 
-`likes` are designed with polymorphic associations with `routes` and `workouts` to keep DRY modular code as well as enable scalability for other resources that can be likable in the future.
+`likes` are designed with polymorphic associations with `routes` and `workouts` to keep DRY modular code as well as extensibility to other resources that can be likable in the future.
 
 ``` Ruby
 # like.rb
