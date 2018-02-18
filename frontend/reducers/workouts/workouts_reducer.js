@@ -13,7 +13,7 @@ const defaultState = {
 };
 
 const WorkoutsReducer = (state=defaultState, action) => {
-
+  Object.freeze(state);
   let newState;
   switch (action.type) {
 

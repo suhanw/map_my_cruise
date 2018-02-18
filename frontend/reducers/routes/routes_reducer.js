@@ -14,6 +14,7 @@ const defaultState = {
 };
 
 const RoutesReducer = (state=defaultState, action) => {
+  Object.freeze(state);
   let newState;
   switch (action.type) {
 

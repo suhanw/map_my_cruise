@@ -8,6 +8,7 @@ import {CLEAR_ENTITIES} from '../../actions/clear_actions';
 const defaultState = [];
 
 const UserSearchResultsReducer = (state=defaultState, action) => {
+  Object.freeze(state);
   switch (action.type) {
     case RECEIVE_USER_SEARCH_RESULTS:
       // not merging with state because we will

@@ -10,8 +10,8 @@ const defaultState = {
 };
 
 const NotificationsReducer = (state=defaultState, action) => {
-  let newState;
   Object.freeze(state);
+  let newState;
   switch (action.type) {
     case RECEIVE_NOTIFICATIONS:
       return action.payload;

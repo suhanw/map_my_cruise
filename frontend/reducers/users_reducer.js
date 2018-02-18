@@ -15,6 +15,7 @@ import {CLEAR_ENTITIES} from '../actions/clear_actions';
 const defaultState = {};
 
 const UsersReducer = (state=defaultState, {type, payload}) => {
+  Object.freeze(state);
   let newState;
   switch (type) {
     case RECEIVE_ROUTE:

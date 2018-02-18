@@ -10,6 +10,7 @@ const defaultState = {
 };
 
 const ActivitiesReducer = (state=defaultState, action) => {
+  Object.freeze(state);
   let newState;
   let new_ordered_ids;
   let activity_id;

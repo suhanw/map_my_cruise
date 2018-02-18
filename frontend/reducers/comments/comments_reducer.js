@@ -9,6 +9,7 @@ import {CLEAR_ENTITIES} from '../../actions/clear_actions';
 const defaultState = {};
 
 const CommentsReducer = (state=defaultState, action) => {
+  Object.freeze(state);
   let newState;
   switch (action.type) {
     case RECEIVE_WORKOUT:

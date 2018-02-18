@@ -11,6 +11,7 @@ const defaultState = {
 };
 
 const SessionReducer = (state = defaultState, action) => {
+  Object.freeze(state);
   let newState;
   let friendsArr = [];
 
